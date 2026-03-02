@@ -43,7 +43,7 @@ Say `kickoff`, share your resume, and you're being coached in under 2 minutes. S
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/dhirajbhat/job-search-os.git
+git clone https://github.com/dbhat93/job-search-os.git
 cd job-search-os
 ```
 
