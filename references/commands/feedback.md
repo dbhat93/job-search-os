@@ -51,26 +51,15 @@ Classify the candidate's input into one of five types. If ambiguous, ask: "Is th
 - Update Interview Loops → relevant company entry (Status, Rounds completed)
 - Update Interview Intelligence → Question Bank Outcome column for all questions from this company/round
 - If advanced with next-round details, update Interview Loops → Next round
+- If the loop status change affects pipeline priority, sync `state/pipeline.md` per the Stage Sync Protocol (see COACH.md). Specific mappings: Interview Loops Status "Applied" → pipeline Stage "Applied"; "Interviewing" → "Interviewing"; "Closed" (rejection) → "Closed"; "Offer" → "Offer". Also update: Last Activity date to today, and Round count if advancing. Ground truth: if coaching_state.md and pipeline.md contradict, coaching_state.md is authoritative.
 
 **Output**: Brief confirmation of the update. If outcome data now meets the threshold for outcome-score correlation (3+ real interviews), mention it: "You now have enough real interview data for `progress` to show outcome patterns. Worth running when you're ready."
 
-**Calibration trigger**: When the 3-outcome threshold is crossed, note that calibration is now possible: "With 3+ real interview outcomes, the system can now check whether practice scores are predicting real results. Run `progress` to see the calibration analysis." Update Calibration State → Calibration Status to "calibrating" if it was "uncalibrated."
+**Calibration trigger**: When the 3-outcome threshold is crossed, note that calibration is now possible: "With 3+ real interview outcomes, the system can now check whether practice scores are predicting real results. Run `progress` to see the calibration analysis." Update Calibration State → Calibration Status to "calibrating" if it was "uncalibrated" or "practice-calibrating."
 
-#### Rejection Leverage (Level 5 only)
+#### Rejection Leverage
 
-When the outcome is a rejection at Level 5, don't lead with comfort. Lead with extraction: "What can we extract from this?"
-
-Run Challenge Protocol Lenses 1-3 retrospectively:
-1. **Assumptions**: What assumptions were wrong about this company/role/interview? What did you believe going in that turned out not to be true?
-2. **Blind Spots**: What does this rejection reveal that you couldn't see before? What pattern is now visible?
-3. **Pre-Mortem (retrospective)**: With hindsight, what was the pre-mortem you should have done? What failure modes were predictable?
-
-Then:
-- **Concrete adjustments** for the next similar interview
-- **Pattern detection**: Does this match other rejections in the Outcome Log? If so, name the pattern.
-- **Close**: "Rejection is data. This data says [specific insight]. Here's what we do with it."
-
-At Levels 1-4: Standard emotional triage from the Psychological Readiness Module in `references/cross-cutting.md`. Learning extraction follows empathy, not leads.
+When the outcome is a rejection, the Challenge Protocol applies based on the candidate's directness level. See `references/challenge-protocol.md` → Rejection Leverage section for the graduated approach (Level 3 = retrospective assumptions only; Level 4 = assumptions + blind spots; Level 5 = full 3-lens retrospective). At Levels 1–2: standard emotional triage from the Psychological Readiness Module in `references/cross-cutting.md`.
 
 ---
 
@@ -99,20 +88,35 @@ At Levels 1-4: Standard emotional triage from the Psychological Readiness Module
 
 **Trigger**: Candidate remembers a question, story detail, interviewer behavior, or other interview data after the debrief or analysis session has closed.
 
+**The core problem with Type D**: Memory degrades fast. A candidate who remembers a question 3 days after the interview has a partial and reconstructed memory — they may remember the topic but not the exact wording, or the general thrust but not the follow-up. Capturing thin memories is still valuable (the topic is real), but they must be tagged with their reliability so downstream workflows don't treat recalled-days-later data the same as same-day data.
+
 **Capture process**:
 1. Identify what type of information it is:
    - A question they forgot during debrief → route to Question Bank
    - A story detail or new story → route to Storybank (suggest `stories` for full development)
    - An interviewer signal they remembered → route to Interview Loops
    - A company culture observation → route to Company Patterns
-2. Capture it in the appropriate section.
+
+2. **Before accepting thin input, use guided elicitation.** If the candidate's memory is vague ("I think they asked something about conflict?"), don't just capture "conflict question — vague." Try to sharpen it:
+   - "What part of the question do you remember most clearly — the topic, the way they phrased it, or what they seemed to be after?"
+   - "Did they give you any context before asking, or was it direct?"
+   - "What was your first instinct when you heard it — what did you think they were really testing?"
+   - "Did you feel like you answered it well, or was it one that caught you off guard?"
+   These prompts don't manufacture memory — they surface what's actually there. If nothing more comes out, capture what exists and tag accordingly.
+
+3. **Tag with memory reliability**:
+   - **Same day**: High reliability — candidate captured this within hours. Treat as close to first-hand data.
+   - **1–2 days later**: Medium reliability — topic and general intent are likely accurate; exact wording less so. Note: "Recalled 1–2 days post-interview — topic reliable, wording reconstructed."
+   - **3+ days later**: Low reliability — capture the topic and any details the candidate is confident about, but flag explicitly: "Recalled 3+ days post-interview — treat as directional. Do not weight exact wording in prep."
+
+4. For questions routed to the Question Bank, add the memory reliability tag to the entry.
 
 **State updates**:
 - Route to the appropriate section as identified above
-- If it's a question, add to Interview Intelligence → Question Bank with score "recall-only"
+- If it's a question, add to Interview Intelligence → Question Bank with score "recall-only" AND memory reliability tag (Same-day / 1–2 days / 3+ days)
 - If it changes a previous assessment meaningfully, flag it
 
-**Output**: Brief confirmation of where the information was captured. If it changes something meaningful, say so. If it would benefit from further development, suggest the relevant command: "Captured that question. If you want to prep an answer for it, `practice` can drill you on it."
+**Output**: Brief confirmation of where the information was captured AND the reliability tag. "Captured that question in the Question Bank — tagged as 'recalled 3+ days later, directional only.' It's useful for prep context, but treat the wording as approximate." If it would benefit from further development, suggest the relevant command.
 
 ---
 
@@ -139,5 +143,6 @@ At Levels 1-4: Standard emotional triage from the Psychological Readiness Module
 
 - **Capture first, analyze later.** Feedback captures data; `analyze`, `progress`, and `prep` are where that data becomes actionable. Don't over-analyze in the moment — confirm what was captured and move on.
 - **Flexible output.** There's no fixed output schema for `feedback`. The confirmation adapts to the input type — sometimes it's one line, sometimes it's a paragraph. Match the weight of the output to the weight of the input.
+- **Memory reliability is data.** A question recalled 3 days later is still worth capturing — the topic is real. But treating it with the same weight as a same-day recall misleads downstream prep. Tag everything Type D with reliability.
 - **Optional next step.** After capturing, suggest the most natural next command if one is relevant. Don't force it.
 - **Don't duplicate existing workflows.** If the candidate starts a full debrief during `feedback`, redirect: "This sounds like a full debrief — want to switch to `debrief` so we capture everything systematically?" Same for detailed corrections that become re-analysis — redirect to `analyze`.

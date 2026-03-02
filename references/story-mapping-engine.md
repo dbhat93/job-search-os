@@ -20,10 +20,10 @@ Replace bare `Q1 -> S###` with a 4-level fit classification:
 When evaluating a story-question match, weigh these factors in order:
 
 1. **Competency match** (highest weight) — Primary skill match > Secondary skill match > Reframe match. A story whose primary skill directly addresses the tested competency is always preferred.
-2. **Strength score** (high weight) — Stories rated 4-5 > 3 > 2. A strength-5 story with a secondary skill match may outperform a strength-3 story with a primary skill match.
+2. **Strength score** (high weight) — Stories rated 4–5 > 3 > 2. A strength-5 story with a secondary skill match may outperform a strength-3 story with a primary skill match.
 3. **Company/role alignment** (medium weight) — Does the story's domain match the target company? Is the earned secret relevant to what this company values? Stories from the same industry or with transferable context get a boost.
-4. **Freshness** (medium weight) — Has this story been used in prior rounds at this company? Has it been used 3+ times in the current job search? Fresh stories signal range.
-5. **Variety** (portfolio constraint) — Applied at the portfolio level, not per-question. Penalizes using the same story twice in one interview prep.
+4. **Freshness** (medium weight) — Story freshness score (see Section 5). Stale stories are deprioritized when alternatives exist. Proven performers (stories that contributed to past advancements) get a boost that partially offsets staleness.
+5. **Variety** (portfolio constraint) — Applied at the portfolio level, not per-question. See Section 2 for the framing variety constraint — the same story can appear twice in a mapping with demonstrably different angles.
 
 ### Mapping Output Format
 
@@ -31,6 +31,7 @@ For each question-story mapping, state:
 - **Fit level**: Strong Fit / Workable / Stretch / Gap
 - **Why**: One line explaining the match (e.g., "Primary skill (leadership) directly matches competency. Strength 4. Domain aligned (B2B SaaS).")
 - **Bridging guidance** (Workable/Stretch only): How to frame the story to better address the competency. (e.g., "Foreground the cross-functional coordination element — it's a secondary skill in this story but it's what the question is testing.")
+- **Freshness flag** (if applicable): Note if story is flagged as stale or over-rehearsed.
 
 ---
 
@@ -63,10 +64,26 @@ For each conflict:
 3. Cascade to the next-best story for the losing question.
 4. Flag significant downgrades: "Q4 was downgraded from S003 (Strong Fit) to S006 (Workable) due to conflict with Q3. Bridging guidance: [specific framing]."
 
-### Step 4: Apply Variety Constraint
-No story should appear more than once in the final mapping unless no alternative exists. If a story must be reused:
-- Explain why: "S003 is the only story addressing both leadership and prioritization competencies. No alternative exists for Q4."
-- Suggest framing variation: "For Q3, lead with the decision-making angle. For Q4, lead with the stakeholder management angle."
+### Step 4: Apply Framing Variety Constraint
+
+The same story may appear twice in the final mapping if — and only if — the framing angle for each appearance is demonstrably different, and both angles are substantive parts of the story (not a dominant thread vs. a minor subplot).
+
+**Why this replaces the "no story twice" rule**: A strong story with two genuine angles produces better outcomes than forcing a weaker story into one of the slots. One strong story told twice with different leads is more competitive than two mediocre stories. Variety for its own sake is a trap.
+
+**When to allow a story to appear twice**:
+- Specify the distinct angle for each: "For Q3, lead with the stakeholder alignment dimension. For Q7, lead with the technical constraint navigation." Both must be explicitly named and genuinely distinct.
+- Confirm both angles are substantive using the **Substantiation Test** (all 3 criteria must hold):
+  1. **Different competency tested**: Does Q3's angle test a different core competency than Q7's angle? If both angles test "leadership" (even labeled differently), they're relabeling. If one tests "stakeholder management" and the other tests "technical constraint navigation," they're distinct.
+  2. **Different STAR section emphasized**: Do the two angles draw from materially different parts of the story? If both lead with the same Action section relabeled, that's cosmetic. If one foregrounds the Situation setup and the other foregrounds the Result or a different Action thread, they're distinct.
+  3. **Different interviewer takeaway**: Would an interviewer who heard both versions learn two materially different things about the candidate? If yes — substantive reuse. If no — relabeling.
+- Note the reuse in the mapping: "S003 appears twice — distinct angles. Q3: stakeholder angle. Q7: constraint navigation angle."
+
+**When to NOT allow reuse**:
+- If the angle difference is cosmetic ("for Q3, I'll say leadership; for Q7, I'll say influence" — these are the same thing relabeled)
+- If a Workable or better alternative exists for one of the two questions — use it instead
+- If the story appears in a prior round at this company (freshness constraint overrides angle variety)
+
+**If a story must be reused with the same framing angle** (no alternatives exist at any fit level): explain why and flag the limitation: "S003 is the only story addressing both [competency A] and [competency B] at any viable fit level. Reusing with same angle — limited range signal."
 
 ### Step 5: Apply Freshness Constraint
 Check `coaching_state.md` → Interview Loops for stories used in prior rounds at this company.
@@ -74,9 +91,10 @@ Check `coaching_state.md` → Interview Loops for stories used in prior rounds a
 - Flag: "S003 was used in Round 1. Using it again in Round 2 signals limited range unless they specifically ask you to elaborate."
 
 ### Step 6: Apply Overuse Check
-Flag stories used 3+ times in the current job search (check Use Count in storybank).
-- 3 uses: "S007 has been used in 3 interviews. Consider rotating to a fresher story if alternatives exist."
-- 5+ uses: "S007 is heavily used (5 times). Interviewers in your network may have heard it. Prioritize alternatives."
+Cross-reference story freshness scores (Section 5) and use counts:
+- Stories flagged as "Stale" or "Overuse Risk": deprioritize when alternatives exist. Don't eliminate — a Stale Strong Fit still outperforms a Fresh Gap.
+- Stories flagged as "Proven Performer": boost priority. Past advancement contribution partially offsets staleness.
+- When a stale story is selected because no alternative exists: note it and recommend developing a new story for this competency.
 
 ### Step 7: Output Final Mapping
 Produce the final mapping with annotations (see Output Schema below).
@@ -94,7 +112,7 @@ When company culture signals prize differentiation (e.g., companies known for "b
 Example: S005 (Workable, strong earned secret) competes with S008 (Workable, no earned secret). Under the conditional boost, S005 is treated as Strong Fit equivalent.
 
 ### When Calibration Confirms
-If `coaching_state.md` → Calibration State shows that Differentiation correlates with advancement for this candidate, upgrade this from conditional to default: always prefer stories with stronger earned secrets.
+If `coaching_state.md` → Calibration State → Scoring Drift Log shows that Differentiation predicts advancement for this candidate (i.e., advancements correlate with higher Differentiation scores and rejections correlate with lower), upgrade this from conditional to default: always prefer stories with stronger earned secrets.
 
 ---
 
@@ -109,6 +127,59 @@ Secondary skill matches are always Workable at best — never Strong Fit — bec
 
 ---
 
+## Section 5: Story Freshness Score
+
+**The problem**: Use count alone is a blunt instrument. A story used 6 times 8 months ago is functionally fresh. A story used 3 times in the last 2 weeks is overcooked. A story about a project from 6 years ago may feel dated regardless of use count. Freshness needs to account for all three dimensions.
+
+### Three Freshness Factors
+
+Assess each factor independently, then combine into a verdict:
+
+**Factor 1 — Use Frequency Risk**
+How often has this story been practiced or used in interviews, and how recently?
+- **Low risk**: Used 1–2 times total, OR last use was 3+ months ago regardless of count
+- **Medium risk**: Used 3–4 times, with at least one use in the last 2 months
+- **High risk**: Used 5+ times in the last 3 months — over-rehearsal territory. Delivery may feel mechanical.
+
+**Factor 2 — Recency of Underlying Experience**
+How old is the event the story describes?
+- **Low risk**: Experience is < 3 years old — well within "recent and relevant" territory for most roles
+- **Medium risk**: Experience is 3–5 years old — still usable, but may need updated framing or a bridge to current context
+- **High risk**: Experience is 5+ years old — can feel dated. Exception: career-defining or uniquely powerful stories that have no current equivalent. These should be flagged but not automatically deprioritized.
+
+**Factor 3 — Proven Performer Status**
+Has this story contributed to real interview advancement?
+- **Yes**: Partially offsets High risk on other factors. A story with a demonstrated track record of working is worth preserving even if it's been used frequently.
+- **No**: No offset. Standard freshness rules apply.
+
+### Freshness Verdict
+
+| Factor Combination | Verdict | Action |
+|---|---|---|
+| 2+ High risk factors, no Proven Performer offset | **Stale** | Deprioritize when alternatives exist. Flag: "This story may feel mechanical or dated. Consider developing a replacement." |
+| 1 High risk factor OR 2 Medium risk factors | **Moderate** | Use with awareness. Flag the specific risk: "Use frequency is high — focus on natural delivery." or "Experience is aging — consider bridging to a more recent example if available." |
+| All Low risk (with or without Proven Performer) | **Fresh** | No action needed. |
+| Any combo with Proven Performer offset | **Fresh (Proven)** | Use with confidence. "This story has a track record. Its use history is an asset, not a liability." |
+
+### Recording in Storybank
+
+Add a `Freshness` field to each storybank entry, updated after each use:
+
+```
+Freshness: [Fresh / Fresh (Proven) / Moderate / Stale]
+Last assessed: [date]
+```
+
+Freshness should be re-assessed at the start of each prep cycle, not just when a story is selected. A story that was Moderate 3 months ago is likely Fresh again now.
+
+### When Staleness is Acceptable
+
+- **No alternative exists**: A Stale Strong Fit outperforms a Fresh Gap every time. Use the stale story, note the risk, and recommend developing a replacement.
+- **Proven Performer**: If the story worked in past interviews, its familiarity is partially an asset — the candidate tells it with confidence. Monitor for mechanical delivery, not just use count.
+- **Career-defining stories**: Some stories are irreplaceable — a founding moment, a breakthrough that defines the candidate's narrative identity. These should not be rotated out just because they're old. Instead, help the candidate keep them current with updated framing.
+
+---
+
 ## Output Schema
 
 Use this schema in `prep` output to replace the current simple story mapping:
@@ -117,22 +188,22 @@ Use this schema in `prep` output to replace the current simple story mapping:
 ## Story Mapping
 
 ### Mapping Matrix
-| Question | Primary Story | Fit | Backup Story | Fit | Notes |
-|----------|--------------|-----|--------------|-----|-------|
-| Q1: [question summary] | S### — [title] | Strong Fit | S### — [title] | Workable | |
-| Q2: [question summary] | S### — [title] | Workable | S### — [title] | Stretch | Bridging: [guidance] |
-| Q3: [question summary] | Gap | — | S### — [title] | Stretch | Gap-handling: Pattern 2 |
-...
+| Question | Primary Story | Fit | Freshness | Backup Story | Fit | Notes |
+|----------|--------------|-----|-----------|--------------|-----|-------|
+| Q1: [question summary] | S### — [title] | Strong Fit | Fresh | S### — [title] | Workable | |
+| Q2: [question summary] | S### — [title] | Workable | Moderate | S### — [title] | Stretch | Bridging: [guidance] |
+| Q3: [question summary] | Gap | — | — | S### — [title] | Stretch | Gap-handling: Pattern 2 |
+| Q4: [question summary] | S003 — [title] | Strong Fit | Stale | S### — [title] | Workable | Reusing S003 — no Workable+ alternative. Consider developing replacement. |
 
 ### Portfolio Health
 - Unique stories used: [N] of [M] mapped questions
 - Conflicts resolved: [e.g., "Q3 and Q4 competed for S003 — assigned to Q3 (higher fit), Q4 uses S006"]
-- Strength warnings: [stories rated <3 that appear in mapping — specific guidance for each]
-- Freshness warnings: [stories used in prior rounds at this company]
-- Overuse warnings: [stories used 3+ times in current search]
+- Reuse with different angle: [if any — e.g., "S003 used twice: Q1 stakeholder angle, Q4 constraint navigation angle"]
+- Freshness warnings: [stories flagged Stale or Moderate — specific guidance for each]
+- Prior round conflicts: [stories used in earlier rounds at this company]
 
 ### Gaps
-- [Competency]: best available is [story] ([fit level]). Gap-handling: [Pattern 1-4]. Consider developing a new story for this competency.
+- [Competency]: best available is [story] ([fit level]). Gap-handling: [Pattern 1–4]. Consider developing a new story for this competency.
 
 ### Strength Warnings
 - [Question] -> [Story]: rated strength [N]. [Specific guidance — e.g., "This story needs quantified impact before deployment. Run `stories improve S###` to strengthen it."]
@@ -142,18 +213,20 @@ Use this schema in `prep` output to replace the current simple story mapping:
 
 ## Integration Points
 
-### With Calibration Engine (references/calibration-engine.md)
+### With Calibration Engine (`references/calibration-engine.md`)
 - When scoring drift adjusts a dimension, flag stories whose strength ratings were driven by that dimension for re-evaluation.
 - When calibration shows Differentiation predicts advancement, upgrade earned-secret-aware selection from conditional to default.
 - When calibration links a specific dimension to rejections, elevate story mapping gaps in that dimension's competencies to "Calibration-Urgent" priority.
 
-### With Prep (references/commands/prep.md)
+### With Prep (`references/commands/prep.md`)
 - Prep Step 7 runs a storybank health check before mapping.
 - Prep Step 8 invokes this engine for the full mapping protocol.
 
-### With Stories (references/commands/stories.md)
+### With Stories (`references/commands/stories.md`)
 - Gap analysis in `stories find gaps` uses the fit scoring system to classify gaps.
 - Secondary skills are checked for coverage before declaring a competency a true gap.
+- During `stories find gaps`, the Gap classification triggers guided story development — the memory excavation protocol for that specific competency (see `stories` command, sub-option: Find gaps).
 
-### With Progress (references/commands/progress.md)
-- Storybank health metrics include overuse tracking and freshness risk.
+### With Progress (`references/commands/progress.md`)
+- Storybank health metrics include overuse tracking, freshness risk, and proven performer status.
+- Story freshness scores are re-assessed at the start of each progress review cycle.

@@ -12,9 +12,10 @@ The Calibration State section in `coaching_state.md` tracks:
 ## Calibration State
 
 ### Calibration Status
-- Current calibration: [uncalibrated / calibrating / calibrated / miscalibrated]
+- Current calibration: [uncalibrated / practice-calibrating / calibrating / calibrated / miscalibrated]
 - Last calibration check: [date]
 - Data points available: [N] real interviews with outcomes
+- Practice calibration status: [plateau detected / not yet / N/A]
 
 ### Scoring Drift Log
 | Date | Dimension | Direction | Evidence | Adjustment |
@@ -27,12 +28,18 @@ The Calibration State section in `coaching_state.md` tracks:
 
 ### Unmeasured Factor Investigations
 | Date | Trigger | Hypothesis | Investigation | Finding | Action |
+
+### Score Confidence Display
+- Confidence level: [Low / Medium / High]
+- Basis: [practice-only / partial real interview data / calibrated]
+- Last updated: [date]
 ```
 
 **Status definitions:**
-- **Uncalibrated**: Fewer than 3 real interview outcomes. Not enough data for calibration. The system operates normally but cannot verify its own accuracy.
-- **Calibrating**: 3+ outcomes exist, first calibration check in progress. System is building its accuracy model.
-- **Calibrated**: Calibration check completed, practice scores reasonably predict outcomes (correlation exists). System confidence is high.
+- **Uncalibrated**: Fewer than 3 real interview outcomes AND no practice plateau detected. Not enough data for calibration. System operates normally but cannot verify its own accuracy.
+- **Practice-calibrating**: A practice plateau has been detected (Section 8) — the system has identified a ceiling from practice data alone, without real interview outcomes. Internal calibration only; external validation still needed.
+- **Calibrating**: 3+ real outcomes exist, first calibration check in progress. System is building its accuracy model.
+- **Calibrated**: Calibration check completed, practice scores reasonably predict outcomes. System confidence is high.
 - **Miscalibrated**: Practice scores do not predict outcomes, or external feedback consistently contradicts coach scoring. System is actively investigating and adjusting.
 
 ---
@@ -58,7 +65,7 @@ For each of the 5 dimensions:
 Cross-reference external feedback with coach scores:
 - If recruiter feedback says "great storytelling, hard to follow" but the coach scored Structure at 4, that's a drift signal
 - If feedback says "polished but generic" but the coach scored Differentiation at 3+, that's a drift signal
-- Weight external feedback higher than internal scoring — the interviewer is the ground truth
+- **Weight external feedback higher than internal scoring — the interviewer is the ground truth.** This is non-negotiable. Internal scores are estimates; external feedback is a direct signal from the decision-maker.
 
 ### Step 4: Generate Drift Report
 For each dimension showing drift:
@@ -70,7 +77,7 @@ For each dimension showing drift:
 ### Step 5: Present to Candidate
 Frame drift corrections as improved predictive accuracy, NOT as goalpost-moving:
 - "I've been scoring your Structure at 4, but interviewer feedback consistently suggests it's landing at 3. I'm recalibrating so my scores better predict how real interviewers will evaluate you. This isn't a downgrade — it's a more accurate picture."
-- Record the adjustment in the Scoring Drift Log and Calibration Adjustments tables
+- Record the adjustment in the Scoring Drift Log and Calibration Adjustments tables.
 
 ---
 
@@ -95,15 +102,17 @@ Example: "Conflict avoidance" detected in Session 3 (affecting Substance on Q2 a
 - The pattern no longer appears in new analyses
 - Update status to "Resolved" with date and what worked
 
+**De-escalation Check**: When all affected dimensions have improved 1+ points for 2+ consecutive sessions, check whether the root cause is still active — or whether it's been treated and should be resolved. Don't leave root causes as "Active" forever. An over-diagnosed root cause becomes noise.
+
 ---
 
 ## Section 4: Temporal Decay for Intelligence Data
 
-Apply these freshness rules when referencing intelligence data in prep, progress, or any workflow:
+Apply these freshness rules when referencing intelligence data in prep, progress, or any workflow. "Intelligence data" includes: Interview Loops entries in `coaching_state.md` (question bank, company patterns, effective/ineffective patterns, recruiter/interviewer feedback). Story-specific freshness is tracked separately via the Story Freshness Score in `references/story-mapping-engine.md` Section 5 — both systems work in parallel, not in substitution for each other.
 
 | Data Type | Current | Historical | Archive |
 |---|---|---|---|
-| **Question Bank entries** | < 3 months old | 3-6 months old — flag as "historical, may not reflect current process" | > 6 months old — archive only, don't weight in predictions |
+| **Question Bank entries** | < 3 months old | 3–6 months old — flag as "historical, may not reflect current process" | > 6 months old — archive only, don't weight in predictions |
 | **Effective/Ineffective Patterns** | < 3 months old | 3+ months old — re-test before relying. "This pattern was confirmed 4 months ago. Let's check if it still holds." | N/A — patterns don't expire, but confidence decays |
 | **Company Patterns** | < 6 months old | > 6 months old — flag: "Company data is from [date]. Processes and culture may have changed." | > 12 months — treat as background context only |
 | **Recruiter/Interviewer Feedback** | Current loop (active interview process) = high-signal | Closed loops = context only, not actionable | N/A |
@@ -215,9 +224,69 @@ Ask the candidate about the interviews where prediction failed:
 3. Track results explicitly in the Unmeasured Factor Investigations table
 
 ### Step 4: Resolution
-- **Confirmed**: The factor is real. Add it to Effective Patterns (or Ineffective Patterns). Integrate into coaching: "Before your next interview, do a 10-minute warmup — your energy level matters as much as your content."
+- **Confirmed**: The factor is real. Add it to Effective Patterns (or Ineffective Patterns). Integrate into coaching.
 - **Inconclusive**: Not enough data. Continue tracking.
 - **Closed**: The hypothesis didn't hold. Remove from active investigation.
+
+---
+
+## Section 8: Practice Calibration Proxy
+
+**The problem**: Real interview outcomes require 3+ interviews to trigger calibration. But most candidates need calibration insights much earlier — and practice alone can reveal meaningful ceiling signals without waiting for external data.
+
+**What a plateau means**: When the same answer type is practiced 5+ times and scores stop improving across 3+ consecutive sessions on the same dimension, that's a practice ceiling — not a real-interview ceiling. It means the candidate has extracted all the improvement available from repetition alone. **The next point of improvement requires behavioral change, not more practice.**
+
+### Plateau Detection
+
+During `practice`, after scoring, check Score History for the current practice dimension:
+- If the same answer type (same competency category) has been practiced 5+ times
+- AND the dimension score has varied by ≤ 0.3 across the last 3 sessions
+- → Flag as a practice plateau
+
+**How to surface it**: "Your [dimension] scores on [competency] answers have plateaued at ~[score] across the last [N] sessions. More practice on the same material won't move this. The ceiling isn't your skill — it's the approach. Here's what actually changes it: [specific behavioral intervention]."
+
+**What changes a plateau**: Practice repetition builds delivery fluency. Plateaus break when the underlying behavior changes — tension in stories that currently avoid conflict, specificity in answers that currently generalize, or earned secrets in answers that currently sound generic. Identify the specific behavioral lever, prescribe it, then re-practice.
+
+### Practice Calibration State Update
+
+When a plateau is detected:
+1. Update Calibration Status to "Practice-calibrating"
+2. Log in Calibration Adjustments: "Practice plateau detected on [dimension] for [competency] type answers — ceiling identified at ~[score] from practice data. Behavioral intervention prescribed: [intervention]."
+3. After the behavioral intervention is attempted (next 2–3 sessions), re-check whether scores move. If they do: the intervention worked, plateau resolved. If they don't: the intervention was wrong — escalate to root cause tracking.
+
+**Transition to real-interview calibration**: Once 3+ real interview outcomes are recorded in the Outcome Log, immediately run Scoring Drift Detection (Section 2). Update Calibration Status from "Practice-calibrating" to "Calibrating." Real-interview outcomes supersede practice plateau data — the practice calibration informs the starting hypothesis, but external outcomes are the ground truth. Do not carry forward practice calibration adjustments as facts; carry them forward as hypotheses to be validated.
+
+**Honest boundary**: Practice calibration is internal only. It tells the candidate where practice stops being useful. It cannot replace real interview outcomes for verifying external scoring accuracy. Both are needed.
+
+---
+
+## Section 9: Score Confidence Display Protocol
+
+Every score presented to the candidate should carry an implicit or explicit confidence signal based on calibration status. This prevents scores from being treated as ground truth when they're estimates.
+
+### Confidence Levels
+
+| Calibration Status | Score Confidence | How to Frame |
+|---|---|---|
+| Uncalibrated | Low | "This score is my best estimate — I don't yet have real interview data to verify it's accurate for you." |
+| Practice-calibrating | Low–Medium | "This score reflects your practice ceiling. Real interview data may show it differently." |
+| Calibrating | Medium | "This score is based on [N] real interview outcomes — confidence is building." |
+| Calibrated | High | "This score has been validated against your actual interview outcomes." |
+| Miscalibrated | Low | "I'm actively recalibrating — treat this score as directional, not precise." |
+
+### When to Surface Confidence Explicitly
+
+Surface it when:
+- The candidate is making a major decision based on scores (e.g., "Am I ready to apply?")
+- Scores are being used to benchmark against a threshold ("I need to hit 4.0 before I interview")
+- A score hasn't moved in 3+ sessions (plateau territory)
+- The score contradicts external feedback
+
+Don't surface it every session — it becomes noise. Surface it when it matters.
+
+### The Core Principle
+
+Scores are coaching tools, not grades. A 3.5 from an uncalibrated system means something different from a 3.5 from a calibrated system. Making the difference visible keeps the candidate from over-indexing on numbers and under-indexing on the behavioral insight behind them.
 
 ---
 
