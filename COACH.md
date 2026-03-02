@@ -130,6 +130,20 @@ Last updated: [date]
 - Key signals: [from `research` — 1-2 lines]
 - Date researched: [date, if `research` was run]
 
+## JD Analyses
+[One entry per company+role decoded. Multiple entries can coexist. If a JD was decoded as part of batch triage, note the batch rank here.]
+
+### [Company] — [Role]
+- Date: [date]
+- Depth: [Quick Scan / Standard / Deep Decode]
+- Fit verdict: [Strong Fit / Investable Stretch / Long-Shot Stretch / Weak Fit]
+- Pathway: [Referral / Warm intro / LinkedIn connection / Cold / Internal]
+- Top competencies: [top 3 in priority order]
+- Frameable gaps: [list]
+- Structural gaps: [list]
+- Unverified assumptions: [count of LOW/UNKNOWN confidence items — resolve via recruiter screen]
+- Batch triage rank: [if part of batch — e.g., "2 of 4, pathway-weighted"]
+
 ## Active Coaching Strategy
 - Primary bottleneck: [dimension]
 - Current approach: [what we're working on and how]
@@ -180,6 +194,8 @@ Write to `coaching_state.md` whenever:
 - progress reviews trends (update Active Coaching Strategy, check Score History archival)
 - User reports a real interview outcome (add to Outcome Log)
 - prep starts a new company loop or updates interviewer intel and round formats (add to Interview Loops)
+- decode saves a JD Analysis entry to coaching_state.md (one entry per company+role; see decode.md → Coaching State Integration for schema)
+- feedback saves: Type A to Interview Intelligence → Recruiter/Interviewer Feedback + Calibration State → Scoring Drift Log (if drift signal); Type B to Outcome Log + Interview Loops + pipeline.md sync; Type C to Score History (if adjusted) + Coaching Notes; Type D to Question Bank with memory reliability tag; Type E to Meta-Check Log
 - negotiate receives an offer (add to Outcome Log with Result: offer)
 - reflect archives the coaching state (add Status: Archived header)
 - Meta-check conversations (record candidate's response and any coaching adjustment to Meta-Check Log)
@@ -215,10 +231,12 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `kickoff` | Initialize coaching profile |
 | `pipeline` | Job search CRM — track all opportunities, stages, next actions |
 | `fit [JD]` | Pre-application fit scoring — should I apply to this? |
+| `decode [JD]` | Deep JD analysis — 6 decoding lenses, competency extraction, batch triage of 2–5 JDs with pathway-weighted ranking |
 | `outreach` | Networking CRM — referral contacts, follow-up tracking |
 | `research [company]` | Lightweight company research + fit assessment |
 | `prep [company]` | Company + role prep brief |
 | `comp` | Compensation strategy — anchoring and scripts before recruiter screens |
+| `feedback` | Capture recruiter feedback, outcomes, coaching corrections, and post-session memories between structured sessions |
 | `analyze` | Transcript analysis and scoring |
 | `debrief` | Post-interview rapid capture (same day) |
 | `practice` | Practice drill menu and rounds |
@@ -245,6 +263,8 @@ When executing a command, read the required reference files first:
 - **`stories`**: Also read `references/storybank-guide.md` and `references/differentiation.md`.
 - **`pipeline`**: Read `state/pipeline.md` (CRM state) and cross-reference `coaching_state.md` (coaching state) for Interview Loop detail.
 - **`fit`**: Read `coaching_state.md` for storybank and resume analysis (required for story coverage scoring).
+- **`decode`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank, Positioning Statement, and existing JD Analyses. Read `references/cross-cutting.md` for the Role-Fit Assessment Module. For batch triage, also read `state/contacts.md` if it exists — cross-reference pipeline contacts to determine pathway for each JD.
+- **`feedback`**: Read `coaching_state.md` (all relevant sections). For Type B outcome reports, also read `state/pipeline.md` to sync loop status. For Type A feedback with calibration signals, check Calibration State → Scoring Drift Log.
 - **`outreach`**: Read `state/contacts.md` (primary state) and cross-reference `state/pipeline.md` for active loop context.
 - **`review`**: Read `state/pipeline.md`, `coaching_state.md`, and `state/contacts.md` (if it exists).
 - **`comp`**: Read `coaching_state.md` profile (seniority, target roles, timeline). No other state dependency.
