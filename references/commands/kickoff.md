@@ -74,7 +74,7 @@ Write the initial `coaching_state.md` file (see COACH.md Session State System fo
 - Profile section populated from Steps 1-2
 - Resume Analysis section populated from Step 2.5 output (positioning strengths, likely concerns, career narrative gaps, story seeds). This is critical — every downstream command (`concerns`, `prep`, `stories`, `hype`) benefits from having the resume analysis persisted. Don't lose this work.
 - Empty storybank (or populated if initial stories were provided — if initial stories are provided, write full STAR text to the Story Details section)
-- Empty score history, outcome log, drill progression at Stage 1
+- Empty score history, outcome log, drill progression at Stage 1 with `Session count: 0`
 - Empty Active Coaching Strategy (will be populated after first `analyze` or `practice`)
 - Empty Meta-Check Log table
 - Empty Interview Loops section (will be populated by `research` or `prep`)

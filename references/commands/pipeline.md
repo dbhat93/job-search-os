@@ -31,7 +31,7 @@ If `state/pipeline.md` doesn't exist, offer to create it: "You don't have a pipe
 ### Logic
 
 1. Read `state/pipeline.md`.
-2. Read `state/coaching.md` (or `coaching_state.md`) — cross-reference Interview Loops for round detail.
+2. Read `coaching_state.md` — cross-reference Interview Loops for round detail.
 3. Sort active opportunities by urgency: Interviewing > Screening > Applied > Researched > Identified > Offer > Decision.
 4. Within same stage, sort by Priority: Dream > Strong Target > Learning Opp > Testing Ground. (Not a fit loops should be closed — flag them if they appear active.)
 5. Flag stalled loops (Last Activity > 7 days ago) with ⚠️.
@@ -160,8 +160,9 @@ Also offer to initialize the Interview Loop in `coaching_state.md`: "Want me to 
 2. Ask: "What's the one thing you'd do differently in this loop?"
 3. Move the row from Active to Closed in `state/pipeline.md`.
 4. Update the Outcome Log in `coaching_state.md`.
-5. If won: route to `negotiate` (if not already run) or `reflect` (if search is complete).
-6. If lost: ask if they want to run `reflect` on this loop or continue the search.
+5. **Update the Interview Loop status** in `coaching_state.md` — set Status to `Closed` and record the outcome (Won / Lost / Withdrew). Both files must reflect the same outcome. Do not leave the Interview Loop as Active after closing.
+6. If won: route to `negotiate` (if not already run) or `reflect` (if search is complete).
+7. If lost: offer to run `draft review [company]` to solicit feedback before it gets stale ("Want me to draft a feedback-solicitation email to [company]? Rejections are more likely to get a response in the first 2-4 days."). Then ask if they want to continue the search (`pipeline view`) or debrief the loop (`reflect`).
 
 ### Output Schema
 
@@ -172,9 +173,9 @@ Also offer to initialize the Interview Loop in `coaching_state.md`: "Want me to 
 - Closed: [date]
 - Lessons: [candidate's answer to "what would you do differently"]
 
-[Coaching state updated — Outcome Log entry added.]
+[Both `state/pipeline.md` and coaching_state.md Interview Loop updated to Closed.]
 
-**Next commands**: `negotiate` (if won, offer pending) | `reflect` (if search complete) | `pipeline view` (continue search)
+**Next commands**: `negotiate` (if won, offer pending) | `draft review [company]` (if lost — feedback solicitation) | `reflect` (if search complete) | `pipeline view` (continue search)
 ```
 
 ---
@@ -197,4 +198,4 @@ Write to `state/pipeline.md` whenever:
 
 **Prep allocation is a function of two compounding factors.** Company fit (Dream → Strong Target → Learning Opp → Testing Ground → Not a fit) tells you how much you want the outcome. Interview stage (Onsite/Super Day → HM/Technical → Recruiter/Phone → Applied/Researched) tells you how much the round demands. Both factors matter independently — weight them together to determine how much prep this moment warrants. A Dream onsite gets maximum investment. A Testing Ground recruiter screen gets ~30 minutes — enough to be sharp, not more. A Testing Ground onsite may warrant more prep than a Dream recruiter screen because stage is an independent variable.
 
-**Cross-reference with coaching state.** `pipeline view` reads both `state/pipeline.md` (search CRM layer) and `coaching_state.md` / `state/coaching.md` (coaching layer) to surface round detail alongside pipeline status. They are complementary — neither replaces the other.
+**Cross-reference with coaching state.** `pipeline view` reads both `state/pipeline.md` (search CRM layer) and `coaching_state.md` (coaching layer) to surface round detail alongside pipeline status. They are complementary — neither replaces the other.

@@ -120,7 +120,7 @@ After scanning, include detected anti-patterns in the analysis output. Each dete
 
 ## Step 3: Multi-Lens Scoring
 
-Run the parsed transcript through evaluative lenses. **Important**: Which lenses you run depends on the Post-Scoring Decision Tree in `references/commands/analyze.md`. If a primary bottleneck is identified after initial scoring, scope the analysis accordingly rather than running all four lenses mechanically. Always follow the evidence sourcing standard from SKILL.md. **For Quick Prep track**: Run only Lens 1 and skip to delta sheet.
+Run the parsed transcript through evaluative lenses. **Important**: Which lenses you run depends on the Post-Scoring Decision Tree in `references/commands/analyze.md`. If a primary bottleneck is identified after initial scoring, scope the analysis accordingly rather than running all four lenses mechanically. Always follow the evidence sourcing standard from COACH.md. **For Quick Prep track**: Run only Lens 1 and skip to delta sheet.
 
 ### Lens 1: Hiring Manager Perspective
 
@@ -304,7 +304,7 @@ NEXT ACTIONS (co-created with candidate):
 
 ## Step 5: Update Coaching State
 
-After analysis, update `coaching_state.md` per the State Update Triggers in SKILL.md:
+After analysis, update `coaching_state.md` per the State Update Triggers in COACH.md:
 
 1. **Score History**: Add a row with the interview scores, Type: interview, and Hire Signal from the overall assessment.
 2. **Active Coaching Strategy**: Write or update the strategy based on the triage decision (see Step 15 in `references/commands/analyze.md`). Preserve Previous approaches when changing strategy.

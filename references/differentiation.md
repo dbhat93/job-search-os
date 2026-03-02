@@ -1,6 +1,6 @@
 # Differentiation Protocol
 
-Reference for earned secret extraction, spiky POV development, and clarity-under-pressure drills. Differentiation is scored as the 5th dimension (see SKILL.md rubric).
+Reference for earned secret extraction, spiky POV development, and clarity-under-pressure drills. Differentiation is scored as the 5th dimension (see COACH.md rubric).
 
 ## When Differentiation Coaching Fires
 

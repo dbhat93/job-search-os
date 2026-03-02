@@ -16,7 +16,7 @@ Can also be triggered by: significant pipeline change (new offer, new loop stall
 
 ## Sequence
 
-1. Read `state/pipeline.md` — active loops, stages, stalls, last activity.
+1. Read `state/pipeline.md` — active loops, stages, stalls, last activity. **If `state/pipeline.md` doesn't exist**, stop and say: "You don't have a pipeline set up yet — `review` needs at least one active opportunity to be useful. Run `kickoff` to initialize your pipeline, or `pipeline add [company]` to add your first opportunity."
 2. Read `coaching_state.md` — score history, session log, active coaching strategy.
 3. Read `state/contacts.md` if it exists — contact activity.
 4. Run through each section of the review (see below). Adapt depth to available data.

@@ -20,6 +20,7 @@ When `coaching_state.md` is empty or has no scores, don't output a hollow versio
 
 If a `prep` brief exists for the upcoming interview, the hype should reference it directly:
 - "You're about to talk to [Interviewer Name], who based on their background will likely focus on [area]. Your [Story Title] is perfect for this."
+- **Pronoun guardrail**: When referring to the interviewer, use their first name only unless pronouns are confirmed in the Interview Loop record (from `coaching_state.md`) or contact record (from `state/contacts.md`). Do not infer pronouns from a name. Use "they" only if confirmed — otherwise first name throughout.
 - "This is a [format] interview. Remember: [format-specific key advice from prep]."
 - "Their top concern about you is probably [from concerns]. Your counter: [one sentence]."
 
