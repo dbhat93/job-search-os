@@ -43,9 +43,34 @@ Don't just file the resume — analyze it for coaching-relevant signals:
 
 Feed these findings into the Kickoff Summary output (Profile Snapshot section) and into the initial coaching plan.
 
+### Step 2.75: Pipeline Survey
+
+**Skip if triage mode (≤48 hours).** In triage, the pipeline doesn't matter — the next interview does. Otherwise, run this before writing state.
+
+Map the candidate's search before initializing the pipeline. Two questions per company — don't ask them to pick a label directly.
+
+1. "Give me all the companies you're currently considering or in process with — just a list."
+2. For each company, ask in sequence:
+   - "How much do you want this outcome? [1 = passing interest → 5 = must have]"
+   - "How well does your background match what they need? [1 = stretch / new space → 5 = direct domain fit]"
+
+**Score → Priority label mapping:**
+
+| Desirability | Fit | Label |
+|---|---|---|
+| 4–5 | 4–5 | Dream |
+| 4–5 | 3–4 | Strong Target |
+| 3–5 | 1–3 | Learning Opp |
+| Candidate flags "using for practice" | Any | Testing Ground |
+| 1–2 | Any | Not a fit — flag for closing |
+
+After scoring, reflect the classification back: "Based on your answers, here's how I'd classify your pipeline: [table]. Does this match your mental model?" Allow corrections before writing to state.
+
+**Write to `state/pipeline.md`** — initialize with one row per company at the stage they're actually at. If stage is unknown, default to Identified and note it. Also offer to open Interview Loops in `coaching_state.md` for any company already in Screening or Interviewing.
+
 ### Step 3: Initialize Coaching State
 
-Write the initial `coaching_state.md` file (see SKILL.md Session State System for format) with:
+Write the initial `coaching_state.md` file (see COACH.md Session State System for format) with:
 - Profile section populated from Steps 1-2
 - Resume Analysis section populated from Step 2.5 output (positioning strengths, likely concerns, career narrative gaps, story seeds). This is critical — every downstream command (`concerns`, `prep`, `stories`, `hype`) benefits from having the resume analysis persisted. Don't lose this work.
 - Empty storybank (or populated if initial stories were provided — if initial stories are provided, write full STAR text to the Story Details section)
@@ -85,6 +110,11 @@ Return exactly:
 - Career narrative gaps: [transitions that need a story ready]
 - Story seeds: [resume bullets with likely rich stories behind them]
 
+## Pipeline Map (from survey)
+| Company | Priority | Stage | Why |
+|---------|----------|-------|-----|
+| [company] | [label] | [stage] | [one-line rationale from desirability × fit scores] |
+
 ## Interview Readiness Assessment
 Based on interview history and profile:
 - Current readiness: [not started / has foundation but gaps / strong base needs polish]
@@ -104,5 +134,5 @@ Based on interview history and profile:
 ### Before first interview (or ongoing)
 4. [specific action with command]
 
-**Next commands**: `research [company]`, `prep [company]`, `stories`, `practice ladder`, `help`
+**Next commands**: `pipeline view`, `research [company]`, `prep [company]`, `stories`, `practice ladder`, `help`
 ```

@@ -1,4 +1,6 @@
-# thankyou — Follow-Up Workflow
+# thankyou — Post-Interview Thank-You Workflow
+
+> **Boundary with `draft`**: `thankyou` is specifically for post-interview thank-you notes — optimized for timing, multi-interviewer handling, and advancing/rejected variants. For follow-ups outside the 24-hour window, cold outreach, recruiter communication, or offer declinations, use `draft`.
 
 ### Coaching State Integration
 

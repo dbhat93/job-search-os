@@ -216,9 +216,20 @@ When the candidate provides interviewer LinkedIn URLs or profile links, analyze 
 ## Prep Brief: [Company] - [Role]
 
 ## Interview Format
-- Identified format:
-- Format-specific guidance:
-- Scoring weight adjustments for this format:
+
+### Format Assessment
+- **Primary format ([X]%):** [format] — prep and practice for this scenario
+- **Secondary scenario ([Y]%):** [format] — here's how your prep shifts if this happens instead
+- **Tail risk ([Z]%):** [format] — what to have ready just in case
+
+**What changes if the secondary format materializes:**
+[1-2 specific prep adjustments — e.g., "if this is a live case instead of behavioral, bring a framework for structuring ambiguous problems; your stories still apply as worked examples"]
+
+**What carries across all scenarios:**
+[Behavioral content, story mapping, and earned secrets transfer regardless of format. Name the transferable assets explicitly.]
+
+- Format-specific guidance: [for the primary format]
+- Scoring weight adjustments: [for the primary format]
 - Coaching scope (if system design/case study or technical+behavioral mix): What the coach can help you practice for this format vs. where you'll need complementary preparation.
 
 ## Company Culture Read

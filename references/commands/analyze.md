@@ -66,6 +66,16 @@ After scoring, identify bottleneck dimensions and branch. Most candidates have m
 - Evidence:
 ```
 
+**Interview_Type field — use exactly one:**
+- `behavioral` — standard behavioral/competency questions (STAR format)
+- `live_case` — real-time product case, business case, or case study
+- `technical_behavioral` — behavioral questions with deep technical probing (PM-engineering collaboration, architecture judgment, etc.)
+- `system_design` — system design or technical architecture walkthrough
+- `presentation` — prepared content with Q&A
+- `hybrid` — significant mix that doesn't fit a single type
+
+**Why this matters:** Trend analysis should compare like-for-like. A behavioral screen score and a live case score in the same average is a misleading signal. When running `progress`, filter by Interview_Type before drawing conclusions about trajectory.
+
 ### Answer Rewrite Option
 
 After scoring each answer (or at the end of the full analysis), offer: "Want to see a rewrite of any answer at 4-5 quality? I'll show you the delta — not to give you a script, but to make the improvement concrete."
@@ -83,6 +93,7 @@ When rewriting:
 ## Interview Delta
 
 ## Scorecard
+- Interview_Type: [behavioral / live_case / technical_behavioral / system_design / presentation / hybrid]
 - Substance:
 - Structure:
 - Relevance:

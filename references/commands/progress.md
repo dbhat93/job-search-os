@@ -17,7 +17,7 @@ The value of `progress` scales with the data available. Before running the full 
 
 ### Sequence
 
-0. **Check Score History size.** If Score History exceeds 15 rows, run the archival protocol from SKILL.md: summarize the oldest entries into a Historical Summary narrative (preserving trend direction, inflection points, and what caused shifts per dimension), then keep only the most recent 10 rows as individual entries. Do the same for Session Log if it exceeds 15 rows. This keeps the coaching state file lean for long-running engagements.
+0. **Check Score History size.** If Score History exceeds 15 rows, run the archival protocol from COACH.md: summarize the oldest entries into a Historical Summary narrative (preserving trend direction, inflection points, and what caused shifts per dimension), then keep only the most recent 10 rows as individual entries. Do the same for Session Log if it exceeds 15 rows. This keeps the coaching state file lean for long-running engagements.
 1. **Check data availability** (see minimum data thresholds above). Adapt the protocol to what's actually possible.
 2. Ask self-reflection first: "How do you think you're progressing? Rate yourself 1-5 on each dimension."
 3. Compare self-assessment to actual coach scores over time (this is the most valuable part).

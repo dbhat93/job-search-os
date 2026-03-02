@@ -26,9 +26,10 @@ This skill maintains continuity across sessions using a persistent `coaching_sta
 
 At the beginning of every session:
 1. Read `coaching_state.md` if it exists.
-2. **If it exists**: Run the Timeline Staleness Check (see below). Then greet the candidate by context: "Welcome back. Last session we worked on [X]. Your current drill stage is [Y]. You have [Z] real interviews logged. Where do you want to pick up?" Do NOT re-run kickoff. If the Score History or Session Log has grown large (15+ rows), run the Score History Archival check silently before continuing.
-3. **If it doesn't exist and the user hasn't already issued a command**: Treat as a new candidate. Suggest kickoff.
-4. **If it doesn't exist but the user has already issued a command** (e.g., they opened with `kickoff`): Execute the command directly — don't suggest what they've already asked for.
+2. Read `state/pipeline.md` if it exists — silently check for stalled loops (Last Activity > 7 days) and any next actions due today or overdue. Surface these proactively if found: "Quick pipeline check: [Company] has had no activity in [X] days — next action was [action]."
+3. **If coaching state exists**: Run the Timeline Staleness Check (see below). Then greet the candidate by context: "Welcome back. Last session we worked on [X]. Your current drill stage is [Y]. You have [Z] real interviews logged. Where do you want to pick up?" Do NOT re-run kickoff. If the Score History or Session Log has grown large (15+ rows), run the Score History Archival check silently before continuing.
+4. **If coaching state doesn't exist and the user hasn't already issued a command**: Treat as a new candidate. Suggest kickoff.
+5. **If coaching state doesn't exist but the user has already issued a command** (e.g., they opened with `kickoff`): Execute the command directly — don't suggest what they've already asked for.
 
 ### Session End Protocol
 
@@ -76,9 +77,9 @@ Last updated: [date]
 - Story seeds: [resume bullets with likely rich stories behind them]
 
 ## Storybank
-| ID | Title | Primary Skill | Earned Secret | Strength | Last Used |
-|----|-------|---------------|---------------|----------|-----------|
-[rows — compact index. Full column spec in references/storybank-guide.md — the guide adds Secondary Skill, Impact, Domain, Risk/Stakes, and Notes. Add extra columns as stories are enriched.]
+| ID | Title | Primary Skill | Secondary Skill | Impact | Domain | Risk/Stakes | Earned Secret | Strength | Last Used |
+|----|-------|---------------|-----------------|--------|--------|-------------|---------------|----------|-----------|
+[rows — full index. See references/storybank-guide.md for column definitions and health criteria.]
 
 ### Story Details
 #### S001 — [Title]
@@ -88,6 +89,7 @@ Last updated: [date]
 - Result:
 - Earned Secret:
 - Deploy for: [one-line use case — e.g., "leadership under ambiguity questions"]
+- Field notes: [performance notes from actual interviews — date, context, what landed, what didn't]
 - Version history: [date — what changed]
 
 [repeat for each story]
@@ -97,9 +99,9 @@ Last updated: [date]
 [Narrated trend summary of older sessions — direction per dimension, inflection points, what caused shifts]
 
 ### Recent Scores
-| Date | Type | Context | Sub | Str | Rel | Cred | Diff | Hire Signal | Self-Δ |
-|------|------|---------|-----|-----|-----|------|------|-------------|--------|
-[rows — Type: interview/practice/mock. Sub=Substance, Str=Structure, Rel=Relevance, Cred=Credibility, Diff=Differentiation — each 1-5 numeric. Hire Signal: Strong Hire/Hire/Mixed/No Hire (from analyze/mock only — leave blank for practice). Self-Δ: over/under/accurate (>0.5 delta from coach scores = over or under; within 0.5 = accurate). Keep most recent 10-15 rows.]
+| Date | Type | Interview_Type | Context | Sub | Str | Rel | Cred | Diff | Hire Signal | Self-Δ |
+|------|------|---------------|---------|-----|-----|-----|------|------|-------------|--------|
+[rows — Type: interview/practice/mock. Interview_Type: behavioral/live_case/technical_behavioral/system_design/presentation/hybrid — required for interview/mock rows, leave blank for practice. Sub=Substance, Str=Structure, Rel=Relevance, Cred=Credibility, Diff=Differentiation — each 1-5 numeric. Hire Signal: Strong Hire/Hire/Mixed/No Hire (from analyze/mock only — leave blank for practice). Self-Δ: over/under/accurate (>0.5 delta from coach scores = over or under; within 0.5 = accurate). Keep most recent 10-15 rows. Trend analysis in `progress` filters by Interview_Type — compare like-for-like only.]
 
 ## Outcome Log
 | Date | Company | Role | Round | Result | Notes |
@@ -108,6 +110,7 @@ Last updated: [date]
 
 ## Drill Progression
 - Current stage: [1-8]
+- Session count: [integer — increment each session; meta-check triggers when divisible by 3]
 - Gates passed: [list]
 - Revisit queue: [weaknesses to resurface]
 
@@ -155,6 +158,15 @@ Last updated: [date]
 - [date]: [observation — e.g., "candidate freezes in panel formats," "gets defensive about short tenure at X," "prefers morning interviews," "mentioned they interview better after coffee"]
 ```
 
+### Stage Sync Protocol
+
+`coaching_state.md` (Interview Loops Status) and `state/pipeline.md` (Stage column) track the same interview stage from different angles — coaching state holds interview detail; pipeline holds search CRM context. They can drift. Keep them in sync:
+
+- When a real outcome is reported (advanced, rejected, offer): update **both** files simultaneously.
+- When `pipeline update` moves a stage to Interviewing or Offer: check Interview Loops in `coaching_state.md` and update Status there too.
+- When Interview Loops Status changes (e.g., loop closed after rejection): update Stage in `state/pipeline.md` to Closed.
+- Ground truth: If the two files ever contradict each other, `coaching_state.md` is authoritative (it has richer context). Reconcile `state/pipeline.md` to match.
+
 ### State Update Triggers
 
 Write to `coaching_state.md` whenever:
@@ -185,7 +197,7 @@ Write to `coaching_state.md` whenever:
 6. **Deterministic outputs** using the schemas in each command's reference file (`references/commands/[command].md`).
 7. **End every workflow with next command suggestions**.
 8. **Triage, don't just report**. After scoring, branch coaching based on what the data reveals. Follow the decision trees defined in each workflow — every candidate gets a different path based on their actual patterns.
-9. **Coaching meta-checks**. Every 3rd session (or when the candidate seems disengaged, defensive, or stuck), run a meta-check: "Is this feedback landing? Are we working on the right things? What's not clicking?" Build this into progress automatically, and trigger it ad-hoc when patterns suggest the coaching relationship needs recalibration. **To count sessions**: check the Session Log rows in `coaching_state.md` at session start. If the row count is a multiple of 3, include a meta-check in that session regardless of which command is run. **After every meta-check**, record the candidate's response and any coaching adjustment to the Meta-Check Log in `coaching_state.md`. Before running a meta-check, read the Meta-Check Log to reference previous feedback — build on past conversations rather than asking the same questions from scratch.
+9. **Coaching meta-checks**. Every 3rd session (or when the candidate seems disengaged, defensive, or stuck), run a meta-check: "Is this feedback landing? Are we working on the right things? What's not clicking?" Build this into progress automatically, and trigger it ad-hoc when patterns suggest the coaching relationship needs recalibration. **To count sessions**: read the `Session count:` field in `coaching_state.md` (under Drill Progression). Increment it at each session start. If the count is a multiple of 3, include a meta-check. Use this field rather than row-counting the Session Log — row counts break after archival compression. **After every meta-check**, record the candidate's response and any coaching adjustment to the Meta-Check Log in `coaching_state.md`. Before running a meta-check, read the Meta-Check Log to reference previous feedback — build on past conversations rather than asking the same questions from scratch.
 10. **Surface the help command at key moments**. Users won't remember every command. Proactively remind them that `help` exists at these moments:
     - After kickoff completes: "By the way — type `help` anytime to see the full list of commands available to you."
     - After the first `analyze` or `practice` session: include a brief reminder in the Next Commands section.
@@ -201,8 +213,12 @@ Execute commands immediately when detected. Before executing, **read the referen
 | Command | Purpose |
 |---|---|
 | `kickoff` | Initialize coaching profile |
+| `pipeline` | Job search CRM — track all opportunities, stages, next actions |
+| `fit [JD]` | Pre-application fit scoring — should I apply to this? |
+| `outreach` | Networking CRM — referral contacts, follow-up tracking |
 | `research [company]` | Lightweight company research + fit assessment |
 | `prep [company]` | Company + role prep brief |
+| `comp` | Compensation strategy — anchoring and scripts before recruiter screens |
 | `analyze` | Transcript analysis and scoring |
 | `debrief` | Post-interview rapid capture (same day) |
 | `practice` | Practice drill menu and rounds |
@@ -211,8 +227,10 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `concerns` | Generate likely concerns + counters |
 | `questions` | Generate tailored interviewer questions |
 | `hype` | Pre-interview confidence and 3x3 plan |
-| `thankyou` | Thank-you note / follow-up drafts |
-| `progress` | Trend review, self-calibration, outcomes |
+| `thankyou` | Post-interview thank-you notes (within 24 hours) |
+| `draft` | Email drafting — follow-ups, outreach, recruiter replies, feedback requests after rejections |
+| `review` | Weekly search review — pipeline health, funnel velocity, outreach momentum |
+| `progress` | Trend review, self-calibration, coaching outcomes |
 | `negotiate` | Post-offer negotiation coaching |
 | `reflect` | Post-search retrospective + archive |
 | `help` | Show this command list |
@@ -225,6 +243,12 @@ When executing a command, read the required reference files first:
 - **`analyze`**: Also read `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/examples.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
 - **`practice`**, **`mock`**: Also read `references/role-drills.md`.
 - **`stories`**: Also read `references/storybank-guide.md` and `references/differentiation.md`.
+- **`pipeline`**: Read `state/pipeline.md` (CRM state) and cross-reference `coaching_state.md` (coaching state) for Interview Loop detail.
+- **`fit`**: Read `coaching_state.md` for storybank and resume analysis (required for story coverage scoring).
+- **`outreach`**: Read `state/contacts.md` (primary state) and cross-reference `state/pipeline.md` for active loop context.
+- **`review`**: Read `state/pipeline.md`, `coaching_state.md`, and `state/contacts.md` (if it exists).
+- **`comp`**: Read `coaching_state.md` profile (seniority, target roles, timeline). No other state dependency.
+- **`draft`**: Read `coaching_state.md` for debrief context, storybank earned secrets, and interviewer intel. Read `state/contacts.md` if it exists when drafting outreach to a contact. Read `state/pipeline.md` for current pipeline stage context.
 
 ## Evidence Sourcing Standard
 

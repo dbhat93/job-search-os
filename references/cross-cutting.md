@@ -1,6 +1,6 @@
 # Cross-Cutting Modules
 
-These modules are active across all workflows. They are referenced from SKILL.md and integrated into specific commands as noted.
+These modules are active across all workflows. They are referenced from COACH.md and integrated into specific commands as noted.
 
 ---
 
@@ -151,10 +151,16 @@ Commands produce better output when they have data from other commands. This tab
 | Command | Works best with | Works without (with reduced quality) | Hard dependency (cannot run without) |
 |---|---|---|---|
 | `kickoff` | — | Everything — this is the entry point | — |
+| `pipeline` | `coaching_state.md` Interview Loops (for round detail), `state/pipeline.md` (existing CRM data) | `coaching_state.md` (shows pipeline without coaching context) | `state/pipeline.md` (created on first use if absent) |
+| `fit` | Storybank (for story coverage scoring), resume analysis from kickoff | Storybank (scores domain + seniority only, flags coverage as unknown), profile (asks for seniority inline) | JD text |
+| `outreach` | `state/contacts.md`, `state/pipeline.md` (active loop context) | Either (creates contacts file on first add; works without pipeline context) | `state/contacts.md` (created on first use if absent) |
+| `comp` | `coaching_state.md` profile (seniority, target roles), market data provided by candidate | Profile (asks for seniority/targets inline) | Target role + location |
+| `review` | `state/pipeline.md`, `coaching_state.md`, `state/contacts.md` | `state/contacts.md` (skips outreach section), coaching state (skips coaching progress section) | `state/pipeline.md` |
 | `research` | Profile from `kickoff` | Profile (gives generic fit assessment) | Company name |
 | `prep` | Storybank, coaching state profile, interviewer links | Storybank (can't do story mapping, flags the gap), profile (infers from JD) | Company + JD |
 | `analyze` | Coaching state (seniority band, storybank for story matching) | Seniority band (asks for it), storybank (skips story mapping) | Transcript |
 | `debrief` | Storybank (for Last Used updates), Interview Loops (for context) | Both (captures data without cross-referencing) | — |
+| `draft` | Debrief data, Interview Loops, interviewer intel, storybank earned secrets, `state/contacts.md` (for outreach) | Debrief (asks for anchor detail inline), contacts (asks for contact info inline) | Recipient name + reason for email |
 | `practice` | Score history (to set drill stage), storybank (for tailored questions), prep data (for company-specific drills), Drill Progression (for current stage) | All (uses generic questions, starts at Stage 1) | — |
 | `mock` | Prep data, storybank, score history, interviewer intel, concerns data (for targeted questions) | All (uses generic questions and personas) | Format |
 | `stories` | Resume analysis from kickoff (for story seeds) | Resume (uses reflective prompts instead) | — |
