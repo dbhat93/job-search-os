@@ -148,7 +148,7 @@ Rate: **Strong** / **Moderate** / **Weak**
 
 **7. Concern Management**
 - Cross-reference kickoff's "likely concerns" from Resume Analysis
-- If Role-Fit Assessment exists: surface Stretch or Weak fit dimensions as active concerns — these are not just resume polish issues, they require bridge narrative. Label each: "Resume can address" (frameable gap) or "Resume cannot fix alone — narrative needed in interview" (structural gap).
+- If Role-Fit Assessment exists: surface Stretch or Weak fit dimensions as active concerns — these are not just resume polish issues, they require bridge narrative. Label each: **"Resume-addressable"** (resume language can close this) or **"Interview-only"** (resume can't fix this — needs interview narrative).
 - Employment gaps: Address with framing language, not excuses
 - Short tenures: Position as intentional moves with clear rationale
 - Domain switches: Bridge narrative connecting previous domain to target
@@ -277,8 +277,8 @@ Apply via challenge-protocol.md at the candidate's current activation level. At 
 ### Concern Management
 - Concerns identified: [from Resume Analysis, Role-Fit Assessment, or detected]
 - Mitigation language:
-  - [Concern 1 — frameable]: [specific resume language to address it]
-  - [Concern 2 — structural, interview-only]: [flag: resume can't fix this alone]
+  - [Concern 1 — resume-addressable]: [specific resume language to address it]
+  - [Concern 2 — interview-only]: [flag: resume can't fix this alone]
 
 ### Consistency and Polish
 - Issues found: [list]
