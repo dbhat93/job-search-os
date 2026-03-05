@@ -135,6 +135,28 @@ At Levels 1–2: Standard emotional triage from the Psychological Readiness Modu
 
 ---
 
+### Resume Audit Challenge — `resume` (Deep Optimization only)
+
+**Level 3**: After the full audit output, add Lens 1 only — one sentence:
+- **Assumption Audit**: What single assumption does this resume rest on that might not be true? (e.g., "This resume assumes the recruiter reads past bullet three." "Assumes 'data-driven product leader' is how hiring managers at this company actually search.")
+
+**Level 4**: Lenses 1–2 brief pass:
+- **Assumption Audit**: Name the 1–2 hidden assumptions the resume rests on.
+- **Blind Spot Scan**: What can't the candidate see about their own resume from inside it? (e.g., "You believe these bullets show impact. From the outside, four of seven read as responsibilities." "The career narrative is clear to you — an interviewer seeing it cold sees a pivot, not a progression.")
+
+**Level 5**: Lenses 1, 2, 4, 5 — Pre-Mortem (Lens 3) omitted. A static document cannot "fail" the way a live interview performance can.
+1. **Assumption Audit**: What 2–3 assumptions does this resume rest on? Surface the hidden ones, not the obvious ones.
+2. **Blind Spot Scan**: What does an outside reader see that the candidate doesn't? What has familiarity made invisible?
+3. **Devil's Advocate**: The strongest case a recruiter would make for passing on this candidate — built from actual resume evidence, not hypotheticals.
+4. **Strengthening Path**: The single highest-leverage fix. Not a list — the one change that most changes the resume's odds.
+
+Lens 5 (Strengthening Path) feeds directly into the Priority Moves section of the resume output. The challenge always ends with a concrete fix — never a diagnosis without a direction.
+
+At Levels 1–2: Skip entirely.
+Timing: Deliver challenge after the full audit output, before Priority Moves.
+
+---
+
 ## Avoidance Confrontation Protocol
 
 ### Detection Signals
