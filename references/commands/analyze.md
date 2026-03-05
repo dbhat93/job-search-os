@@ -171,7 +171,7 @@ When rewriting:
 - Company learning: [new observations about this company's interview patterns, or "first interview at this company"]
 
 ## Confidence
-- Score confidence:
+- Score confidence: [Low / Medium / High — per calibration-engine.md Section 9. Low = uncalibrated or practice-calibrating. Medium = calibrating. High = calibrated.]
 - Data quality notes:
 
 ## Recommended Next Step

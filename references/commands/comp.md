@@ -117,7 +117,7 @@
 ## Sequence
 
 **Step 1: Context Assembly**
-Pull from coaching_state.md: Profile (target role, seniority, location), Interview Loops (active companies, comp data for each if previously shared), JD Analysis (comp data from JD if `decode` was run and range was included), Comp Strategy (if `comp` was run previously — build on it, don't restart).
+Pull from coaching_state.md: Profile (target role, seniority, location), Interview Loops (active companies, comp data for each if previously shared), JD Analyses (comp data from JD if `decode` was run and range was included), Comp Strategy (if `comp` was run previously — build on it, don't restart).
 
 **Step 2: Situation Assessment** (ask one at a time)
 1. What's the comp conversation? (application form / recruiter screen / mid-process / pre-offer / general strategy)
@@ -347,11 +347,11 @@ Each funding round dilutes existing shareholders. "If the company raises 2 more 
 - Next stages: [comp milestones ahead]
 - Handoff to `negotiate`: once you have a written offer with specific numbers
 
-### Challenge [Level 5]
-- **Assumptions**: [what must be true for this strategy to work]
-- **Blind spots**: [what you can't see about your comp positioning]
-- **Devil's advocate**: [strongest case that you're miscalibrating]
-- **Highest-leverage change**: [the one adjustment that most improves your comp outcome]
+### Challenge (per challenge-protocol.md activation level — L3+ only)
+- **Assumptions** (L3+): [what must be true for this comp strategy to work]
+- **Blind spots** (L4+): [what you can't see about your own comp positioning]
+- **Devil's advocate** (L5): [strongest case that this strategy is miscalibrated]
+- **Highest-leverage change** (L5): [the one adjustment that most improves your comp outcome]
 
 ### Priority Moves (ordered)
 1. [highest-impact — do this first]

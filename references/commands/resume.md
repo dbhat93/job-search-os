@@ -73,7 +73,7 @@ Pull from coaching_state.md:
 - **LinkedIn Analysis**: If exists — for cross-surface consistency at Deep level
 - **Interview Loops**: For JDs — enables targeted optimization
 - **Positioning Statement**: If exists — use as consistency reference for summary rewrite
-- **JD Analyses**: If `decode` has been run on a target JD, pull: Top competencies (priority keywords to ensure present), Frameable gaps (bridge language opportunities — these go into concern management, not hidden), Structural gaps (honest positioning needed — flag for concern management), Unverifiable assumptions (resume claims that can't be substantiated should be softened or removed). This replaces manual keyword analysis for decoded JDs.
+- **JD Analyses**: If `decode` has been run on a target JD, pull: Top competencies (priority keywords to ensure present), Frameable gaps (bridge language opportunities — these go into concern management, not hidden), Structural gaps (honest positioning needed — flag for concern management), Unverified assumptions (resume claims that can't be substantiated should be softened or removed). This replaces manual keyword analysis for decoded JDs.
 - **Role-Fit Assessment**: If a Role-Fit verdict exists (from `decode`), cross-reference fit dimensions that scored lower — these are the specific areas where the resume needs to work hardest. Stretch or Weak dimensions should trigger proactive concern management.
 
 ### Step 3: ATS Compatibility Scan
@@ -179,7 +179,7 @@ This is where the storybank directly improves the resume. Not just flags — act
 When the candidate provides a specific job description — or when JD Analyses exist in coaching_state.md from a prior `decode` run — produce a targeted version:
 
 **If JD Analyses exist (decode already run on this JD):**
-- Skip manual keyword extraction — pull directly from JD Analyses: Top competencies (priority keywords), Frameable gaps (bridge language opportunities), Structural gaps (honest positioning — flag for concern management), Unverifiable assumptions (claims to soften)
+- Skip manual keyword extraction — pull directly from JD Analyses: Top competencies (priority keywords), Frameable gaps (bridge language opportunities), Structural gaps (honest positioning — flag for concern management), Unverified assumptions (claims to soften)
 - Use the existing Fit verdict to calibrate how aggressively to optimize vs. how honestly to position gaps
 
 **If JD is provided but not yet decoded:**

@@ -144,6 +144,30 @@ Last updated: [date]
 - Unverified assumptions: [count of LOW/UNKNOWN confidence items — resolve via recruiter screen]
 - Batch triage rank: [if part of batch — e.g., "2 of 4, pathway-weighted"]
 
+## Resume Optimization
+- Date:
+- Depth: [Quick Audit / Standard / Deep Optimization]
+- Overall: [Strong / Needs Work / Weak]
+- ATS compatibility: [ATS-Ready / ATS-Risky / ATS-Broken]
+- Recruiter scan: [Strong / Moderate / Weak]
+- Bullet quality: [Strong / Moderate / Weak]
+- Seniority calibration: [Aligned / Mismatched]
+- Keyword coverage: [Strong / Moderate / Weak]
+- Top fixes pending: [1-3 line items]
+- JD-targeted: [yes — which JD / no]
+- Cross-surface gaps: [resume ↔ LinkedIn inconsistencies, if assessed]
+
+## Comp Strategy
+- Date:
+- Depth: [Quick Script / Standard / Deep Strategy]
+- Target range: [bottom / target / stretch — or "not yet researched"]
+- Range basis: [sources used / "candidate needs to research"]
+- Research completeness: [none / partial / thorough]
+- Stage coached: [application / recruiter screen / mid-process / general]
+- Jurisdiction notes: [relevant salary history ban, if applicable]
+- Scripts provided: [which stages covered]
+- Key principle: [the most important thing to remember]
+
 ## Active Coaching Strategy
 - Primary bottleneck: [dimension]
 - Current approach: [what we're working on and how]
