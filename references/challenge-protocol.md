@@ -255,6 +255,30 @@ Timing: Deliver after positioning output, before Priority Moves.
 
 ---
 
+### Search Strategy Challenge — `strategy` (Full Strategy sessions only)
+
+Applied to the search strategy as a whole — the candidate's pipeline, priorities, timeline assumptions, and decision-making. All four lenses apply: the search is forward-facing (Pre-Mortem included, because the deadline is real) and there are real blind spots about the candidate's own search behavior that they can't see from inside it.
+
+**Level 3**: After full strategy output, one question:
+- **Assumption Audit**: What single assumption does this search strategy rest on that might not be true? (e.g., "Assumes Ramp will advance when the interview signal was 'Advance, not Strong Hire'." "Assumes 8 weeks is enough to open and close 2 new loops — is the cadence realistic?")
+
+**Level 4**: Lenses 1–2:
+- **Assumption Audit**: Name the 1–2 most important hidden assumptions the strategy rests on.
+- **Blind Spot Scan**: What can't the candidate see about their own search from inside it? (e.g., "You're treating your one active loop as a near-certainty and haven't activated any backup. That's optimism bias, not strategy." "You're avoiding cold apply because it feels low-status — but your warm network in this sector is thin.")
+
+**Level 5**: Lenses 1, 2, 3, 4:
+1. **Assumption Audit**: What 2–3 assumptions does this search strategy rest on? Surface the ones the candidate hasn't examined.
+2. **Blind Spot Scan**: What can't the candidate see about their own search from inside it? Ground in actual data from coaching state — loop signals, outcome patterns, avoidance behaviors from Coaching Notes.
+3. **Pre-Mortem**: If the candidate hits the deadline without an offer, what was the most likely cause? Build it from the actual pipeline, not hypotheticals. "The most likely failure mode here isn't interview performance — it's running out of loops. You have 1 active loop with a coin-flip conversion probability and 4 weeks left."
+4. **Devil's Advocate**: The strongest case that this search strategy is wrong. Not a nitpick — a genuine challenge to the core approach. "You're spending 80% of coaching time on interview prep and 0% on funnel. That's the right ratio for a candidate with 4 late-stage loops. With 1 loop, it's exactly backwards."
+
+Lens 4 (Devil's Advocate) feeds into Strategic Risks section of the strategy output. The challenge always ends with one concrete recommendation — not a list.
+
+At Levels 1–2: Skip entirely.
+Timing: Deliver after full strategy output, before 2-Week Action Plan.
+
+---
+
 ## Avoidance Confrontation Protocol
 
 ### Detection Signals
@@ -312,6 +336,6 @@ Challenge Debt expires after 3 sessions without the relevant topic being revisit
 
 ## Key Design Principle
 
-**Challenge without resolution is cruelty.** Every challenge invocation — at any level — ends with a concrete, actionable fix. Lens 5 (Strengthening Path) provides the fix directly at Story Red Team, Transcript Challenge (→ Priority Move), Rejection Leverage (→ Concrete adjustments), Resume Audit Challenge (→ Priority Moves), Salary Strategy Challenge (→ Priority Moves / scripts), Mock Debrief Challenge (→ Top 3 Changes for Next Mock), LinkedIn Profile Challenge (→ Priority Moves), and Pitch Challenge (→ Priority Moves). Existing resolution mechanisms carry the fix at Round Challenge (→ Next Round Adjustment), Hard Truth (→ Top 2 Priorities), and Pre-Mortem in `hype` (→ Prevention cues + release). No challenge ends without telling the candidate exactly what to do differently.
+**Challenge without resolution is cruelty.** Every challenge invocation — at any level — ends with a concrete, actionable fix. Lens 5 (Strengthening Path) provides the fix directly at Story Red Team, Transcript Challenge (→ Priority Move), Rejection Leverage (→ Concrete adjustments), Resume Audit Challenge (→ Priority Moves), Salary Strategy Challenge (→ Priority Moves / scripts), Mock Debrief Challenge (→ Top 3 Changes for Next Mock), LinkedIn Profile Challenge (→ Priority Moves), Pitch Challenge (→ Priority Moves), and Search Strategy Challenge (→ Strategic Risks + 2-Week Action Plan). Existing resolution mechanisms carry the fix at Round Challenge (→ Next Round Adjustment), Hard Truth (→ Top 2 Priorities), and Pre-Mortem in `hype` (→ Prevention cues + release). No challenge ends without telling the candidate exactly what to do differently.
 
 **Graduated challenge is not a weakened challenge.** A Level 3 Assumption Audit delivered with precision is more valuable than a Level 5 spray of all lenses. Calibrate intensity to the level, not just quantity. One sentence that lands is worth more than five that overwhelm.

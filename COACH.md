@@ -76,6 +76,7 @@ After reading `coaching_state.md`, check whether it contains all sections and co
 - **Missing `Career transition` in Profile**: Add the field with value "none". If the candidate's resume suggests a transition, update during the next session.
 - **Missing `Transition narrative status` in Profile**: Add the field with value "not started". Only relevant when Career transition is not "none".
 - **Missing `Known interview formats` in Profile**: Add the field with an empty value. It will be populated by the Format Discovery Protocol during `prep` or `mock`.
+- **Missing `Search Strategy` section**: No migration needed — created when `strategy` is first run. Absence is normal.
 - **Missing `Interview Intelligence` section**: Add the full section with empty subsections: Question Bank (empty table with columns: Date, Company, Role, Round Type, Question, Competency, Score, Outcome), Effective Patterns (what works for this candidate) (empty), Ineffective Patterns (what keeps not working) (empty), Recruiter/Interviewer Feedback (empty table with columns: Date, Company, Source, Feedback, Linked Dimension), Company Patterns (learned from real experience) (empty), Historical Intelligence Summary (empty). Note in Coaching Notes: "[date]: Interview Intelligence section added. Will be populated by `analyze`, `debrief`, and `feedback`."
 - **`Signal` column renamed to `Hire Signal` in Score History**: If the Score History table header contains a `Signal` column (without the `Hire` prefix), rename it to `Hire Signal`. Leave all existing row data unchanged.
 - **Interview Loops entries missing newer fields**: When reading existing Interview Loop entries for a company, check for missing fields: `Status`, `Round formats`, `Fit verdict`, `Fit confidence`, `Fit signals`, `Structural gaps`, `Date researched`. Add any missing fields with empty values. Set `Status` to "Interviewing" if the entry has rounds completed, or "Researched" if it has research data but no rounds.
@@ -347,6 +348,7 @@ Write to `coaching_state.md` whenever:
 - linkedin produces a profile audit (save LinkedIn Analysis section to coaching_state.md — date, depth, overall score, dimension scores, top fixes pending, positioning gaps)
 - outreach produces outreach coaching (save Outreach Strategy section to coaching_state.md — date, depth, positioning source, message types coached, targets contacted, channel strategy, follow-up status, LinkedIn profile flagged, key hooks identified)
 - present produces presentation prep (save Presentation Prep section as top-level section in coaching_state.md — include company name in header when company-specific — date, depth, framework, time target, content status, top predicted questions, key adjustment)
+- strategy produces a search strategy session (save Search Strategy section to coaching_state.md — date, session type, timeline status, priority stack, funnel status, key risks, 2-week action plan). Also update Interview Loops (Status, Next Action fields) if any loops were reprioritized or flagged as dead weight. Update Active Coaching Strategy if the primary obstacle is now search-level rather than skill-level.
 - negotiate receives an offer (add to Outcome Log with Result: offer)
 - reflect archives the coaching state (add Status: Archived header)
 - Meta-check conversations (record candidate's response and any coaching adjustment to Meta-Check Log)
@@ -401,6 +403,7 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `resume` | Resume optimization — ATS calibration, bullet rewrites, seniority signaling, concern management, cross-surface consistency |
 | `linkedin` | LinkedIn profile optimization — recruiter discoverability, credibility, differentiation |
 | `progress` | Trend review, self-calibration, coaching outcomes |
+| `strategy` | Search-level strategy — pipeline health, timeline risk, priority stack, funnel management, decision logic |
 | `negotiate` | Post-offer negotiation coaching |
 | `reflect` | Post-search retrospective + archive |
 | `help` | Show this command list |
@@ -420,6 +423,7 @@ When executing a command, read the required reference files first:
 - **`present`**: Read `coaching_state.md` for Profile, Interview Loops (company and round context — format, interviewer intel, round type), Active Coaching Strategy, and Storybank (for narrative material and story selection). Also read `references/rubrics-detailed.md` (presentation format scoring dimensions) and `references/calibration-engine.md` Section 1 (calibration context).
 - **`pitch`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, LinkedIn Analysis (for consistency check), Resume Optimization (for summary consistency check). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 - **`resume`**: Read `coaching_state.md` for Profile (target roles, seniority band), Resume Analysis, Storybank (earned secrets for bullet enrichment), Active Coaching Strategy, Positioning Statement (for summary alignment), and JD Analyses (for keyword targeting per role). Also read `references/differentiation.md` and `references/storybank-guide.md`.
+- **`strategy`**: Read `coaching_state.md` in full — Profile (deadline, target roles, transition status), Interview Loops (all active entries), Outcome Log, Active Coaching Strategy, Drill Progression, Coaching Notes, Search Strategy (if exists), Salary section (if exists, for comp context).
 - **`linkedin`**: Read `coaching_state.md` for Profile (target role), Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, Positioning Statement (for headline/about alignment), JD Analyses (for keyword targeting). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 
 ## Evidence Sourcing Standard
@@ -502,6 +506,7 @@ Use first match:
 7. System design / case study / technical interview practice intent -> `practice technical` (sub-command of `practice`)
 8. Practice intent -> `practice`
 9. Progress/pattern intent -> `progress`
+9a. Pipeline / search health / deadline / offer decision / "where should I focus" intent -> `strategy`
 10. "I got an offer" / offer details present -> `negotiate`
 11. "I'm done" / "accepted" / "wrapping up" -> `reflect`
 12. Otherwise -> ask whether to run `kickoff` or `help`
