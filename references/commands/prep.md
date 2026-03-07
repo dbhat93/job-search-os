@@ -14,14 +14,22 @@
 
 ### Logic
 
-1. Identify interview format (see format taxonomy below).
+1. Identify interview format (see format taxonomy below). If the identified format is a presentation round, note: `present` provides dedicated content preparation coaching for presentation rounds. After this prep brief, recommend `present` for content structuring if the candidate hasn't already run it.
 2. If interviewer profile links provided, research interviewer profiles and extract intelligence (see Interviewer Intelligence section below). If only names provided, ask for LinkedIn URLs.
-3. **Parse the JD for competencies** (see JD Parsing Guide below).
+3. **Parse the JD for competencies** (see JD Parsing Guide below). If JD Analyses exist from a previous `decode` command for this company+role (check `coaching_state.md` → JD Analyses), use the existing competency extraction and 6-lens analysis as the starting point. Verify it's still current (JD unchanged), then skip to Step 4. If the JD has changed since decode, re-parse and note changes.
 4. Identify company interviewing culture (see company archetype intelligence below).
 5. Infer top evaluation criteria (adjusted for format + culture).
 6. Map candidate strengths and risks — incorporate interviewer-specific adjustments if intel available.
-7. **Check storybank status.** If the candidate hasn't built a storybank yet (no `coaching_state.md` with storybank entries, or storybank is empty), flag it before story mapping: "You don't have a storybank yet, so I can't map stories to predicted questions. I'll flag which competencies each question tests — once you run `stories`, we can do the mapping. Want to build your storybank now, or continue with the rest of the prep?" If a storybank exists, proceed with mapping.
-8. Generate likely questions and story mapping (or competency mapping if no storybank).
+6.5. **Role-Fit Assessment** — With the JD parsed and candidate profile available, run the full 5-dimension fit assessment from the Role-Fit Assessment Module (`references/cross-cutting.md`). See Step 6.5 below.
+7. **Check storybank status and health.** If the candidate hasn't built a storybank yet (no `coaching_state.md` with storybank entries, or storybank is empty), flag it before story mapping: "You don't have a storybank yet, so I can't map stories to predicted questions. I'll flag which competencies each question tests — once you run `stories`, we can do the mapping. Want to build your storybank now, or continue with the rest of the prep?" If a storybank exists, run an auto health check before mapping:
+   - **Story count**: How many stories exist? Target: 8–12. Flag if < 6.
+   - **Strength distribution**: How many at 4+? Target: at least 60%. Flag if the majority are 3 or below.
+   - **Earned secret coverage**: How many stories have real earned secrets vs. placeholders? Flag if < 50% have extracted earned secrets.
+   - **Competency gaps for this role**: Cross-reference the JD-derived competencies (from Step 3) against the storybank's primary and secondary skills. Flag any critical competency with no story or only weak stories.
+   - **Overuse risk**: Flag stories with Use Count 3+ in the current job search.
+   - **Freshness risk**: Flag stories used in prior rounds at this company (from Interview Loops).
+   - Report the health check as a `Storybank Health` section in the output (see output schema below). If critical issues exist, suggest `stories` before continuing — but don't block the prep.
+8. **Generate likely questions and story mapping.** Use `references/story-mapping-engine.md` for the full portfolio optimization protocol. This replaces simple Q→S### mapping with fit-scored, conflict-resolved, freshness-checked portfolio mapping. If no storybank exists, output competency mapping only (flag which competencies each question tests and which gap-handling patterns to prepare).
 9. Generate non-generic interviewer questions.
 
 ### JD Parsing Guide
@@ -135,9 +143,42 @@ When the conversation enters these territories, name the boundary:
 
 Don't quietly skip these topics — name the boundary so the candidate knows where to get complementary help.
 
+### Step 6.5: Role-Fit Assessment
+
+With the JD parsed and candidate profile available, run the full 5-dimension fit assessment from the Role-Fit Assessment Module (`references/cross-cutting.md`).
+
+**Assess all 5 dimensions** (see `cross-cutting.md` for full dimension definitions and scoring):
+1. **Requirement Coverage**: Map JD requirements to resume. Count matches vs. gaps. Distinguish hard requirements from wish-list items.
+2. **Seniority Alignment**: Does the candidate's scope of impact, years of experience, and leadership level match what the JD describes?
+3. **Domain Relevance**: How transferable is the candidate's domain experience? Direct overlap, adjacent, or distant?
+4. **Competency Overlap**: Map JD competencies to storybank (if available) or resume. Which competencies have strong evidence? Which are gaps?
+5. **Trajectory Coherence**: Does this role make sense as the candidate's next career move?
+
+**Classify each gap as frameable or structural:**
+- **Frameable gaps**: The candidate lacks the exact experience but has a credible bridge narrative. These become concern counters. Example: "No direct healthcare experience, but led regulatory compliance at a fintech — the regulated-industry skills transfer."
+- **Structural gaps**: Real limitations that narrative can't fully bridge. These should be named honestly. Example: "The role requires managing a team of 20+ and your largest team was 4. That's a real gap interviewers will probe."
+
+**Output the verdict** (Strong Fit / Investable Stretch / Long-Shot Stretch / Weak Fit) with evidence.
+
+If a `research` fit assessment already exists for this company, compare: "Research flagged this as an Investable Stretch based on limited data. Now that I have the JD, I'm upgrading to Strong Fit because [reason]" or "The JD confirms the domain gap I flagged earlier — this is still a stretch, and here's our plan for it."
+
+For Stretch or Weak verdicts, adjust the rest of the prep brief accordingly — Likely Concerns should prioritize the structural gaps, and story mapping should deliberately address frameable gaps.
+
+When generating Likely Concerns, pull from the Role-Fit Assessment's gap classification. Frameable gaps get full counter-evidence strategies. Structural gaps get honest framing + what the candidate brings instead (Pattern 3 from Gap-Handling Module in `references/cross-cutting.md`).
+
 ### Company Archetype Intelligence
 
 Companies have interviewing cultures that transcend individual JDs. When a known company is specified, apply culture-specific coaching — **but only from verified sources**.
+
+#### Structured Research Step
+
+Before applying company knowledge sourcing tiers, run a targeted search to ground the prep brief in current data:
+1. Search for the company's current careers page and extract their stated values/principles.
+2. Search for recent news (last 6 months) — funding, layoffs, product launches change interview culture.
+3. If the candidate provided interviewer LinkedIn URLs, research each one using the Interviewer Intelligence protocol below.
+4. Cross-reference findings with what the candidate has already told you.
+
+Present findings with source attribution: "From their careers page: [finding]" not "This company values [finding]." Follow the Claim Verification Protocol from `references/commands/research.md` — every claim maps to Tier 1, 2, or 3.
 
 #### Company Knowledge Sourcing (Critical)
 
@@ -185,15 +226,21 @@ If `coaching_state.md` shows previous rounds at the same company, this is a cont
 - Check which stories were used in previous rounds — avoid repeating them unless the candidate is asked to go deeper.
 - Review what concerns likely surfaced from previous round analysis.
 - Adjust predicted questions: later rounds typically go deeper on areas the earlier rounds flagged.
+- **Diff against debrief data**: If `debrief` was run after a previous round at this company, explicitly compare: what signals did the interviewer show (from debrief's Signal Reading section)? What concerns likely surfaced based on those signals? Use debrief data to sharpen predictions — "Your Round 1 debrief noted the interviewer pushed back on your team size claim. Expect Round 2 to probe Credibility harder on scope and impact."
 - Note: "You used S003 and S007 in Round 1. For Round 2, prioritize S### and S### to show range. Based on your Round 1 analysis, they'll likely probe deeper on [area]."
+- **Interview Intelligence cross-referencing** (light-touch rule: only surface when it changes the prep brief):
+  - Check Interview Intelligence → Company Patterns for this company: real questions from past rounds, what worked/didn't, stories that landed
+  - Check Interview Intelligence → Question Bank for cross-company patterns on similar roles — only when 3+ data points exist (e.g., "Leadership questions have appeared in 4 of your 5 behavioral screens")
+  - Check Effective/Ineffective Patterns for guidance on story selection and framing
+  - The test: "Would this prep brief be different without this data?" If yes, include it. If no, skip it.
 
 ### Interviewer Intelligence
 
-When the candidate provides interviewer LinkedIn URLs or profile links, analyze each interviewer to produce tailored prep. This is one of the highest-leverage prep activities — knowing who's across the table changes story selection, framing, and signal-reading.
+When the candidate provides interviewer LinkedIn URLs or profile links, guide them on what to look for and help them interpret what they find. This is one of the highest-leverage prep activities — knowing who's across the table changes story selection, framing, and signal-reading.
 
-**Input requirement**: LinkedIn URLs or profile links required — not bare names. If the candidate provides only a name, respond: "A name alone isn't reliable enough for interviewer research — too many false matches. Can you share their LinkedIn URL? Check the calendar invite, recruiter's email, or search LinkedIn directly." If they can't find a URL, skip interviewer intel for that person and note the gap.
+**Input requirement**: LinkedIn URLs or profile links required — not bare names. If the candidate provides only a name, respond: "A name alone isn't reliable enough for interviewer research — too many false matches. Can you share their LinkedIn URL? Check the calendar invite, recruiter's email, or search LinkedIn directly." If the candidate shares a URL but not the profile content, ask them to share key details: "I can't browse LinkedIn directly. Can you tell me their current title, how long they've been at the company, their career path (previous roles), and any recent posts or articles? I'll use that to shape your prep."
 
-**What to analyze** (from LinkedIn profiles, public posts, talks, articles):
+**What to look for** (guide the candidate to extract from LinkedIn profiles, public posts, talks, articles):
 
 1. **Role/title and tenure** — What's their functional lens? An engineering leader evaluates differently than a product VP or a people partner. How long they've been at this company vs. previous roles shapes their perspective.
 2. **Career path** — Did they come up through IC or management? Startup or big co? Technical or business-side? This shapes what they value in candidates. Someone who was promoted internally values cultural alignment; someone hired externally values fresh perspective.
@@ -252,6 +299,12 @@ When the candidate provides interviewer LinkedIn URLs or profile links, analyze 
 - Watch for (likely style and signals):
 - Confidence: High / Medium / Low
 
+## Role-Fit Assessment
+- Verdict: Strong Fit / Investable Stretch / Long-Shot Stretch / Weak Fit
+- Evidence:
+- Frameable gaps (→ concern counters):
+- Structural gaps (→ honest framing):
+
 ## What They Optimize For
 1.
 2.
@@ -261,6 +314,15 @@ When the candidate provides interviewer LinkedIn URLs or profile links, analyze 
 - One-line positioning statement:
 - Supporting proof:
 - Earned secret to deploy:
+
+## Storybank Health
+- Story count: __ (target: 8–12)
+- Strength at 4+: __% (target: ≥60%)
+- Earned secret coverage: __% (target: ≥50%)
+- Critical competency gaps for this role: [list]
+- Overuse risk: [stories with Use Count 3+]
+- Freshness risk: [stories used in prior rounds at this company]
+- Recommendation: [proceed / run `stories` first]
 
 ## Likely Concerns + Counters
 1. Concern:
@@ -278,9 +340,11 @@ When the candidate provides interviewer LinkedIn URLs or profile links, analyze 
 ...
 
 ## Story Mapping
-- Q1 -> Story S###
-- Q2 -> Story S###
-- Gaps (questions where no strong story exists — see Gap-Handling Module):
+(Portfolio-optimized per `references/story-mapping-engine.md` — fit-scored, conflict-resolved, freshness-checked)
+- Q1 → S### ([story title], fit score: __)
+- Q2 → S### ([story title], fit score: __)
+- Gaps (questions where no strong story exists):
+  - [competency] — Gap-handling pattern: [Pattern 1–4 from Gap-Handling Module]
 
 ## Questions To Ask Them (5)
 1.

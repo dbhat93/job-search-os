@@ -46,7 +46,7 @@ When the candidate selects "Improve," don't just say "add more specifics." Walk 
 
 When the candidate has 8+ stories, periodically run a portfolio-level audit (suggest this in `progress` when storybank health shows issues):
 
-- **Distribution check**: Are all stories from the same job? Same domain? Same skill? Flag clustering.
+- **Distribution check**: Are all stories from the same job? Same domain? Same skill? Flag clustering. For portfolio-level gaps, `progress` tracks storybank health trends across sessions.
 - **Strength curve**: How many at 4+? How many below 3? A healthy storybank has at least 60% at 4+.
 - **Earned secret coverage**: How many stories have a real earned secret vs. a placeholder? Stories without earned secrets are incomplete.
 - **Deployment readiness**: For each target company/role, can the candidate cover the top 5 predicted questions with 4+ stories? If not, which gaps need new stories vs. improved existing ones?
@@ -59,6 +59,16 @@ When improving a story, preserve the previous version in the Story Details secti
 - Update the STAR text in Story Details with the improved version
 - This serves two purposes: (1) the candidate can see their progress over time, and (2) if the "improved" version stops landing in interviews, the coach can reference what changed and potentially revert.
 
+### Story Red Team
+
+After `stories add` or `stories improve`, run the graduated Challenge Protocol against the story (see `references/challenge-protocol.md` → Story Red Team invocation):
+
+**Level 3**: Assumption Audit only — one sentence naming the single strongest assumption the story rests on.
+**Level 4**: Assumption Audit + Blind Spot Scan — what must be true for it to land, and what the candidate can't see about their own story from inside it.
+**Level 5**: All 5 lenses — Assumption Audit, Blind Spot Scan, Pre-Mortem (how does this story fail in a real interview?), Devil's Advocate (where does a skeptical interviewer attack?), Strengthening Path (the single highest-leverage fix).
+
+At Levels 1–2: Skip entirely. The standard improve diagnostic is sufficient.
+
 ### Story Records
 
 See `references/storybank-guide.md` for the full storybank format, column definitions, and skill tags. Every story record must include an Earned Secret field — see `references/differentiation.md` for the extraction protocol.
@@ -67,10 +77,12 @@ See `references/storybank-guide.md` for the full storybank format, column defini
 
 When the candidate selects "Find gaps," don't just list missing competencies — rank them by how much they matter for this candidate's target roles:
 
-1. Cross-reference the candidate's target roles/companies (from `coaching_state.md`) with the storybank's skill coverage.
-2. For each gap, assess: **Critical** (this competency will definitely be tested and no story exists), **Important** (likely to come up, only weak stories available), **Nice-to-have** (might come up, but won't make or break the interview).
-3. For critical gaps, check: can an existing story be reframed to cover this competency, or does the candidate need to surface a new experience entirely?
-4. Prescribe gap-handling patterns (from the Gap-Handling Module) for any competencies where no real story exists.
+1. Cross-reference the candidate's target roles/companies (from `coaching_state.md`) with the storybank's skill coverage. **Check both Primary and Secondary Skills** — a competency may be covered as a secondary skill in an existing story, which changes the gap from "no story" to "Workable coverage" (see `references/story-mapping-engine.md` for fit scoring).
+2. For each gap, assess: **Critical** (this competency will definitely be tested and no story exists, even as a secondary skill), **Important** (likely to come up, only weak stories or secondary-skill-only coverage available), **Nice-to-have** (might come up, but won't make or break the interview).
+3. For critical gaps, check: can an existing story be reframed to cover this competency (using its secondary skill or an adjacent experience), or does the candidate need to surface a new experience entirely?
+4. Prescribe gap-handling patterns from the Gap-Handling Module in `references/cross-cutting.md` for any competencies where no real story exists. Use the Pattern Selection by Storybank Score table: strength 2 → Adjacent Bridge, strength 1 → Reframe to Strength or Growth Narrative, no story → Hypothetical with Self-Awareness.
+5. **Cross-reference with active prep briefs**: If the candidate has active prep briefs (from `prep`), check predicted questions against gaps. A gap that maps to a predicted question at a current target company is elevated to Critical regardless of general frequency.
+6. **Consume narrative identity output** (if `stories narrative identity` has been run): Use the candidate's core themes and sharpest edge to inform gap prioritization. Gaps in the candidate's dominant themes are more damaging than gaps in peripheral areas — a candidate whose theme is "building systems from scratch" must have a gap-free story set for process-building and ambiguity questions. Also check for orphan stories that could be reframed to fill a gap through their theme connection.
 
 A PM interviewing at Stripe with no "influence without authority" story has a critical gap. The same candidate missing a "technical depth" story has a nice-to-have gap. Rank accordingly.
 
@@ -123,7 +135,7 @@ Requires 5+ stories in the storybank. If fewer exist, redirect: "Narrative ident
 - **In questions you ask**: [How to ask questions that reinforce your themes]
 - **In positioning**: [How themes inform your "why this role / why this company" narrative]
 
-**Next commands**: `stories improve S###`, `stories add`, `practice`, `prep [company]`
+**Recommended next**: `stories improve S###` — strengthen your sharpest-edge stories. **Alternatives**: `stories add`, `practice`, `prep [company]`
 ```
 
 ### Output Schema (per action)
@@ -137,7 +149,12 @@ Requires 5+ stories in the storybank. If fewer exist, redirect: "Narrative ident
 - Strength: [1-5]
 - Deploy for: [one-line use case]
 
-**Next commands**: `stories improve S###`, `stories find gaps`, `practice retrieval`, `concerns`
+## Story Red Team (Levels 3–5 — see challenge-protocol.md)
+[Level 3: Assumption Audit — one sentence]
+[Level 4: + Blind Spot Scan]
+[Level 5: All 5 lenses — Assumption / Blind Spot / Pre-Mortem / Devil's Advocate / Strengthening Path]
+
+**Recommended next**: `stories improve S###` — strengthen the story based on the red team findings. **Alternatives**: `stories find gaps`, `practice retrieval`, `concerns`
 ```
 
 **After `stories improve`:**
@@ -147,21 +164,26 @@ Requires 5+ stories in the storybank. If fewer exist, redirect: "Narrative ident
 - What changed: [brief description]
 - Version history updated
 
-**Next commands**: `stories view`, `practice`, `analyze`
+## Story Red Team (Levels 3–5 — see challenge-protocol.md)
+[Level 3: Assumption Audit — one sentence]
+[Level 4: + Blind Spot Scan]
+[Level 5: All 5 lenses — Assumption / Blind Spot / Pre-Mortem / Devil's Advocate / Strengthening Path]
+
+**Recommended next**: `practice` — test the improved story under pressure. **Alternatives**: `stories view`, `stories improve S###`, `analyze`
 ```
 
 **After `stories find gaps`:**
 ```markdown
 ## Storybank Gap Analysis
 ### Critical Gaps (must fill for target roles)
-1. [competency] — No story exists. Recommended: [surface new story / reframe existing S###]
-   Gap-handling pattern if asked before a story exists: [Pattern 1-4 from Gap-Handling Module]
+1. [competency] — No story exists (not even as secondary skill). Recommended: [surface new story / reframe existing S###]
+   Gap-handling pattern if asked before a story exists: [Pattern from Gap-Handling Module — strength 2 → Adjacent Bridge, strength 1 → Reframe/Growth, no story → Hypothetical with Self-Awareness]
 
 ### Important Gaps (likely to come up)
-1. [competency] — Only weak story (S###, strength __). Recommended: [improve / replace]
+1. [competency] — Only weak story (S###, strength __) or secondary-skill-only coverage. Recommended: [improve / replace]
 
 ### Nice-to-Have (might come up)
 1. [competency]
 
-**Next commands**: `stories add`, `practice gap`, `prep [company]`
+**Recommended next**: `stories add` — fill the highest-priority gap. **Alternatives**: `practice gap`, `prep [company]`
 ```

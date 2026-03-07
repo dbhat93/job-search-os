@@ -157,6 +157,32 @@ Timing: Deliver challenge after the full audit output, before Priority Moves.
 
 ---
 
+### Mock Debrief Challenge — `mock`
+
+Applied after the full debrief output. The target is the candidate's overall arc across the mock — the patterns, assumptions, and blind spots that shaped how they showed up across all questions. This is a holistic challenge, not per-question.
+
+**Level 3**: One sentence only:
+- **Assumption Audit**: What single assumption did the candidate bring into this mock that the performance contradicts? (e.g., "You assumed your conflict story was ready — the interviewer's follow-up showed it wasn't.") Name it. Don't soften.
+
+**Level 4**: Lenses 1–2:
+- **Assumption Audit**: What 1–2 assumptions about their own readiness, story strength, or the interviewer's expectations does the mock data directly contradict?
+- **Blind Spot Scan**: What pattern in the candidate's performance would a hiring committee discuss that the candidate themselves wouldn't predict? Show it from the hiring committee's perspective, not the candidate's.
+
+**Level 5**: Lenses 1–4 + Expanded Inner Monologue:
+1. **Assumption Audit**: What 2–3 assumptions did the candidate bring in that the performance contradicts? Prioritize the ones they believe are strengths but the mock exposed as vulnerabilities.
+2. **Blind Spot Scan**: What is invisible from inside the candidate's own performance? What would the hiring committee say about this candidate in debrief that the candidate would not predict?
+3. **Pre-Mortem**: If this were a real interview and the candidate didn't advance — what specifically went wrong? Ground every claim in actual mock moments, not hypotheticals.
+4. **Devil's Advocate**: The strongest case for passing on this candidate, built from mock evidence. What a skeptical hiring committee member would say in debrief.
+- **Expanded Inner Monologue**: Surface the most uncomfortable truths — moments where the interviewer wrote off the candidate, considered moving on, or where an answer actively damaged the impression. Do not soften. "After Q3, I stopped listening for Strong Hire signals. I was evaluating whether you were Hire or No Hire. That shift is hard to reverse."
+- **Avoidance Detection**: If the candidate chose a "safe" mock format (avoided their known weak format based on practice scores), name it explicitly — see Avoidance Confrontation Protocol.
+
+Lens 5 (Strengthening Path) feeds directly into Top 3 Changes for Next Mock. The challenge always ends with concrete action — never diagnosis without direction.
+
+At Levels 1–2: Skip entirely.
+Timing: Deliver after full debrief, before Top 3 Changes.
+
+---
+
 ### Comp Strategy Challenge — `comp` (Deep Strategy only)
 
 Applied during strategy build — this is a forward-facing challenge, not a post-mortem. Pre-Mortem (Lens 3) is excluded: the conversation hasn't happened yet and pre-mortems on strategy sessions add overhead without proportional value. Lenses 1, 2, 4, 5 only.
@@ -238,6 +264,6 @@ Challenge Debt expires after 3 sessions without the relevant topic being revisit
 
 ## Key Design Principle
 
-**Challenge without resolution is cruelty.** Every challenge invocation — at any level — ends with a concrete, actionable fix. Lens 5 (Strengthening Path) provides the fix directly at Story Red Team, Transcript Challenge (→ Priority Move), Rejection Leverage (→ Concrete adjustments), Resume Audit Challenge (→ Priority Moves), and Comp Strategy Challenge (→ Priority Moves / scripts). Existing resolution mechanisms carry the fix at Round Challenge (→ Next Round Adjustment), Hard Truth (→ Top 2 Priorities), and Pre-Mortem in `hype` (→ Prevention cues + release). No challenge ends without telling the candidate exactly what to do differently.
+**Challenge without resolution is cruelty.** Every challenge invocation — at any level — ends with a concrete, actionable fix. Lens 5 (Strengthening Path) provides the fix directly at Story Red Team, Transcript Challenge (→ Priority Move), Rejection Leverage (→ Concrete adjustments), Resume Audit Challenge (→ Priority Moves), Comp Strategy Challenge (→ Priority Moves / scripts), and Mock Debrief Challenge (→ Top 3 Changes for Next Mock). Existing resolution mechanisms carry the fix at Round Challenge (→ Next Round Adjustment), Hard Truth (→ Top 2 Priorities), and Pre-Mortem in `hype` (→ Prevention cues + release). No challenge ends without telling the candidate exactly what to do differently.
 
 **Graduated challenge is not a weakened challenge.** A Level 3 Assumption Audit delivered with precision is more valuable than a Level 5 spray of all lenses. Calibrate intensity to the level, not just quantity. One sentence that lands is worth more than five that overwhelm.

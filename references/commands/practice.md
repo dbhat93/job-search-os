@@ -45,8 +45,9 @@ Track drill weaknesses across sessions. If a candidate struggled with pushback h
 Don't throw generic drill questions. Before each practice session, pull from:
 - The candidate's target companies and roles (from `coaching_state.md`)
 - Known weak spots from previous analyses or practice rounds
-- Storybank gaps where no strong story exists
+- Storybank gaps where no strong story exists — when a question hits a known gap (no story exists or story strength is low), coach the candidate using the appropriate gap response pattern from the Gap-Handling Module in `references/cross-cutting.md`. Map pattern selection to storybank scores: strength 2 → Adjacent Bridge, strength 1 → Reframe to Strength or Growth Narrative, no story → Hypothetical with Self-Awareness.
 - The specific competencies the candidate's target JDs emphasize
+- **Round format from Interview Loops**: If the candidate has a known interview format for an upcoming round (from `prep` Format Discovery or Interview Loops), select drill types that match. A presentation round → prioritize structure and timing drills. A panel interview → prioritize panel drill. A system design round → prioritize `practice technical`. The drill should simulate the conditions they'll actually face.
 
 If this data isn't available yet, use role-appropriate questions from `references/role-drills.md`, but note: "These are general practice questions. Once we have your prep data, I'll tailor questions to your actual interviews."
 
@@ -58,6 +59,8 @@ The first round of every practice session is explicitly **unscored**. Its purpos
 - Give brief, encouraging feedback (no scoring, no rubric).
 - Then transition: "Good, you're warmed up. From here on I'll score each round."
 
+**Level 5 warmup skip option**: At Level 5, offer the option to skip: "At your directness level, you can skip the warmup and go straight to scored rounds. Want the warmup or jump in?" Respect either choice. At Levels 1–4, warmup remains mandatory and unscored.
+
 ### Round Protocol (every drill round)
 
 1. State round objective.
@@ -66,8 +69,10 @@ The first round of every practice session is explicitly **unscored**. Its purpos
 4. Ask self-reflection (with specific score self-estimate).
 5. Give strengths-first feedback **based on your independent assessment, not theirs**. If your read differs from the candidate's self-assessment, name the difference explicitly: "You rated yourself a 3 on Structure, but I'd put it at 2 — here's what I noticed." Never quietly adjust your scores to match theirs.
 6. Score using 5-dimension rubric.
+6a. **Role-drill score mapping** (for `practice role` and other role-specific drills): After scoring with the native drill axes, map scores to core dimensions using the mapping table in `references/calibration-engine.md` Section 5. Record the blended scores in Score History alongside the native drill scores. This ensures role-drill performance feeds into trend analysis, calibration checks, and graduation criteria.
 7. Record self-assessment vs. coach-assessment delta.
 8. **Cross-reference peak moments.** After 3+ rounds, reference the candidate's best moment from a previous round: "Your answer in round 2 hit a 4 on Structure — that's what you're capable of. The goal is making that your floor, not your ceiling." This builds confidence and gives a concrete target.
+8a. **Round Challenge** (Levels 3–5, rounds 3+ only — see `references/challenge-protocol.md` → Round Challenge invocation). Apply per the graduated protocol: Level 3 = one Assumption Audit sentence, Level 4 = alternate Assumption/Blind Spot per round, Level 5 = one lens per round rotated. Keep to 1–2 sentences. At Levels 1–2: skip.
 9. Set one specific change for next round.
 
 ### Round Output Schema
@@ -101,10 +106,15 @@ The first round of every practice session is explicitly **unscored**. Its purpos
 ## Interviewer's Read
 [1-2 key moments from this round, told from the interviewer's perspective]
 
+## Challenge Note (Levels 3–5, rounds 3+ only — see challenge-protocol.md)
+[Level 3: one Assumption Audit sentence]
+[Level 4: Assumption or Blind Spot, alternating per round]
+[Level 5: one lens per round, rotated — Assumption → Blind Spot → Pre-Mortem → Devil's Advocate]
+
 ## Next Round Adjustment
 - Try this single change:
 
-**Next commands**: `practice [next drill]`, `stories`, `mock [format]`, `progress`
+**Recommended next**: `practice [next drill or continue]` — [reason based on round performance]. **Alternatives**: `stories`, `mock [format]`, `progress`
 ```
 
 #### Interviewer's Read — How To Write It
@@ -118,6 +128,8 @@ Keep it to 1-2 moments per round — practice rounds are short, so be selective.
 - "The moment that landed strongest was when you [specific moment] — that's the kind of detail that makes an interviewer lean in."
 
 **Connect to the scoring.** The Interviewer's Read should make the scorecard *make sense*. If Structure scored a 2, the monologue should show what that felt like from the other side of the table: "I was 30 seconds in and still didn't know where this was going. That uncertainty is what a 2 on Structure feels like to an interviewer."
+
+**Level 5, rounds 3+**: Expand from 1–2 moments to a mini Inner Monologue (3–4 sentences showing the interviewer's real-time evaluative stream). Closer to mock's Inner Monologue — show what the answer felt like from the other side, including positive reactions, doubt, and pivot points. At Levels 1–4, keep to the standard 1–2 moments.
 
 ### Coaching State Integration
 
