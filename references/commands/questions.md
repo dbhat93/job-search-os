@@ -20,6 +20,8 @@ Adapt questions to where the candidate is in the interview loop:
 3. If a `prep` brief was recently generated, infer from the format identified there.
 4. If none of the above, ask: "What stage is this for? Phone screen, hiring manager, final round, or peer interview? The questions I generate will be very different depending on who you're talking to."
 
+**Intelligence-informed question generation**: If Interview Intelligence → Effective Patterns exists with 3+ data points, use it to inform question style. If the candidate's best interviews correlated with asking "how" questions (probing team process), weight toward that style. If Company Patterns shows what this specific company values in candidate questions, calibrate accordingly.
+
 ### Questions To Avoid
 
 Flag these common mistakes:
@@ -47,7 +49,7 @@ Flag these common mistakes:
 ## Questions To Avoid This Round
 - [1-2 specific questions the candidate might be tempted to ask, with brief explanation of why to skip them]
 
-**Next commands**: `hype`, `prep [company]`, `mock [format]`
+**Recommended next**: `hype` — build your pre-interview confidence plan with these questions loaded. **Alternatives**: `prep [company]`, `mock [format]`
 ```
 
 ### Coaching State Integration

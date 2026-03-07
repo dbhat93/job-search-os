@@ -15,10 +15,30 @@ Captures what happened in a real interview while it's still fresh. This is the b
 2. **Rapid question capture.** "What questions did they ask? Don't worry about exact wording — just get them down." Capture as many as they can remember. Prompt with format cues: "Was there a behavioral question? A 'tell me about a time' question? Anything unexpected?"
 3. **Per-question self-assessment.** For each question they remember: "How did you feel about your answer? Strong, okay, or rough?" Don't score yet — capture their in-the-moment read.
 4. **Signal reading.** "Did you notice any signals from the interviewer? Follow-up questions that showed interest? Moments where they seemed to lose interest or redirect? Any body language that stood out?" Capture these — they're high-value data even without a transcript.
+
+   **Signal Interpretation Guide** — Help the candidate read the signals they noticed:
+   | Signal | Likely Meaning | Confidence |
+   |---|---|---|
+   | Extended follow-ups on one topic | Genuine interest or evaluating depth — positive either way | HIGH |
+   | Interviewer moved on quickly after your answer | Your answer either fully satisfied them or didn't land — look at their energy after moving on | MEDIUM |
+   | "That's interesting" + follow-up | Usually positive — they want more | HIGH |
+   | Interviewer checked the time or clock | Running behind schedule, not necessarily boredom — but if repeated, you may be going long | MEDIUM |
+   | "Let me push back on that" | Testing conviction, not disagreeing — this is often a positive signal | HIGH |
+   | Interviewer started selling the role/company to you | Strong buy signal — they want you interested | HIGH |
+   | Short, closed-ended follow-ups | They may have already formed their assessment — neutral to negative | MEDIUM |
+   | "We'll be in touch" with no specifics | Standard — don't read into it either way | LOW |
+
+   Caveat: "These are common patterns, not certainties. Interviewers have different styles — some are naturally warm regardless of assessment, some are naturally terse even when impressed. Use these as directional signals, not verdicts."
+
+   See also the Signal-Reading Module in `references/cross-cutting.md` for the full positive/negative/neutral signal framework and cross-interview pattern detection.
+
 5. **Surprise capture.** "Was there anything you didn't expect? A question you weren't prepared for, a format difference, something about the interviewer or environment?" Unexpected moments are often the most informative for coaching.
-6. **Story usage log.** "Which stories did you use? Did any of them land differently than in practice?" Cross-reference with storybank — update `Last Used` dates and add performance notes.
+6. **Story usage log.** "Which stories did you use? Did any of them land differently than in practice?" Cross-reference with storybank — update `Last Used` dates, increment `Use Count` for each story used, and add performance notes.
 7. **Immediate tactical notes.** "Is there anything you want to do differently for the next round, based on this one?" Capture their own coaching instinct.
-8. **Transcript availability check.** "Do you have a recording or transcript? If so, we can do a full `analyze` later. If not, I'll work from what you've captured here."
+8. **Positioning performance check.** "How did your introduction / 'tell me about yourself' land? Did the interviewer seem engaged, or did they jump to questions quickly?" Capture this signal — it feeds back to `pitch` for positioning iteration. Record in Interview Intelligence → Effective/Ineffective Patterns if the response reveals something actionable about how the candidate's positioning lands.
+9. **Recruiter/interviewer feedback capture.** "Did you get any feedback from the recruiter about this round? Even informal comments — 'they really liked your background' or 'the interviewer had some concerns about X' — are valuable signal." If feedback exists, record it for the Recruiter/Interviewer Feedback table in Interview Intelligence.
+10. **Past question similarity check.** Scan the Interview Intelligence Question Bank for questions similar to what the candidate recalled. If matches exist, note them briefly: "You've seen a prioritization question like Q2 before — at [Company] in Round [N]. Your score on that one was [X]." Only surface matches that are useful (same competency tested, score trajectory, or company pattern). Don't force connections.
+11. **Transcript availability check.** "Do you have a recording or transcript? If so, we can do a full `analyze` later. If not, I'll work from what you've captured here." If they do have a transcript, mention the tool it came from so they know they can paste raw output: "You can paste the raw transcript directly from Otter, Zoom, Grain, or whatever tool you used — I'll detect the format and clean it up automatically."
 
 ### With vs. Without Transcript
 
@@ -74,16 +94,28 @@ Based on the emotional check in step 1, adapt:
 - What to do differently:
 - What worked:
 
+## Feedback Received
+- Date:
+- Company:
+- Source: [recruiter / interviewer / hiring manager / none]
+- Feedback: [verbatim or close to it]
+- Linked dimension: [if mappable]
+
+## Intelligence Notes
+- Questions matched from past interviews: [any Question Bank matches, or "no prior data"]
+- Company pattern observations: [anything learned about this company's interview approach]
+
 ## Transcript Status
 - [ ] Transcript available → run `analyze` when ready
 - [ ] No transcript → directional analysis above is what we have
 
-**Next commands**: `analyze` (if transcript available), `thankyou`, `hype`, `progress`
+**Recommended next**: `analyze` — run full transcript analysis while impressions are fresh (if transcript available). **Alternatives**: `thankyou`, `hype`, `progress`
 ```
 
 ### Coaching State Integration
 
 Update `coaching_state.md` per the State Update Triggers in COACH.md:
-- Storybank updates: Last Used dates, performance notes
+- Storybank updates: Last Used dates, increment Use Count for each story used, performance notes
 - Interview Loop updates: round completed, stories used, signals noted
 - Outcome Log: add entry with Result: pending
+- Interview Intelligence updates: recalled questions to Question Bank (marked "recall-only"), recruiter/interviewer feedback to Recruiter/Interviewer Feedback table, Company Patterns if new observations emerged

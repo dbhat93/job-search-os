@@ -121,6 +121,8 @@ Interview failure is frequently emotional, not intellectual. This module address
 - **Structured debrief**: Instead of spiraling, channel energy into `analyze`. Turn anxiety into data.
 - **Rejection reframe**: "Rejection means this specific role at this specific company at this specific time wasn't a fit. It is not a verdict on your worth or capability."
 
+**Avoidance vs. Readiness**: At Level 5, the Challenge Protocol overrides the compassion-first default for avoidance detection. Avoidance is named, not accommodated — see the Avoidance Confrontation Protocol in `references/challenge-protocol.md`. At Levels 1-4, compassion-first remains unchanged: note patterns in Coaching Notes and raise gently during meta-checks.
+
 **Integration:**
 - `hype` includes a psychological warmup and mid-interview recovery scripts.
 - `progress` monitors for emotional patterns (declining engagement, increased self-criticism, avoidance of practice) and addresses them directly.
@@ -146,7 +148,7 @@ If scoring reveals patterns consistent with cultural communication differences (
 
 ## Role-Fit Assessment Module
 
-Targeting the right roles is as important as performing well in interviews. This module provides a structured framework for evaluating candidate-role fit, used by `research`, `kickoff`, `prep`, `decode`, and `progress`.
+Targeting the right roles is as important as performing well in interviews. This module provides a structured framework for evaluating candidate-role fit, used by `research`, `kickoff`, `prep`, and `progress`.
 
 ### Five Fit Dimensions
 
@@ -165,7 +167,7 @@ Score each dimension: Strong / Moderate / Weak. Not every dimension needs data �
 **Strong Fit** — Candidate meets most requirements, seniority aligns, domain is relevant or closely adjacent, competencies overlap substantially, and the role is a logical next step. Prep focuses on positioning and differentiation.
 
 **Stretch Fit** — Candidate has meaningful gaps but also clear strengths. Two sub-categories:
-- **Investable Stretch**: 1–2 addressable gaps (domain switch with transferable skills, one level up with strong trajectory). The candidate can make a credible case. Prep focuses on gap-bridging narratives and concern counters.
+- **Investable Stretch**: 1-2 addressable gaps (domain switch with transferable skills, one level up with strong trajectory). The candidate can make a credible case. Prep focuses on gap-bridging narratives and concern counters.
 - **Long-Shot Stretch**: 3+ gaps or a fundamental mismatch (2+ levels up, zero domain overlap, missing hard requirements). The candidate should understand the odds. Coach helps if they choose to proceed, but names the reality.
 
 **Weak Fit** — Fundamental misalignment across multiple dimensions. The honest coaching move is to say so and suggest better-fit alternatives.
@@ -194,14 +196,43 @@ When fit is Weak or Long-Shot Stretch, don't just diagnose — help redirect:
 - Don't gatekeep. The candidate decides whether to apply — the coach provides honest assessment, not permission.
 - Don't conflate "stretch" with "impossible." Career growth requires stretch roles. The question is whether the stretch is bridgeable.
 - Don't assess fit based on vibes. Use the 5 dimensions with evidence.
-- Don't over-index on requirement coverage. Many JDs are wish lists. A candidate who meets 60–70% of requirements is often competitive.
+- Don't over-index on requirement coverage. Many JDs are wish lists. A candidate who meets 60-70% of requirements is often competitive.
 - Don't ignore trajectory coherence. A role someone is qualified for but that doesn't advance their career is a poor fit in a different way.
 
 ### Integration
-- `research` and `kickoff`: Run a lightweight fit assessment (company name only level) to calibrate early
-- `decode`: Runs the full 5-dimension fit assessment after competency extraction (Step 5)
-- `prep`: Runs the Role-Fit Assessment at Step 6.5 — after JD parsing, before story mapping
-- `progress`: Validates fit assessment accuracy against real outcomes (did Strong Fit roles actually advance?)
+
+- `kickoff`: Target Reality Check — fires only on clear mismatches (2+ level seniority gap, zero domain experience, function switch without bridge narrative)
+- `research`: Structured Fit Assessment replaces the current vibes-based section — uses the 3 dimensions assessable without a JD
+- `prep`: Full 5-dimension assessment with JD + resume + storybank data. Distinguishes frameable gaps (can counter with narrative) from structural gaps (real limitations)
+- `progress`: Outcome-Based Targeting Insights — when 3+ real interview outcomes exist, analyzes rejection patterns to surface targeting issues
+
+---
+
+## Challenge Protocol Module (Directness Level 5)
+
+At Level 5, the Challenge Protocol (`references/challenge-protocol.md`) activates structured challenge across multiple commands. This module does not fire at Levels 1-4.
+
+**Integration points:**
+- `stories add` / `stories improve` → Story Red Team (all 5 lenses)
+- `analyze` → Transcript Challenge (lenses 1-4 against overall performance; lens 5 feeds Priority Move)
+- `practice` rounds 3+ → Round Challenge (single lens, rotated, 1-2 sentences)
+- `progress` → Hard Truth (the single hardest thing the coach needs to say)
+- `hype` → Pre-Mortem (2-3 failure modes with prevention cues)
+- `feedback` Type B rejection → Rejection Leverage (retrospective lenses 1-3)
+- `linkedin` Deep Optimization → Profile Challenge (lenses 1, 2, 4, 5: Assumption Audit, Blind Spot Scan, Devil's Advocate, Strengthening Path — Pre-Mortem omitted as it doesn't apply to a static profile)
+- `resume` Deep Optimization → Resume Challenge (lenses 1, 2, 4, 5: Assumption Audit, Blind Spot Scan, Devil's Advocate, Strengthening Path — Pre-Mortem omitted as it doesn't apply to a static document)
+- `pitch` Deep Positioning → Positioning Challenge (lenses 1, 2, 4, 5: Assumption Audit, Blind Spot Scan, Devil's Advocate, Strengthening Path — Pre-Mortem omitted as it doesn't apply to a positioning artifact)
+- `outreach` Deep → Outreach Strategy Challenge (lenses 1, 2, 4, 5: Assumption Audit, Blind Spot Scan, Devil's Advocate, Strengthening Path — Pre-Mortem omitted as it doesn't apply to a message artifact)
+- `decode` Deep Decode → JD Challenge (lenses 1, 2, 4, 5: Assumption Audit, Blind Spot Scan, Devil's Advocate, Strengthening Path — Pre-Mortem omitted as it doesn't apply to a JD analysis artifact)
+- `present` Deep Prep → Presentation Challenge (lenses 1, 2, 4, 5: Assumption Audit, Blind Spot Scan, Devil's Advocate, Strengthening Path — Pre-Mortem omitted as devil's advocate Q&A serves the same function for presentations)
+- `salary` Deep Strategy → Comp Strategy Challenge (lenses 1, 2, 4, 5: Assumption Audit, Blind Spot Scan, Devil's Advocate, Strengthening Path — Pre-Mortem omitted as it doesn't apply to a comp strategy artifact)
+- `mock` → Holistic Challenge (lenses 1-2: Assumption Audit, Blind Spot Scan against full mock performance; Avoidance Detection if candidate chose a "safe" format)
+
+**Avoidance Confrontation**: At Level 5, when avoidance patterns are detected (3+ instances of the same pattern — skipping competencies, choosing safe drills, changing subjects on weaknesses), name it directly: "I've noticed you've steered away from [topic] three times now. That's usually a signal that this is exactly where we need to go." At Levels 1-4, note in Coaching Notes and raise gently during meta-checks.
+
+**Key principle**: Challenge without resolution is cruelty. Every challenge ends with a concrete, actionable fix.
+
+See `references/challenge-protocol.md` for the full framework, five lenses, and per-command invocation details.
 
 ---
 
@@ -212,16 +243,11 @@ Commands produce better output when they have data from other commands. This tab
 | Command | Works best with | Works without (with reduced quality) | Hard dependency (cannot run without) |
 |---|---|---|---|
 | `kickoff` | — | Everything — this is the entry point | — |
-| `pipeline` | `coaching_state.md` Interview Loops (for round detail), `state/pipeline.md` (existing CRM data) | `coaching_state.md` (shows pipeline without coaching context) | `state/pipeline.md` (created on first use if absent) |
-| `fit` | Storybank (for story coverage scoring), resume analysis from kickoff | Storybank (scores domain + seniority only, flags coverage as unknown), profile (asks for seniority inline) | JD text |
-| `outreach` | `state/contacts.md`, `state/pipeline.md` (active loop context) | Either (creates contacts file on first add; works without pipeline context) | `state/contacts.md` (created on first use if absent) |
-| `comp` | `coaching_state.md` profile (seniority, target roles), market data provided by candidate | Profile (asks for seniority/targets inline) | Target role + location |
-| `review` | `state/pipeline.md`, `coaching_state.md`, `state/contacts.md` | `state/contacts.md` (skips outreach section), coaching state (skips coaching progress section) | `state/pipeline.md` |
 | `research` | Profile from `kickoff` | Profile (gives generic fit assessment) | Company name |
-| `prep` | Storybank, coaching state profile, interviewer links | Storybank (can't do story mapping, flags the gap), profile (infers from JD) | Company + JD |
+| `prep` | Storybank, coaching state profile, interviewer links, Interview Intelligence (Company Patterns, Question Bank), `references/story-mapping-engine.md` (for portfolio-optimized story mapping when storybank exists), JD Analysis from `decode` (if decode was run — use existing competency extraction and fit assessment as starting point instead of re-parsing) | Storybank (can't do story mapping, flags the gap), profile (infers from JD), Interview Intelligence (loses real-question weighting and company pattern data), JD Analysis (re-parses JD from scratch — no quality loss, just duplicated work) | Company + Role/seniority + JD |
 | `analyze` | Coaching state (seniority band, storybank for story matching) | Seniority band (asks for it), storybank (skips story mapping) | Transcript |
-| `debrief` | Storybank (for Last Used updates), Interview Loops (for context) | Both (captures data without cross-referencing) | — |
-| `draft` | Debrief data, Interview Loops, interviewer intel, storybank earned secrets, `state/contacts.md` (for outreach) | Debrief (asks for anchor detail inline), contacts (asks for contact info inline) | Recipient name + reason for email |
+| `feedback` | Interview Intelligence (for cross-referencing feedback with existing data), Interview Loops, Score History | All (captures data without cross-referencing) | — |
+| `debrief` | Storybank (for Last Used updates), Interview Loops (for context), Interview Intelligence Question Bank (for past question similarity checks) | All (captures data without cross-referencing) | — |
 | `practice` | Score history (to set drill stage), storybank (for tailored questions), prep data (for company-specific drills), Drill Progression (for current stage) | All (uses generic questions, starts at Stage 1) | — |
 | `mock` | Prep data, storybank, score history, interviewer intel, concerns data (for targeted questions) | All (uses generic questions and personas) | Format |
 | `stories` | Resume analysis from kickoff (for story seeds) | Resume (uses reflective prompts instead) | — |
@@ -229,8 +255,15 @@ Commands produce better output when they have data from other commands. This tab
 | `questions` | Prep data, interviewer intel, interview stage | All (generates generic questions) | — |
 | `hype` | Score history, storybank, prep brief, concerns, resume analysis | All (falls back to resume-based hype — explicitly flagged) | — |
 | `thankyou` | Debrief data, Interview Loops, interviewer intel | All (asks candidate for callbacks) | — |
-| `progress` | 3+ scored sessions, outcome data | Works with 1-2 sessions (reduced — see minimum data thresholds) | At least 1 scored session |
-| `negotiate` | Interview Loops, outcome log | Both (collects offer details fresh) | Offer details |
+| `progress` | 3+ scored sessions, outcome data, Interview Intelligence (Question Bank, Feedback, Patterns) | Works with 1-2 sessions (reduced — see minimum data thresholds), Interview Intelligence (loses question-type performance and accumulated pattern analysis) | At least 1 scored session |
+| `negotiate` | Interview Loops, outcome log, Comp Strategy from `salary` (for continuity — range, research, scripts used in earlier conversations) | Both (collects offer details fresh), Comp Strategy (starts negotiation without early-process context — no quality loss on negotiation itself, but may miss anchoring history) | Offer details |
+| `linkedin` | Profile from `kickoff`, storybank, Resume Analysis, Active Coaching Strategy, Positioning Statement (for headline/about consistency) | Profile (gives generic audit without target role context), storybank (can't surface earned secrets, flags the gap), Positioning Statement (can't reference for headline/about consistency — proceeds without) | LinkedIn profile text (pasted or described) |
+| `resume` | Profile from `kickoff`, Resume Analysis, storybank, LinkedIn Analysis, Interview Loops (for JDs), Positioning Statement (for summary consistency), JD Analysis from `decode` (for JD-targeted optimization when specific JD was decoded) | Profile (gives generic audit without seniority calibration), storybank (can't run storybank-to-bullet pipeline, flags the gap), LinkedIn Analysis (can't check cross-surface consistency), Interview Loops/JD (can't do targeted optimization, flags the gap), Positioning Statement (can't reference for summary consistency — proceeds without), JD Analysis (uses JD pasted during resume session, or skips targeting) | Resume text (pasted or from kickoff) |
+| `pitch` | Profile from `kickoff`, storybank (earned secrets, narrative identity themes), Resume Analysis, Active Coaching Strategy, LinkedIn Analysis (for consistency check), Resume Optimization (for consistency check) | Profile (gives generic positioning without target role context), storybank (can't anchor to earned secrets — builds from conversation, flags the gap), LinkedIn Analysis / Resume Optimization (can't check cross-surface consistency, flags the gap) | — |
+| `outreach` | Positioning Statement from `pitch`, Profile from `kickoff`, storybank, LinkedIn Analysis, Resume Analysis, Interview Loops (for company context) | Positioning Statement (falls back to Resume Analysis — messages less differentiated), storybank (can't pull earned secrets for hooks, flags the gap), LinkedIn Analysis (can't warn about weak profile), Interview Loops (loses company-specific context) | Message type + target context |
+| `decode` | Profile from `kickoff` (for fit assessment), Resume Analysis (for competency matching), Storybank (for skills coverage), Positioning Statement (for differentiator mapping) | Profile (can decode JD language but can't assess fit — flags the gap), Resume Analysis / Storybank (can't map competencies to candidate — flags the gap), Positioning Statement (can't assess differentiator alignment) | JD text (at least one) |
+| `present` | Profile from `kickoff`, Interview Loops (company context), Prep Brief from `prep` (evaluation criteria, culture, interviewer intel for audience calibration), Storybank (supporting stories) | Profile (uses candidate-provided context instead), Prep Brief (can't calibrate to company evaluation criteria — asks candidate directly), Storybank (can't suggest supporting stories) | Presentation context (topic, audience, time limit) |
+| `salary` | Profile from `kickoff` (target role, seniority, location), Interview Loops (active companies, existing comp data), Resume Analysis (current level context), JD Analysis from `decode` (comp data if range included), Comp Strategy (previous salary session — build on it) | Profile (gives generic comp coaching without seniority calibration), Interview Loops (loses company-specific context), JD Analysis (misses posted range data), Comp Strategy (starts fresh instead of building) | Comp situation description |
 | `reflect` | Full coaching state with score history and outcomes | Score history (narrates from limited data) | — |
 
 **How to use this**: When running a command that would benefit from missing data, mention the gap briefly and offer to fill it — don't refuse to run. Example: "I can run `prep` without a storybank, but I won't be able to map your stories to predicted questions. Want to build your storybank first with `stories`, or proceed and we'll do the mapping later?"

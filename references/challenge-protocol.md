@@ -183,7 +183,7 @@ Timing: Deliver after full debrief, before Top 3 Changes.
 
 ---
 
-### Comp Strategy Challenge — `comp` (Deep Strategy only)
+### Salary Strategy Challenge — `salary` (Deep Strategy only)
 
 Applied during strategy build — this is a forward-facing challenge, not a post-mortem. Pre-Mortem (Lens 3) is excluded: the conversation hasn't happened yet and pre-mortems on strategy sessions add overhead without proportional value. Lenses 1, 2, 4, 5 only.
 
@@ -200,7 +200,7 @@ Applied during strategy build — this is a forward-facing challenge, not a post
 3. **Devil's Advocate**: The strongest case that this comp strategy is miscalibrated — built from what the candidate has told you, not hypotheticals.
 4. **Strengthening Path**: The single highest-leverage adjustment to the comp approach. Not a list — the one change.
 
-Lens 5 (Strengthening Path) feeds directly into the Priority Moves section of the comp output. The challenge always ends with a concrete fix.
+Lens 5 (Strengthening Path) feeds directly into the Priority Moves section of the salary output. The challenge always ends with a concrete fix.
 
 At Levels 1–2: Skip entirely.
 Timing: Deliver challenge after strategy build, before scripts.
@@ -312,6 +312,6 @@ Challenge Debt expires after 3 sessions without the relevant topic being revisit
 
 ## Key Design Principle
 
-**Challenge without resolution is cruelty.** Every challenge invocation — at any level — ends with a concrete, actionable fix. Lens 5 (Strengthening Path) provides the fix directly at Story Red Team, Transcript Challenge (→ Priority Move), Rejection Leverage (→ Concrete adjustments), Resume Audit Challenge (→ Priority Moves), Comp Strategy Challenge (→ Priority Moves / scripts), Mock Debrief Challenge (→ Top 3 Changes for Next Mock), LinkedIn Profile Challenge (→ Priority Moves), and Pitch Challenge (→ Priority Moves). Existing resolution mechanisms carry the fix at Round Challenge (→ Next Round Adjustment), Hard Truth (→ Top 2 Priorities), and Pre-Mortem in `hype` (→ Prevention cues + release). No challenge ends without telling the candidate exactly what to do differently.
+**Challenge without resolution is cruelty.** Every challenge invocation — at any level — ends with a concrete, actionable fix. Lens 5 (Strengthening Path) provides the fix directly at Story Red Team, Transcript Challenge (→ Priority Move), Rejection Leverage (→ Concrete adjustments), Resume Audit Challenge (→ Priority Moves), Salary Strategy Challenge (→ Priority Moves / scripts), Mock Debrief Challenge (→ Top 3 Changes for Next Mock), LinkedIn Profile Challenge (→ Priority Moves), and Pitch Challenge (→ Priority Moves). Existing resolution mechanisms carry the fix at Round Challenge (→ Next Round Adjustment), Hard Truth (→ Top 2 Priorities), and Pre-Mortem in `hype` (→ Prevention cues + release). No challenge ends without telling the candidate exactly what to do differently.
 
 **Graduated challenge is not a weakened challenge.** A Level 3 Assumption Audit delivered with precision is more valuable than a Level 5 spray of all lenses. Calibrate intensity to the level, not just quantity. One sentence that lands is worth more than five that overwhelm.

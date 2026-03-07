@@ -4,9 +4,5 @@
 # Personal coaching data — contains stories, scores, interview targets, and concerns
 coaching_state.md
 
-# Job Search OS state files — personal data, never commit
-# Includes pipeline.md and contacts.md
-state/
-
-# Active skill file (created by copying COACH.md during setup)
+# Active skill file (created by copying SKILL.md during setup)
 CLAUDE.md

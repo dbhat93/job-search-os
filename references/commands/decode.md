@@ -19,7 +19,7 @@
 5. **Between-the-lines signals** — Euphemisms decoded. "Fast-paced environment" = likely understaffed or rapid change. "Comfortable with ambiguity" = undefined role or early-stage. "Stakeholder management" = political environment. "Wear many hats" = no clear role boundaries. These are interpretations, not facts — confidence-label accordingly.
 6. **What's missing** — Absence is information. A PM JD that doesn't mention data/analytics signals team maturity (or lack of PM influence on data). An engineering JD that doesn't mention testing may indicate culture. A senior role with no mention of mentoring signals an IC-heavy org.
 
-**What JDs Don't Tell You** (honest limitations — surfaced in every decode output, not just reference knowledge):
+**What JDs Don't Tell You** (honest limitations):
 - Actual day-to-day work (JDs describe the ideal, not the reality)
 - Team dynamics, manager quality, internal politics
 - Whether the role is backfill (someone left) vs. new headcount (growth)
@@ -28,15 +28,12 @@
 - Internal candidate preference
 - Hiring timeline urgency
 
-These limitations appear in every Standard and Deep decode output as a "JD Honest Limitations" section. Quick Scans include a single-line reminder. The candidate should never walk away treating a decode as a complete picture.
-
 **Batch Triage Research**:
-- Average job search involves 100–200 applications. Hit rate is 2–8%.
-- Time per application: 30–90 minutes (resume tailoring, cover letter, research).
-- Improving triage accuracy by 20% saves 20–40 hours of application effort.
+- Average job search involves 100-200 applications. Hit rate is 2-8%.
+- Time per application: 30-90 minutes (resume tailoring, cover letter, research).
+- Improving triage accuracy by 20% saves 20-40 hours of application effort.
 - Signal: candidates who apply to Strong Fit roles have materially better outcomes than those who spray-and-apply.
 - The batch comparison reveals the candidate's "sweet spot" — competencies that recur across JDs they're drawn to — which is itself career intelligence.
-- **Pathway matters as much as fit.** A Long-Shot Stretch role with a strong referral often outperforms a Strong Fit cold application. Triage that ignores access is incomplete.
 
 ### Confidence Labeling System
 
@@ -60,22 +57,21 @@ Every interpretation gets a confidence label. This is non-negotiable — it's wh
 ### Required Inputs
 
 - At least one JD (pasted text or key details)
-- For batch triage: 2–5 JDs
+- For batch triage: 2-5 JDs
 
 ### Optional Inputs
 
 - Depth level: Quick Scan / Standard / Deep Decode (default: Standard)
 - Specific questions about the JD
 - Target priority (is this a top target or early-stage exploration?)
-- **Pathway** (for each JD in a batch): Do you have a referral, warm intro, or connection at this company? This affects triage ranking.
 
 ### Depth Levels
 
 | Level | When to Use | What It Covers |
 |---|---|---|
-| **Quick Scan** | Fast filter, building a target list, evaluating whether to apply | Top 5 competencies extracted + fit verdict (if Profile exists) + 3 key signals + confidence labels + recruiter verification questions for LOW/UNKNOWN items + one-line JD limitations reminder |
-| **Standard** | Default. Full JD analysis. | All 6 lenses + full competency extraction + fit assessment + concern mapping + question-prediction seeds + recruiter verification questions + JD Honest Limitations section + teaching layer |
-| **Deep Decode** | High-priority target, unusual JD, career transition, seniority mismatch | All of Standard + seniority calibration + team maturity analysis + JD structural quality assessment + Challenge Protocol (Level 5) |
+| **Quick Scan** | Fast filter, building a target list, evaluating whether to apply | Top 5 competencies extracted + fit verdict (if Profile exists) + 3 key signals + confidence labels + recruiter verification questions for LOW/UNKNOWN items |
+| **Standard** | Default. Full JD analysis. | All 6 lenses + full competency extraction + fit assessment + concern mapping + question-prediction seeds + recruiter verification questions + teaching layer |
+| **Deep Decode** | High-priority target, unusual JD, career transition, seniority mismatch | All of Standard + seniority calibration (what level this JD actually targets vs. what it says) + team maturity analysis + JD structural quality assessment + Challenge Protocol (Level 5) |
 
 ### Logic / Sequence (7 steps)
 
@@ -84,8 +80,6 @@ Accept JD in any format — full posting, bullet-point paste, screenshot descrip
 
 **Step 2: Context Assembly**
 Pull from coaching_state.md: Profile (target role, seniority band), Resume Analysis (skills, experience, positioning strengths), Storybank (skills coverage), Positioning Statement (key differentiator), active Interview Loops (is this company already in progress?), JD Analyses (previous decodes for pattern comparison).
-
-For batch triage, also note pathway information provided: which JDs have referrals, warm intros, connections, or cold access.
 
 **Step 3: 6-Lens Decode**
 Apply all 6 decoding lenses. For each finding:
@@ -105,7 +99,7 @@ For Lens 5 (between-the-lines signals), use the "decode + verify" pattern:
 For Lens 6 (what's missing), explicitly state what the absence might mean AND what it might not mean. Absence is ambiguous — don't present a single interpretation as truth.
 
 **Step 4: Competency Extraction**
-Extract top 5–7 competencies in priority order. For each:
+Extract top 5-7 competencies in priority order. For each:
 - The competency (specific, not vague)
 - Source section(s) (where in the JD it appears)
 - Confidence level
@@ -123,47 +117,32 @@ Produce fit verdict using the Role-Fit Assessment from cross-cutting.md (5 dimen
 
 Verdict: Strong Fit / Investable Stretch / Long-Shot Stretch / Weak Fit
 
-For Long-Shot Stretch and Weak Fit: be honest. Don't waste the candidate's time encouraging applications to roles they're not competitive for — unless they have a specific strategy (referral, internal transfer, etc.).
+For Long-Shot Stretch and Weak Fit: be honest. "This JD targets [X], and your profile shows [Y]. You could apply, but you should know the gap is structural, not just a framing issue." Don't waste the candidate's time encouraging applications to roles they're not competitive for — unless they have a specific strategy (referral, internal transfer, etc.).
 
 **Step 6: Recruiter Verification Questions**
 Compile all MEDIUM, LOW, and UNKNOWN confidence interpretations into a prioritized list of questions to ask the recruiter. For each:
 - What you want to verify
 - Why it matters for your decision/preparation
-- How to ask it naturally
+- How to ask it naturally (not "your JD said X, what does that mean?" but "Can you tell me more about [topic]?")
 
 Order by impact on the apply/don't-apply decision.
 
 **Step 7: Batch Triage (if multiple JDs provided)**
-For each JD: run Steps 1–6 individually (can be abbreviated for Quick Scan depth).
+For each JD: run Steps 1-6 individually (can be abbreviated for Quick Scan depth).
 
-Then produce comparative analysis with pathway-weighted ranking:
-
-**Pathway Classification** (assess for each JD before ranking):
-- **Referral**: Someone at the company has agreed to refer you. Highest-access tier.
-- **Warm intro**: A mutual connection can introduce you to someone at the company. Second-highest access.
-- **LinkedIn connection**: You have a 1st-degree connection at the company who may respond to outreach. Moderate access.
-- **Cold**: No connection. Standard application path only.
-- **Internal**: You're already at the company (internal transfer or promotion). Different rules apply.
-
-**Pathway-weighted ranking logic**:
-- Base ranking: fit level (Strong Fit > Investable Stretch > Long-Shot Stretch > Weak Fit)
-- Pathway boost: A role with a Referral gets a +1 tier boost in ranking. A role with a Warm intro gets a +0.5 tier boost. Cold applications get no boost.
-- Example: A Long-Shot Stretch with a Referral ranks above an Investable Stretch with a Cold application if the access is genuine — because the referral changes the odds more than the raw fit gap.
-- Flag the logic transparently: "This role is ranked #2 despite being Investable Stretch because you have a referral, which materially increases your odds relative to the Strong Fit cold application at #1."
-
-Then produce:
-- **Rank by pathway-weighted fit** (highest first, with evidence for each)
+Then produce comparative analysis:
+- **Rank by fit** (highest fit first, with evidence for each)
 - **Overlapping competencies** across JDs — this reveals the candidate's market-validated sweet spot
-- **Divergent requirements** — where JDs pull in different directions
-- **Allocation recommendation**: which to pursue first, which to skip, which to research more
-- **Target profile synthesis** — what these JDs collectively reveal about what the market wants
+- **Divergent requirements** — where JDs pull in different directions, signaling scope decisions the candidate needs to make
+- **Allocation recommendation**: which to pursue first, which to skip, which to research more. Honest about skips — "This one is a Long-Shot Stretch because [specific reason]. Unless you have an inside connection, your time is better spent on the others."
+- **Target profile synthesis** — what these JDs collectively reveal about what the market wants from someone like the candidate
 
 ### Teaching Layer
 
-Quick Scan includes a "Decode Tip" — one teaching insight per scan, rotating through the 6 lenses. Standard and Deep include the full "Learn to Read This Yourself" section:
-- **Pattern spotted**: A specific decoding insight from THIS JD
-- **Trap to watch for**: A common misread THIS JD exemplifies
-- **Self-decode prompt**: A question the candidate should ask themselves when reading the NEXT JD
+This is what differentiates decode from prep's JD parsing. Quick Scan includes a lighter version (a single "Decode Tip" — one teaching insight per scan, rotating through the 6 lenses). Standard and Deep include the full "Learn to Read This Yourself" section:
+- **Pattern spotted**: A specific decoding insight from THIS JD that the candidate can apply to future JDs (e.g., "Notice how 'drive strategy' appeared in responsibilities but 'execute campaigns' appeared in requirements — the responsibilities describe the aspirational version of the role, the requirements describe the actual bar")
+- **Trap to watch for**: A common misread THIS JD exemplifies (e.g., "This JD lists 12 'required' qualifications. No candidate has all 12. In practice, 6-8 match is strong. Don't self-screen out based on a wish list.")
+- **Self-decode prompt**: A question the candidate should ask themselves when reading the NEXT JD (rotate through a set: "What verb does the first responsibility use?", "Count how many times 'collaboration' or 'cross-functional' appears", "What's conspicuously absent?")
 
 ### Output Schemas
 
@@ -190,11 +169,8 @@ Quick Scan includes a "Decode Tip" — one teaching insight per scan, rotating t
 1. [Question — for the highest-impact LOW/UNKNOWN item]
 2. [Question — second priority]
 
-## JD Reminder
-This decode reflects what the JD says — not what the job actually is. Key unknowns: day-to-day reality, team dynamics, whether this is backfill or new headcount, and real comp range.
-
 ## Decode Tip
-[One teaching insight from this JD]
+[One teaching insight from this JD — e.g., "This JD lists 14 'requirements' — that's a wish list, not a checklist. 8-10 matches is strong." Rotate through the 6 lenses across scans so the candidate builds decoding intuition over time.]
 
 **Recommended next**: `decode` (Standard) for full analysis. **Alternatives**: `prep [company]`, `research [company]`
 ```
@@ -255,14 +231,6 @@ Based on top competencies and identified gaps:
 2. [Question]
 3. [Question]
 
-## JD Honest Limitations
-What this decode can't tell you — and what to do about it:
-- **Day-to-day reality**: JDs describe the ideal, not the actual work. Ask the hiring manager: "Can you walk me through what a typical week looks like for this role right now?"
-- **Team and manager quality**: Not in any JD. Ask to meet the team and ask: "What's the team's working style?"
-- **Backfill vs. new headcount**: Signals different urgency and role clarity. Ask: "Is this a new role or one that was previously filled?"
-- **Real comp range**: If not posted, ask: "Can you share the budgeted range for this role?" (especially in transparency-law jurisdictions). See the `comp` command for full pre-offer comp coaching and scripts.
-- **Internal candidate preference**: Cannot be determined from the JD. Ask: "Are you also considering internal candidates for this role?"
-
 ## Learn to Read This Yourself
 - **Pattern spotted**: [teaching point from this specific JD]
 - **Trap to watch for**: [common misread this JD exemplifies]
@@ -279,22 +247,22 @@ What this decode can't tell you — and what to do about it:
 
 ## Seniority Calibration
 - JD states: [what level language the JD uses]
-- JD signals: [what level the scope, verbs, and requirements actually target — with evidence and confidence]
+- JD signals: [what level the scope, verbs, and requirements actually target — with evidence]
 - Assessment: [aligned / JD over-titles / JD under-titles] — [Confidence]
 - Implication for candidate: [what this means for their application/positioning]
 
 ## Team Maturity Signals
-[What the JD reveals about the team's stage — with confidence labels and multiple interpretations where ambiguous.]
+[What the JD reveals about the team's stage: process maturity, tech stack age, org structure, growth rate — all with confidence labels. Multiple interpretations where ambiguous.]
 
 ## JD Structural Analysis
 - Quality: [well-written / boilerplate / kitchen-sink / internally contradictory]
-- What quality reveals: [what a well-written vs. poorly written JD signals about the hiring process]
+- What quality reveals: [a well-written JD suggests a thoughtful hiring process; a kitchen-sink JD may indicate unclear role definition or committee-written requirements]
 - Red flags: [if any — internal contradictions, impossible combinations, unrealistic requirements]
 
 ## Challenge (Level 5 only)
-- **Assumptions this decode rests on**: [2–3 assumptions with what would change if they're wrong]
+- **Assumptions this decode rests on**: [2-3 assumptions with what would change if they're wrong]
 - **Blind spots**: [what we fundamentally can't see from a JD alone]
-- **Devil's advocate**: [strongest case that this decode is wrong]
+- **Devil's advocate**: [strongest case that this decode is wrong — specific interpretations that could be off]
 - **Highest-leverage verification**: [the single question that would most change the analysis if answered]
 
 ## Priority Moves (ordered)
@@ -309,31 +277,29 @@ What this decode can't tell you — and what to do about it:
 ```markdown
 ## Batch Triage: [N] Roles
 
-## Pathway-Weighted Ranking
-| Rank | Company | Role | Fit | Pathway | Pathway Boost | Recommendation |
+## Ranking
+| Rank | Company | Role | Fit | Strongest Match | Biggest Gap | Recommendation |
 |---|---|---|---|---|---|---|
-| 1 | ... | ... | Strong | Referral | +1 tier | Pursue — prioritize immediately |
-| 2 | ... | ... | Investable Stretch | Warm intro | +0.5 tier | Pursue — address gap [X] before applying |
-| 3 | ... | ... | Strong | Cold | No boost | Pursue — strong fit, standard odds |
-| 4 | ... | ... | Long-Shot Stretch | Referral | +1 tier | Pursue — referral offsets stretch gap |
-| 5 | ... | ... | Long-Shot Stretch | Cold | No boost | Skip unless you develop a connection first |
+| 1 | ... | ... | Strong | [competency] | [gap or none] | Pursue |
+| 2 | ... | ... | Investable Stretch | [competency] | [gap] | Pursue with positioning |
+| 3 | ... | ... | Long-Shot Stretch | [competency] | [gap] | Skip unless referral |
 
 ## Your Sweet Spot
 [Competencies that appear across multiple JDs — this is what the market values in you. Ordered by frequency across JDs.]
 
 ## Divergence
-[Requirements that pull in different directions — reveals a scope decision the candidate needs to make.]
+[Requirements that pull in different directions — reveals a scope decision the candidate needs to make. E.g., "JDs 1 and 3 want hands-on IC work; JD 2 wants people management. These are different career paths."]
 
 ## Allocation Recommendation
-- **Pursue first**: [which roles, why — highest pathway-weighted rank]
+- **Pursue first**: [which roles, why — highest fit + highest priority]
 - **Pursue with targeted prep**: [which roles, what specific gap to address]
-- **Build pathway before applying**: [roles where cold application is low-odds but access could change the picture — suggest `outreach` to develop a connection]
-- **Skip or deprioritize**: [which roles, why — honest about structural gaps with no pathway offset]
+- **Research more before deciding**: [which roles, what's missing]
+- **Skip or deprioritize**: [which roles, why — honest about structural gaps]
 
 ## Your Market Profile
-[What these JDs collectively reveal about what the market wants from someone like the candidate.]
+[What these JDs collectively reveal about what the market wants from someone like the candidate. This is career intelligence, not just job-search tactics.]
 
-**Recommended next**: `research [top-ranked company]` or `prep [top-ranked company]`. **Alternatives**: `decode` with more JDs, `outreach [company]` (to build pathway for cold-access roles worth pursuing)
+**Recommended next**: `research [top-ranked company]` or `prep [top-ranked company]`. **Alternatives**: `decode` with more JDs, `resume` (JD-targeted optimization for top target)
 ```
 
 ### Coaching State Integration
@@ -345,10 +311,9 @@ Save to coaching_state.md (one entry per JD — multiple can exist):
 - Date: [date]
 - Depth: [Quick Scan / Standard / Deep Decode]
 - Fit verdict: [Strong Fit / Investable Stretch / Long-Shot Stretch / Weak Fit]
-- Pathway: [Referral / Warm intro / LinkedIn connection / Cold / Internal]
 - Top competencies: [top 3 in priority order]
 - Frameable gaps: [list]
 - Structural gaps: [list]
 - Unverified assumptions: [count of LOW/UNKNOWN confidence items]
-- Batch triage rank: [if part of batch — rank/total, pathway-weighted]
+- Batch triage rank: [if part of batch — rank/total]
 ```

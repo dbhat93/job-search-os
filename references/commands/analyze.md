@@ -106,7 +106,7 @@ When rewriting:
 - Format source: [coaching state / candidate / transcript inference / default]
 - Scoring weight adjustments: [which dimensions are weighted highest for this format]
 - Format-specific dimensions scored: [list any additional dimensions, or "N/A — standard behavioral"]
-- Coaching scope: [for non-behavioral formats, note coaching boundaries per SKILL.md Rule 11]
+- Coaching scope: [for non-behavioral formats, note coaching boundaries per COACH.md Rule 11]
 
 ## Scorecard
 - Substance:

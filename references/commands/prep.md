@@ -264,19 +264,9 @@ When the candidate provides interviewer LinkedIn URLs or profile links, guide th
 
 ## Interview Format
 
-### Format Assessment
-- **Primary format ([X]%):** [format] — prep and practice for this scenario
-- **Secondary scenario ([Y]%):** [format] — here's how your prep shifts if this happens instead
-- **Tail risk ([Z]%):** [format] — what to have ready just in case
-
-**What changes if the secondary format materializes:**
-[1-2 specific prep adjustments — e.g., "if this is a live case instead of behavioral, bring a framework for structuring ambiguous problems; your stories still apply as worked examples"]
-
-**What carries across all scenarios:**
-[Behavioral content, story mapping, and earned secrets transfer regardless of format. Name the transferable assets explicitly.]
-
-- Format-specific guidance: [for the primary format]
-- Scoring weight adjustments: [for the primary format]
+- Identified format:
+- Format-specific guidance:
+- Scoring weight adjustments for this format:
 - Coaching scope (if system design/case study or technical+behavioral mix): What the coach can help you practice for this format vs. where you'll need complementary preparation.
 
 ## Company Culture Read
@@ -299,12 +289,6 @@ When the candidate provides interviewer LinkedIn URLs or profile links, guide th
 - Watch for (likely style and signals):
 - Confidence: High / Medium / Low
 
-## Role-Fit Assessment
-- Verdict: Strong Fit / Investable Stretch / Long-Shot Stretch / Weak Fit
-- Evidence:
-- Frameable gaps (→ concern counters):
-- Structural gaps (→ honest framing):
-
 ## What They Optimize For
 1.
 2.
@@ -315,14 +299,20 @@ When the candidate provides interviewer LinkedIn URLs or profile links, guide th
 - Supporting proof:
 - Earned secret to deploy:
 
-## Storybank Health
-- Story count: __ (target: 8–12)
-- Strength at 4+: __% (target: ≥60%)
-- Earned secret coverage: __% (target: ≥50%)
-- Critical competency gaps for this role: [list]
-- Overuse risk: [stories with Use Count 3+]
-- Freshness risk: [stories used in prior rounds at this company]
-- Recommendation: [proceed / run `stories` first]
+## Role-Fit Assessment
+- Verdict: [Strong Fit / Investable Stretch / Long-Shot Stretch / Weak Fit]
+- vs. research assessment (if exists): [confirmed / upgraded / downgraded — why]
+
+| Dimension | Rating | Evidence |
+|---|---|---|
+| Requirement Coverage | Strong / Moderate / Weak | [brief] |
+| Seniority Alignment | Strong / Moderate / Weak | [brief] |
+| Domain Relevance | Strong / Moderate / Weak | [brief] |
+| Competency Overlap | Strong / Moderate / Weak | [brief] |
+| Trajectory Coherence | Strong / Moderate / Weak | [brief] |
+
+- Frameable gaps (build counter-narratives): [list]
+- Structural gaps (name honestly, prepare for probing): [list]
 
 ## Likely Concerns + Counters
 1. Concern:
@@ -335,7 +325,17 @@ When the candidate provides interviewer LinkedIn URLs or profile links, guide th
    Counter:
    Evidence:
 
+## Storybank Health (if storybank exists)
+- Total stories: __ (target: 8-12)
+- Strong stories (4-5): __ (target: at least 60%)
+- Earned secret coverage: __ of __ stories have extracted earned secrets
+- Competency coverage for this role: [critical gaps flagged]
+- Overuse warnings: [stories with Use Count 3+]
+- Freshness warnings: [stories used in prior rounds at this company]
+- Assessment: [Healthy / Needs work / Critical gaps — with specific recommendations]
+
 ## Predicted Questions (7-10)
+[If Interview Intelligence has real questions from past rounds at this company, list those first, flagged as "Asked in Round N". Use cross-company competency frequency from the Question Bank to weight remaining predictions — competencies that appear frequently across the candidate's interviews are more likely to appear again.]
 1. Question - Competency:
 ...
 

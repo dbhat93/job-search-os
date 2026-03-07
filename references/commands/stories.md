@@ -149,10 +149,15 @@ Requires 5+ stories in the storybank. If fewer exist, redirect: "Narrative ident
 - Strength: [1-5]
 - Deploy for: [one-line use case]
 
-## Story Red Team (Levels 3–5 — see challenge-protocol.md)
-[Level 3: Assumption Audit — one sentence]
-[Level 4: + Blind Spot Scan]
-[Level 5: All 5 lenses — Assumption / Blind Spot / Pre-Mortem / Devil's Advocate / Strengthening Path]
+## Story Red Team (Levels 3–5 — see references/challenge-protocol.md)
+[Level 3: Assumption — one sentence naming the strongest assumption this story rests on]
+[Level 4: + Blind spot — what you can't see about your own story from inside it]
+[Level 5:]
+- Assumption: [what must be true for this story to land]
+- Blind spot: [what the candidate takes for granted that an interviewer won't have]
+- Failure mode: [how this story fails in a real interview]
+- Attack surface: [where a skeptical interviewer probes]
+- Fix: [one change that makes it airtight]
 
 **Recommended next**: `stories improve S###` — strengthen the story based on the red team findings. **Alternatives**: `stories find gaps`, `practice retrieval`, `concerns`
 ```
@@ -164,10 +169,15 @@ Requires 5+ stories in the storybank. If fewer exist, redirect: "Narrative ident
 - What changed: [brief description]
 - Version history updated
 
-## Story Red Team (Levels 3–5 — see challenge-protocol.md)
-[Level 3: Assumption Audit — one sentence]
-[Level 4: + Blind Spot Scan]
-[Level 5: All 5 lenses — Assumption / Blind Spot / Pre-Mortem / Devil's Advocate / Strengthening Path]
+## Story Red Team (Levels 3–5 — see references/challenge-protocol.md)
+[Level 3: Assumption — one sentence naming the strongest assumption this story rests on]
+[Level 4: + Blind spot — what you can't see about your own story from inside it]
+[Level 5:]
+- Assumption: [what must be true for this story to land]
+- Blind spot: [what the candidate takes for granted that an interviewer won't have]
+- Failure mode: [how this story fails in a real interview]
+- Attack surface: [where a skeptical interviewer probes]
+- Fix: [one change that makes it airtight]
 
 **Recommended next**: `practice` — test the improved story under pressure. **Alternatives**: `stories view`, `stories improve S###`, `analyze`
 ```
@@ -177,7 +187,7 @@ Requires 5+ stories in the storybank. If fewer exist, redirect: "Narrative ident
 ## Storybank Gap Analysis
 ### Critical Gaps (must fill for target roles)
 1. [competency] — No story exists (not even as secondary skill). Recommended: [surface new story / reframe existing S###]
-   Gap-handling pattern if asked before a story exists: [Pattern from Gap-Handling Module — strength 2 → Adjacent Bridge, strength 1 → Reframe/Growth, no story → Hypothetical with Self-Awareness]
+   Gap-handling pattern if asked before a story exists: [Pattern 1-4 from Gap-Handling Module — strength 2 → Adjacent Bridge, strength 1 → Reframe/Growth, no story → Hypothetical with Self-Awareness]
 
 ### Important Gaps (likely to come up)
 1. [competency] — Only weak story (S###, strength __) or secondary-skill-only coverage. Recommended: [improve / replace]

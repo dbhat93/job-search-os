@@ -4,15 +4,31 @@ This guide covers how to clean, parse, and analyze interview transcripts for max
 
 ---
 
+## Step 0.5: Format Detection and Normalization
+
+**Before cleaning, detect the transcript source format and normalize to a standard representation.** See `references/transcript-formats.md` for the full protocol.
+
+1. Examine the first 30-50 lines for format signals (VTT headers, timestamp styles, speaker label patterns, topic headers).
+2. Identify the source format: Otter.ai, Grain, Google Meet, Zoom VTT, Granola, Microsoft Teams, Tactiq, or Manual/generic.
+3. Apply format-specific normalization rules to produce the internal representation (one speaker turn per block, timestamps stripped, speaker labels standardized).
+4. Detect speaker count: 2 speakers → Interviewer/Candidate. 3+ speakers → flag as potential panel, preserve distinct labels.
+5. Report quality signals: speaker label coverage, normalization confidence, multi-speaker detection, artifacts detected.
+
+If detection is uncertain, default to Manual/generic processing and note the ambiguity.
+
+The normalized transcript is the input to Step 1 (cleaning). Timestamps should already be stripped by normalization — Step 1 focuses on content-level cleaning only.
+
+---
+
 ## Step 1: Clean the Transcript
 
-Raw transcripts from Granola, Otter, Tactiq, or other tools are messy. Clean before analyzing.
+The normalized transcript (from Step 0.5) is cleaner than raw input, but still needs content-level cleaning. Timestamps should already be stripped by normalization.
 
 ### What to Remove
 - Filler words: "um," "uh," "like," "you know," "basically"
 - False starts: "I was going to— actually, let me say—"
-- Duplicated speaker lines (transcription errors)
-- Timestamps (unless needed for specific analysis)
+- Duplicated speaker lines (any remaining after normalization)
+- Any residual timestamps not caught by normalization
 
 ### What to Keep
 - Speaker labels (Interviewer / Candidate)
@@ -51,23 +67,38 @@ After cleaning, assess how much of the transcript is usable before proceeding to
 | **Medium** (60-80% clean) | Some garbled sections, occasional missing speaker labels, most Q&A pairs recoverable | Proceed but flag: "This transcript has gaps. I'll note where my confidence is reduced." Be explicit when claims are based on incomplete data. |
 | **Low** (<60% clean) | Major gaps, missing speaker labels, garbled sections, can't identify all questions | Say so upfront: "This transcript has significant quality issues. I can score [N] of the [M] answers, but my confidence is low overall. Here's what I can and can't assess." Consider asking: "Do you remember any answers that are missing or garbled? Your memory + partial transcript is better than partial transcript alone." |
 
+### Format-Derived Quality Factors
+
+Incorporate these signals from Step 0.5 into the quality assessment:
+- **Speaker label coverage**: If normalization couldn't identify speakers for >20% of text blocks, downgrade quality level by one tier.
+- **Normalization confidence**: Low confidence (defaulted to generic processing) adds uncertainty — note in quality assessment.
+- **Multi-speaker detection**: 3+ speakers detected → flag for panel-aware parsing in Step 2. If speaker roles couldn't be assigned, ask the candidate to clarify who was who.
+- **Artifacts detected**: Echo artifacts, misattributions, or garbled sections identified during normalization should be counted toward the quality assessment.
+
 State the quality level at the start of analysis. Don't pretend bad data is good data.
 
 ---
 
-## Step 2: Parse into Q&A Units
+## Step 2: Format-Aware Parsing
 
-Structure the transcript for systematic analysis.
+Structure the transcript for systematic analysis. The parsing approach depends on the interview format.
 
-### Parsing Prompt
+### Step 2.0: Format Detection
+
+Determine the interview format using this priority chain:
+1. **Coaching state**: Check `coaching_state.md` → Interview Loops → Round formats for this company/round.
+2. **Candidate statement**: The candidate may have told you the format in conversation.
+3. **Transcript inference**: Panel interviews have 3+ speakers. System design transcripts have long candidate monologues with probing follow-ups. Technical+behavioral mix shows distinct mode switches.
+4. **Ask**: If ambiguous, ask: "What type of interview was this — behavioral, system design, panel, or a mix?"
+5. **Default**: If unknown, default to Path A (Behavioral).
+
+### Path A: Behavioral Interview (default)
+
+Used for: behavioral screen, deep behavioral, bar raiser, culture fit, hiring manager 1:1.
 
 ```
-TASK: Parse this transcript into question-answer pairs.
-
-INPUT: [cleaned transcript]
-
-FOR EACH PAIR, CAPTURE:
-- question_number (Q1, Q2, etc.)
+FOR EACH Q&A PAIR, CAPTURE:
+- unit_id: Q1, Q2, etc.
 - question_text (verbatim)
 - answer_text (verbatim, trimmed of filler)
 - topic: behavioral / technical / strategic / situational / cultural
@@ -76,16 +107,141 @@ FOR EACH PAIR, CAPTURE:
 - did_answer_question: Yes / Partial / No
 - follow_up_triggered: Yes / No (did interviewer ask for more?)
 
-OUTPUT FORMAT:
-1. Table with all Q&A pairs and metadata
-2. Summary stats:
-   - Total questions: ___
-   - Fully answered: ___
-   - Partially answered: ___
-   - Not answered: ___
-   - Average answer length: ___ words
-   - Longest answer: ___ words (flag if >300)
-   - Follow-ups triggered: ___
+SUMMARY STATS:
+- Total questions: ___
+- Fully answered: ___
+- Partially answered: ___
+- Not answered: ___
+- Average answer length: ___ words
+- Longest answer: ___ words (flag if >300)
+- Follow-ups triggered: ___
+```
+
+### Path B: Panel Interview
+
+Used when: 3+ distinct speakers detected, or format is known to be panel.
+
+Parse into **exchanges** (not pairs). Each exchange may involve multiple interviewers.
+
+```
+FOR EACH EXCHANGE, CAPTURE:
+- unit_id: E1, E2, etc.
+- lead_interviewer: [name/label of who asked the primary question]
+- question_text (verbatim)
+- answer_text (verbatim)
+- follow_up_chain: [list of follow-ups from ANY interviewer, with interviewer label for each]
+- cross_examiner: [did a different interviewer jump in? who?]
+- competency_tested:
+- word_count:
+
+PANEL ANALYSIS:
+- Interviewer participation map: [who asked how many questions, who followed up most]
+- Cross-interviewer patterns: [did interviewers build on each other's questions? tag-team?]
+- Candidate adaptation: [did the candidate adjust style/depth across different interviewers?]
+- Energy distribution: [even across the panel, or front-loaded/faded?]
+```
+
+### Path C: System Design / Case Study
+
+Used for: system design, technical case study, architectural review, product design.
+
+Parse into **phases** (not pairs). Phase types: scoping, approach, deep-dive, tradeoff, adaptation, summary.
+
+```
+FOR EACH PHASE, CAPTURE:
+- unit_id: P1, P2, etc.
+- phase_type: scoping / approach / deep-dive / tradeoff / adaptation / summary
+- candidate_contributions: [key statements, decisions, reasoning]
+- interviewer_probes: [questions, challenges, redirections within this phase]
+- key_decisions: [decisions the candidate made and rationale]
+- clarification_questions_asked: [by the candidate — critical in system design]
+- thinking_out_loud_quality: High / Medium / Low
+- duration_estimate: [rough time in this phase if inferable]
+
+SUMMARY STATS:
+- Time-in-scoping %: ___ (< 10% is a red flag — candidate skipped scoping)
+- Clarification questions count: ___ (0 is a red flag)
+- Tradeoffs articulated unprompted: ___ vs. when probed: ___
+- Phase progression: [did the candidate manage time across phases?]
+```
+
+### Path D: Technical + Behavioral Mix
+
+Used when: the interview contains distinct behavioral and technical segments.
+
+Segment the transcript by mode, then parse each segment with the appropriate path.
+
+```
+SEGMENTATION:
+- Identify transition points between behavioral and technical modes
+- Label each segment: [behavioral] or [technical]
+- Note transition quality: smooth / abrupt / confused
+
+BEHAVIORAL SEGMENTS: Parse via Path A (Q# units)
+TECHNICAL SEGMENTS: Parse via Path C (P# phases)
+NUMBERING: Number each type sequentially across the full transcript (e.g., Q1, Q2, P1, P2, P3, Q3). Do not reset numbering between segments.
+
+MODE-SWITCHING METADATA:
+- Transition points: [where did mode switches happen?]
+- Transition quality: [did the candidate shift cleanly?]
+- Mode balance: [% behavioral vs. % technical]
+- Integration moments: [did the candidate connect technical and behavioral threads?]
+```
+
+### Path E: Case Study (Candidate-Driven)
+
+Used for: consulting-style cases, business cases, product strategy cases where the candidate drives the analysis.
+
+Parse into **stages**: problem definition, framework, analysis, recommendation, Q&A.
+
+```
+FOR EACH STAGE, CAPTURE:
+- unit_id: CS1, CS2, etc.
+- stage_type: problem-definition / framework / analysis / recommendation / q-and-a
+- information_requests: [what data/clarification did the candidate ask for?]
+- hypothesis_statements: [did the candidate state hypotheses?]
+- pivots: [did the candidate change direction when given new information?]
+- quantitative_rigor: High / Medium / Low / None
+- synthesis_quality: [how well did the candidate tie analysis back to the original problem?]
+
+SUMMARY STATS:
+- Information requests count: ___
+- Hypotheses stated: ___
+- Pivots on new information: ___ (0 may indicate rigidity)
+- Quantitative elements: ___
+- Recommendation clarity: High / Medium / Low
+```
+
+### Path F: Presentation Round
+
+Used for: system design presentations, business case presentations, portfolio reviews, strategy presentations, technical deep dives — any round where the candidate delivers a prepared presentation followed by Q&A.
+
+Parse into **sections** (not Q&A pairs). Section types: opening, content-section, transition, Q&A, closing.
+
+```
+FOR EACH SECTION, CAPTURE:
+- unit_id: PR1, PR2, etc.
+- section_type: opening / content-section / transition / q-and-a / closing
+- key_claims: [main assertions or conclusions in this section]
+- evidence_quality: [are claims supported with data, examples, or reasoning?]
+- content_density_estimate: [approximate words per minute if inferable — target 130-150 wpm for natural delivery]
+- visual_references: [did the candidate reference slides, diagrams, or artifacts? Were references integrated or awkward?]
+- audience_engagement_cues: [did the candidate check for understanding, invite questions, or read the room?]
+- timing_notes: [did this section run long/short relative to its importance?]
+
+FOR Q&A SECTIONS SPECIFICALLY:
+- questions_asked: [list questions from the audience/panel]
+- answer_quality: [direct vs. evasive, concise vs. rambling, confident vs. defensive]
+- follow_up_handling: [did follow-ups indicate interest (positive) or dissatisfaction (negative)?]
+- unknown_handling: [when the candidate didn't know, did they acknowledge it or bluff?]
+
+SUMMARY STATS:
+- Total estimated duration: ___
+- Content-to-Q&A ratio: ___ (< 60% content may indicate underprepared; > 85% may indicate no room for questions)
+- Opening hook quality: Strong / Adequate / Weak / Missing
+- Closing strength: Clear call-to-action or summary / Trailed off / Ran out of time
+- Questions fielded: ___ (0 may indicate no time left or audience disengagement)
+- Visual integration: High / Medium / Low / No visuals
 ```
 
 ---
@@ -114,13 +270,108 @@ Before scoring, scan the transcript against known failure patterns. This provide
 | **Defensive deflection** | When pressed on a weakness, redirects to strengths without acknowledging the gap | Medium | Gap-handling drill |
 | **Rehearsed robotics** | Answer sounds memorized — identical phrasing to previous practice, no adaptation to question nuance | Medium | Variation practice: same story, different framings |
 
-After scanning, include detected anti-patterns in the analysis output. Each detected pattern should reference which Q# triggered it and link to the specific fix.
+After scanning, include detected anti-patterns in the analysis output. Each detected pattern should reference which unit (Q#, E#, P#, CS#) triggered it and link to the specific fix.
+
+### Format-Specific Anti-Patterns
+
+In addition to the behavioral anti-patterns above, scan for these format-specific patterns:
+
+**Panel Interview Anti-Patterns:**
+
+| Anti-Pattern | Detection Heuristic | Severity | Fix |
+|---|---|---|---|
+| **Plays to one interviewer** | 70%+ of eye contact cues / engagement directed at one panelist | High | Practice distributing attention. Address follow-ups to the asker, then reconnect with the panel. |
+| **Ignores silent observer** | One panelist asks zero questions and candidate never engages them | Medium | Proactively include quiet panelists: "I'd be curious about your perspective on this." |
+| **Inconsistent depth** | Answers vary wildly in depth across panelists (detailed for senior, thin for junior) | Medium | Calibrate depth to the question, not the questioner's perceived seniority. |
+| **No cross-reference** | Candidate never connects an answer to a previous panelist's question | Low | Build narrative threads: "Building on what [name] asked earlier..." |
+
+**System Design Anti-Patterns:**
+
+| Anti-Pattern | Detection Heuristic | Severity | Fix |
+|---|---|---|---|
+| **Skips scoping** | Candidate jumps to solution within first 2 minutes, no clarification questions | High | Clarification-seeking drill. First 3-5 minutes must be questions. |
+| **Solution fixation** | Commits to one approach without exploring alternatives | High | Tradeoff articulation drill. Name 2+ approaches before committing. |
+| **Silent thinking** | Long pauses (30s+) without narrating thought process | Medium | Thinking-out-loud drill. Narrate even when uncertain. |
+| **Ignores probes** | Interviewer asks a probing question, candidate continues on original track | High | Signal-reading practice. Treat probes as required pivots. |
+| **No time management** | Spends 60%+ of time on one phase, rushes or skips others | Medium | Phase-pacing practice with explicit time targets. |
+| **Bluffs on unknowns** | Claims knowledge of systems/concepts they clearly don't understand | High | Honesty drill: "I'm less familiar with X, but here's how I'd approach learning it..." |
+
+**Technical + Behavioral Mix Anti-Patterns:**
+
+| Anti-Pattern | Detection Heuristic | Severity | Fix |
+|---|---|---|---|
+| **Mode confusion** | Gives behavioral answer to technical question or vice versa | High | Mode-switching drill. Identify the question type before answering. |
+| **One-mode dominance** | 80%+ of interview time spent in one mode despite mixed format | Medium | Balance practice. Deliberately shift modes. |
+| **No integration** | Never connects technical decisions to behavioral context or vice versa | Medium | Integration drill: "The technical choice connects to my leadership approach because..." |
+| **Energy cliff** | Performance visibly drops in the second mode (usually technical → behavioral) | Medium | Stamina practice. Run 45+ minute mixed sessions. |
+
+**Case Study (Candidate-Driven) Anti-Patterns:**
+
+| Anti-Pattern | Detection Heuristic | Severity | Fix |
+|---|---|---|---|
+| **Framework forcing** | Applies a named framework (MECE, Porter's 5 Forces) that doesn't fit the problem | High | Problem-first thinking. Understand the problem before reaching for a framework. |
+| **Analysis without hypothesis** | Runs through data/analysis without stating what they expect to find | Medium | Hypothesis-first practice: "I expect to see X because Y. Let me check..." |
+| **Ignores new info** | When given additional data, doesn't update analysis or conclusions | High | Flexibility drill. Practice pivoting when assumptions are challenged. |
+| **No recommendation** | Analyzes thoroughly but never commits to a recommendation | High | "If you had to decide right now" drill. Force a recommendation with rationale. |
+| **Math avoidance** | Skips quantitative analysis when numbers are available | Medium | Quantitative practice. Back-of-envelope calculations build credibility. |
+
+**Presentation Round Anti-Patterns:**
+
+| Anti-Pattern | Detection Heuristic | Severity | Fix |
+|---|---|---|---|
+| **Slide reading** | Candidate reads slides verbatim or near-verbatim instead of speaking to them | High | Slide-as-prompt practice. Each slide should trigger a spoken narrative, not a reading. The slide is the outline; the speaker is the story. |
+| **Time overrun** | Exceeds allotted time, rushes final slides, or skips closing entirely | High | Timing calibration. Practice with a timer. Target 130-150 words per minute. Build a "compressed version" of each section for when time runs short. |
+| **No opening hook** | Jumps directly to content without framing why the presentation matters or what the audience will learn | Medium | Opening-hook drill. First 30 seconds should answer: "Why should I care about this?" before "Here's what I did." |
+| **Q&A deflection** | Avoids direct answers to questions, pivots to rehearsed talking points, or gets defensive under questioning | High | Q&A practice with predicted questions. Acknowledge the question, answer directly, then bridge to supporting evidence. |
+| **Monotone delivery** | No variation in emphasis, energy, or pacing — presentation sounds like a report being read | Medium | Energy-mapping practice. Identify the 2-3 key moments in the presentation and rehearse deliberate emphasis shifts at those points. |
+| **Missing "so what"** | Presents data, process, or methodology without connecting to business impact or audience relevance | High | Impact chain drill. Every section should end with: "This mattered because..." |
 
 ---
 
 ## Step 3: Multi-Lens Scoring
 
 Run the parsed transcript through evaluative lenses. **Important**: Which lenses you run depends on the Post-Scoring Decision Tree in `references/commands/analyze.md`. If a primary bottleneck is identified after initial scoring, scope the analysis accordingly rather than running all four lenses mechanically. Always follow the evidence sourcing standard from COACH.md. **For Quick Prep track**: Run only Lens 1 and skip to delta sheet.
+
+### Scoring Weight Adjustments by Format
+
+Reference `references/commands/prep.md`'s Interview Format Taxonomy as the single source of truth for format-specific weight adjustments. The table below is a convenience copy — if it conflicts with prep.md, prep.md wins:
+
+| Format | Primary Dimensions (weighted highest) |
+|---|---|
+| Behavioral screen | Structure, Relevance |
+| Deep behavioral | Substance, Credibility |
+| System design / case study | Structure, Substance |
+| Panel | All dimensions + Adaptability |
+| Technical + behavioral mix | Substance, Structure |
+| Presentation round | Structure, Differentiation |
+| Bar raiser / culture fit | Credibility, Differentiation |
+| Hiring manager 1:1 | Relevance, Differentiation |
+
+### Additional Scoring Dimensions for Non-Behavioral Formats
+
+These supplement the core 5 dimensions — they do not replace them. Score each 1-5 when the format applies:
+
+**System Design / Case Study:**
+- **Process Visibility** (1-5): How clearly the candidate narrated their thinking process. 1 = silent/opaque, 5 = every decision explained in real-time.
+- **Scoping Quality** (1-5): How well the candidate defined the problem before solving it. 1 = jumped to solution, 5 = thorough scoping with clarifying questions.
+- **Tradeoff Articulation** (1-5): How well the candidate named tradeoffs and alternatives. 1 = single approach with no alternatives, 5 = multiple approaches compared with explicit tradeoff reasoning.
+- **Adaptability** (1-5): How well the candidate responded to probes, redirections, and new constraints. 1 = rigid, 5 = graceful pivots.
+
+**Panel:**
+- **Interviewer Adaptation** (1-5): How well the candidate calibrated responses to different panelists. 1 = identical style for everyone, 5 = clearly adapted depth, tone, and focus per interviewer.
+- **Energy Consistency** (1-5): How well the candidate maintained engagement across the full panel session. 1 = visible fatigue/disengagement, 5 = consistent energy throughout.
+- **Cross-Referencing** (1-5): How well the candidate connected threads across different panelists' questions. 1 = treated each question in isolation, 5 = built narrative connections.
+
+**Technical + Behavioral Mix:**
+- **Mode-Switching Fluidity** (1-5): How cleanly the candidate transitioned between technical and behavioral modes. 1 = confused or jarring, 5 = seamless transitions.
+- **Integration Quality** (1-5): How well the candidate connected technical decisions to behavioral context. 1 = no connection, 5 = naturally wove both together.
+- **Energy Trajectory** (1-5): How energy/quality held up across the full mixed session. 1 = significant drop in second half, 5 = maintained or improved.
+
+**Presentation Round:**
+- **Content Density Management** (1-5): How well the candidate calibrated depth to time constraints. 1 = ran significantly over or rushed through critical sections, 5 = natural pacing throughout with deliberate time allocation across sections.
+- **Narrative Arc** (1-5): How well the presentation told a coherent story from opening to close. 1 = disconnected sections with no through-line, 5 = compelling arc where each section built on the last and the closing tied back to the opening hook.
+- **Q&A Adaptability** (1-5): How well the candidate handled audience questions. 1 = defensive, evasive, or lost composure, 5 = graceful engagement that demonstrated depth beyond the prepared content.
+- **Audience Calibration** (1-5): How well the content matched the audience's level and interests. 1 = wrong level entirely (too technical for executives, too high-level for engineers), 5 = clearly tailored with audience-appropriate framing, examples, and depth.
 
 ### Lens 1: Hiring Manager Perspective
 
@@ -288,6 +539,9 @@ Suggested source: [which experience could fill this]
 CARRY FORWARD:
 [One strong behavior from this interview to maintain]
 
+INTERVIEW FORMAT: [detected format]
+FORMAT-SPECIFIC ANALYSIS: [include if non-behavioral — see below]
+
 REFLECTION PROMPTS:
 - How does this feedback compare to your gut feeling about the interview?
 - Of the growth areas above, which feels most within your control?
@@ -296,8 +550,58 @@ REFLECTION PROMPTS:
 NEXT ACTIONS (co-created with candidate):
 [ ] Update storybank: retire [stories], add [new story]
 [ ] Run drill: [specific exercise for priority growth area]
-[ ] Practice: [weak Q# from this interview] until scores 4+
+[ ] Practice: [weak unit from this interview] until scores 4+
 [ ] Review before next interview: this delta sheet
+```
+
+### Format-Specific Delta Sheet Sections
+
+Include the relevant section below when the interview format is non-behavioral:
+
+**System Design / Case Study:**
+```
+FORMAT-SPECIFIC ANALYSIS: System Design
+
+PROCESS SCORES:
+Process Visibility: ___ | Scoping Quality: ___ | Tradeoff Articulation: ___ | Adaptability: ___
+
+PHASE ANALYSIS:
+- Scoping %: ___% of total time (target: 15-25%)
+- Clarification questions: ___ (0 = red flag)
+- Tradeoff breakdown: ___ unprompted / ___ when probed
+- Phase progression: [managed time well / rushed end / stuck in one phase]
+- Strongest phase: [which phase and why]
+- Weakest phase: [which phase and why]
+```
+
+**Panel:**
+```
+FORMAT-SPECIFIC ANALYSIS: Panel
+
+PANEL SCORES:
+Interviewer Adaptation: ___ | Energy Consistency: ___ | Cross-Referencing: ___
+
+PANEL DYNAMICS:
+- Interviewer engagement: [who was most engaged, who was least]
+- Strongest exchange: E___ — [why it worked]
+- Weakest exchange: E___ — [what went wrong]
+- Cross-interviewer threads: [moments where the candidate connected questions across panelists]
+- Energy arc: [how energy changed across the session]
+```
+
+**Technical + Behavioral Mix:**
+```
+FORMAT-SPECIFIC ANALYSIS: Technical + Behavioral Mix
+
+MIX SCORES:
+Mode-Switching Fluidity: ___ | Integration Quality: ___ | Energy Trajectory: ___
+
+MODE ANALYSIS:
+- Behavioral mode average: Sub ___ / Str ___ / Rel ___ / Cred ___ / Diff ___
+- Technical mode average: Sub ___ / Str ___ / Rel ___ / Cred ___ / Diff ___
+- Stronger mode: [behavioral / technical / balanced]
+- Transition moments: [where mode switches happened and quality of each]
+- Integration highlights: [moments where the candidate connected both modes]
 ```
 
 ---

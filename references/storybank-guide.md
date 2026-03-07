@@ -19,6 +19,7 @@ Create a table with these columns:
 | **Risk/Stakes** | What could have gone wrong? Why did it matter? |
 | **Earned Secret** | The counterintuitive insight only you learned from this experience (see `references/differentiation.md` for extraction protocol) |
 | **Strength** | How compelling/differentiated (1-5) |
+| **Use Count** | Total times used in real interviews (incremented via debrief). Tracks overuse risk. |
 | **Last Used** | Date of most recent use in interview |
 | **Notes** | Performance notes, feedback received |
 
@@ -107,26 +108,36 @@ Update the storybank:
 3. Adjust strength scores based on actual performance
 4. Note any new stories that emerged in conversation
 
+### Cross-Surface Consumption
+
+Your storybank feeds more than just interview prep. When optimizing any candidate-facing surface, note story gaps or repurposing opportunities that emerge:
+- `resume` mines stories for bullet rewrites — earned secrets become the differentiating clause in resume bullets
+- `linkedin` uses earned secrets for high-impact profile sections (headline, About, Experience)
+- `pitch` anchors the core positioning statement to your strongest stories and sharpest earned secrets
+- `outreach` pulls hooks from earned secrets to differentiate networking messages
+- `decode` cross-references storybank skills against JD competencies for fit assessment
+- `present` suggests supporting stories that can be woven into presentation narratives
+
 ---
 
 ## Story Selection Strategy
 
-When matching stories to questions:
+For full portfolio-optimized story mapping, see `references/story-mapping-engine.md`. That engine handles fit scoring (4 levels), conflict resolution, freshness checks, overuse checks, and earned-secret-aware selection. The principles below still apply as the conceptual framework:
 
 ### 1. Competency Match
-Which stories demonstrate the competency being tested?
+Which stories demonstrate the competency being tested? Check both Primary and Secondary Skills.
 
 ### 2. Company Fit
 Which stories align with this company's values and priorities?
 
 ### 3. Freshness
-Have you used this story recently with this company? Avoid repeats.
+Have you used this story recently with this company? Avoid repeats. Stories used in prior rounds at the same company are downgraded.
 
 ### 4. Strength
 Choose 4+ stories when possible. Save 3s for backup.
 
 ### 5. Variety
-Across an interview loop, show range: different projects, skills, outcomes.
+Across an interview loop, show range: different projects, skills, outcomes. No story should appear more than once per interview prep unless no alternative exists.
 
 ---
 
@@ -196,20 +207,26 @@ Then layer in:
 **Healthy storybank:**
 - 8-12 indexed stories
 - At least 5 rated strength 4+
-- All key competencies covered
+- All key competencies covered (check both Primary and Secondary Skills)
 - Mix of domains (not all one type)
 - At least 2 stories with quantified outcomes
 - At least 1 failure/learning story
-- No story used more than 3x in current job search
+- No story used more than 3x in current job search (check Use Count)
+- At least 80% of stories have extracted earned secrets
 
 **Warning signs:**
 - Fewer than 6 stories
 - Most stories rated 3 or below
-- Major competency gaps
+- Major competency gaps (even after checking Secondary Skills)
 - All stories from one job/era
 - No failure stories
 - Relying on 2-3 favorites repeatedly
 - No earned secrets extracted (stories are specific but not distinctive)
+
+**Overuse and freshness tracking:**
+- **Overuse** (Use Count 3+): "S### has been used in [N] interviews. Consider rotating to a fresher story if alternatives exist." At 5+: "S### is heavily used. Interviewers in your network may have heard it. Prioritize alternatives."
+- **Freshness risk**: Stories used in prior rounds at a current company loop should not be reused unless the interviewer explicitly asks for elaboration. Check Interview Loops for stories used per round.
+- **Earned secret coverage**: Stories without earned secrets are incomplete — they may score well on Substance and Structure but will plateau on Differentiation. Track coverage as a percentage.
 
 ---
 

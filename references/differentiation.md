@@ -153,3 +153,39 @@ Then test: "You're at the 90-second mark, and I interrupt with: 'Can you give me
 - Gets defensive: "Well, actually..."
 - Restarts from the beginning instead of adapting
 - Fills silence with filler words instead of thinking
+
+---
+
+## Differentiation in Non-Interview Contexts
+
+Earned secrets and spiky POVs aren't just for interview answers — they power every candidate-facing surface. The same differentiation protocol applies: extract the insight only this candidate has, and deploy it where it creates the most impact.
+
+### Resume Bullets
+
+The difference between a generic bullet and a differentiated one is the earned secret embedded in the claim:
+
+- **Generic**: "Reduced churn by 18%"
+- **Differentiated**: "Built a churn prediction model after discovering that usage-based signals outperform survey data for predicting renewal — reduced churn by 18% in one quarter"
+
+When `resume` runs the storybank-to-bullet pipeline, it mines each story's earned secret for the bullet's differentiating clause. The earned secret turns a metric into a narrative about judgment.
+
+### LinkedIn Profile
+
+The About section should lead with an earned secret, not a title. "Senior PM with 8 years of experience" is invisible in recruiter search results — every PM has that. "I've learned that the best product decisions come from killing features, not building them" stops the scroll.
+
+When `linkedin` audits the profile, it checks whether earned secrets from the storybank appear in high-impact sections (headline, About, Experience). A profile with zero earned secrets reads as competent but forgettable — the same assessment that produces a "Hire" but never a "Strong Hire."
+
+### Positioning Statement
+
+The `pitch` command builds the core statement around earned secrets — the curiosity-gap hook IS the earned secret, compressed to one sentence. A pitch without an earned secret is a job title with extra words: "I'm a PM who builds data-driven products" (anyone could say this) vs. "I'm a PM who learned that killing features is harder and more valuable than building them" (only this person would say this).
+
+The positioning statement serves as the consistency anchor for `resume`, `linkedin`, and `outreach` — ensuring the same earned secret threads through every surface.
+
+### Outreach Messages
+
+Cold messages that open with an earned secret get responses. Generic intros don't:
+
+- **Generic**: "Hi, I'm interested in the Senior PM role at your company. I have 8 years of experience in B2B SaaS."
+- **Differentiated**: "I noticed your team ships weekly — I learned the hard way that shipping cadence matters less than feedback loop speed. Would love to hear how you think about that."
+
+When `outreach` builds messages, it pulls hooks from the candidate's earned secrets. The earned secret creates a curiosity gap — the recipient wants to know the story behind the claim, which is exactly the conversation the candidate wants to have.

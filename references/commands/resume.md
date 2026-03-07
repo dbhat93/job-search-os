@@ -124,7 +124,7 @@ Rate: **Strong** / **Moderate** / **Weak**
 - Scope escalation: Does impact grow across roles? (individual → team → department → organization)
 - Strategic visibility: Senior roles should show strategic thinking, not just execution
 - Progression narrative: Does the resume tell a coherent story of growth?
-- Cross-reference seniority bands from SKILL.md Core Rubric
+- Cross-reference seniority bands from COACH.md Core Rubric
 
 **4. Skills Section**
 - Keyword coverage: Target role keywords present?

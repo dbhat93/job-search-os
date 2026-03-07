@@ -200,7 +200,7 @@ Your rejection pattern suggests a specific bottleneck — let's find it fast.
 ### Before next interview
 4. If you have a transcript from any rejected interview, run `analyze` — that's the fastest way to diagnose exactly what's not landing
 
-**Next commands**: `stories`, `prep [company]`, `practice ladder`, `help`
+**Recommended next**: `stories` — build your storybank before your next interview. **Alternatives**: `prep [company]`, `practice ladder`, `help`
 ```
 
 **Why this example matters**: Notice how interview history (active but not advancing, first-round rejections) shapes the entire plan. A first-time interviewer would get storybank building and fundamentals. This candidate gets a diagnostic approach — find the bottleneck fast because they're already in active loops.
@@ -273,7 +273,7 @@ Your rejection pattern suggests a specific bottleneck — let's find it fast.
 2. Practice ending answers. Your last sentence should be a clear takeaway, not a trail-off. Use the constraint ladder to practice the last 15 seconds of each story.
 3. Vary your stories. You have 8 stories in your storybank — use them. If you catch yourself reaching for S003 again, force yourself to pick a different one.
 
-**Next commands**: `stories add`, `practice ladder`, `mock behavioral`
+**Recommended next**: `stories add` — mine for a genuine failure story to fill the gap exposed in Q4. **Alternatives**: `practice ladder`, `mock behavioral`
 ```
 
 **Why this example matters**: Demonstrates the holistic patterns only visible across a full mock — story recycling, energy trajectory, crutch phrases, topic avoidance. Individual answer scoring misses these. Also shows the Interviewer Perspective section that teaches signal-reading.
@@ -399,7 +399,7 @@ The pattern here is clear and consistent with what we saw in practice: you skip 
 - [ ] Transcript available → run `analyze` when ready
 - [x] No transcript → directional analysis above is what we have
 
-**Next commands**: `practice technical` (Clarification-Seeking drill specifically), `hype` (if Round 3 is scheduled), `progress`
+**Recommended next**: `practice technical` — drill Clarification-Seeking specifically, since skipping scoping was the biggest issue. **Alternatives**: `hype` (if Round 3 is scheduled), `progress`
 ```
 
 **Why this example matters**: Shows the emotional triage decision in action — candidate said "rough," so the coach prioritized capture over coaching. The pattern connection between practice scores (Clarification-Seeking at 2-3) and real interview behavior (skipped clarification on Q1) demonstrates why practice data matters. The coaching note is direct but constructive. Also shows how a technical interview debrief differs from a behavioral one — story usage is sparse, and the observations focus on process (clarification, reasoning narration) rather than content.
@@ -435,3 +435,472 @@ The pattern here is clear and consistent with what we saw in practice: you skip 
 ```
 
 **Why this example matters**: Shows how signal-reading observations are woven into per-answer analysis, not bolted on as a separate section. The Q2 analysis distinguishes between positive follow-ups (interest) and wrap-up signals (they got enough). The Q4 analysis uses the contrast between the two answers to teach the candidate to read real-time signals — the silence + quick pivot = the answer didn't land. Also demonstrates the coaching move of suggesting a real-time recovery: offering a stronger example mid-interview.
+
+---
+
+## Example 11: System Design Transcript Analysis (Phase-Based Parsing)
+
+**Context**: Senior Engineer, system design round at a growth-stage company. 50-minute collaborative verbal walkthrough. Transcript from Zoom VTT format (auto-detected, normalized to internal representation).
+
+```markdown
+## Interview Delta
+
+## Interview Format
+- Detected format: System design / case study
+- Format source: Coaching state (Round 2 format saved during prep)
+- Scoring weight adjustments: Structure + Substance weighted highest
+- Format-specific dimensions scored: Process Visibility, Scoping Quality, Tradeoff Articulation, Adaptability
+- Coaching scope: I'm coaching how you communicate your thinking — how you scope, narrate decisions, and articulate tradeoffs. I'm not evaluating whether your architecture is technically correct.
+
+## Phase Analysis
+
+### P1: Scoping (4 minutes — 8% of session)
+- Scores: Substance 3 / Structure 4 / Relevance 4 / Credibility 3 / Differentiation 2
+- Format-specific: Process Visibility 4 / Scoping Quality 2
+- What worked: You immediately started asking clarifying questions — "How many concurrent users?" "What's the latency requirement?" Good instinct.
+- Biggest gap: You asked 3 clarifying questions but didn't ask about the most important constraint: data consistency requirements. The interviewer had to introduce this later, which forced a mid-design pivot.
+- Root cause: Scoping checklist is incomplete — you have a mental model for scale questions but not for consistency/reliability questions.
+- Evidence: "Let me start by understanding the scale..." — good opening, but the 3 questions were all scale-related.
+
+### P2: Approach (8 minutes — 16%)
+- Scores: Substance 4 / Structure 4 / Relevance 4 / Credibility 4 / Differentiation 3
+- Format-specific: Process Visibility 5 / Tradeoff Articulation 3
+- What worked: Excellent thinking-out-loud quality. "I'm considering two approaches here — a centralized queue versus a distributed pub/sub model. Let me walk through the tradeoffs..." This is exactly what interviewers want to hear.
+- Biggest gap: You named two approaches but only explored one in detail. The interviewer had to ask "Why not the pub/sub approach?" — you should have addressed it proactively.
+- Root cause: Tradeoff articulation is one-sided — you explain why your preferred approach works, but don't preemptively address why the alternative doesn't.
+
+### P3: Deep-dive (20 minutes — 40%)
+- Scores: Substance 4 / Structure 3 / Relevance 3 / Credibility 4 / Differentiation 3
+- Format-specific: Process Visibility 3 / Adaptability 3
+- What worked: Strong technical depth. When you described the caching layer, the interviewer said "That's a good insight" — clear positive signal.
+- Biggest gap: You spent 20 of 50 minutes here, which squeezed the later phases. Structure dropped because you went deep on the caching layer but then had to rush through the database design. The interviewer's "Let's move on to..." was a time management signal you should have caught earlier.
+- Root cause: Deep-dive rabbit hole — genuine expertise in one area pulls you in, and you lose track of the broader design.
+
+### P4: Adaptation (10 minutes — 20%)
+- Scores: Substance 3 / Structure 3 / Relevance 4 / Credibility 3 / Differentiation 2
+- Format-specific: Process Visibility 3 / Adaptability 4
+- What worked: When the interviewer introduced the data consistency constraint you'd missed in scoping, you pivoted well: "That changes things. I'd need to add a coordination layer..." Good recovery.
+- Biggest gap: The pivot was reactive, not proactive. If you'd asked about consistency in P1, this phase would have been about optimization, not recovery. Also, your narration dropped during the pivot — you went quiet for about 20 seconds while rethinking.
+- Root cause: Silent thinking under pressure. When the design changes, you retreat into your head instead of narrating the rethink.
+
+### P5: Summary (8 minutes — 16%)
+- Scores: Substance 3 / Structure 4 / Relevance 4 / Credibility 3 / Differentiation 3
+- Format-specific: Process Visibility 4 / Tradeoff Articulation 4
+- What worked: Strong summary structure — you walked back through the full design top-to-bottom and named tradeoffs at each layer. "If I had more time, I'd explore..." showed maturity.
+- Biggest gap: Didn't connect the design back to the original requirements. The interviewer asked "Does this meet the latency requirement?" — you should have proactively mapped design decisions to constraints.
+
+## Scorecard
+- Substance: 3.4
+- Structure: 3.6
+- Relevance: 3.8
+- Credibility: 3.4
+- Differentiation: 2.6
+- Process Visibility: 3.8
+- Scoping Quality: 2
+- Tradeoff Articulation: 3.4
+- Adaptability: 3.5
+- Calibration band used: Senior/Lead
+- Hire Signal: Mixed
+
+## Triage Decision
+- Primary bottleneck: Scoping Quality (2) — this is a system design interview, and incomplete scoping cascaded into problems across every subsequent phase.
+- Secondary: Differentiation (2.6) — your design was competent but didn't show a distinctive engineering perspective. Where's your earned secret about system design?
+- Format-aware triage: Process Visibility < 3 would override standard triage, but yours is 3.8 — good. Scoping Quality at 2 is the format-specific priority.
+- Coaching path: Focus on scoping protocol first (systematic checklist for constraints), then tradeoff articulation (preemptively address alternatives).
+
+## Top 3 Gaps To Close
+1. Gap: Incomplete scoping — missed data consistency requirements
+   Why it matters: In system design, scoping errors cascade. Everything after P1 was slightly off because of the missed constraint.
+   Root cause: Scoping mental model covers scale but not consistency/reliability/durability
+   Drill: Build a scoping checklist: scale, consistency, availability, latency, durability, cost. Practice opening 5 different design problems using the full checklist.
+
+2. Gap: One-sided tradeoff articulation
+   Why it matters: Naming two approaches but only exploring one makes it look like you've already decided and the "alternative" was performative.
+   Root cause: Genuine preference for your approach leads you to short-change the comparison
+   Drill: "Steel man the alternative" — for every design decision, spend 30 seconds making the strongest case for the approach you didn't choose before explaining why you prefer yours.
+
+3. Gap: Silent thinking during pivots
+   Why it matters: 20 seconds of silence in a collaborative design interview reads as "stuck." The interviewer can't help you if they don't know what you're thinking.
+   Root cause: Thinking-out-loud habit breaks under pressure when the design needs significant revision
+   Drill: Practice narrating uncertainty: "The consistency requirement changes my approach. Let me think through what needs to change... The caching layer needs a write-through policy instead of write-behind, and I'll need to add a coordination service..."
+
+## Carry Forward
+- Your thinking-out-loud quality in P2 was excellent — "I'm considering two approaches..." is exactly the right way to open a design phase. Make this your default mode, especially during pivots.
+
+## Coaching Scope Note
+I scored the communication quality of your design process — how you scoped, narrated, and articulated tradeoffs. I did not evaluate whether your architecture was technically sound. For technical validation, practice with a senior engineer peer.
+```
+
+**Why this example matters**: Demonstrates phase-based parsing (P1-P5 instead of Q1-Q5), format-specific scoring dimensions alongside the core 5, format-aware triage (Scoping Quality at 2 overrides standard dimension priorities), time allocation analysis (8% in scoping vs. 40% in deep-dive), and the coaching scope boundary note at the end. Shows how system design analysis focuses on the communication process, not the technical solution. Also demonstrates how a missed scoping question cascades through the entire design — making it concrete why scoping is the highest-priority intervention.
+
+---
+
+## Example 12: JD Decode Excerpt Showing 6-Lens Analysis
+
+**Context**: Mid-career PM evaluating a Senior PM role at a growth-stage B2B SaaS company. Standard depth decode. Candidate has kickoff profile and storybank with 8 stories.
+
+```markdown
+## JD Decode: DataPlatform Inc — Senior Product Manager
+
+## Decode Summary
+- Role type: IC PM owning a platform product that serves internal engineering teams and external API consumers
+- Seniority signal: True senior IC — "own the roadmap" and "drive strategy" verbs, but no people management mentioned. MEDIUM confidence — could be a lead PM under a Director, or could be the only PM on this product.
+- Team signal: Small product org (the JD mentions "you'll be the PM for this product area" — singular), likely 1 designer + 2-3 engineering teams. MEDIUM confidence.
+- JD quality: Well-written — clear responsibilities, realistic requirements, distinct nice-to-haves. Suggests a mature hiring process.
+
+## Competency Map (priority order)
+| # | Competency | Confidence | Type | Repetition | Source |
+|---|---|---|---|---|---|
+| 1 | Cross-functional leadership (without direct authority) | HIGH | Screening | 4x | Requirements ×2, Responsibilities ×2 |
+| 2 | Data-driven product prioritization | HIGH | Screening | 3x | Requirements, Responsibilities, Nice-to-have |
+| 3 | Technical depth (API design, platform thinking) | HIGH | Screening | 2x | Requirements, Responsibilities |
+| 4 | Stakeholder management (eng + biz) | MEDIUM | Screening | 2x | Responsibilities ×2 |
+| 5 | Customer-facing communication | MEDIUM | Differentiating | 1x | Nice-to-have |
+
+## 6-Lens Analysis
+
+### Lens 1: Repetition Frequency
+"Cross-functional" appears 4 times across sections — more than any other theme. This is the primary evaluation lens. Expect at least 2 interview questions testing this competency directly.
+
+### Lens 5: Between the Lines
+| Signal | Likely Meaning | Confidence | Verify |
+|---|---|---|---|
+| "Comfortable operating with ambiguity in a fast-moving environment" | Role scope may not be fully defined yet. Could mean early-stage product, team restructure, or strategic pivot in progress. | LOW | "Can you tell me more about where this product is in its lifecycle? Is the roadmap established or being built from scratch?" |
+| "Partner closely with engineering leadership" | Decision-making may require significant influence work — engineering may have strong opinions on product direction. | MEDIUM | "How does the product-engineering relationship work for roadmap decisions? Is it collaborative, or does one side typically drive?" |
+
+### Lens 6: What's Missing
+No mention of user research, discovery, or customer interviews anywhere in the JD. For a PM role, this is notable. It could mean: (a) user research is handled by a separate research team and the PM synthesizes their work, (b) the company hasn't built a research practice and expects PMs to ship based on data and intuition, or (c) the JD writer simply omitted it. The interpretation matters — (a) is a mature org, (b) is a gap you might fill, (c) is noise. Ask the recruiter.
+
+## Fit Assessment
+- **Verdict**: Strong Fit
+| Competency | Match | Evidence |
+|---|---|---|
+| Cross-functional leadership | Match | S003, S007 — both demonstrate influencing engineering without authority, quantified outcomes |
+| Data-driven prioritization | Match | S007 — "Killed the feature everyone wanted" is a direct example. Resume: "Reduced churn by 18% through data-driven segmentation" |
+| Technical depth (API/platform) | Partial | Resume shows B2B SaaS but not platform-specific experience. Frameable: your API integration work from S004 bridges this. |
+| Stakeholder management | Match | S003, S005 — multiple stories cover this |
+| Customer-facing communication | Gap | No storybank evidence of external customer communication. Minor gap — listed as nice-to-have, not required. |
+- **Frameable gaps**: Technical depth (API/platform) — bridge through S004 API integration work and frame B2B SaaS domain as adjacent.
+- **Structural gaps**: None identified.
+
+## Learn to Read This Yourself
+- **Pattern spotted**: This JD lists "cross-functional" 4 times — once would be standard language, four times is a priority signal. When you read your next JD, count how many times the most-repeated theme appears. 3+ repetitions = guaranteed interview topic.
+- **Trap to watch for**: The requirements list 9 items. That doesn't mean you need all 9. Notice the nice-to-haves are separated — the company is telling you which items are truly required vs. aspirational. Many candidates self-screen out of JDs like this because they count 9 requirements and only match 7. Matching 6-7 of 9 is strong.
+- **Next time, try**: Read the responsibilities section BEFORE the requirements. Requirements tell you what gets you through the door. Responsibilities tell you what the job actually is. They often tell different stories.
+
+**Recommended next**: `prep [DataPlatform Inc]` for full interview preparation. **Alternatives**: `research [DataPlatform Inc]`, `decode` (batch triage with more JDs)
+```
+
+**Why this example matters**: Shows the 6-lens analysis in practice — not all 6 lenses are equally valuable for every JD, so the example highlights the highest-signal lenses (1, 5, 6) while demonstrating the full framework. The confidence labels distinguish between what the JD tells you (HIGH), what you can infer (MEDIUM), and what you're guessing (LOW). The teaching layer ("Learn to Read This Yourself") is the key differentiator from `prep`'s JD parsing — it teaches the candidate to decode JDs independently.
+
+---
+
+## Example 13: Resume Optimization Excerpt Showing Storybank-to-Bullet Pipeline
+
+**Context**: Mid-career PM, Standard depth audit. Candidate has kickoff, storybank with 8 stories (5 rated 4+), and is targeting Senior PM roles. Showing the most impactful sections of the audit.
+
+```markdown
+## Resume Audit: Alex Chen
+
+## Resume Score
+- ATS compatibility: ATS-Ready — single column, standard headers, no formatting issues
+- Recruiter scan: Moderate — current title/company clear, but summary is generic and bullets lead with responsibilities instead of achievements
+- Bullet quality: Weak — 5 of 8 bullets in the most recent role are responsibility statements, not accomplishments
+- Seniority calibration: Mismatched — resume reads IC-level (implementation verbs) despite targeting Senior PM roles
+- Keyword coverage: Moderate — missing "product strategy," "roadmap prioritization," and "cross-functional" which appear in 3+ target JDs
+- Overall: Needs Work
+
+## Section-by-Section
+
+### Professional Summary
+- Assessment: Generic. "Product Manager with 6 years of experience building B2B SaaS products" — this is a category label, not a hook. No differentiation, no curiosity gap, no indication of what makes this PM different from the other 500 PMs applying.
+- Recommended:
+  > Product leader who's learned that killing the right features matters more than shipping the wrong ones. 6 years driving B2B SaaS strategy — from a $0-to-$8M product line at TechCo to a 40% churn reduction built on the insight that usage data outpredicts survey data for renewal risk. Targeting Senior PM roles where data-driven prioritization meets cross-functional influence.
+- Why: Opens with the candidate's strongest earned secret (from S007 — "Killed the feature everyone wanted"). The churn reduction figure front-loads a quantified outcome. "Data-driven prioritization meets cross-functional influence" mirrors the language in their top 3 target JDs.
+
+### Experience — Product Manager, TechCo (Current)
+- Bullet quality: 5 of 8 bullets are responsibility statements. The pattern: "Responsible for..." / "Managed..." / "Oversaw..."
+- Seniority calibration: "Managed" and "oversaw" are manager-level verbs, but the scope described is IC. "Led product strategy" would better signal seniority without misrepresenting the role.
+- Rewritten bullets:
+  - "Responsible for the product roadmap for the billing platform" → "Owned end-to-end roadmap for the billing platform ($8M ARR), prioritizing across 3 engineering teams based on revenue impact and customer retention data"
+  - "Managed stakeholder relationships across sales, engineering, and design" → "Drove alignment across sales, engineering, and design on quarterly roadmap priorities — including deprioritizing a CEO-promised feature after data showed the $200K revenue at risk was better served by a different investment (S007)"
+  - "Oversaw the launch of the enterprise billing features" → "Launched enterprise billing platform that expanded the addressable market from SMB to mid-market, contributing to a 32% increase in average deal size within two quarters"
+
+## Storybank-to-Bullet Pipeline
+- Impact gaps (storybank outcomes missing from resume):
+  - S007's $200K partner revenue preservation — not on the resume at all. This is the candidate's most differentiated story.
+  - S003's cross-functional alignment process — described in 3 interview answers but invisible on the resume.
+  - S002's churn reduction mechanism (usage data > survey data) — the resume says "reduced churn 18%" but doesn't explain the insight behind it.
+- Story-to-bullet mapping:
+  - S007: "Killed the feature everyone wanted" → "Redirected 3 engineering sprints from a CEO-promised feature to an API migration after proving $200K in partner revenue was at risk — activation on the replacement initiative increased 25%"
+  - S002: "Usage data churn prediction" → "Built churn prediction model after discovering that product usage signals outperform NPS surveys for identifying at-risk accounts — reduced churn 18% in one quarter, saving ~$1.4M ARR"
+- Skills gap: Storybank tags "influence without authority" and "data-driven decision making" — both are demonstrated in stories but absent from the resume's skills section.
+
+## Priority Moves (ordered)
+1. Rewrite the top 3 bullets in the current role — swap responsibility statements for accomplishment statements with earned secrets from the storybank. This is the single highest-leverage fix.
+2. Replace the summary with the recommended version above — it's the first thing recruiters see, and the current version is invisible.
+3. Add "product strategy," "roadmap prioritization," and "cross-functional leadership" to the skills section — these appear in 3+ target JDs and are missing.
+
+**Recommended next**: `linkedin` — ensure your LinkedIn and resume tell a consistent story. **Alternatives**: `stories`, `resume` (Deep Optimization), `prep [company]`
+```
+
+**Why this example matters**: Demonstrates the storybank-to-bullet pipeline — the mechanism that connects interview stories to resume content. The candidate has strong stories (S007 rated 5, S002 rated 4) but none of that strength appears on the resume. The before/after bullet rewrites show how earned secrets transform generic responsibility bullets into differentiated accomplishment statements. Also shows the seniority calibration issue: IC-level verbs on a resume targeting Senior roles.
+
+---
+
+## Example 14: Positioning Statement Showing Earned Secret Anchoring
+
+**Context**: Mid-career PM, Standard depth. Has storybank with earned secrets extracted, targeting Senior PM roles at growth-stage companies. Showing the positioning development process — weak draft in, strong versions out.
+
+```markdown
+## Positioning Statement: Alex Chen
+
+## Draft Assessment
+
+Candidate's initial pitch: "I'm a Product Manager with 6 years of experience in B2B SaaS. I've worked on billing platforms, growth products, and enterprise features. I'm looking for a Senior PM role where I can have more strategic impact."
+
+**Assessment**: This is a resume sentence read aloud. No curiosity gap, no differentiation, no hook. A recruiter hearing this would think "okay, another PM" — not "tell me more." Three specific problems:
+1. **No hook** — leads with a category label ("Product Manager with 6 years"). The listener has already categorized and filed you before the interesting part arrives.
+2. **Feature list, not a story** — "billing, growth, enterprise" is a list of products. It doesn't tell the listener what you're LIKE as a PM.
+3. **Passive ending** — "looking for a role where I can have more strategic impact" puts you in a waiting posture. Reframe: what strategic impact have you ALREADY had?
+
+## Core Positioning Statement
+
+> I'm a PM who's learned that the hardest product decisions aren't about what to build — they're about what to kill. At TechCo, I built a $8M product line, but the decision I'm proudest of is shutting down a CEO-promised feature after proving the engineering investment was better deployed elsewhere — that redirection drove a 25% increase in activation. I'm looking for teams where data-driven prioritization matters more than feature velocity.
+
+**Why this works**:
+- **Hook**: "The hardest product decisions aren't about what to build — they're about what to kill." This is the earned secret from S007, compressed into one sentence. It creates a curiosity gap — the listener wants to hear the story.
+- **Evidence**: $8M product line + the specific CEO-feature-kill story. This is a micro-story, not a resume recitation.
+- **Landing**: "Teams where data-driven prioritization matters more than feature velocity" — this is a positioning stance. It attracts companies that value judgment and repels those that want feature factories. That's intentional.
+
+## Context Variants
+
+### Interview TMAY (60-90 seconds)
+[Core statement above, expanded]:
+> "...I've spent the last 6 years in B2B SaaS, and the thread across everything I've done is prioritization under constraint. At TechCo, I own a product line that grew from zero to $8M ARR, but the moment that most shaped how I think as a PM was when I had to kill a feature our CEO had promised to a key customer. The data showed the engineering investment would generate more value redirected to an API migration that preserved $200K in partner revenue. Making that case — and winning it — taught me that the best PMs aren't feature-shippers, they're resource allocators. That's what I want to do more of at the senior level."
+
+### Networking Hook-Context-Ask (30-45 seconds)
+> "I'm a PM at TechCo — I've learned that the hardest product calls are about what NOT to build. I recently killed a CEO-promised feature after proving the engineering time was worth more elsewhere, and it worked out well. I'm exploring Senior PM roles at growth-stage companies where that kind of data-driven prioritization is valued. Do you know anyone at [Company] I should talk to?"
+
+## Positioning Consistency Check
+- Resume summary: Currently generic ("Product Manager with 6 years of experience..."). Misaligned — the resume should echo the core positioning.
+- LinkedIn headline: "Product Manager at TechCo" — invisible. Should reflect the positioning stance.
+- Recommended: After finalizing this positioning statement, run `resume` and `linkedin` to propagate the core message across all surfaces.
+
+**Recommended next**: `resume` — update your summary to match this positioning. **Alternatives**: `linkedin`, `practice ladder` (practice delivering the TMAY version)
+```
+
+**Why this example matters**: Shows the before/after transformation from a generic credential-dump pitch to an earned-secret-anchored positioning statement. The core mechanism: compress the candidate's best earned secret (from S007) into the hook sentence, then build evidence around it. Also demonstrates the consistency check — positioning only works if it appears on every surface the candidate touches.
+
+---
+
+## Example 15: LinkedIn Section Audit Showing Recruiter Search Impact
+
+**Context**: Mid-career PM, Standard depth. Showing the headline and About section audit in detail — these are the two highest-impact sections for recruiter discovery.
+
+```markdown
+## LinkedIn Audit: Alex Chen
+
+## Section-by-Section
+
+### 1. Headline
+- Current: "Product Manager at TechCo"
+- Assessment: Invisible. This headline tells recruiters your current job — it doesn't help them find you. When a recruiter searches "Senior Product Manager B2B SaaS," your headline doesn't match. When they see you in results, there's nothing to make them click.
+- Recruiter search analysis: Target role recruiter queries likely include: "Senior Product Manager," "B2B SaaS PM," "Product Manager platform," "PM data-driven." Your current headline matches zero of these.
+- Recommended:
+  > Senior Product Manager | B2B SaaS | Platform & Growth | Data-Driven Prioritization
+- Why: Contains the 4 keywords most likely to appear in recruiter boolean searches for your target roles. "Senior" signals seniority even though your current title is PM. The pipe-separated format is readable and keyword-dense.
+- Alternative (if Positioning Statement exists):
+  > PM who knows when to kill features, not just ship them | B2B SaaS | Platform & Growth
+- Why: Leads with differentiation (earned secret hook) while still containing searchable keywords. Riskier — some recruiters prefer conventional headlines — but significantly more memorable. Choose based on whether you're optimizing for volume (standard) or standout (bold).
+
+### 2. About Section
+- Current: "Experienced Product Manager with a track record of delivering results in fast-paced environments. Passionate about building products that users love. Skilled in agile methodologies, stakeholder management, and cross-functional leadership."
+- Assessment: This is the LinkedIn equivalent of a stock photo. Every word is true and none of it is memorable. Three problems:
+  1. Opens with "Experienced Product Manager" — same opening as ~200,000 other LinkedIn Abouts
+  2. "Passionate about building products that users love" — unfalsifiable and undifferentiated
+  3. Skills list at the end adds no value — skills belong in the Skills section, not the About
+- Recommended:
+  > The hardest product decision I've made wasn't about what to build — it was convincing our CEO to kill a feature he'd promised to a key customer. The data showed the engineering investment was better deployed elsewhere, and the redirect drove a 25% activation increase.
+  >
+  > That's how I think about product management: not as feature delivery, but as resource allocation under constraint. Over 6 years in B2B SaaS, I've grown a product line from $0 to $8M ARR, reduced churn 18% by discovering that usage data outpredicts surveys for renewal risk, and learned that the PMs who say "no" with data create more value than the ones who say "yes" to everything.
+  >
+  > Currently exploring Senior PM roles at growth-stage companies where prioritization rigor matters.
+- Why: Opens with a story, not a title. The first two lines appear "above the fold" in LinkedIn's truncated view — they need to earn the "see more" click. The earned secret ("resource allocation under constraint") is the through-line. Quantified outcomes ($8M, 18%, 25%) build credibility without sounding like a resume.
+
+**Recommended next**: `outreach` — with a stronger profile, your outreach messages will land better. **Alternatives**: `resume` (ensure cross-surface consistency), `pitch` (if positioning statement hasn't been built yet)
+```
+
+**Why this example matters**: Shows the difference between a profile optimized for existence (current state) and one optimized for discovery and conversion (recommended state). The headline analysis connects specific keywords to recruiter search behavior — it's not just "make it better," it's "here's why a recruiter won't find you with the current headline." The About section demonstrates the earned-secret-first approach: lead with a story, not a credential.
+
+---
+
+## Example 16: Outreach Message Critique + Rewrite
+
+**Context**: Mid-career PM, Standard depth. Candidate has drafted a cold LinkedIn connection request to a VP of Product at a target company. Has a Positioning Statement and storybank. Showing the critique and rewrite.
+
+```markdown
+## Outreach Coaching: Cold LinkedIn Connection Request
+
+## Candidate's Draft
+> Hi Sarah, I'm a Product Manager at TechCo and I'm very interested in the Senior PM role at GrowthCo. I've been following your company's growth and I think my background in B2B SaaS would be a great fit. I'd love to connect and learn more about the role and team. Would you be open to a quick chat? Thanks, Alex
+
+## Critique (5 issues, priority order)
+
+1. **No hook** — The first sentence is a job title and a job application. Sarah reads 20 of these a week. There's no reason to keep reading after "I'm a Product Manager at TechCo and I'm very interested in the role." You've told her everything: you want a job. There's no curiosity gap.
+
+2. **Me-centered throughout** — Count the I/my statements: 5. Count the you/your statements: 1 ("your company's growth" — and even that is about your interest in it). Flip the ratio. The message should be about what's interesting about HER work, not about your interest in HER role.
+
+3. **Generic credibility** — "My background in B2B SaaS would be a great fit" — says who? Based on what? This is an assertion without evidence. One specific insight is worth more than ten claims of fit.
+
+4. **Vague ask** — "A quick chat" about what? Give her a reason to say yes beyond "because I want a job." What would she get out of the conversation?
+
+5. **Too long for the format** — LinkedIn connection requests have a 300-character limit. This draft is ~380 characters and would need to be cut anyway. Brevity is a feature, not a bug.
+
+## Rewrite
+> Hi Sarah — I noticed GrowthCo just launched API access for the platform. I spent the last 2 years building a platform product at TechCo and learned the hard way that the biggest risk isn't adoption, it's that early customers build on your API before you know what the right API is. Would love to swap notes on platform strategy.
+
+**Why this works** (annotation):
+- **Hook**: Opens with something specific about HER company (API launch), not about you wanting a job. Shows you've done research.
+- **Earned secret as bridge**: "The biggest risk isn't adoption, it's that early customers build on your API before you know what the right API is" — this is a compressed earned secret from S004. It's specific enough to signal expertise and provocative enough to spark curiosity.
+- **Mutual value ask**: "Swap notes on platform strategy" — this is an exchange, not a request. She might actually want to hear your perspective.
+- **No job mention**: The word "role" doesn't appear. The word "job" doesn't appear. If the connection leads to a conversation, the job comes up naturally. If you lead with the job, the conversation never happens.
+- **Within 300 chars**: 298 characters. Fits the connection request format.
+
+## Follow-Up Plan (if she accepts)
+- **Wait 24h**, then send a message expanding on the platform insight: "Thanks for connecting! If you're navigating the platform API question, I wrote up my lessons from TechCo's experience — [1-2 sentence expansion of the earned secret]. Happy to jump on a 15-minute call if useful."
+- **If no response to follow-up**: One more touch in 5-7 days — brief, adds new value. "Saw [something relevant about GrowthCo] — thought of our conversation about platform strategy. [1 sentence insight]. Let me know if you'd like to connect." Then stop.
+- **If she responds**: Let the conversation develop naturally. Don't pitch yourself — share insights, ask about her challenges. The job conversation emerges from the relationship, not the other way around.
+
+**Recommended next**: `outreach` for another target, or `linkedin` to ensure your profile is strong before she clicks through. **Alternatives**: `pitch`, `prep [GrowthCo]`
+```
+
+**Why this example matters**: Shows the before/after of a cold outreach message. The key mechanism: replace "I want a job" with "I have an insight you might find valuable." The earned secret from the storybank becomes the hook that differentiates this message from the 20 generic connection requests the VP receives weekly. Also demonstrates platform-specific constraints (300-character limit) and the follow-up cadence.
+
+---
+
+## Example 17: Presentation Coaching Excerpt Showing Timing Calibration
+
+**Context**: Senior PM preparing a 15-minute product strategy presentation for a final round. Standard depth. Candidate has described their slide structure and talk track. Showing the timing calibration and Q&A preparation sections.
+
+```markdown
+## Presentation Coaching: GrowthCo — Final Round
+
+## Coaching Scope
+I'll coach the structure, narrative, timing, and Q&A preparation. I can't evaluate your visual design or the technical correctness of your domain content — for those, get feedback from a domain peer.
+
+## Timing Calibration
+
+**Total time**: 15 minutes presentation + 15 minutes Q&A (confirmed with recruiter)
+
+**Your current structure** (candidate's outline):
+| Section | Slides | Estimated Time | % of Total |
+|---|---|---|---|
+| Opening + context | 3 slides | ~4 min | 27% |
+| Market analysis | 4 slides | ~5 min | 33% |
+| Strategy recommendation | 3 slides | ~4 min | 27% |
+| Implementation plan | 3 slides | ~3 min | 20% |
+| Conclusion | 1 slide | ~1 min | 7% |
+| **Total** | **14 slides** | **~17 min** | **113%** |
+
+**Problems detected**:
+1. **You're 2 minutes over before you start.** 14 slides at your described depth = ~17 minutes. That means you'll either rush the ending (the part with your recommendation — the whole point) or run into Q&A time (which signals poor time management — the #1 presentation-round failure mode).
+2. **Context is bloated.** 27% of your time on setup is too much. The audience (VP of Product + 2 senior PMs) already knows the market. They invited you to present YOUR thinking, not to teach them their business. Target: 10-15% on context.
+3. **Implementation plan is too detailed for this audience.** This is a strategy presentation for executives, not a project kickoff. They want to know your strategic bet and why — the implementation details belong in a follow-up conversation.
+
+**Recommended restructure**:
+| Section | Slides | Target Time | % of Total |
+|---|---|---|---|
+| Opening hook + context | 2 slides | ~2 min | 13% |
+| Market analysis (compressed) | 2 slides | ~3 min | 20% |
+| Strategy recommendation | 4 slides | ~6 min | 40% |
+| Key risks + mitigations | 1 slide | ~2 min | 13% |
+| Conclusion + "so what" | 1 slide | ~2 min | 13% |
+| **Total** | **10 slides** | **~15 min** | **100%** |
+
+**What changed and why**:
+- Cut 4 slides (14 → 10). Each cut slide gains you ~90 seconds.
+- Context compressed from 3 slides to 2. Rule: only include context the audience doesn't already know or that directly sets up your recommendation.
+- Strategy expanded from 3 to 4 slides — this is your thesis, it gets the most real estate.
+- Implementation plan replaced with "Key risks + mitigations" — shows you've thought about what could go wrong without descending into project management.
+- "Hook-Build-Deliver-Land" arc: Open with the punchline (your recommendation), build the evidence, close with the ask. Executives decide in the first 30 seconds whether to pay attention.
+
+## Q&A Preparation
+
+**Predicted questions** (ranked by likelihood, based on the audience and content):
+
+1. **"Why this strategy over [alternative]?"** (VERY LIKELY — they want to see how you think about tradeoffs)
+   - Answer strategy: Name the top 2 alternatives you considered. For each, give the strongest argument FOR it, then explain why your recommendation is still better. Shows you didn't just pick the first idea.
+
+2. **"What data is this based on?"** (LIKELY — "data-driven" appeared 3x in the JD)
+   - Answer strategy: Cite your 2-3 strongest data points. If any data is uncertain, say so: "This is directional — the sample size is [X]. I'd want to validate with [Y] before committing." Honesty about data quality builds more credibility than confidence about weak data.
+
+3. **"What would you do in the first 30 days?"** (LIKELY — tests whether you can translate strategy into action)
+   - Answer strategy: Have a crisp 3-step answer ready. Not a project plan — a priority sequence: "First, validate [assumption]. Second, [quick win]. Third, [foundation for the big bet]." 60 seconds max.
+
+4. **"What if [key assumption] is wrong?"** (POSSIBLE — tests adaptability)
+   - Answer strategy: Don't defend the assumption. Instead: "If [assumption] is wrong, here's what changes about the strategy..." Show your thinking is modular, not brittle.
+
+**Q&A principles for this audience**:
+- Answers should be 30-60 seconds. Longer = you're losing them.
+- "I don't know, but here's how I'd find out" is always better than a bluff — especially with senior PMs who will spot the bluff.
+- If a question is really about a slide you already covered, don't repeat the slide. Bridge: "Great question — that connects to [slide X]. The key point there was [one sentence]."
+
+**Recommended next**: `hype` — build your pre-presentation confidence plan. **Alternatives**: `practice ladder` (rehearse the opening 2 minutes), `mock presentation`
+```
+
+**Why this example matters**: Demonstrates timing calibration — the most concrete coaching a text-based tool can provide for presentations. The before/after structure shows the candidate they're over time before they ever stand up. The Q&A preparation section predicts questions from the audience and content, not generically. Also shows the coaching scope boundary in action: timing, structure, and Q&A strategy are within scope; visual design and domain correctness are not.
+
+---
+
+## Example 18: Salary Coaching Showing Recruiter Screen Script
+
+**Context**: Mid-career PM, Quick Script depth. Recruiter screen tomorrow, candidate doesn't know what to say about salary expectations. Has kickoff profile (targeting Senior PM, 6 years experience, current base $135K in Austin).
+
+```markdown
+## Salary Quick Script: Recruiter Screen Prep
+
+## Your Situation
+- Current base: $135K (Austin, TX)
+- Target: Senior PM roles at growth-stage companies
+- Location: Austin (some roles are remote with SF-based companies)
+- Comp data: Not yet researched
+- Urgency: Recruiter screen tomorrow
+
+## Script: "What are your salary expectations?"
+
+**Option 1: Deflect + redirect (recommended for first call)**
+> "I'm flexible on comp — I'm more focused on finding the right role and team fit right now. Do you have a range budgeted for this position?"
+
+**Why this works**: Puts the ball back without being evasive. Most recruiters will share the range. If they do, you now have their anchor, not yours.
+
+**If they push back** ("We need a number to move forward"):
+> "Based on my research for Senior PM roles at this stage of company, I'm targeting the $150-175K range for base, but I'm open to discussing total comp holistically — equity, bonus structure, and growth trajectory all factor in."
+
+**Why this range**: Your current $135K is an Austin-market mid-career PM salary. Senior PM at growth-stage companies in the Austin/remote market typically ranges $145-180K base (from levels.fyi and recent postings with salary transparency). The $150-175K range anchors above your current comp without pricing yourself out.
+
+**Critical**: Do NOT disclose your current $135K. Texas does not ban salary history questions, but you're not obligated to volunteer. If they ask directly: "I'd rather focus on the value I'd bring to this role than anchor to my current comp. The range I mentioned reflects what I'm seeing in the market for this level."
+
+**Option 2: If the company has a published range**
+> "I saw the range posted as $X-Y. That's in the right ballpark for me. I'd want to understand the full comp structure — equity, bonus, and benefits — to evaluate where in that range makes sense."
+
+**If it's a remote role at an SF-based company**:
+Ask early: "Does the company adjust comp by location, or is it a single band regardless of where someone is based?" This determines whether you're benchmarking against SF rates ($170-210K) or location-adjusted rates ($140-175K). Don't assume — ask.
+
+## Comp Research Homework (before tomorrow)
+You haven't researched yet, so do these tonight:
+1. **Levels.fyi**: Search "Product Manager" + the company name (or similar stage companies). Look at the Senior PM band. Note: Levels.fyi is strongest for larger tech companies — coverage may be sparse for growth-stage.
+2. **Job postings**: Search the company's other open PM roles — some may have salary ranges (required by CO/CA/WA/NYC law even for remote roles).
+3. **Glassdoor**: Search the company + "Product Manager." Directional, not precise — treat as a floor estimate.
+4. Cross-reference all three. Your range should be: bottom = minimum you'd accept, target = market 50th percentile for Senior PM at this stage, stretch = 75th percentile or what you'd get with a competing offer.
+
+## What NOT to Say
+- "I'm flexible" (with nothing else) — signals you haven't researched and will accept whatever they offer
+- "$135K" (your current salary) — anchors to your current level, not your target level
+- "Whatever's fair" — there's no such thing as universally fair comp; this is a negotiation
+- A single number instead of a range — a range gives you room; a single number becomes a ceiling
+
+**Recommended next**: `prep [company]` — prepare for the full interview beyond comp. **Alternatives**: `salary` (Standard — for full comp strategy after you have data), `hype`
+```
+
+**Why this example matters**: Demonstrates the Quick Script depth — what a candidate needs when the recruiter screen is tomorrow and they haven't prepared. Shows the deflection-first strategy with a fallback range, the critical "don't disclose current comp" coaching, and the research homework assignment. The coach doesn't fabricate salary data — it guides the candidate to research sources and helps construct a defensible range. Also handles the remote/location comp complexity that trips up many candidates.

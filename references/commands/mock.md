@@ -97,10 +97,6 @@ Match the mock to whatever the candidate describes. If they don't know, default 
 - **Energy trajectory**: Mixed formats are 50-70 minute marathons. How is their energy at question 5 vs. question 1? Does quality drop in the second half?
 - **Which mode is stronger**: Is there a visible gap between their behavioral and technical performance? This is critical coaching data — it reveals where to focus.
 
-### Redo Mechanism
-
-After delivering per-question feedback in the debrief, offer one redo opportunity for the weakest answer: "Your answer to Q[N] had the most room for improvement. Want to try that one again right now? I'll re-ask the question and give you fresh feedback — it's the fastest way to lock in the improvement." If the candidate takes the redo, re-ask the question, score it independently, and show the before/after comparison. Only offer one redo per mock — this isn't a full practice session.
-
 ### Post-Mock Self-Assessment
 
 **Before showing any scores or feedback**, ask the candidate for their overall self-assessment:
@@ -109,6 +105,10 @@ After delivering per-question feedback in the debrief, offer one redo opportunit
 - "Anything you'd do differently if you could run it again?"
 
 Record their responses and compare to your independent assessment in the debrief. This is the same self-calibration protocol used in `analyze` and `practice` — the delta between their read and yours is coaching gold.
+
+### Redo Mechanism
+
+After delivering per-question feedback in the debrief, offer one redo opportunity for the weakest answer: "Your answer to Q[N] had the most room for improvement. Want to try that one again right now? I'll re-ask the question and give you fresh feedback — it's the fastest way to lock in the improvement." If the candidate takes the redo, re-ask the question, score it independently, and show the before/after comparison. Only offer one redo per mock — this isn't a full practice session.
 
 ### Post-Mock Debrief Schema
 
@@ -180,6 +180,18 @@ Use the appropriate unit ID based on mock format: Q# for behavioral, E# for pane
 
 **Recommended next**: `[command]` — [reason based on debrief findings, e.g., weakest dimension drill or story improvement]. **Alternatives**: `mock [same format]`, `practice [specific drill]`, `practice technical`, `analyze`
 ```
+
+### Level 5 Additions
+
+At Directness Level 5, add the following to the mock debrief:
+
+1. **Expanded Interviewer Inner Monologue**: Include the most uncomfortable truths — moments where the interviewer wrote you off, considered ending the interview early, or where an answer actively hurt your chances. Don't soften. "After Q3, I stopped listening for Strong Hire signals. I was now evaluating whether you were a Hire or a No Hire. That's a hard shift to come back from."
+
+2. **Holistic Challenge (after debrief, see `references/challenge-protocol.md` → Mock Debrief Challenge invocation for full graduated protocol)**: At Level 5, run Lenses 1–4 + Expanded Inner Monologue. The specific lens content for this command:
+   - **Assumption Audit**: What assumptions did the candidate bring into this mock that the performance contradicts? "You assumed your prioritization story was strong — the interviewer found it generic. You assumed you were answering the conflict question — you were telling a challenge story." Name every assumption the data disproves.
+   - **Blind Spot Scan**: What pattern is the candidate NOT seeing about their interview performance? What would a hiring committee discuss that the candidate wouldn't predict? "A hiring committee would notice that every story is from the same 12-month period. They'd ask: 'What has this person done in the last 2 years?'"
+
+3. **Avoidance Detection**: If the candidate chose a "safe" mock format (avoided panel when panel is a known weakness, avoided system design, chose the format they're strongest in), name it: "You chose [format] — your strongest format. Your weakest is [X] based on your practice scores. The growth is in the uncomfortable mock, not another win in the comfortable one."
 
 ### Coaching State Integration
 

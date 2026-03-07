@@ -1,6 +1,4 @@
-# thankyou — Post-Interview Thank-You Workflow
-
-> **Boundary with `draft`**: `thankyou` is specifically for post-interview thank-you notes — optimized for timing, multi-interviewer handling, and advancing/rejected variants. For follow-ups outside the 24-hour window, cold outreach, recruiter communication, or offer declinations, use `draft`.
+# thankyou — Follow-Up Workflow
 
 ### Coaching State Integration
 
@@ -60,5 +58,5 @@ If the candidate met multiple interviewers in the same round, generate **separat
 2.
 3.
 
-**Next commands**: `debrief` (if not already done), `analyze` (if transcript available), `prep [company]` (for next round), `progress`
+**Recommended next**: `debrief` — capture interview impressions while they're fresh (if not already done). **Alternatives**: `analyze` (if transcript available), `prep [company]` (for next round), `progress`
 ```
