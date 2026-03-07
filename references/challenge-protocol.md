@@ -207,6 +207,54 @@ Timing: Deliver challenge after strategy build, before scripts.
 
 ---
 
+### LinkedIn Profile Challenge — `linkedin` (Deep Optimization only)
+
+Applied to the profile as a published static artifact. Pre-Mortem (Lens 3) excluded: a static profile cannot "fail" the way a live interview does.
+
+**Level 3**: After the full audit output, one sentence:
+- **Assumption Audit**: What single assumption does this LinkedIn profile rest on that might not be true? (e.g., "Assumes recruiters in your target space search for [keyword]." "Assumes a reader reaches the Featured section.")
+
+**Level 4**: Lenses 1–2:
+- **Assumption Audit**: Name the 1–2 hidden assumptions the profile rests on.
+- **Blind Spot Scan**: What can't the candidate see about their own profile from inside it? (e.g., "You believe your headline differentiates you. From the outside, three candidates in this search results page have the same structure.")
+
+**Level 5**: Lenses 1, 2, 4, 5:
+1. **Assumption Audit**: What 2–3 assumptions does this profile rest on? Surface the non-obvious ones.
+2. **Blind Spot Scan**: What does an outside reader see that the candidate doesn't? What has familiarity made invisible?
+3. **Devil's Advocate**: The strongest case a recruiter would make for skipping this profile — built from actual profile evidence, not hypotheticals.
+4. **Strengthening Path**: The single highest-leverage fix. Not a list — the one change that most changes discoverability or click-through rate.
+
+Lens 5 (Strengthening Path) feeds directly into Priority Moves in the linkedin output.
+
+At Levels 1–2: Skip entirely.
+Timing: Deliver after full audit, before Priority Moves.
+
+---
+
+### Pitch Challenge — `pitch` (Deep Positioning only)
+
+Applied to the positioning statement as a communication artifact. Pre-Mortem (Lens 3) excluded: the positioning hasn't been deployed in a real interview yet — a failure post-mortem adds overhead without evidence grounding. Lenses 1, 2, 4, 5 only.
+
+**Level 3**: After positioning output, one question:
+- **Assumption Audit**: What single assumption does this positioning rest on that might not be true? (e.g., "Assumes hiring managers in your target space care about [differentiator]. What if they care more about [alternative]?")
+
+**Level 4**: Lenses 1–2:
+- **Assumption Audit**: Name the 1–2 assumptions the positioning rests on.
+- **Blind Spot Scan**: What can't the candidate see about how they present? (e.g., "You think you come across as strategic. From the outside, your pitch sounds tactical — it's about what you do, not why it matters.")
+
+**Level 5**: Lenses 1, 2, 4, 5:
+1. **Assumption Audit**: What 2–3 assumptions does this positioning rest on? Surface the ones the candidate hasn't examined.
+2. **Blind Spot Scan**: What can't the candidate see about how they present from inside their own narrative?
+3. **Devil's Advocate**: If a hiring manager heard this and was looking for reasons to tune out — build the strongest case from the actual positioning content.
+4. **Strengthening Path**: The single highest-leverage change. Not a list — the one thing that changes the pitch's impact.
+
+Lens 5 (Strengthening Path) feeds directly into Priority Moves in the pitch output.
+
+At Levels 1–2: Skip entirely.
+Timing: Deliver after positioning output, before Priority Moves.
+
+---
+
 ## Avoidance Confrontation Protocol
 
 ### Detection Signals
@@ -264,6 +312,6 @@ Challenge Debt expires after 3 sessions without the relevant topic being revisit
 
 ## Key Design Principle
 
-**Challenge without resolution is cruelty.** Every challenge invocation — at any level — ends with a concrete, actionable fix. Lens 5 (Strengthening Path) provides the fix directly at Story Red Team, Transcript Challenge (→ Priority Move), Rejection Leverage (→ Concrete adjustments), Resume Audit Challenge (→ Priority Moves), Comp Strategy Challenge (→ Priority Moves / scripts), and Mock Debrief Challenge (→ Top 3 Changes for Next Mock). Existing resolution mechanisms carry the fix at Round Challenge (→ Next Round Adjustment), Hard Truth (→ Top 2 Priorities), and Pre-Mortem in `hype` (→ Prevention cues + release). No challenge ends without telling the candidate exactly what to do differently.
+**Challenge without resolution is cruelty.** Every challenge invocation — at any level — ends with a concrete, actionable fix. Lens 5 (Strengthening Path) provides the fix directly at Story Red Team, Transcript Challenge (→ Priority Move), Rejection Leverage (→ Concrete adjustments), Resume Audit Challenge (→ Priority Moves), Comp Strategy Challenge (→ Priority Moves / scripts), Mock Debrief Challenge (→ Top 3 Changes for Next Mock), LinkedIn Profile Challenge (→ Priority Moves), and Pitch Challenge (→ Priority Moves). Existing resolution mechanisms carry the fix at Round Challenge (→ Next Round Adjustment), Hard Truth (→ Top 2 Priorities), and Pre-Mortem in `hype` (→ Prevention cues + release). No challenge ends without telling the candidate exactly what to do differently.
 
 **Graduated challenge is not a weakened challenge.** A Level 3 Assumption Audit delivered with precision is more valuable than a Level 5 spray of all lenses. Calibrate intensity to the level, not just quantity. One sentence that lands is worth more than five that overwhelm.

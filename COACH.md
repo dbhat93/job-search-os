@@ -168,6 +168,27 @@ Last updated: [date]
 - Scripts provided: [which stages covered]
 - Key principle: [the most important thing to remember]
 
+## LinkedIn Analysis
+- Date:
+- Depth: [Quick Audit / Standard / Deep Optimization]
+- Overall: [Strong / Needs Work / Weak]
+- Recruiter discoverability: [Strong / Moderate / Weak]
+- Credibility on visit: [Strong / Moderate / Weak]
+- Differentiation: [Strong / Moderate / Weak]
+- Top fixes pending: [1-3 line items]
+- Positioning gaps: [resume ↔ LinkedIn inconsistencies, if assessed]
+
+## Positioning Statement
+- Date:
+- Depth: [Quick Draft / Standard / Deep Positioning]
+- Core statement: [the full hook + context + bridge — 30-45 second version]
+- Hook (10s): [the curiosity-gap opener alone]
+- Key differentiator: [one sentence]
+- Earned secret anchor: [the earned secret or spiky POV powering the positioning]
+- Target audience: [primary audience this was optimized for]
+- Variant status: [which variants were produced — TMAY / Networking / Recruiter / Career Fair / LinkedIn Hook]
+- Consistency status: [aligned / gaps identified — brief summary]
+
 ## Active Coaching Strategy
 - Primary bottleneck: [dimension]
 - Current approach: [what we're working on and how]
@@ -221,6 +242,8 @@ Write to `coaching_state.md` whenever:
 - decode saves a JD Analysis entry to coaching_state.md (one entry per company+role; see decode.md → Coaching State Integration for schema)
 - feedback saves: Type A to Interview Intelligence → Recruiter/Interviewer Feedback + Calibration State → Scoring Drift Log (if drift signal); Type B to Outcome Log + Interview Loops + pipeline.md sync; Type C to Score History (if adjusted) + Coaching Notes; Type D to Question Bank with memory reliability tag; Type E to Meta-Check Log
 - negotiate receives an offer (add to Outcome Log with Result: offer)
+- pitch produces a positioning statement (write to Positioning Statement section — Core Statement, Hook, Key Differentiator, Earned Secret Anchor, Variant Status, Consistency Status)
+- linkedin produces a profile audit (write to LinkedIn Analysis section — depth, scores, top fixes, positioning gaps)
 - reflect archives the coaching state (add Status: Archived header)
 - Meta-check conversations (record candidate's response and any coaching adjustment to Meta-Check Log)
 - Any session where the candidate reveals coaching-relevant personal context — preferences, emotional patterns, interview anxieties, scheduling preferences, etc. (add to Coaching Notes)
@@ -271,6 +294,8 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `hype` | Pre-interview confidence and 3x3 plan |
 | `thankyou` | Post-interview thank-you notes (within 24 hours) |
 | `draft` | Email drafting — follow-ups, outreach, recruiter replies, feedback requests after rejections |
+| `pitch` | Core positioning statement — hook, context variants, cross-surface consistency |
+| `linkedin` | LinkedIn profile optimization — recruiter discoverability, credibility, differentiation |
 | `review` | Weekly search review — pipeline health, funnel velocity, outreach momentum |
 | `progress` | Trend review, self-calibration, coaching outcomes |
 | `negotiate` | Post-offer negotiation coaching |
@@ -293,6 +318,8 @@ When executing a command, read the required reference files first:
 - **`review`**: Read `state/pipeline.md`, `coaching_state.md`, and `state/contacts.md` (if it exists).
 - **`comp`**: Read `coaching_state.md` profile (seniority, target roles, timeline). No other state dependency.
 - **`draft`**: Read `coaching_state.md` for debrief context, storybank earned secrets, and interviewer intel. Read `state/contacts.md` if it exists when drafting outreach to a contact. Read `state/pipeline.md` for current pipeline stage context.
+- **`pitch`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, LinkedIn Analysis (for consistency check), Resume Optimization (for summary consistency check). Also read `references/differentiation.md` and `references/storybank-guide.md`.
+- **`linkedin`**: Read `coaching_state.md` for Profile (target role), Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, Positioning Statement (for headline/about alignment), JD Analyses (for keyword targeting). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 
 ## Evidence Sourcing Standard
 
