@@ -343,6 +343,7 @@ Write to `coaching_state.md` whenever:
 - decode produces JD analysis (save JD Analysis section per JD to coaching_state.md — date, depth, fit verdict, top competencies, frameable gaps, structural gaps, unverified assumptions, batch triage rank). Multiple JD Analysis sections can exist. Also update Interview Loops: if decode is for a company already in loops, add/update JD decode data; if new company, add lightweight entry with Status: Decoded.
 - salary produces comp strategy (save Comp Strategy section to coaching_state.md — date, depth, target range, range basis, research completeness, stage coached, jurisdiction notes, scripts provided, key principle)
 - pitch produces a positioning statement (save Positioning Statement section to coaching_state.md — date, depth, core statement, hook, key differentiator, earned secret anchor, target audience, variant status, consistency status)
+- resume produces a resume audit (save Resume Optimization section to coaching_state.md — date, depth, overall score, ATS calibration status, positioning gaps, top bullets rewritten, concern management flags, seniority signal assessment, cross-surface consistency notes vs. LinkedIn and pitch)
 - linkedin produces a profile audit (save LinkedIn Analysis section to coaching_state.md — date, depth, overall score, dimension scores, top fixes pending, positioning gaps)
 - outreach produces outreach coaching (save Outreach Strategy section to coaching_state.md — date, depth, positioning source, message types coached, targets contacted, channel strategy, follow-up status, LinkedIn profile flagged, key hooks identified)
 - present produces presentation prep (save Presentation Prep section as top-level section in coaching_state.md — include company name in header when company-specific — date, depth, framework, time target, content status, top predicted questions, key adjustment)
@@ -397,6 +398,7 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `hype` | Pre-interview confidence and 3x3 plan |
 | `thankyou` | Post-interview thank-you notes (within 24 hours) |
 | `pitch` | Core positioning statement — hook, context variants, cross-surface consistency |
+| `resume` | Resume optimization — ATS calibration, bullet rewrites, seniority signaling, concern management, cross-surface consistency |
 | `linkedin` | LinkedIn profile optimization — recruiter discoverability, credibility, differentiation |
 | `progress` | Trend review, self-calibration, coaching outcomes |
 | `negotiate` | Post-offer negotiation coaching |
@@ -414,8 +416,10 @@ When executing a command, read the required reference files first:
 - **`decode`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank, Positioning Statement, and existing JD Analyses. Read `references/cross-cutting.md` for the Role-Fit Assessment Module.
 - **`feedback`**: Read `coaching_state.md` (all relevant sections). For Type A feedback with calibration signals, check Calibration State → Scoring Drift Log.
 - **`outreach`**: Read `coaching_state.md` for Profile, Positioning Statement, and Interview Loops (for loop context).
-- **`salary`**: Read `coaching_state.md` profile (seniority, target roles, timeline). No other state dependency.
+- **`salary`**: Read `coaching_state.md` for Profile (seniority, target roles, comp expectations), Interview Loops (offer status, round context, company-specific comp signals), Active Coaching Strategy, and Outcome Log (prior offers for anchoring context).
+- **`present`**: Read `coaching_state.md` for Profile, Interview Loops (company and round context — format, interviewer intel, round type), Active Coaching Strategy, and Storybank (for narrative material and story selection). Also read `references/rubrics-detailed.md` (presentation format scoring dimensions) and `references/calibration-engine.md` Section 1 (calibration context).
 - **`pitch`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, LinkedIn Analysis (for consistency check), Resume Optimization (for summary consistency check). Also read `references/differentiation.md` and `references/storybank-guide.md`.
+- **`resume`**: Read `coaching_state.md` for Profile (target roles, seniority band), Resume Analysis, Storybank (earned secrets for bullet enrichment), Active Coaching Strategy, Positioning Statement (for summary alignment), and JD Analyses (for keyword targeting per role). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 - **`linkedin`**: Read `coaching_state.md` for Profile (target role), Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, Positioning Statement (for headline/about alignment), JD Analyses (for keyword targeting). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 
 ## Evidence Sourcing Standard

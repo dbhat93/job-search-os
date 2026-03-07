@@ -63,10 +63,11 @@ After scoring, identify bottleneck dimensions and branch. Most candidates have m
     - Calibration (skip if Substance < 3 — premature optimization)
 14. Synthesize into delta plan with triage-informed priorities.
 15. **Update Active Coaching Strategy in `coaching_state.md`.** Write the chosen coaching path, rationale, and pivot conditions. If an Active Coaching Strategy already exists, check whether this analysis confirms or contradicts it. If the data suggests a different bottleneck than the current strategy targets, **move the old approach to Previous approaches** (with brief reason for the change) before writing the new one: "Your previous coaching focus was Structure, but this transcript shows Structure at 4 while Differentiation is at 2. I'm updating the strategy to focus on Differentiation." Always preserve the history of what was tried and why it was abandoned — this prevents the coach from cycling back to strategies that already failed.
-16. **Update Interview Intelligence.** Extract each scored question to the Question Bank (date, company, role, round type, question, competency, score as 5-dim average, outcome). **Before scoring each question**, check the Question Bank for similar questions from past interviews — same competency, similar phrasing, or same company. If a match exists, note the previous score alongside the new one during per-unit analysis: "You've seen this type of question before — at [Company] in Round [N], you scored [X]. This time: [Y]." This makes score trajectory visible at the question level, not just the dimension level. Then cross-reference with existing Question Bank data — but only surface cross-references when they're meaningful:
-    - Score trajectory on a repeated competency (3+ instances) — e.g., "Your Differentiation on leadership questions has gone 2.2 → 2.8 → 3.4 across three interviews."
-    - Same question type appearing at the same company across rounds
-    - A pattern that changes the coaching recommendation
+16. **Update Interview Intelligence.** Extract each scored question to the Question Bank (date, company, role, round type, question, competency, score as 5-dim average, outcome). **Before scoring each question**, check the Question Bank for similar questions from past interviews — same competency, similar phrasing, or same company. If a match exists, note the previous score alongside the new one during per-unit analysis: "You've seen this type of question before — at [Company] in Round [N], you scored [X]. This time: [Y]." This makes score trajectory visible at the question level, not just the dimension level. Then cross-reference with existing Question Bank data — **only surface cross-references when they clear at least one of these thresholds**:
+    - Score trajectory on a repeated competency (3+ instances AND average delta ≥ 0.5 vs. prior session on that competency) — e.g., "Your Differentiation on leadership questions has gone 2.2 → 2.8 → 3.4 across three interviews."
+    - Same question type appearing at the same company across rounds (always surface — same-company repetition is high-signal regardless of score delta)
+    - A pattern that actively changes the coaching recommendation — meaning it would shift the bottleneck diagnosis, contradict the Active Coaching Strategy, or reverse a trend assumed to be improving
+    Do NOT surface: isolated score comparisons with delta < 0.5, data from only 1–2 instances (insufficient for a reliable pattern), or observations that simply confirm what is already documented in Active Coaching Strategy without adding new information.
     Update Effective/Ineffective Patterns only when 3+ data points support the pattern. Update Company Patterns with question types observed and what seems to matter based on this interview.
 
 ### Per-Unit Format (for each analyzed unit)
@@ -171,7 +172,7 @@ When rewriting:
 - Company learning: [new observations about this company's interview patterns, or "first interview at this company"]
 
 ## Confidence
-- Score confidence: [Low / Medium / High — per calibration-engine.md Section 9. Low = uncalibrated or practice-calibrating. Medium = calibrating. High = calibrated.]
+- Score confidence: [Low / Medium / High — per calibration-engine.md Section 1. Low = uncalibrated or practice-calibrating. Medium = calibrating. High = calibrated.]
 - Data quality notes:
 
 ## Recommended Next Step

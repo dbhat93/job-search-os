@@ -168,7 +168,7 @@ Use the appropriate unit ID based on mock format: Q# for behavioral, E# for pane
 - **Stronger mode**: [behavioral / technical / balanced] — and what that means for prep priorities
 - **Coaching boundary reminder**: "I scored your communication quality across both modes — storytelling, reasoning clarity, and how well they connected. I did not evaluate the technical correctness of your answers."
 
-## Challenge (Levels 3–5 only — see `references/challenge-protocol.md` Mock Debrief Challenge invocation)
+## Challenge (Levels 3–5 only — see `references/challenge-protocol.md` → Mock Debrief Challenge)
 [Level 3: Assumption Audit — one sentence]
 [Level 4: Assumption Audit + Blind Spot Scan]
 [Level 5: Lenses 1–4 + Expanded Inner Monologue + Avoidance Detection if applicable]
@@ -187,7 +187,7 @@ At Directness Level 5, add the following to the mock debrief:
 
 1. **Expanded Interviewer Inner Monologue**: Include the most uncomfortable truths — moments where the interviewer wrote you off, considered ending the interview early, or where an answer actively hurt your chances. Don't soften. "After Q3, I stopped listening for Strong Hire signals. I was now evaluating whether you were a Hire or a No Hire. That's a hard shift to come back from."
 
-2. **Holistic Challenge (after debrief, see `references/challenge-protocol.md` → Mock Debrief Challenge invocation for full graduated protocol)**: At Level 5, run Lenses 1–4 + Expanded Inner Monologue. The specific lens content for this command:
+2. **Holistic Challenge (after debrief, see `references/challenge-protocol.md` → Mock Debrief Challenge for full graduated protocol)**: At Level 5, run Lenses 1–4 + Expanded Inner Monologue. The specific lens content for this command:
    - **Assumption Audit**: What assumptions did the candidate bring into this mock that the performance contradicts? "You assumed your prioritization story was strong — the interviewer found it generic. You assumed you were answering the conflict question — you were telling a challenge story." Name every assumption the data disproves.
    - **Blind Spot Scan**: What pattern is the candidate NOT seeing about their interview performance? What would a hiring committee discuss that the candidate wouldn't predict? "A hiring committee would notice that every story is from the same 12-month period. They'd ask: 'What has this person done in the last 2 years?'"
 
