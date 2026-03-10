@@ -73,11 +73,11 @@ This metacognitive calibration is often more important than any individual dimen
 **Interview-type filtering**: Calculate velocity separately per Interview_Type (behavioral, system design, etc.). Do not blend types. If the candidate has 3 behavioral and 3 system design sessions, run velocity analysis separately for each.
 
 **Calculation method**:
-- **Baseline window**: Average of first ⌊N/3⌋ sessions (minimum 2)
-- **Recent window**: Average of last ⌊N/3⌋ sessions (minimum 2)
+- **Baseline**: Average score of your first 2 sessions
+- **Recent**: Average score of your most recent 2 sessions
 - **Total delta** per dimension: Recent avg − Baseline avg
 - **Velocity**: Total delta ÷ sessions elapsed (expressed as Δ/session, two decimal places)
-- **Coaching ROI**: Sessions elapsed ÷ (|total delta| ÷ 0.5) = sessions per 0.5-point gain. Lower is better. ≤3 = high responsiveness; 4–7 = normal; ≥8 on a sub-3.5 dimension = current approach isn't working
+- **Coaching ROI**: How many sessions to gain half a point? Calculation: sessions elapsed × 0.5 ÷ |total delta|. Example: 8 sessions, +1.0 total → 4 sessions per half-point (good). 8 sessions, +0.2 total → 20 sessions per half-point (approach not working). Flag: ≥8 on any dimension below 3.5 → approach change needed.
 
 **Status thresholds** (per dimension):
 
@@ -85,8 +85,8 @@ This metacognitive calibration is often more important than any individual dimen
 |--------|----------|-------|
 | **Accelerating** | ≥ +0.15/session | Strong momentum — name what changed; use as model for other dimensions |
 | **Improving** | +0.05 to +0.14/session | Steady progress — current approach is working |
-| **Plateau** | +0.01 to +0.04/session | Marginal gains — approach change coming soon if no unlock |
-| **Stagnant** | −0.04 to +0.01/session for 4+ sessions | No meaningful movement — intervention required |
+| **Plateau** | +0.02 to +0.04/session | Marginal gains — approach change coming soon if no unlock |
+| **Stagnant** | < +0.02/session for 4+ sessions | No meaningful movement — intervention required |
 | **Declining** | ≤ −0.05/session | Regression — investigate immediately |
 | **Ceiling** | < +0.05/session AND recent avg ≥ 3.8 | Near maximum — this is progress, not stagnation |
 
@@ -332,7 +332,7 @@ Draws from: Score History trends, storybank gaps, avoidance patterns (from Coach
 - Stories needing rework (1-3): __ [list with S### IDs]
 - Retirement candidates (below 3 after 2+ improvement attempts): __
 - Earned secret coverage: __ of __ stories have real earned secrets (not placeholders)
-- Competency coverage: [list critical gaps for target roles — competencies with no story or only weak stories]
+- Competency coverage: Run the Storybank Gap Check from `references/cross-cutting.md` across all active Interview Loops simultaneously. For each gap, classify as Critical / Addressable / Covered. Surface: (a) competencies that are Critical Gaps for 2+ active companies — fix these first, highest leverage; (b) gaps that are company-specific vs. appearing across the market — company-specific gaps may be targeting signals rather than skill gaps to build.
 - Retrieval readiness: [has candidate run retrieval drill? last retrieval score?]
 - Assessment: [Healthy / Needs work / Critical gaps]
 

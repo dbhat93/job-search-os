@@ -73,6 +73,63 @@ During `stories find gaps`, prescribe the specific pattern for each gap based on
 
 ---
 
+## Storybank Gap Check
+
+Pre-interview competency coverage detection. Different from the Gap-Handling Module (which handles real-time in-interview recovery) — this runs *before* the interview to identify coverage holes while there's still time to do something about them.
+
+**When to run:**
+- During `prep` (Step 7 — automatically triggered when JD competencies + storybank both exist)
+- During `progress` (Storybank Health section — cross-loop view across all active companies)
+- On demand during `stories find gaps`
+
+**Input required**: JD-derived top competencies (from `decode` or extracted during `prep`) + storybank with Primary/Secondary Skills per story.
+
+**Three severity tiers:**
+
+| Tier | Definition | What to Do |
+|------|-----------|------------|
+| **Critical Gap** | Top-3 JD competency with zero storybank coverage — no story lists it as primary or secondary | Requires action before the interview |
+| **Addressable Gap** | Coverage exists but only weak stories (strength 1–2) — no story can carry this competency on its own | Adapt an adjacent story or prepare a gap-handling pattern |
+| **Covered** | At least one story at strength 3+ covers this competency | No action needed; note which story to deploy |
+
+**Critical gap detection — what counts as "top-3 competency":**
+A competency qualifies as top-3 if it appears in: (a) the role title or summary, (b) the required qualifications section, or (c) 3+ places in the JD. Decode output makes this explicit — use it if available.
+
+**Timeline-aware routing** (run after triage, before prescribing action):
+
+| Time Until Interview | Critical Gap Action | Addressable Gap Action |
+|---------------------|--------------------|-----------------------|
+| **3+ weeks** | Build a new story from scratch. Run `stories add` targeting this competency specifically. | Strengthen existing weak story — run `stories improve S###` |
+| **1–3 weeks** | Adapt the strongest adjacent story to bridge to this competency. Use Pattern 1 (Adjacent Bridge) as the delivery vehicle. | Drill gap-handling Pattern 1 or 4 under pressure. |
+| **< 1 week** | Don't try to build a new story — it won't be polished in time. Prepare Pattern 2 or 3 for delivery. Be ready to be honest about the gap. | Same — drill delivery, not story construction. |
+
+**Cross-loop analysis** (for `progress` Storybank Health):
+When multiple active interview loops exist, run the gap check across all of them simultaneously. Surface: (a) competencies that are critical gaps for 2+ companies (highest-leverage fix), (b) competencies covered for all active loops (don't over-prepare these), (c) gaps that are company-specific vs. cross-market (company-specific gaps may be targeting signals).
+
+**Output format** (used by both `prep` and `progress`):
+
+```
+## Competency Coverage — [Company] [Role]
+
+| Competency | Tier | Best Story | Notes |
+|------------|------|-----------|-------|
+| [Top comp 1] | Covered / Addressable / Critical | S### or — | |
+| [Top comp 2] | Covered / Addressable / Critical | S### or — | |
+| [Top comp 3] | Covered / Addressable / Critical | S### or — | |
+| [...] | | | |
+
+Critical gaps: [list — or "none"]
+Addressable gaps: [list with prescriptions]
+Timeline: [N weeks/days → routing applied]
+```
+
+**Integration:**
+- `prep` Step 7: Run full gap check using JD competencies from that prep session. Severity tiers + timeline routing determine prep priorities.
+- `progress` Storybank Health: Cross-loop view — flag competencies that are critical gaps across 2+ active companies.
+- `stories find gaps`: Run gap check, then prescribe which Gap-Handling pattern for each gap (this module identifies *what* is missing; the Gap-Handling Module prescribes *how* to handle it in the room).
+
+---
+
 ## Signal-Reading Module
 
 Real interviews are two-way. Interviewers give signals that candidates should learn to read and adapt to in real-time.

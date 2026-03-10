@@ -25,7 +25,7 @@
    - **Story count**: How many stories exist? Target: 8–12. Flag if < 6.
    - **Strength distribution**: How many at 4+? Target: at least 60%. Flag if the majority are 3 or below.
    - **Earned secret coverage**: How many stories have real earned secrets vs. placeholders? Flag if < 50% have extracted earned secrets.
-   - **Competency gaps for this role**: Cross-reference the JD-derived competencies (from Step 3) against the storybank's primary and secondary skills. Flag any critical competency with no story or only weak stories.
+   - **Competency gaps for this role**: Run the Storybank Gap Check from `references/cross-cutting.md`. Cross-reference the JD-derived top competencies (from Step 3) against the storybank's primary and secondary skills. Classify each competency into one of three tiers: **Critical Gap** (top-3 competency, zero storybank coverage), **Addressable Gap** (coverage exists but only weak stories at strength 1–2), or **Covered** (at least one story at strength 3+). Apply timeline-aware routing: 3+ weeks → build new story; 1–3 weeks → adapt adjacent story; <1 week → drill gap-handling patterns. See the Storybank Gap Check module for the full triage table and output format.
    - **Overuse risk**: Flag stories with Use Count 3+ in the current job search.
    - **Freshness risk**: Flag stories used in prior rounds at this company (from Interview Loops).
    - Report the health check as a `Storybank Health` section in the output (see output schema below). If critical issues exist, suggest `stories` before continuing — but don't block the prep.

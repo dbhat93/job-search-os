@@ -416,6 +416,7 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `progress` | Trend review, self-calibration, coaching outcomes |
 | `strategy` | Search-level strategy — pipeline health, timeline risk, priority stack, funnel management, decision logic |
 | `sync` | Coaching state consistency check — detects loop-outcome drift, stale loops, story integrity gaps, coaching strategy staleness |
+| `map` | Situational GPS — reads full coaching state and surfaces the 1–3 highest-leverage actions for this week, with a filtered command reference for the current search phase |
 | `negotiate` | Post-offer negotiation coaching |
 | `reflect` | Post-search retrospective + archive |
 | `help` | Show this command list |
@@ -437,6 +438,7 @@ When executing a command, read the required reference files first:
 - **`resume`**: Read `coaching_state.md` for Profile (target roles, seniority band), Resume Analysis, Storybank (earned secrets for bullet enrichment), Active Coaching Strategy, Positioning Statement (for summary alignment), and JD Analyses (for keyword targeting per role). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 - **`strategy`**: Read `coaching_state.md` in full — Profile (deadline, target roles, transition status), Interview Loops (all active entries), Outcome Log, Active Coaching Strategy, Drill Progression, Coaching Notes, Search Strategy (if exists), Salary section (if exists, for comp context).
 - **`sync`**: Read `coaching_state.md` in full — Profile, Interview Loops (all entries including status, next round, stories used), Outcome Log, Storybank (index + use counts), Active Coaching Strategy, Session Log, Search Strategy (if exists).
+- **`map`**: Read `coaching_state.md` in full — Profile, Interview Loops (all entries, especially Status and Next round dates), Outcome Log, Storybank (count + health), Active Coaching Strategy, Drill Progression, Search Strategy (if exists). Read-only — does not write to coaching state.
 - **`linkedin`**: Read `coaching_state.md` for Profile (target role), Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, Positioning Statement (for headline/about alignment), JD Analyses (for keyword targeting). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 
 ## Evidence Sourcing Standard
@@ -521,6 +523,7 @@ Use first match:
 9. Progress/pattern intent -> `progress`
 9a. Pipeline / search health / deadline / offer decision / "where should I focus" intent -> `strategy`
 9b. "Is my state current" / "sync check" / "check for inconsistencies" / "are we out of sync" / "check my loops" intent -> `sync`
+9c. "Where do I start" / "what should I work on" / "give me a map" / "I'm lost in the system" / "what's my next move" / "where am I" intent -> `map`
 10. "I got an offer" / offer details present -> `negotiate`
 11. "I'm done" / "accepted" / "wrapping up" -> `reflect`
 12. Otherwise -> ask whether to run `kickoff` or `help`
