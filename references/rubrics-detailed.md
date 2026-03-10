@@ -161,6 +161,124 @@ Scoring is not absolute — calibrate expectations to career stage. When scoring
 - **Senior/Lead (8-15 years)**: A "4 on Substance" means systems-level thinking — second-order effects, organizational impact. Differentiation requires insights that reshape how the interviewer thinks about the problem. Should show judgment across ambiguous tradeoffs.
 - **Executive (15+ years)**: A "4 on Substance" means business-level impact with P&L awareness. Differentiation requires a coherent leadership philosophy backed by pattern recognition across multiple contexts. Should demonstrate how they build and scale through others.
 
+### Calibration Examples by Band
+
+These examples show the same underlying experience scored at different levels. Use them to calibrate quickly when you're deciding between a 3 and a 4, or a 4 and a 5.
+
+**Calibration rule**: Structure, Relevance, and Credibility are largely absolute across bands — a 3 is a 3 regardless of career stage. Seniority calibration primarily shifts expectations for **Substance** (what counts as "sufficient depth") and **Differentiation** (what counts as "distinctive insight"). A mid-career 4 on Substance would be a 3 at senior level; a senior 4 on Differentiation would be a 5 at early career.
+
+---
+
+#### Early Career (0–3 years)
+
+*Example question: "Tell me about a time you made a data-driven decision."*
+
+**Substance — score 3** (meets early-career floor):
+> "I noticed users were dropping off during onboarding, so I pulled our analytics and redesigned the welcome screens. Completion rate improved after the change."
+
+→ Real experience, some specificity. Missing quantification and any mention of alternatives considered. Passes at early career; would be a 2 at mid-career.
+
+**Substance — score 4** (meets early-career standard):
+> "I pulled Mixpanel data and saw a 45% drop-off at screen 3. I tested two redesigns in a 50/50 A/B split over two weeks. Version B — which front-loaded the value prop — won. Completion rate improved from 55% to 78%."
+
+→ Metric, method, comparison. This is a 4 at early career. At mid-career it would be a 3 — it's still task-level execution, not outcome ownership.
+
+**Substance — score 5** (exceptional early career):
+> "I expected the drop-off to be a UX problem. It wasn't — users didn't understand what the product actually did. I ran 8 user interviews before touching the design. That finding reframed the whole project: I rewrote screen 1 copy, cut 3 steps, and added a 'quick win' at step 2. Completion went from 55% to 78%. I wrote it up as a team learning doc because the JTBD finding surprised everyone."
+
+→ Hypothesis challenged by evidence, alternatives implicit in process, secondary impact (team learning). The learning doc signals intellectual generosity and high ceiling — exactly what you want from early career.
+
+**Differentiation — score 3** (sounds like any prepared early-career candidate):
+> "I think being data-informed is critical as a PM. I used data to understand user behavior and let it guide my decision."
+
+→ Technically correct, completely generic. Any candidate who prepped for 20 minutes could say this.
+
+**Differentiation — score 4** (sounds like a specific person):
+> "I expected the data to confirm my intuition. It didn't — and I learned that my first-read of analytics is almost always wrong. I now write down my hypothesis before opening any dashboard so I can see where I diverged. That habit has saved me from bad calls twice since."
+
+→ Earned insight from a real experience. Has a behavioral change attached to it. Not a framework — an opinion with provenance.
+
+---
+
+#### Mid-Career (4–8 years)
+
+*Example question: "Tell me about a time you drove a significant outcome with limited resources."*
+
+**Substance — score 3** (below mid-career standard — would pass at early career):
+> "I rebuilt our fraud detection system on a small team. We moved from rules-based to ML and our false positive rate dropped a lot. It was about a four-month project."
+
+→ Vague at the level of impact. Missing scale, financial context, and alternatives considered. A 3 at this band, not a 4.
+
+**Substance — score 4** (meets mid-career standard):
+> "I led a 4-month rebuild of fraud detection from a rules engine to a vendor ML model. False positives dropped from 12% to 4%, saving CS roughly 800 hours per quarter. I ran a 6-week parallel test before cutover. I scoped in-house at 6 months and chose the vendor because our growth timeline couldn't absorb the delay."
+
+→ Numbers, alternatives considered with explicit rationale, method, outcome. Alternatives considered is the key upgrade from early-career 4 to mid-career 4.
+
+**Substance — score 5** (exceptional mid-career — systems thinking beginning to emerge):
+> "The fraud detection rebuild was really a build-vs-buy decision. In-house was 6 months; vendor was $120K/year and live in 6 weeks. I ran the financial case for our CISO and CTO: net savings of ~$380K in year one when you factor in CS hours and engineer cost. False positives dropped from 12% to 3.8%. But the bigger impact was the 4 months we freed up — we shipped the transaction flow improvements that became our highest-retention feature. The buy decision was actually a roadmap decision."
+
+→ Business framing, stakeholder navigation, second-order outcome. "The buy decision was actually a roadmap decision" is the kind of reframe that signals senior-level readiness.
+
+**Differentiation — score 3 → 5 progression** (same story, different depth):
+
+Score 3: *"I think the key to shipping with limited resources is ruthless prioritization and keeping the team focused."* → Could be anyone.
+
+Score 4: *"The counterintuitive thing I learned is that small teams move faster when you remove roadblocks rather than add process. I cut our weekly status meeting and replaced it with async Slack updates. We shipped two weeks ahead of the comparable prior project."* → Specific, earned, non-obvious. Has provenance.
+
+Score 5: *"I now treat most 'resource constraint' problems as prioritization debt in disguise — you accumulated too many dependencies to move fast. The fraud project taught me that if you get the team to single-threaded ownership on every piece, resource constraints mostly disappear. I've replicated that pattern three times since. It's how I structure every major initiative."* → Principle extracted from experience and applied across contexts. A defensible stance with evidence behind it.
+
+---
+
+#### Senior/Lead (8–15 years)
+
+*Example question: "Tell me about a time you drove organizational change."*
+
+**Substance — score 3** (describes execution, not leadership):
+> "I introduced a new prioritization framework when I joined. It improved velocity and alignment with stakeholders."
+
+→ At mid-career this might be a 3–4 with more detail. At senior level, missing organizational complexity, stakeholder resistance, and second-order effects. A candidate operating at the task level of their previous band.
+
+**Substance — score 4** (meets senior standard):
+> "When I joined as PM Lead, our sprint completion was 68% and we had constant scope conflicts between PM and eng. I introduced a capacity model that accounted for interrupt work — which our old framework ignored entirely. Sprint completion hit 89% over two quarters. We shipped 3 of 4 Q4 OKRs vs. 1 of 4 the year before. The harder part was getting engineering leadership to trust the model — it took two quarters of visible results before they stopped questioning the methodology."
+
+→ Numbers, second-order effect (trust-building), stakeholder dynamic named explicitly. The trust element is what makes this a senior 4 rather than a mid-career 4. The candidate is managing the organizational system, not just shipping.
+
+**Substance — score 5** (exceptional senior — root cause thinking + ownership transfer):
+> "The sprint completion problem was a trust problem in disguise. Engineering believed PMs were sandbagging — adding buffer that created false velocity signals. I ran a postmortem across 12 sprints and found 40% of scope failures came from unplanned interrupt work, not estimation errors. I built a dashboard that made interrupt work visible in real time — not to assign blame, but to make system constraints legible. Sprint completion went to 89%. The signal I cared about more: engineering leadership started advocating for the model to the CTO. The change worked because they owned it, not because I drove it."
+
+→ Root cause diagnosis, organizational psychology, outcome measured by adoption rather than metrics. "Change worked because they owned it" is a distinctively senior insight — it reflects a mental model about how sustainable change actually happens.
+
+**Differentiation — score 5** (senior level — reshapes how the interviewer thinks):
+> "I've now run two major org changes, and I keep seeing the same pattern: the people most resistant at the start become the loudest champions at the end — if you solve their actual problem instead of the problem you diagnosed from the outside. I've stopped calling them resistors. They're usually the ones who can see the failure modes you can't."
+
+→ Non-obvious stance. Backed by pattern recognition across multiple events. The interviewer leaves thinking about the problem differently. That's the senior 5 bar.
+
+---
+
+#### Executive (15+ years)
+
+*Example question: "Tell me about a major strategic decision you made with imperfect information."*
+
+**Substance — score 3** (below executive standard — would be a 4 at senior level):
+> "I decided to restructure the product org to align around customer segments. It was difficult because it disrupted existing team dynamics, but it paid off over time."
+
+→ At senior level this might be a 3–4 with more detail. At executive level, missing financial stakes, board context, P&L framing, and outcome at scale. "Paid off over time" is the tell — no number, no accountability.
+
+**Substance — score 4** (meets executive standard):
+> "I restructured our 120-person product org from functional to segment alignment over 18 months. NPS went from 32 to 51. Time-to-market dropped from 9 months to 5. The cost: three senior PMs who left rather than shift domains, and six months of slower throughput during transition. I modeled the restructure cost at roughly $2M in lost velocity and retention, against a projected $8M in accelerated revenue from faster enterprise cycles. We hit that number in year two."
+
+→ Scale, financial framing, cost acknowledged with tradeoff rationale, outcome validated. The $2M/$8M framing is what makes this an executive 4 rather than a senior 4. Executives are expected to hold the financial model in their head and speak to it.
+
+**Substance — score 5** (exceptional executive — board dynamics + principle extracted):
+> "The case I made to the board wasn't about the restructure — it was about churn risk. Our top-10 enterprise clients had four different PM contacts and no single owner. Churn risk in that segment was 34% higher than mid-market, and I had six months of data on it before I said anything. The board's concern wasn't the cost; it was doing it during our fastest growth period. I made the counterargument: reorganizing during growth is always cheaper than during crisis. We did it. Lost three PMs, six months of velocity. Enterprise churn dropped from 18% to 11%. Enterprise ARR grew 40% the following year. I bring that P&L model to every strategic restructure conversation now."
+
+→ Board dynamics navigated, data-driven case built before the conversation, resistance named and countered with principle, financial outcome, principle codified for future use. Unmistakably an executive answer.
+
+**Differentiation — score 5** (executive level — coherent philosophy, not just a story):
+> "Every major org decision I've made in the last decade comes back to the same question: who can see the customer, who can see the technical constraints, and who can see both? I don't believe in 'right' org structures. I believe in minimizing the distance between information and the decision. The segment restructure was one instance of that. The next one will look completely different, but it'll be solving the same information flow problem."
+
+→ Coherent leadership philosophy backed by pattern recognition across multiple organizational cycles. A mid-career candidate cannot produce this — it requires having been wrong at scale and building a model from the failure. The final sentence ("next one will look completely different, but solving the same problem") signals that the philosophy is generative, not a story being retrofitted.
+
 ---
 
 ## Aggregate Scoring

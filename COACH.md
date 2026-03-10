@@ -26,7 +26,7 @@ This skill maintains continuity across sessions using a persistent `coaching_sta
 
 At the beginning of every session:
 1. Read `coaching_state.md` if it exists.
-2. **If it exists**: Run the Schema Migration Check (see below), then the Timeline Staleness Check (see below). Then greet the candidate with a prescriptive recommendation: "Welcome back. Last session we worked on [X]. Your current drill stage is [Y]. You have [Z] real interviews logged. Based on where you are, the highest-leverage move right now is **[specific command + reason]**. Want to start there, or tell me what you'd rather work on." Recommendation logic (check in this order): pending outcomes in Outcome Log → ask for updates before recommending ("Any news from [companies]?"); interview within 48h → `hype` (+ note any storybank gaps to address post-interview); storybank empty → `stories`; debrief captured but no corresponding Score History entry for that round → `analyze` (paste the transcript); research done for a company but prep not yet run → `prep [company]`; 3+ sessions and no recent progress review → `progress`; active prep but no practice → `practice`; otherwise → the most relevant command based on Active Coaching Strategy. Do NOT re-run kickoff. If the Score History or Session Log has grown large (15+ rows), run the Score History Archival check silently before continuing. Also check Interview Intelligence archival thresholds if the section exists.
+2. **If it exists**: Run the Schema Migration Check (see below), then the Timeline Staleness Check (see below), then the Sync Drift Check (see below). Then greet the candidate with a prescriptive recommendation: "Welcome back. Last session we worked on [X]. Your current drill stage is [Y]. You have [Z] real interviews logged. Based on where you are, the highest-leverage move right now is **[specific command + reason]**. Want to start there, or tell me what you'd rather work on." Recommendation logic (check in this order): pending outcomes in Outcome Log → ask for updates before recommending ("Any news from [companies]?"); interview completed in last 72 hours (Next round date in Interview Loops has passed + no corresponding Outcome Log entry for that round) → proactively suggest `debrief` before any other recommendation — time-sensitive, memory decays quickly; interview within 48h (upcoming, not yet occurred) → `hype` (+ note any storybank gaps to address post-interview); storybank empty → `stories`; debrief captured but no corresponding Score History entry for that round → `analyze` (paste the transcript); research done for a company but prep not yet run → `prep [company]`; 3+ sessions and no recent progress review → `progress`; active prep but no practice → `practice`; otherwise → the most relevant command based on Active Coaching Strategy. Do NOT re-run kickoff. If the Score History or Session Log has grown large (15+ rows), run the Score History Archival check silently before continuing. Also check Interview Intelligence archival thresholds if the section exists.
 3. **If it doesn't exist and the user hasn't already issued a command**: Treat as a new candidate. Suggest kickoff.
 4. **If it doesn't exist but the user has already issued a command** (e.g., they opened with `kickoff`): Execute the command directly — don't suggest what they've already asked for.
 
@@ -86,6 +86,16 @@ Run this migration silently — do not announce schema changes to the candidate 
 ### Timeline Staleness Check
 
 At session start, after reading `coaching_state.md`, check if the Profile's Interview timeline contains a specific date that has passed. If so, proactively ask: "Your interview timeline was set to [date], which has passed. Has anything changed? This affects whether we're in triage, focused, or full coaching mode." Update the Profile and adjust the time-aware coaching mode accordingly.
+
+### Sync Drift Check
+
+At session start, after the Schema Migration and Timeline Staleness checks, run two lightweight consistency checks. Run them silently — only surface findings that require candidate input.
+
+**Check 1 — Loop-Outcome Drift**: For each entry in the Outcome Log with a terminal result (rejected / offer / withdrawn), verify the corresponding Interview Loop's Status field reflects it. If a loop still shows "Interviewing" or "Active" when the outcome is terminal: update the Loop Status silently to match. Note the correction in Coaching Notes.
+
+**Check 2 — Passed Next-Round Dates**: For each Interview Loop with a "Next round" date that passed more than 7 days ago, check whether a corresponding new Outcome Log entry or a new completed round exists. If not: surface this before the standard greeting — "I noticed your [Company] [Round] was scheduled for [date] — [N] days ago. Did that happen? Run `debrief` to capture it while impressions are still useful, or `feedback` to log the outcome." Do not guess the result. Wait for the candidate to respond before making any other recommendation.
+
+For a full consistency audit across all loop fields, story integrity, coaching strategy staleness, and search strategy drift, use the `sync` command.
 
 ### coaching_state.md Format
 
@@ -348,6 +358,7 @@ Write to `coaching_state.md` whenever:
 - linkedin produces a profile audit (save LinkedIn Analysis section to coaching_state.md — date, depth, overall score, dimension scores, top fixes pending, positioning gaps)
 - outreach produces outreach coaching (save Outreach Strategy section to coaching_state.md — date, depth, positioning source, message types coached, targets contacted, channel strategy, follow-up status, LinkedIn profile flagged, key hooks identified)
 - present produces presentation prep (save Presentation Prep section as top-level section in coaching_state.md — include company name in header when company-specific — date, depth, framework, time target, content status, top predicted questions, key adjustment)
+- sync confirms a loop outcome during the session (update Outcome Log + Interview Loop Status immediately; all other identified fixes are routed to their respective commands — sync does not write other sections directly)
 - strategy produces a search strategy session (save Search Strategy section to coaching_state.md — date, session type, timeline status, priority stack, funnel status, key risks, 2-week action plan). Also update Interview Loops (Status, Next Action fields) if any loops were reprioritized or flagged as dead weight. Update Active Coaching Strategy if the primary obstacle is now search-level rather than skill-level.
 - negotiate receives an offer (add to Outcome Log with Result: offer)
 - reflect archives the coaching state (add Status: Archived header)
@@ -404,6 +415,7 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `linkedin` | LinkedIn profile optimization — recruiter discoverability, credibility, differentiation |
 | `progress` | Trend review, self-calibration, coaching outcomes |
 | `strategy` | Search-level strategy — pipeline health, timeline risk, priority stack, funnel management, decision logic |
+| `sync` | Coaching state consistency check — detects loop-outcome drift, stale loops, story integrity gaps, coaching strategy staleness |
 | `negotiate` | Post-offer negotiation coaching |
 | `reflect` | Post-search retrospective + archive |
 | `help` | Show this command list |
@@ -424,6 +436,7 @@ When executing a command, read the required reference files first:
 - **`pitch`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, LinkedIn Analysis (for consistency check), Resume Optimization (for summary consistency check). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 - **`resume`**: Read `coaching_state.md` for Profile (target roles, seniority band), Resume Analysis, Storybank (earned secrets for bullet enrichment), Active Coaching Strategy, Positioning Statement (for summary alignment), and JD Analyses (for keyword targeting per role). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 - **`strategy`**: Read `coaching_state.md` in full — Profile (deadline, target roles, transition status), Interview Loops (all active entries), Outcome Log, Active Coaching Strategy, Drill Progression, Coaching Notes, Search Strategy (if exists), Salary section (if exists, for comp context).
+- **`sync`**: Read `coaching_state.md` in full — Profile, Interview Loops (all entries including status, next round, stories used), Outcome Log, Storybank (index + use counts), Active Coaching Strategy, Session Log, Search Strategy (if exists).
 - **`linkedin`**: Read `coaching_state.md` for Profile (target role), Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, Positioning Statement (for headline/about alignment), JD Analyses (for keyword targeting). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 
 ## Evidence Sourcing Standard
@@ -507,6 +520,7 @@ Use first match:
 8. Practice intent -> `practice`
 9. Progress/pattern intent -> `progress`
 9a. Pipeline / search health / deadline / offer decision / "where should I focus" intent -> `strategy`
+9b. "Is my state current" / "sync check" / "check for inconsistencies" / "are we out of sync" / "check my loops" intent -> `sync`
 10. "I got an offer" / offer details present -> `negotiate`
 11. "I'm done" / "accepted" / "wrapping up" -> `reflect`
 12. Otherwise -> ask whether to run `kickoff` or `help`
