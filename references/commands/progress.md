@@ -23,6 +23,7 @@ The value of `progress` scales with the data available. Before running the full 
 3. Compare self-assessment to actual coach scores over time (this is the most valuable part).
 4. Narrate the trend trajectory (see Trend Narration below — don't just show numbers). Skip if < 3 sessions.
 4a. **Hard Truth (Level 5 only).** Based on all accumulated data (Score History trends, storybank gaps, avoidance patterns from Coaching Notes, self-assessment deltas, outcome patterns), identify the single most important uncomfortable truth. One paragraph. No softening. No "but here's the good news." Just the truth the candidate needs to hear. See `references/challenge-protocol.md` for the Hard Truth lens. At Levels 1-4: omit entirely.
+4.5. **Velocity Analysis** (if 4+ scored sessions of the same Interview_Type exist): Calculate rate-of-change per dimension using the Velocity Analysis methodology below. Surface fastest-moving dimension, most stagnant dimension, coaching ROI signal, and any mismatch between where progress is happening and where coaching effort is going. Skip entirely if fewer than 4 sessions — the numbers aren't stable enough to be useful.
 5. Check for outcome data and correlate with practice scores (see outcome tracking below). Skip if < 3 real interviews.
 5a. **Scoring Drift Detection** (requires 3+ outcomes). Run the Scoring Drift Detection Protocol from `references/calibration-engine.md`: build the outcome-score matrix, check for systematic drift per dimension, check for feedback contradictions, generate drift report, present adjustments to candidate. Update `coaching_state.md` → Calibration State. Skip if < 3 outcomes.
 5b. **Cross-Dimension Root Cause Review**. Check Calibration State → Cross-Dimension Root Causes (active). For each active root cause: assess treatment effectiveness (are affected dimensions improving in tandem?), check if resolution criteria are met (1+ point improvement sustained over 3+ sessions), update status. If a root cause isn't responding to treatment, recommend a pivot: "We've been treating [root cause] with [treatment] for [N] sessions. Affected dimensions aren't improving together. Let's try a different approach."
@@ -64,6 +65,45 @@ Track the delta between candidate self-ratings and coach scores across all sessi
 - **Coach scores suspiciously always match candidate self-assessment** → This is a red flag for the coaching itself. If delta is near-zero across many sessions, the coach may be anchoring to the candidate's input rather than scoring independently. Reset by scoring the next transcript before asking for self-assessment.
 
 This metacognitive calibration is often more important than any individual dimension score.
+
+### Velocity Analysis
+
+**Minimum data**: 4+ scored sessions of the same Interview_Type. If fewer than 4 exist, skip — variance is too high for the numbers to be meaningful.
+
+**Interview-type filtering**: Calculate velocity separately per Interview_Type (behavioral, system design, etc.). Do not blend types. If the candidate has 3 behavioral and 3 system design sessions, run velocity analysis separately for each.
+
+**Calculation method**:
+- **Baseline window**: Average of first ⌊N/3⌋ sessions (minimum 2)
+- **Recent window**: Average of last ⌊N/3⌋ sessions (minimum 2)
+- **Total delta** per dimension: Recent avg − Baseline avg
+- **Velocity**: Total delta ÷ sessions elapsed (expressed as Δ/session, two decimal places)
+- **Coaching ROI**: Sessions elapsed ÷ (|total delta| ÷ 0.5) = sessions per 0.5-point gain. Lower is better. ≤3 = high responsiveness; 4–7 = normal; ≥8 on a sub-3.5 dimension = current approach isn't working
+
+**Status thresholds** (per dimension):
+
+| Status | Velocity | Notes |
+|--------|----------|-------|
+| **Accelerating** | ≥ +0.15/session | Strong momentum — name what changed; use as model for other dimensions |
+| **Improving** | +0.05 to +0.14/session | Steady progress — current approach is working |
+| **Plateau** | +0.01 to +0.04/session | Marginal gains — approach change coming soon if no unlock |
+| **Stagnant** | −0.04 to +0.01/session for 4+ sessions | No meaningful movement — intervention required |
+| **Declining** | ≤ −0.05/session | Regression — investigate immediately |
+| **Ceiling** | < +0.05/session AND recent avg ≥ 3.8 | Near maximum — this is progress, not stagnation |
+
+**Critical distinction — plateau vs. ceiling**:
+Stagnant at 2.8 is a problem. Stagnant at 3.9 is a ceiling — the candidate has likely maxed this dimension at their current level. Don't prescribe more work on a dimension sitting at 3.9.
+
+**What to surface**:
+
+1. **Fastest-moving dimension**: Name it and say what drove the improvement. This is what coaching leverage looks like. Use it as the model: "Differentiation moved +0.12/session after you started leading with counterintuitive choices. That same 'earned insight first' principle can unlock Credibility too."
+
+2. **Most stagnant/declining dimension** (if below ceiling): Name it directly. If stagnant for 5+ sessions below 3.8, prescribe a different approach — not more of the same: "Structure hasn't moved in 5 sessions despite consistent drilling. The bottleneck may not be practice volume — it may be how you're mentally modeling the structure before you speak."
+
+3. **Coaching ROI signal**: If any dimension has ROI ≥ 8 sessions/half-point AND the current avg is below 3.5: "We've invested [N] sessions on [dimension] and it's barely moved. That's not a practice problem — it's an approach problem. Let's try [specific different drill]."
+
+4. **Mismatch flag**: If the fastest-moving dimension is not the one currently targeted in Active Coaching Strategy: flag it. "Your Relevance is improving faster than anything else (+0.13/session). But we've been focused on Structure. Are we coaching the right bottleneck?"
+
+5. **ROI table** (only when helpful — skip if there's only one notable insight): Show the full per-dimension velocity table so the candidate can see the complete picture, not just the extremes.
 
 ### Outcome Tracking
 
@@ -178,6 +218,23 @@ This is hard but important. If after sustained effort, scores remain at 2-3 acro
 - Relevance: [score history] — [narration]
 - Credibility: [score history] — [narration]
 - Differentiation: [score history] — [narration]
+
+## Velocity Metrics [skip if < 4 sessions]
+- Data window: [N] sessions — [interview type]
+- Baseline: sessions 1–[N] (avg)  /  Recent: sessions [N]–[N] (avg)
+
+| Dimension | Baseline | Recent | Total Δ | Velocity | Status |
+|-----------|----------|--------|---------|----------|--------|
+| Substance | | | | | |
+| Structure | | | | | |
+| Relevance | | | | | |
+| Credibility | | | | | |
+| Differentiation | | | | | |
+
+- Fastest-moving: [dimension] (+X.XX/session) — [what drove it]
+- Most stagnant: [dimension] (+X.XX/session) — [plateau or ceiling? — diagnosis]
+- Coaching ROI: [which dimensions respond fastest; any dimension at ≥8 sessions/0.5pt below ceiling]
+- Mismatch flag: [fastest-moving dimension vs. Active Coaching Strategy target — flag if different]
 
 ## Hard Truth (Level 5 only)
 [One paragraph. No softening. No "but here's the good news." Just the truth the candidate needs to hear.
