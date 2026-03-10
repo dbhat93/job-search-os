@@ -123,6 +123,41 @@ Three new commands for the artifacts candidates build before they ever interview
 
 ---
 
+## v3.1: Navigation, Gap Pipeline, and Security Hardening (shipped)
+
+**Thesis**: v3 made the system comprehensive. v3.1 makes it safer to use at scale (security), easier to navigate (map command), smarter about competency gaps before interviews (gap pipeline), and more accurate in measuring coaching progress (velocity metrics).
+
+### Feature 1: Map Command — Situational GPS
+Candidates running multi-week searches with many commands and a growing coaching state frequently lose track of what to do next. `map` answers one question: "Given where I am right now, what should I run?" It reads the full coaching state, runs a 10-condition priority check (urgent through low), and outputs 1–3 time-sensitive actions with a filtered command reference for the candidate's current search phase. Read-only — never writes to state.
+
+**Key files**: `references/commands/map.md` (new), `COACH.md` (registry, file routing, mode detection 9c)
+
+### Feature 2: Storybank Gap Pipeline
+Before this, competency gaps were detected in `prep` but there was no structured cross-interview analysis or severity triage. The gap pipeline adds: a Storybank Gap Check module with 3 severity tiers (Critical/Addressable/Covered), timeline-aware routing (3+ weeks / 1-3 weeks / <1 week before interview), and cross-loop analysis that surfaces when the same gap appears across multiple active companies. `prep` and `progress` both consume the module.
+
+**Key files**: `references/cross-cutting.md` (Storybank Gap Check module), `references/commands/prep.md` (Step 7 enrichment), `references/commands/progress.md` (Storybank Health cross-loop analysis)
+
+### Feature 3: Velocity Metric Fixes
+Three QA-flagged issues in `progress` velocity metrics:
+- **Calculation method**: Simplified from an ⌊N/3⌋ formula to first-2 vs last-2 session windows — easier to verify and less sensitive to session count
+- **Stagnant threshold**: Tightened from `< +0.01/session` to `< +0.02/session for 4+ sessions` — the old threshold let slow-but-real progress go unflagged
+- **Coaching ROI**: Replaced opaque formula with plain English + worked example ("8 sessions, +1.0 total → 4 sessions per half-point")
+
+**Key files**: `references/commands/progress.md` (velocity metrics section)
+
+### Feature 4: Security Hardening
+Prompt injection guards, data privacy documentation, and data retention guidance:
+- **Prompt injection**: Content isolation checks added to `analyze` (transcripts) and `prep` (JD parsing) — flags embedded directives before processing
+- **Data privacy**: New Data Privacy and Retention section in `COACH.md` covering what `coaching_state.md` contains, compensation data sensitivity, third-party data, and retention guidance
+- **Data retention**: Cleanup prompt added to `reflect` — surfaces what to archive vs. delete at end of search
+- **Compensation privacy**: Warning added to `salary` — Comp Strategy section is among the most sensitive fields
+- **Recruiter feedback provenance**: `feedback` now tracks written vs. paraphrased source — affects calibration confidence; stored as `[written]`/`[paraphrased]` tag in state entries
+- **README privacy section**: New `## Data and Privacy` section documents what `coaching_state.md` contains and how to protect it — visible to forkers before first use
+
+**Key files**: `references/commands/analyze.md`, `references/commands/prep.md`, `COACH.md`, `references/commands/reflect.md`, `references/commands/salary.md`, `references/commands/feedback.md`, `README.md`, `.gitignore`
+
+---
+
 ## v4: Interaction Model (planned)
 
 **Thesis**: Now that the coaching brain is strong and comprehensive, change *how* candidates interact with it.

@@ -159,6 +159,7 @@ For both options, the coach will ask for your resume, target role, and timeline 
 | `negotiate` | Post-offer negotiation coaching | Offer analysis + strategy + scripts + specific language |
 | `reflect` | Post-search retrospective + archive | Journey arc, breakthroughs, transferable skills, archived state |
 | `help` | Show command menu (context-aware) | Full command list + recommended next based on coaching state |
+| `map` | Situational GPS — "where am I and what should I do next?" | Priority-ranked next actions + filtered command reference for current search phase |
 
 ---
 
@@ -413,8 +414,9 @@ interview-coach-skill/
     │   ├── negotiate.md
     │   ├── feedback.md
     │   ├── reflect.md
-    │   └── help.md
-    ├── cross-cutting.md                # Shared modules: gap-handling, signal-reading, differentiation, cultural awareness, psychological readiness, cross-command dependencies
+    │   ├── help.md
+    │   └── map.md
+    ├── cross-cutting.md                # Shared modules: gap-handling, storybank-gap-check, signal-reading, differentiation, cultural awareness, psychological readiness, cross-command dependencies
     ├── rubrics-detailed.md             # Scoring anchors, root causes, seniority calibration
     ├── role-drills.md                  # Role-specific drills + interviewer archetypes
     ├── differentiation.md              # Earned secrets, spiky POVs, clarity under pressure
