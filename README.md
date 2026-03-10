@@ -462,6 +462,33 @@ The skill writes a `coaching_state.md` file that tracks your storybank, scores, 
 
 ---
 
+## Data and Privacy
+
+`coaching_state.md` is created on first `kickoff` and updated automatically throughout your search. It contains sensitive personal and professional data — treat it accordingly.
+
+**What it stores:**
+- Target companies, interview status, and outcomes
+- Storybank with detailed professional narratives and personal context
+- Score history and coaching patterns across sessions
+- Compensation research — current salary, target range, and negotiation strategy
+- Recruiter and interviewer names and verbatim feedback
+- Excerpts from interview transcripts (third-party speech)
+- Personal reflections from `reflect` and `debrief`
+
+**Default protections (already in place):**
+- `coaching_state.md` is listed in `.gitignore` — it won't be committed to your fork by default
+- `CLAUDE.md` (your active skill file) is also gitignored
+
+**What you should do:**
+- Do not sync `coaching_state.md` to any shared or cloud location (Google Drive, Dropbox, iCloud, GitHub) without encrypting it first
+- If you share your repo or coaching setup with anyone, confirm `coaching_state.md` is excluded
+- When your search ends, run `reflect` — it prompts you to archive and delete data you no longer need
+- Compensation data is among the most sensitive fields. If you ever export or share state data, redact the Comp Strategy section first
+
+**Third-party data note:** Transcripts and recruiter feedback contain other people's words. These are stored in your local `coaching_state.md` only — they are never transmitted anywhere by the skill itself.
+
+---
+
 ## Contributing
 
 Open an issue or PR with:

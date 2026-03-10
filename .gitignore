@@ -1,7 +1,9 @@
 # OS
 .DS_Store
 
-# Personal coaching data — contains stories, scores, interview targets, and concerns
+# Personal coaching data — contains sensitive data: storybank, scores, interview targets,
+# compensation strategy, recruiter feedback, transcript excerpts, and personal reflections.
+# Never commit this file. See README "Data and Privacy" section for details.
 coaching_state.md
 
 # Active skill file (created by copying SKILL.md during setup)
