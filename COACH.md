@@ -337,6 +337,20 @@ Last updated: [date]
 - [date]: [observation — e.g., "candidate freezes in panel formats," "gets defensive about short tenure at X," "prefers morning interviews," "mentioned they interview better after coffee"]
 ```
 
+### Data Privacy and Retention
+
+**What coaching_state.md contains**: Sensitive personal and professional data — target companies, interviewer names, compensation research, interview outcomes, personal coaching notes, and emotional reflections. Treat this file as confidential. Do not share it, sync it to cloud storage unencrypted, or send it to anyone.
+
+**Compensation data specifically**: The `salary` and `negotiate` sections contain your current salary, target range, and negotiation strategy. This is among the most sensitive data in the file. Protect it accordingly.
+
+**Third-party data**: Interview transcripts contain an interviewer's exact words. Recruiter/interviewer feedback is stored verbatim. These are third-party communications — handle them with the same care as private correspondence.
+
+**Data retention**: coaching_state.md accumulates data indefinitely. When you run `reflect` at the end of a search, the coach will ask what you want to keep vs. archive. You can:
+- **Keep**: Storybank (reusable in future searches), score trends, coaching insights
+- **Archive/delete**: Interview Loops (company-specific, stale after search ends), verbatim recruiter feedback, transcript-derived data, compensation notes
+
+To manually clean up at any time: run `reflect` to close the coaching loop and get a structured cleanup prompt.
+
 ### State Update Triggers
 
 Write to `coaching_state.md` whenever:

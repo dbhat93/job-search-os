@@ -98,5 +98,15 @@ This is the workflow where the coach's anti-sycophancy commitment matters most. 
 
 ### Coaching State Handling
 
-- Do NOT delete `coaching_state.md`. Mark it as archived with a date: add `Status: Archived [date] — [reason: accepted offer / paused search / etc.]` at the top.
+- Mark the file as archived with a date: add `Status: Archived [date] — [reason: accepted offer / paused search / etc.]` at the top.
 - If the candidate later runs `kickoff` again, the coach can reference the archived state: "I see you went through coaching before. Want to build on that foundation or start fresh?"
+
+**Data cleanup prompt** — ask after archiving:
+
+"Before we close out, your coaching_state.md contains data you may not need long-term. Here's what's in it:
+- **Keep for future searches**: Storybank (your stories are reusable), score trends, coaching insights
+- **Consider deleting**: Interview Loops and Outcome Log (company-specific, stale now), verbatim recruiter feedback, compensation strategy notes, interview transcripts (if any were stored)
+
+Compensation and recruiter feedback data is sensitive — if you don't need it, deleting it reduces your exposure. Want me to help you identify what's safe to remove, or are you good to manage the file yourself?"
+
+Don't force deletion. Let the candidate decide. Simply naming what's there ensures they're aware.

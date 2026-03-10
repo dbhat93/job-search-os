@@ -20,17 +20,23 @@ Classify the candidate's input into one of five types. If ambiguous, ask: "Is th
 
 **Trigger**: Candidate shares feedback received from a recruiter, interviewer, or hiring manager.
 
+**Source verification — ask first**: "Did you receive this in writing (email, LinkedIn message), or is this from a verbal conversation?" Note the answer — it affects how the feedback is weighted and stored:
+- **Written** (email/message): Higher signal, closer to verbatim. Can be used for Calibration State drift analysis with higher confidence.
+- **Verbal/paraphrased**: Lower fidelity. Memory reconstructs and edits. Mark as `source_type: paraphrased` in the state entry.
+
+**Privacy note**: Recruiter and interviewer feedback is third-party speech stored in coaching_state.md. It may contain subjective assessments. Keep coaching_state.md confidential — do not share feedback from recruiters/interviewers with others.
+
 **Capture process**:
-1. Record the feedback as close to verbatim as possible. Ask: "Can you share exactly what they said? Even rough wording helps — paraphrasing loses signal." If the candidate's account is vague or thin, use guided extraction prompts: "Did they mention specific skills or experiences? Did they compare you to other candidates? Did they give any process feedback — like timeline, next steps, or what the team thought? Did they say anything about culture fit or team dynamics?" These prompts help candidates recall details they might otherwise skip.
+1. Record the feedback as close to verbatim as possible (for written feedback) or as accurately as the candidate recalls (for verbal). Ask: "Can you share exactly what they said? Even rough wording helps — paraphrasing loses signal." If the candidate's account is vague or thin, use guided extraction prompts: "Did they mention specific skills or experiences? Did they compare you to other candidates? Did they give any process feedback — like timeline, next steps, or what the team thought? Did they say anything about culture fit or team dynamics?" These prompts help candidates recall details they might otherwise skip.
 2. Identify the source: recruiter, interviewer, or hiring manager.
 3. Map the feedback to the most relevant scoring dimension(s) — but hold this lightly. Some feedback maps cleanly ("your answers were hard to follow" → Structure), some doesn't ("we went with a candidate with more domain experience" → external factor, not a coaching gap).
 4. If the feedback contradicts the coach's assessment, note the discrepancy — don't dismiss it. External feedback is higher-signal than internal scoring. **This is a drift signal** — check whether the contradiction is isolated or part of a pattern. If 2+ pieces of external feedback contradict coach scoring on the same dimension, log it in `coaching_state.md` → Calibration State → Scoring Drift Log and flag for the next `progress` calibration check.
 
 **State updates**:
-- Add to Interview Intelligence → Recruiter/Interviewer Feedback table (Date, Company, Source, Feedback, Linked Dimension)
+- Add to Interview Intelligence → Recruiter/Interviewer Feedback table (Date, Company, Source, Feedback, Linked Dimension). Append `[written]` or `[paraphrased]` to the Source field to mark provenance — drift analysis should weight written feedback higher.
 - Update Company Patterns if this reveals something about what the company values
 - If feedback references a specific round, cross-reference with Question Bank entries for that round
-- If feedback contradicts coach scoring, log the discrepancy in Calibration State → Scoring Drift Log
+- If feedback contradicts coach scoring, log the discrepancy in Calibration State → Scoring Drift Log. If the feedback is paraphrased, flag lower confidence: "Drift signal flagged — source is paraphrased recall, not verbatim."
 
 **Output**: Brief confirmation of what was captured, the dimension mapping, and any discrepancy with previous coaching assessment. If the feedback suggests a coaching pivot, say so: "This feedback suggests [X] matters more than we've been prioritizing. Worth revisiting in your next `progress` review." If the feedback points to a specific interviewer concern pattern, suggest: "`concerns` can help you build counter-evidence for this."
 

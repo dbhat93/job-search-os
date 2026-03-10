@@ -283,6 +283,8 @@ Lenses 1, 2, 4, 5 (Pre-Mortem omitted):
 
 ### Coaching State Integration
 
+**Privacy note**: The Comp Strategy section and the "Current comp context" field (if used) contain sensitive financial data — your current salary, target range, and negotiation strategy. This is stored in coaching_state.md. Keep that file confidential. Do not share it. If you ever share coaching_state.md for any reason, redact the Comp Strategy section first.
+
 Save to coaching_state.md:
 
 ```markdown
