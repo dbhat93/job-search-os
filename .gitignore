@@ -8,3 +8,6 @@ coaching_state.md
 
 # Active skill file (created by copying SKILL.md during setup)
 CLAUDE.md
+
+# Personal pipeline tracking — contains company names, stages, and interview outcomes
+state/
