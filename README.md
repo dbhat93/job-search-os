@@ -77,6 +77,42 @@ mv COACH.md CLAUDE.md
 
 Requires any paid Claude plan. Also works with Claude Code (terminal), Cursor, or any environment with file system access.
 
+### Option 1b: Claude Code — as a personal skill (advanced)
+
+If you want the coach available from **any** Claude Code session without opening a specific folder, set it up as a personal skill:
+
+1. Clone the repo (same as Option 1).
+
+2. Create your personal skill file:
+
+```bash
+mkdir -p ~/.claude/skills/coach
+```
+
+3. Create `~/.claude/skills/coach/SKILL.md` with the following content, replacing the path with your actual clone location:
+
+```yaml
+---
+name: coach
+description: Interview coaching system. Activates for any coaching command: kickoff, map, prep, mock, analyze, stories, practice, progress, debrief, feedback, reflect, research, decode, salary, negotiate, hype, pitch, resume, linkedin, outreach, present, concerns, questions, thankyou, sync, strategy, help.
+---
+
+The interview coaching system is now active.
+
+**Base directory**: /path/to/your/interview-coach-skill/
+**Coaching state**: /path/to/your/interview-coach-skill/coaching_state.md
+
+When loading any reference file (e.g. `references/commands/map.md`), resolve it as an absolute path under the base directory above.
+
+!`cat /path/to/your/interview-coach-skill/COACH.md`
+```
+
+4. From any Claude Code session, type `/coach` to activate, then run any coaching command.
+
+No need to rename `COACH.md` or open a specific folder. `coaching_state.md` still lives in your clone directory and is gitignored.
+
+> **Note:** This skill file is personal — it contains absolute paths specific to your machine. Do not commit it to the repo.
+
 ### Option 2: OpenAI Codex
 
 1. Clone the repo:
