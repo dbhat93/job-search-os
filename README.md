@@ -56,6 +56,16 @@ Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 
 ## Quick Start
 
+### One-liner install (Claude Code)
+
+```bash
+npx skills add dbhat93/job-search-os
+```
+
+Then type `/coach` from any Claude Code session, followed by `kickoff`.
+
+---
+
 ### Option 1: Claude Code (recommended)
 
 1. Clone the repo:
