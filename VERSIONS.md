@@ -158,6 +158,32 @@ Prompt injection guards, data privacy documentation, and data retention guidance
 
 ---
 
+## v3.2: Network Intelligence + Async Prep (shipped)
+
+**Thesis**: v3.1 hardened the system. v3.2 makes it smarter about the candidate's actual network and closes the prep gap for async interview formats — the two highest-leverage gaps surfaced by real usage.
+
+### Feature 1: LinkedIn Connections Integration
+The `research` command's "networking angle" was generic — "who to talk to, what to ask" with no structured data source. Now, candidates can export their LinkedIn connections as a CSV, and `research` cross-references the target company against their real network. Output includes a connections table, role-appropriate outreach recommendations per contact, and fallback suggestions when no direct connections exist. Staleness detection flags exports older than 30 days.
+
+**Key files**: `references/commands/research.md` (Networking Angle Protocol, updated Output Schema), `references/commands/help.md` (LinkedIn note in research description), `README.md` (Setup section with export instructions)
+
+### Feature 2: Outreach Campaign Cadence Tracking
+The `outreach` command coached individual messages well but was blind to multi-step campaigns. Now reads existing outreach logs from Interview Loop entries in `coaching_state.md` before drafting, surfaces contact history, recommends next actions based on follow-up cadence (first at +5 days, second at +10, then close), and flags diminishing returns when cold outreach at a company exceeds 3 unanswered contacts.
+
+**Key files**: `references/commands/outreach.md` (Follow-Up Cadence Tracking section)
+
+### Feature 3: Take-Home / Async Case Prep Protocol
+The system handled live interviews well but had no structured guidance for async formats (take-home assignments, business case presentations, written submissions). New protocol in `prep` covers: prompt clarification, time-box strategy (20/30/35/15 split), evaluation criteria inference by role type, outline review, draft review, and live Q&A prep if the candidate presents after submission.
+
+**Key files**: `references/commands/prep.md` (Take-Home / Async Case Prep Protocol)
+
+### Feature 4: Command Registry Completion
+`strategy` and `sync` existed as full commands but were not registered in README or `help` — users couldn't discover them. Now listed in both command tables.
+
+**Key files**: `README.md` (command table), `references/commands/help.md` (Search Strategy section)
+
+---
+
 ## v4: Interaction Model (planned)
 
 **Thesis**: Now that the coaching brain is strong and comprehensive, change *how* candidates interact with it.

@@ -57,7 +57,7 @@ When the user types `help`, generate a context-aware command guide — not just 
 ### Interview Round Prep
 | Command | What It Does |
 |---|---|
-| `research [company]` | Company research + structured fit assessment (seniority, domain, trajectory) before committing to full prep. Three depth levels: Quick Scan (target list building), Standard (default), Deep Dive (high-priority targets). Includes structured search protocol and claim verification. |
+| `research [company]` | Company research + structured fit assessment (seniority, domain, trajectory) before committing to full prep. Three depth levels: Quick Scan (target list building), Standard (default), Deep Dive (high-priority targets). Includes structured search protocol, claim verification, and LinkedIn connections cross-reference (if exported — see Setup in README). |
 | `decode` | JD decoder + batch triage — analyze job descriptions with confidence-labeled interpretations, 6 decoding lenses, fit assessment, and recruiter verification questions. Compare 2-5 JDs to find your sweet spot and prioritize applications. Three depth levels: Quick Scan, Standard, Deep Decode. Includes a teaching layer so you learn to read JDs yourself. At Level 5 Deep: Challenge Protocol. |
 | `prep [company]` | Full prep brief — role-fit assessment (5 dimensions — identifies frameable vs. structural gaps), format guidance, culture read, interviewer intelligence (from LinkedIn URLs), predicted questions (weighted by real questions from past interviews when available), story mapping, and a day-of cheat sheet |
 | `concerns` | Anticipate likely interviewer concerns about your profile + counter-evidence strategies |
@@ -107,6 +107,12 @@ When the user types `help`, generate a context-aware command guide — not just 
 | `thankyou` | Thank-you note and follow-up drafts tailored to the interview |
 | `negotiate` | Post-offer negotiation coaching — market analysis, strategy, exact scripts, and fallback language |
 | `reflect` | Post-search retrospective — journey arc, breakthroughs, transferable skills, archived coaching state |
+
+### Search Strategy
+| Command | What It Does |
+|---|---|
+| `strategy` | Full search-level pipeline audit — timeline risk, funnel health, narrative coherence across loops, priority stack, yield projection, 2-week action plan. At Level 5: 4-lens challenge protocol (Assumption Audit, Blind Spot Scan, Pre-Mortem, Devil's Advocate). |
+| `sync` | Coaching state consistency check — verifies data integrity across sections, flags stale entries, and ensures session continuity. Run when something feels off or after a long gap between sessions. |
 
 ### Meta
 | Command | What It Does |

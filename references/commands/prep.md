@@ -259,6 +259,46 @@ When the candidate provides interviewer LinkedIn URLs or profile links, guide th
 
 **Privacy guardrail**: Only use publicly available professional information. Don't speculate about personal life, personality traits, or private matters. Stick to what the profile says and what they've published.
 
+### Take-Home / Async Case Prep Protocol
+
+When the interview round is a take-home assignment, business case presentation, or async written submission (not a live interview):
+
+1. **Clarify the prompt** — Get the exact assignment from the candidate. Read it carefully. Identify: deliverable format (slides, doc, spreadsheet, code), time limit or deadline, evaluation criteria (if stated), audience (who will review it, who will they present to).
+
+2. **Time-box strategy** — Help the candidate allocate their hours:
+   - 20% — Research and framing (understand the problem, gather data)
+   - 30% — Structuring and outlining (framework, key sections, narrative arc)
+   - 35% — Building (writing, designing, calculating)
+   - 15% — Polish and review (clarity, flow, formatting, cutting)
+   - Flag the trap: most candidates over-invest in building and under-invest in framing. A well-framed average execution beats a poorly-framed excellent execution.
+
+3. **Evaluation criteria inference** — What is the hiring team likely scoring? Map to the role:
+   - PM business cases: structured thinking, business acumen, communication clarity, prioritization rationale, awareness of tradeoffs
+   - Technical take-homes: code quality, architecture decisions, testing, documentation, problem decomposition
+   - Strategy presentations: market understanding, data-driven reasoning, creativity, feasibility awareness
+   - Flag what's NOT being scored: they're not looking for perfection or completeness — they're looking for how you think.
+
+4. **Outline review** — Before the candidate builds, review their outline for:
+   - Structural issues (missing sections, wrong order, unclear narrative)
+   - Scope creep (trying to cover everything instead of going deep on what matters)
+   - Missing the actual question (common — the candidate answers an adjacent question, not the one asked)
+   - Presentation flow (if they'll present live: does the arc build? Is there a clear "so what"?)
+
+5. **Draft review** — Review the near-final submission for:
+   - Clarity — can someone unfamiliar with the context follow the argument?
+   - Narrative arc — does it build toward a recommendation or insight?
+   - Missed dimensions — what would a skeptical reviewer push back on?
+   - Over-qualification — is the candidate showing off breadth at the expense of depth?
+   - Length calibration — is it appropriate for the time limit and audience?
+
+6. **Q&A prep** — If the candidate presents the case live after submission:
+   - Predict 5-7 challenge questions based on the weakest points of the submission
+   - Prepare "I considered that" answers (shows depth behind the deliverable)
+   - Coach the "I don't know" response for genuine gaps — honest > defensive
+   - Identify which slides/sections will draw the most scrutiny
+
+**Output**: Structured feedback on the submission, not a rewrite. The candidate's voice and thinking must come through — the coach sharpens, doesn't replace.
+
 ### Output Schema
 
 ```markdown

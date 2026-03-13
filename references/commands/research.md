@@ -80,6 +80,33 @@ Use the Role-Fit Assessment Module from `references/cross-cutting.md`. Without a
 
 **If Weak Fit or Long-Shot Stretch**: Follow the Alternative Suggestions Protocol — name the gaps, suggest what a better-fit version looks like, and respect the candidate's decision if they want to proceed.
 
+### Networking Angle Protocol
+
+If the candidate's LinkedIn connections CSV is referenced in `coaching_state.md` (under `## LinkedIn Connections`):
+
+1. Read the CSV file at the specified path.
+2. Cross-reference the "Company" column against the target company name. Match case-insensitively and handle common variants (e.g., "Stripe" matches "Stripe", "Stripe, Inc.", "Stripe Inc").
+3. For each match, extract: First Name, Last Name, Position, Connected On.
+4. Output a structured networking section in the research brief (see Output Schema).
+
+**Categorize matches:**
+- **Direct**: Currently employed at the target company (based on CSV "Company" column).
+- **Note**: The LinkedIn CSV only contains current employer. Alumni (people who previously worked there) won't appear — flag this limitation and suggest the candidate search LinkedIn manually for former employees.
+
+**Suggested moves per connection:**
+- Tailor the outreach recommendation to the connection's role:
+  - Engineering/technical roles → "Ask about team culture, eng-PM dynamics, technical bar — not for a referral directly"
+  - Recruiting/talent → "Direct referral path — ask about open roles and process"
+  - PM/product roles → "Peer intel — ask about PM scope, team structure, interview process"
+  - Leadership/executive → "High-value but high-cost ask — save for when you have a specific role to discuss"
+  - Other functions → "Cross-functional intel — ask about company culture, growth trajectory, what they'd change"
+
+**If no matches found:** Don't leave the section empty. Suggest: "No 1st-degree connections at [Company] in your export. Try: (1) search LinkedIn for 2nd-degree connections, (2) check if any of your connections previously worked there, (3) look for shared communities (alumni networks, Slack groups, industry events)."
+
+**If CSV path is not in coaching_state.md:** Skip the networking section silently — don't nag about missing data. Fall back to the generic networking angle line in the output schema.
+
+**Staleness check:** If `Last exported` date in coaching_state.md is >30 days old, add a note: "Your LinkedIn connections export is [N] days old — consider re-exporting for fresh data (Settings → Data Privacy → Get a copy of your data → Connections)."
+
 ### Output Schema
 
 ```markdown
@@ -111,7 +138,18 @@ Use the Role-Fit Assessment Module from `references/cross-cutting.md`. Without a
 ## If You Decide to Apply
 - Recommended next steps:
 - Key things to research further before interviewing:
-- Networking angle: [who to talk to, what to ask]
+
+## Networking Angle
+### Your connections at [Company] (if LinkedIn CSV available)
+| Name | Position | Connected |
+|------|----------|-----------|
+| [matches from CSV cross-reference] |
+
+### Suggested moves
+- [Per-connection outreach recommendation based on their role — see Networking Angle Protocol]
+
+### No direct connections? (if no CSV matches or no CSV)
+- [Manual search suggestions: 2nd-degree connections, alumni, shared communities]
 
 **Recommended next**: `prep [company]` — build a full prep brief now that you have the research foundation. **Alternatives**: `research [another company]`, `stories`
 ```

@@ -419,6 +419,24 @@ Two parts — the message to your connector, and the forwardable blurb:
 
 ---
 
+## Follow-Up Cadence Tracking
+
+When drafting outreach, check `coaching_state.md` Interview Loops for existing outreach entries at the target company.
+
+**If prior outreach exists at this company:**
+1. Surface the history before drafting: "[Name] — [N] attempts, last on [date], [status]"
+2. Recommend next action based on cadence:
+   - **First follow-up**: +5 business days from initial message
+   - **Second follow-up**: +10 business days (try a different channel if possible)
+   - **Close**: After 2 follow-ups with no response, stop. "Silence is an answer" — dignity matters more than persistence.
+3. Flag diminishing returns: If 3+ cold contacts at the same company have gone unanswered, name it directly — "Cold outreach conversion at [Company] is near zero. Shift to warm paths (referrals, mutual connections, community overlap) before sending more cold messages."
+
+**If outreach log shows a reply:** Prioritize the live conversation — draft a response or follow-up, not a new cold message to someone else at the same company.
+
+**After outreach is sent:** Prompt the candidate to update the outreach log in the relevant Interview Loop entry in `coaching_state.md`. Keep the log current — stale outreach data leads to duplicate contacts and embarrassing double-messages.
+
+---
+
 ## Coaching State Integration
 
 After running `outreach`, save to coaching_state.md:

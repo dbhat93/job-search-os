@@ -158,6 +158,23 @@ For both options, the coach will ask for your resume, target role, and timeline 
 
 ---
 
+## Setup (optional)
+
+### LinkedIn connections export
+
+Export your LinkedIn connections as a CSV to give the `research` command access to your professional network. When you research a target company, the coach cross-references your connections to surface warm networking paths — specific people you already know at (or connected to) the company, with role-appropriate outreach recommendations.
+
+**How to export:**
+1. Go to LinkedIn → Settings → Data Privacy → Get a copy of your data
+2. Select "Connections" and request the archive
+3. Download the CSV when ready (usually within minutes)
+4. Save it to `~/Downloads/Connections.csv` (or tell the coach where you put it)
+5. During any coaching session, mention the CSV location — the coach saves the path to `coaching_state.md`
+
+Re-export every 2-4 weeks to keep the data fresh. The coach will flag stale exports.
+
+---
+
 ## Commands
 
 ### Getting Started
@@ -212,6 +229,8 @@ For both options, the coach will ask for your resume, target role, and timeline 
 | `thankyou` | Post-interview follow-up drafts | Thank-you note + variants |
 | `negotiate` | Post-offer negotiation coaching | Offer analysis + strategy + scripts + specific language |
 | `reflect` | Post-search retrospective + archive | Journey arc, breakthroughs, transferable skills, archived state |
+| `strategy` | Full search-level pipeline audit + 2-week action plan. At Level 5: 4-lens challenge protocol | Timeline risk, funnel health, narrative coherence, priority stack, yield projection, action plan |
+| `sync` | Coaching state consistency check + session continuity | Data integrity verification, stale entry detection, cross-section consistency |
 | `help` | Show command menu (context-aware) | Full command list + recommended next based on coaching state |
 | `map` | Situational GPS — "where am I and what should I do next?" | Priority-ranked next actions + filtered command reference for current search phase |
 
