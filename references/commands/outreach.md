@@ -421,19 +421,47 @@ Two parts — the message to your connector, and the forwardable blurb:
 
 ## Follow-Up Cadence Tracking
 
-When drafting outreach, check `coaching_state.md` Interview Loops for existing outreach entries at the target company.
+### Canonical Outreach Log Format
+
+Every Interview Loop entry in `coaching_state.md` should have an outreach log in this table format:
+
+```
+- Outreach log:
+  | Date | Contact | Channel | Attempts | Status |
+  |------|---------|---------|----------|--------|
+  | 2026-03-01 | Jane Smith | LinkedIn InMail | 1 | No response |
+  | 2026-03-06 | Jane Smith | Email | 2 (follow-up) | No response |
+  | 2026-03-01 | John Doe | LinkedIn Connection | 1 | Replied — scheduled call |
+```
+
+**Format rules:**
+- One row per outreach attempt (a follow-up to the same person is a new row)
+- `Attempts` tracks cumulative count per contact (1, 2, 3... or "2 (follow-up)" for clarity)
+- `Status` values: "No response" | "Replied — [detail]" | "Pending" | "Exhausted" (closed after max follow-ups)
+- `Channel` values: LinkedIn InMail | LinkedIn Connection | Email | Twitter/X DM | Warm intro (via [Name]) | Referral
+- If an existing loop has outreach data in prose or bullet format, silently normalize it to this table on next read — don't nag about the format change
+
+### Cadence Logic
+
+When drafting outreach, check `coaching_state.md` Interview Loops for the outreach log at the target company.
 
 **If prior outreach exists at this company:**
-1. Surface the history before drafting: "[Name] — [N] attempts, last on [date], [status]"
-2. Recommend next action based on cadence:
-   - **First follow-up**: +5 business days from initial message
-   - **Second follow-up**: +10 business days (try a different channel if possible)
-   - **Close**: After 2 follow-ups with no response, stop. "Silence is an answer" — dignity matters more than persistence.
-3. Flag diminishing returns: If 3+ cold contacts at the same company have gone unanswered, name it directly — "Cold outreach conversion at [Company] is near zero. Shift to warm paths (referrals, mutual connections, community overlap) before sending more cold messages."
+1. Surface the history before drafting, grouped by contact:
+   - "[Name] — [N] attempts, last on [date], via [channel], [status]"
+2. **Per-contact cadence** — recommend next action for a specific person:
+   - **First follow-up**: ~5 calendar days from initial message
+   - **Second follow-up**: ~10 calendar days from initial (try a different channel if possible)
+   - **Close**: After 2 follow-ups with no response to the same person, mark them "Exhausted" and stop. "Silence is an answer."
+   - Note: use calendar days as a simple proxy — don't over-engineer business day calculations.
+3. **Per-company pattern** — flag diminishing returns at the company level:
+   - If 3+ **different** cold contacts at the same company have gone unanswered, flag it: "Cold outreach conversion at [Company] is near zero. Shift to warm paths."
+   - This is distinct from per-contact persistence. Following up with one person 3x = normal cadence. Contacting 3 different people cold with zero replies = a company-level pattern worth naming.
 
-**If outreach log shows a reply:** Prioritize the live conversation — draft a response or follow-up, not a new cold message to someone else at the same company.
+**If outreach log shows a reply from anyone at the company:** Prioritize the live conversation — draft a response or follow-up to the person who replied, not a new cold message to someone else.
 
-**After outreach is sent:** Prompt the candidate to update the outreach log in the relevant Interview Loop entry in `coaching_state.md`. Keep the log current — stale outreach data leads to duplicate contacts and embarrassing double-messages.
+**If warm paths exist:** Check if the Interview Loop has a `- Networking leads (from research):` field or if the `## LinkedIn Connections` section lists curated intro targets for this company. Recommend warm paths before new cold outreach.
+
+**After outreach is sent:** Prompt the candidate to update the outreach log table in the relevant Interview Loop entry. Keep the log current — stale data leads to duplicate contacts and embarrassing double-messages.
 
 ---
 

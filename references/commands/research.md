@@ -82,30 +82,49 @@ Use the Role-Fit Assessment Module from `references/cross-cutting.md`. Without a
 
 ### Networking Angle Protocol
 
-If the candidate's LinkedIn connections CSV is referenced in `coaching_state.md` (under `## LinkedIn Connections`):
+If the candidate's LinkedIn connections are referenced in `coaching_state.md` (under `## LinkedIn Connections`):
 
-1. Read the CSV file at the specified path.
-2. Cross-reference the "Company" column against the target company name. Match case-insensitively and handle common variants (e.g., "Stripe" matches "Stripe", "Stripe, Inc.", "Stripe Inc").
+**Step 1: Identify all network sources.** Read every subsection under `## LinkedIn Connections`. Each subsection may contain a separate CSV with its own path, export date, and signal notes. Common patterns:
+- `### Candidate's Network` — the candidate's own 1st-degree connections (high signal)
+- `### [Name]'s Network (shared with consent)` — a referrer's or ally's connections (second-degree, lower signal — always requires the referrer's approval before requesting intros)
+- `### High-Value Intro Targets` — manually curated names (highest signal, already vetted)
+
+**Step 2: Cross-reference ALL sources against the target company.**
+For each CSV:
+1. Read the CSV file at the specified path. If the file is not found, log a warning ("CSV not found at [path] — skipping") and continue with other sources. Do not crash.
+2. Cross-reference the "Company" column against the target company name. Match case-insensitively, trim whitespace, and handle common variants (e.g., "Stripe" matches "Stripe", "Stripe, Inc.", "Stripe Inc", " Stripe ").
 3. For each match, extract: First Name, Last Name, Position, Connected On.
-4. Output a structured networking section in the research brief (see Output Schema).
+
+Also check the `### High-Value Intro Targets` section for manually listed connections at the target company — these take priority over CSV matches.
+
+**Step 3: Output a structured networking section** in the research brief (see Output Schema). Separate results by network source:
+- **Your connections** (1st-degree) — can reach out directly
+- **[Referrer]'s connections** (2nd-degree) — requires referrer approval before requesting intro. Always note: "Ask [Referrer] if they know [Name] well enough to intro."
+- **Curated intro targets** — already vetted, highest priority
 
 **Categorize matches:**
 - **Direct**: Currently employed at the target company (based on CSV "Company" column).
-- **Note**: The LinkedIn CSV only contains current employer. Alumni (people who previously worked there) won't appear — flag this limitation and suggest the candidate search LinkedIn manually for former employees.
+- **Note**: LinkedIn CSVs only contain current employer. Alumni (people who previously worked there) won't appear — flag this limitation and suggest the candidate search LinkedIn manually for former employees.
 
-**Suggested moves per connection:**
-- Tailor the outreach recommendation to the connection's role:
-  - Engineering/technical roles → "Ask about team culture, eng-PM dynamics, technical bar — not for a referral directly"
+**Suggested moves per connection — seniority-aware:**
+- Tailor the outreach recommendation to BOTH the connection's role AND seniority level:
+  - Engineering/technical (IC) → "Ask about team culture, eng-PM dynamics, technical bar — not for a referral directly"
+  - Engineering/technical (Director+) → "High-value executive contact — save for when you have a specific role. Ask about org priorities and team direction, not for a referral."
   - Recruiting/talent → "Direct referral path — ask about open roles and process"
-  - PM/product roles → "Peer intel — ask about PM scope, team structure, interview process"
-  - Leadership/executive → "High-value but high-cost ask — save for when you have a specific role to discuss"
-  - Other functions → "Cross-functional intel — ask about company culture, growth trajectory, what they'd change"
+  - PM/product (IC) → "Peer intel — ask about PM scope, team structure, interview process"
+  - PM/product (Director+) → "Potential hiring manager — approach with a specific role in mind. Lead with what you'd bring, not what you need."
+  - Leadership/executive (VP+, C-suite) → "Highest-cost ask in the network. Do NOT cold-approach. Only via warm intro with a specific, well-researched ask."
+  - Other functions (IC) → "Cross-functional intel — ask about company culture, growth trajectory, what they'd change"
+  - Other functions (Director+) → "Cross-functional leader — can provide org-level context. Save for targeted questions about company direction."
+- **Seniority detection heuristic**: Look for title keywords — "Senior", "Staff", "Principal", "Lead" = senior IC; "Director", "Head of", "VP", "SVP", "Chief", "C-suite" = leadership; everything else = mid-level IC.
 
-**If no matches found:** Don't leave the section empty. Suggest: "No 1st-degree connections at [Company] in your export. Try: (1) search LinkedIn for 2nd-degree connections, (2) check if any of your connections previously worked there, (3) look for shared communities (alumni networks, Slack groups, industry events)."
+**If no matches found across ALL sources:** Don't leave the section empty. Suggest: "No connections at [Company] in any of your network exports. Try: (1) search LinkedIn for 2nd-degree connections, (2) check if any of your connections previously worked there, (3) look for shared communities (alumni networks, Slack groups, industry events)."
 
-**If CSV path is not in coaching_state.md:** Skip the networking section silently — don't nag about missing data. Fall back to the generic networking angle line in the output schema.
+**If no CSV paths exist in coaching_state.md:** Skip the networking section silently — don't nag about missing data. Fall back to the generic networking angle line in the output schema.
 
-**Staleness check:** If `Last exported` date in coaching_state.md is >30 days old, add a note: "Your LinkedIn connections export is [N] days old — consider re-exporting for fresh data (Settings → Data Privacy → Get a copy of your data → Connections)."
+**Staleness check (per source):** If any source's `Last exported` date is >30 days old, add a note per source: "[Source name] export is [N] days old — data may be stale. [If candidate's own: consider re-exporting (Settings → Data Privacy → Get a copy of your data → Connections).] [If referrer's: verify titles/companies before requesting intros.]"
+
+**State handoff to `outreach`:** After outputting the networking section, write discovered connections to the target company's Interview Loop entry in `coaching_state.md` under a `- Networking leads (from research):` field. This ensures `outreach` can read them deterministically in a later session without re-running `research`.
 
 ### Output Schema
 
@@ -140,15 +159,22 @@ If the candidate's LinkedIn connections CSV is referenced in `coaching_state.md`
 - Key things to research further before interviewing:
 
 ## Networking Angle
-### Your connections at [Company] (if LinkedIn CSV available)
-| Name | Position | Connected |
-|------|----------|-----------|
-| [matches from CSV cross-reference] |
 
-### Suggested moves
-- [Per-connection outreach recommendation based on their role — see Networking Angle Protocol]
+### Your connections at [Company] (1st-degree)
+| Name | Position | Seniority | Connected | Suggested move |
+|------|----------|-----------|-----------|----------------|
+| [matches from candidate's CSV] |
 
-### No direct connections? (if no CSV matches or no CSV)
+### [Referrer]'s connections at [Company] (2nd-degree — requires [Referrer] approval)
+| Name | Position | Seniority | Suggested move |
+|------|----------|-----------|----------------|
+| [matches from referrer's CSV] |
+- ⚠️ Ask [Referrer]: "Do you know [Name] well enough to intro me?"
+
+### Curated intro targets (if any in coaching_state.md)
+- [Names from High-Value Intro Targets section, with context]
+
+### No connections found? (if no matches across all sources)
 - [Manual search suggestions: 2nd-degree connections, alumni, shared communities]
 
 **Recommended next**: `prep [company]` — build a full prep brief now that you have the research foundation. **Alternatives**: `research [another company]`, `stories`

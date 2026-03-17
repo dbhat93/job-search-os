@@ -182,6 +182,25 @@ The system handled live interviews well but had no structured guidance for async
 
 **Key files**: `README.md` (command table), `references/commands/help.md` (Search Strategy section)
 
+### v3.2.1: Hardening Pass (from eval audit)
+
+**12 issues identified, all fixed:**
+
+1. **Multi-CSV network support** — Networking Angle Protocol now reads ALL CSV sources under `## LinkedIn Connections` (candidate's network, referrer networks, curated intro targets). Results separated by source with appropriate trust/approval warnings.
+2. **Canonical outreach log format** — Defined table schema (Date | Contact | Channel | Attempts | Status) with silent migration for prose/bullet formats. Added to COACH.md Schema Migration Check.
+3. **Seniority-aware outreach recommendations** — Position titles now parsed for seniority signals (IC vs Director+ vs VP/C-suite). Different recommendation tiers per seniority level.
+4. **Per-contact vs per-company cadence** — Cadence tracking now distinguishes between following up with one person 3x (per-contact limit) and contacting 3 different people (company-level pattern). Different thresholds and recommendations for each.
+5. **Calendar days over business days** — Cadence timing simplified from "business days" (unreliable to compute) to "calendar days" as a pragmatic proxy.
+6. **Open-ended deadline handling** — Async prep now handles "take as long as you need" cases: recommends self-imposed cap (4-6hr PM, 6-8hr strategy), explains diminishing returns, advises sleeping on multi-day drafts.
+7. **Research → Outreach state handoff** — `research` now writes discovered connections to the Interview Loop entry, ensuring `outreach` can read them in a later session without re-running `research`.
+8. **Graceful CSV failure** — If a CSV path doesn't resolve, logs a warning and continues with other sources instead of crashing the entire networking section.
+9. **Per-source staleness checks** — Each CSV source gets its own staleness warning with source-appropriate advice (re-export for own; verify before intros for referrer's).
+10. **Outreach log migration in COACH.md** — Schema Migration Check now includes outreach log format normalization.
+
+**Test suite**: 29 eval test cases in `tests/v3.2-evals.md` (9 LinkedIn + 7 Outreach + 7 Async Prep + 3 Integration + 6 Regression). Mock fixtures in `tests/fixtures/`.
+
+**Key files**: `references/commands/research.md`, `references/commands/outreach.md`, `references/commands/prep.md`, `COACH.md`, `tests/v3.2-evals.md`
+
 ---
 
 ## v4: Interaction Model (planned)

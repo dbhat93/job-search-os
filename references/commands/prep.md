@@ -271,6 +271,7 @@ When the interview round is a take-home assignment, business case presentation, 
    - 35% — Building (writing, designing, calculating)
    - 15% — Polish and review (clarity, flow, formatting, cutting)
    - Flag the trap: most candidates over-invest in building and under-invest in framing. A well-framed average execution beats a poorly-framed excellent execution.
+   - **If no explicit time limit** (e.g., "take as long as you need" or "we suggest ~4-6 hours"): Set a self-imposed cap. Recommend 4-6 hours for a PM business case, 6-8 hours for a strategy presentation with slides. Diminishing returns hit hard after hour 6 — most value is created in the first 70% of time spent. For multi-day deadlines (e.g., "due in 48 hours"), the 20/30/35/15 split still applies but coach the candidate to work in focused blocks, not marathon sessions. Sleep on the draft — fresh eyes catch what exhausted eyes miss.
 
 3. **Evaluation criteria inference** — What is the hiring team likely scoring? Map to the role:
    - PM business cases: structured thinking, business acumen, communication clarity, prioritization rationale, awareness of tradeoffs
