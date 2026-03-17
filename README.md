@@ -8,7 +8,7 @@ npx skills add dbhat93/job-search-os
 
 ---
 
-A Claude Code-based interview coach that covers the full job search lifecycle — from JD analysis and resume optimization through mock interviews to post-offer negotiation. 23 commands across application materials, interview prep, practice, analysis, and comp coaching. It scores your answers across five dimensions, diagnoses root causes behind weak spots, builds a storybank you can retrieve under pressure, and adapts its coaching to your specific patterns. Not a generic question bank. An adaptive system that gets sharper the more you use it.
+A Claude Code-based interview coach that covers the full job search lifecycle — from JD analysis and resume optimization through mock interviews to post-offer negotiation. 27 commands across application materials, interview prep, practice, analysis, and comp coaching. It scores your answers across five dimensions, diagnoses root causes behind weak spots, builds a storybank you can retrieve under pressure, and adapts its coaching to your specific patterns. Not a generic question bank. An adaptive system that gets sharper the more you use it.
 
 Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 
@@ -38,7 +38,7 @@ Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 
 **Session continuity** — A persistent `coaching_state.md` file tracks your storybank, scores, patterns, drill progression, interview loops, interview intelligence, and calibration state across sessions. Pick up where you left off, weeks later. Saves are automatic.
 
-**Challenge protocol (Directness Level 5)** — At the highest directness setting, the coach actively challenges you through five lenses: Assumption Audit, Blind Spot Scan, Pre-Mortem, Devil's Advocate, and Strengthening Path. Stories get red-teamed after you add or improve them. Transcripts get challenged. Practice rounds 3+ include a rotating challenge note. Progress reports include a Hard Truth section. Hype includes a pre-mortem before interviews. Rejections get mined for leverage. The system also detects avoidance patterns — if you keep steering away from a weakness, it names it directly. Every challenge ends with a concrete fix. Levels 1-4 are completely unaffected.
+**Challenge protocol (Directness Levels 3-5)** — At higher directness settings, the coach actively challenges you through five lenses: Assumption Audit, Blind Spot Scan, Pre-Mortem, Devil's Advocate, and Strengthening Path. Intensity is graduated — Level 3 gets lighter probing, Level 5 gets the full treatment: stories red-teamed after you add or improve them, transcripts challenged, practice rounds 3+ include a rotating challenge note, progress reports include a Hard Truth section, hype includes a pre-mortem, rejections get mined for leverage. The system also detects avoidance patterns — if you keep steering away from a weakness, it names it directly. Every challenge ends with a concrete fix. Levels 1-2 are completely unaffected.
 
 **Guided flow** — The coach recommends a specific next step after every command based on your coaching state — not a generic menu. When you say something like "prepare me for my interview at Google," it detects the multi-step intent and walks you through the full sequence (research, prep, concerns, hype) with natural transitions. Session start greetings include a prescriptive recommendation for the highest-leverage move right now.
 
@@ -459,47 +459,54 @@ Choose during `kickoff`. You can switch later.
 ```text
 interview-coach-skill/
 ├── COACH.md                            # Core skill — rename to CLAUDE.md to activate
+├── SKILL.md                            # npx skills add one-liner install metadata
+├── VERSIONS.md                         # Version history and roadmap
 ├── README.md                           # This file
 ├── LICENSE                             # MIT License
 ├── coaching_state.md                   # Created on first kickoff (persistent memory, auto-saved)
-└── references/
-    ├── commands/                       # Per-command workflows (loaded on demand)
-    │   ├── kickoff.md
-    │   ├── research.md
-    │   ├── prep.md
-    │   ├── analyze.md
-    │   ├── debrief.md
-    │   ├── practice.md
-    │   ├── mock.md
-    │   ├── stories.md
-    │   ├── concerns.md
-    │   ├── questions.md
-    │   ├── linkedin.md
-    │   ├── resume.md
-    │   ├── pitch.md
-    │   ├── outreach.md
-    │   ├── decode.md
-    │   ├── present.md
-    │   ├── salary.md
-    │   ├── hype.md
-    │   ├── thankyou.md
-    │   ├── progress.md
-    │   ├── negotiate.md
-    │   ├── feedback.md
-    │   ├── reflect.md
-    │   ├── help.md
-    │   └── map.md
-    ├── cross-cutting.md                # Shared modules: gap-handling, storybank-gap-check, signal-reading, differentiation, cultural awareness, psychological readiness, cross-command dependencies
-    ├── rubrics-detailed.md             # Scoring anchors, root causes, seniority calibration
-    ├── role-drills.md                  # Role-specific drills + interviewer archetypes
-    ├── differentiation.md              # Earned secrets, spiky POVs, clarity under pressure
-    ├── transcript-processing.md        # Step-by-step transcript analysis guide (format-aware parsing)
-    ├── transcript-formats.md           # Format detection + per-format normalization (Otter, Zoom, Grain, etc.)
-    ├── storybank-guide.md              # Story management + rapid-retrieval drill
-    ├── story-mapping-engine.md         # Portfolio-optimized story mapping with fit scoring
-    ├── calibration-engine.md           # Scoring drift detection, root cause tracking, success patterns
-    ├── challenge-protocol.md           # Five-lens challenge framework (Level 5 only): assumption audit, blind spot scan, pre-mortem, devil's advocate, strengthening path
-    └── examples.md                     # Worked examples: scored answers, triage, rewrites, system design analysis
+├── tests/
+│   ├── v3.2-evals.md                   # Eval test suite (29 test cases)
+│   └── fixtures/                       # Mock coaching states and CSVs for testing
+├── references/
+│   ├── commands/                       # Per-command workflows (loaded on demand)
+│   │   ├── kickoff.md
+│   │   ├── research.md
+│   │   ├── prep.md
+│   │   ├── analyze.md
+│   │   ├── debrief.md
+│   │   ├── practice.md
+│   │   ├── mock.md
+│   │   ├── stories.md
+│   │   ├── concerns.md
+│   │   ├── questions.md
+│   │   ├── linkedin.md
+│   │   ├── resume.md
+│   │   ├── pitch.md
+│   │   ├── outreach.md
+│   │   ├── decode.md
+│   │   ├── present.md
+│   │   ├── salary.md
+│   │   ├── hype.md
+│   │   ├── thankyou.md
+│   │   ├── progress.md
+│   │   ├── negotiate.md
+│   │   ├── feedback.md
+│   │   ├── reflect.md
+│   │   ├── strategy.md
+│   │   ├── sync.md
+│   │   ├── help.md
+│   │   └── map.md
+│   ├── cross-cutting.md                # Shared modules: gap-handling, storybank-gap-check, signal-reading, differentiation, cultural awareness, psychological readiness, external text validation
+│   ├── rubrics-detailed.md             # Scoring anchors, root causes, seniority calibration
+│   ├── role-drills.md                  # Role-specific drills + interviewer archetypes
+│   ├── differentiation.md              # Earned secrets, spiky POVs, clarity under pressure
+│   ├── transcript-processing.md        # Step-by-step transcript analysis guide (format-aware parsing)
+│   ├── transcript-formats.md           # Format detection + per-format normalization (Otter, Zoom, Grain, etc.)
+│   ├── storybank-guide.md              # Story management + rapid-retrieval drill
+│   ├── story-mapping-engine.md         # Portfolio-optimized story mapping with fit scoring
+│   ├── calibration-engine.md           # Scoring drift detection, root cause tracking, success patterns
+│   ├── challenge-protocol.md           # Five-lens challenge framework (Levels 3-5, graduated intensity)
+│   └── examples.md                     # Worked examples: scored answers, triage, rewrites, system design analysis
 ```
 
 ---
@@ -530,7 +537,7 @@ Generic LLM interview help gives you the same advice regardless of your patterns
 No. Core workflows are role-agnostic; role drills include PM, Engineering, Design, Data Science, Research, Operations, and Marketing.
 
 **Why is the feedback direct?**
-The skill is intentionally high-candor and evidence-based. It uses strengths-first delivery and self-reflection before critique. It also periodically checks whether the coaching is landing and adapts if not. You can set your feedback directness level (1-5) during kickoff. At Level 5, the Challenge Protocol activates: stories get red-teamed, progress includes a Hard Truth, rejections get mined for leverage, and avoidance patterns are named directly. Levels 1-4 are gentler — same rigor, softer delivery.
+The skill is intentionally high-candor and evidence-based. It uses strengths-first delivery and self-reflection before critique. It also periodically checks whether the coaching is landing and adapts if not. You can set your feedback directness level (1-5) during kickoff. The Challenge Protocol activates at Level 3 with light probing and reaches full intensity at Level 5: stories get red-teamed, progress includes a Hard Truth, rejections get mined for leverage, and avoidance patterns are named directly. Levels 1-2 are gentler — same rigor, softer delivery.
 
 **How does it work across multiple sessions?**
 The skill writes a `coaching_state.md` file that tracks your storybank, scores, patterns, drill progression, interview outcomes, interview loops, and more. At the start of each session, it reads this file and picks up where you left off. Saves happen automatically after every major workflow — not just at session end.

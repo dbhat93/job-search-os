@@ -201,6 +201,36 @@ The system handled live interviews well but had no structured guidance for async
 
 **Key files**: `references/commands/research.md`, `references/commands/outreach.md`, `references/commands/prep.md`, `COACH.md`, `tests/v3.2-evals.md`
 
+### v3.2.2: Full Codebase Audit — Hardening Pass (no new features)
+
+**16 fixes across product, security, usability, and functionality** (S3 excluded by design — names retained for outreach context):
+
+**Product:**
+1. **Challenge Protocol activation contradiction** — COACH.md said "Level 5 only" but challenge-protocol.md said "begins at Level 3." Aligned cross-cutting.md to "Levels 3-5 with graduated intensity."
+2. **Story over-use detection** — Storybank now flags stories with Use Count > 5 for refresh during `stories improve`.
+3. **Positioning drift detection** — Sync Drift Check now flags when 2+ of pitch/resume/linkedin haven't been refreshed in 5+ sessions.
+4. **Rejection → Feedback loop** — Sync Drift Check now offers `feedback` after any Outcome Log rejection entry.
+
+**Security:**
+5. **External Text Validation Module** — Injection guard centralized in cross-cutting.md. All commands processing external text (debrief, feedback, outreach, stories) now reference the shared module instead of ad-hoc checks.
+6. **Transcript retention guidance** — Archive/delete full transcripts 30 days after the relevant loop closes. Keep only extracted questions and scores.
+7. **Comp data mitigation** — Data Privacy section now recommends OS-level disk encryption and notes Comp Strategy can be stored in a separate deletable file.
+
+**Usability:**
+8. **Session Start Protocol simplified** — Replaced 22-line nested conditional with flat 9-item priority list (first match wins). Deterministic execution across sessions.
+9. **Soft Gate Protocol defined** — "Soft gate" now has a canonical definition: collect minimum context (target role, seniority, domain) via 2-3 questions, note that `kickoff` would provide richer context, then proceed.
+10. **Coaching Notes categories** — Replaced vague "things a great coach would remember" with 4 explicit categories: format preferences, emotional/psychological patterns, communication quirks, scheduling/logistics.
+11. **Fit confidence criteria** — Limited/Medium/High now have defined thresholds based on available data (no JD vs. JD vs. JD + outcomes + feedback).
+12. **File Routing table marked as reference** — Clarified it's documentation, not runtime instructions. Each command file contains its own dependencies.
+
+**Functionality:**
+13. **Self-assessment calibration thresholds** — Defined: over-rater = self-scores avg 1.0+ above coach scores across 3+ interviews, under-rater = 1.0+ below, well-calibrated = within 0.5.
+14. **Drill Progression stage gates** — Defined advancement criteria for all 8 stages (e.g., Stage 2 = one practice with all dimensions ≥3, Stage 3 = one mock with Lean Advance+).
+15. **Cross-loop gap prioritization** — Gap Check now preps competencies critical for ANY active loop, prioritizing those critical for 2+ loops.
+16. **Test fixture documentation** — Added schema note explaining that fixtures intentionally omit irrelevant sections; Schema Migration auto-adds them at runtime. Dedicated migration fixture (`mock-coaching-state-migration.md`) created for R.1 test with old "Signal" column format.
+
+**Key files**: `COACH.md`, `references/cross-cutting.md`, `tests/v3.2-evals.md`, `tests/fixtures/mock-coaching-state-migration.md`, `tests/fixtures/mock-coaching-state-async.md`
+
 ---
 
 ## v4: Interaction Model (planned)

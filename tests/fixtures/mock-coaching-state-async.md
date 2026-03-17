@@ -56,6 +56,9 @@ Last updated: 2026-03-16
 ### Recent Scores
 | Date | Type | Interview_Type | Context | Sub | Str | Rel | Cred | Diff | Hire Signal | Self-Δ |
 |------|------|---------------|---------|-----|-----|-----|------|------|-------------|--------|
+| 2026-02-20 | practice | behavioral | General PM practice | 3.0 | 2.8 | 3.2 | 3.0 | 2.6 | Mixed | over |
+| 2026-02-24 | mock | behavioral | Full mock — PM behavioral | 3.2 | 3.0 | 3.4 | 3.2 | 2.8 | Lean Advance | over |
+| 2026-02-28 | practice | behavioral | Stripe-targeted practice | 3.5 | 3.1 | 3.5 | 3.6 | 3.0 | Advance | calibrated |
 | 2026-03-01 | interview | behavioral | Stripe recruiter screen | 3.8 | 3.2 | 3.6 | 3.8 | 3.4 | Pass | calibrated |
 
 ## Outcome Log

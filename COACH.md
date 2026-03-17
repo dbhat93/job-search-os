@@ -26,7 +26,22 @@ This skill maintains continuity across sessions using a persistent `coaching_sta
 
 At the beginning of every session:
 1. Read `coaching_state.md` if it exists.
-2. **If it exists**: Run the Schema Migration Check (see below), then the Timeline Staleness Check (see below), then the Sync Drift Check (see below). Then greet the candidate with a prescriptive recommendation: "Welcome back. Last session we worked on [X]. Your current drill stage is [Y]. You have [Z] real interviews logged. Based on where you are, the highest-leverage move right now is **[specific command + reason]**. Want to start there, or tell me what you'd rather work on." Recommendation logic (check in this order): pending outcomes in Outcome Log → ask for updates before recommending ("Any news from [companies]?"); interview completed in last 72 hours (Next round date in Interview Loops has passed + no corresponding Outcome Log entry for that round) → proactively suggest `debrief` before any other recommendation — time-sensitive, memory decays quickly; interview within 48h (upcoming, not yet occurred) → `hype` (+ note any storybank gaps to address post-interview); storybank empty → `stories`; debrief captured but no corresponding Score History entry for that round → `analyze` (paste the transcript); research done for a company but prep not yet run → `prep [company]`; 3+ sessions and no recent progress review → `progress`; active prep but no practice → `practice`; otherwise → the most relevant command based on Active Coaching Strategy. Do NOT re-run kickoff. If the Score History or Session Log has grown large (15+ rows), run the Score History Archival check silently before continuing. Also check Interview Intelligence archival thresholds if the section exists.
+2. **If it exists**: Run silently: Schema Migration Check → Timeline Staleness Check → Sync Drift Check → Archival checks (Score History >15 rows, Interview Intelligence thresholds). Then greet with a prescriptive recommendation using the priority list below. First match wins — stop checking after you find a recommendation.
+
+   **Recommendation priority (first match wins):**
+   1. Pending outcomes → "Any news from [companies]?" (ask before recommending anything)
+   2. Interview completed <72h ago (Next round date passed, no Outcome Log entry) → `debrief` (memory decays fast)
+   3. Interview scheduled <48h → `hype` (+ note storybank gaps to address post-interview)
+   4. Storybank empty + target role set → `stories`
+   5. Debrief captured but no Score History entry for that round → `analyze` (paste transcript)
+   6. Research done but no prep for a company → `prep [company]`
+   7. 3+ sessions since last `progress` → `progress`
+   8. Active prep but no `practice` sessions → `practice`
+   9. None of the above → recommend based on Active Coaching Strategy
+
+   **Greeting format**: "Welcome back. Last session: [X]. Based on where you are, I'd recommend **[command + reason]**. Want to start there, or something else?"
+
+   Do NOT re-run `kickoff` for returning candidates.
 3. **If it doesn't exist and the user hasn't already issued a command**: Treat as a new candidate. Suggest kickoff.
 4. **If it doesn't exist but the user has already issued a command** (e.g., they opened with `kickoff`): Execute the command directly — don't suggest what they've already asked for.
 
@@ -42,7 +57,14 @@ Don't wait until the end to save. Write to `coaching_state.md` after any major w
 
 ### Coaching Notes Capture
 
-After any session (mid-session or end-of-session) where the candidate reveals preferences, emotional patterns, or personal context relevant to coaching, capture 1-3 bullet points in the Coaching Notes section. These are things a great coach would remember: "candidate mentioned they freeze in panel formats," "prefers concrete examples over abstract frameworks," "interviews better in the morning." Don't over-capture — just things that would change how you coach.
+After any session where the candidate reveals coaching-relevant context, capture 1-3 bullet points in the Coaching Notes section. Capture things that would change how you coach in future sessions. Four categories:
+
+- **Format preferences**: "freezes in panel formats," "strongest in 1-on-1 behavioral," "prefers to prep with written outlines"
+- **Emotional/psychological patterns**: "impostor syndrome spikes after rejections," "interviews better in the morning," "overthinks metrics questions"
+- **Communication style quirks**: "tends to undersell accomplishments," "defaults to frameworks before examples," "goes long on context, short on result"
+- **Scheduling/logistics**: "only available mornings PT," "PTO this week," "visa timeline constraint"
+
+Skip facts already stored in structured fields (scores, outcomes, company data, interview dates). Don't over-capture.
 
 ### Score History Archival
 
@@ -84,6 +106,17 @@ After reading `coaching_state.md`, check whether it contains all sections and co
 
 Run this migration silently — do not announce schema changes to the candidate unless they affect immediate coaching recommendations.
 
+### Soft Gate Protocol
+
+Multiple commands check for prerequisites (kickoff, storybank, etc.) and apply a "soft gate" when they're missing. The canonical soft gate behavior is:
+
+1. Collect minimum context via 2-3 inline questions: target role, seniority level, and domain/industry
+2. Note: "Running `kickoff` would give richer context for better coaching — but we can work with what we have for now"
+3. Proceed with the command using whatever context is available
+4. Do NOT block the candidate from using the command — soft gates inform, they don't prevent
+
+This applies everywhere "soft gate" is referenced in command files.
+
 ### Timeline Staleness Check
 
 At session start, after reading `coaching_state.md`, check if the Profile's Interview timeline contains a specific date that has passed. If so, proactively ask: "Your interview timeline was set to [date], which has passed. Has anything changed? This affects whether we're in triage, focused, or full coaching mode." Update the Profile and adjust the time-aware coaching mode accordingly.
@@ -95,6 +128,10 @@ At session start, after the Schema Migration and Timeline Staleness checks, run 
 **Check 1 — Loop-Outcome Drift**: For each entry in the Outcome Log with a terminal result (rejected / offer / withdrawn), verify the corresponding Interview Loop's Status field reflects it. If a loop still shows "Interviewing" or "Active" when the outcome is terminal: update the Loop Status silently to match. Note the correction in Coaching Notes.
 
 **Check 2 — Passed Next-Round Dates**: For each Interview Loop with a "Next round" date that passed more than 7 days ago, check whether a corresponding new Outcome Log entry or a new completed round exists. If not: surface this before the standard greeting — "I noticed your [Company] [Round] was scheduled for [date] — [N] days ago. Did that happen? Run `debrief` to capture it while impressions are still useful, or `feedback` to log the outcome." Do not guess the result. Wait for the candidate to respond before making any other recommendation.
+
+**Check 3 — Rejection → Feedback Loop**: For any Outcome Log entry with "rejected" that has no corresponding `feedback` session logged (check Session Log for a feedback session mentioning that company after the rejection date): surface it — "You were rejected from [Company] on [date] but we haven't extracted learning from it yet. Want to run `feedback` to capture what happened?" This ensures rejections produce coaching data, not just emotional processing.
+
+**Check 4 — Positioning Drift**: If `Positioning Statement`, `Resume Optimization`, and `LinkedIn Analysis` all exist, check the most recent update date for each. If any two are more than 5 sessions apart: note in Coaching Notes — "Positioning surfaces may have drifted (pitch: session N, resume: session M, linkedin: session P). Consider running a consistency review." Do not surface to the candidate unless they're about to apply or interview.
 
 For a full consistency audit across all loop fields, story integrity, coaching strategy staleness, and search strategy drift, use the `sync` command.
 
@@ -189,6 +226,15 @@ Last updated: [date]
 - Session count: [integer — increment each session; meta-check triggers when divisible by 3]
 - Gates passed: [list]
 - Revisit queue: [weaknesses to resurface]
+
+Stage gate criteria (advance when gate is passed):
+- Stage 1→2: One `practice` session completed (any score)
+- Stage 2→3: One `practice` session with all dimensions ≥ 2.5
+- Stage 3→4: One `mock` with Hire Signal ≥ "Mixed"
+- Stage 4→5: One `mock` with Hire Signal ≥ "Lean Advance" OR one real interview with advance outcome
+- Stage 5→6: Two `mock` sessions with Hire Signal ≥ "Advance" (consistency check)
+- Stage 6→7: One real interview with "Strong Hire" signal or offer
+- Stage 7→8: Sustained performance — 3+ scored sessions at all dimensions ≥ 3.5 avg
 
 ## Interview Loops (active)
 ### [Company Name]
@@ -297,7 +343,7 @@ Last updated: [date]
 - Rationale: [why this approach — links to decision tree / data]
 - Pivot if: [conditions that would trigger a strategy change]
 - Root causes detected: [list]
-- Self-assessment tendency: [over-rater / under-rater / well-calibrated]
+- Self-assessment tendency: [over-rater / under-rater / well-calibrated] — set after 3+ scored interviews. Over-rater = self-scores average 1.0+ points above coach scores. Under-rater = 1.0+ points below. Well-calibrated = within 0.5 points average delta.
 - Previous approaches: [list of abandoned strategies with brief reason — e.g., "Structure drills — ceiling at 3.5, diminishing returns"]
 
 ## Calibration State
@@ -342,13 +388,15 @@ Last updated: [date]
 
 **What coaching_state.md contains**: Sensitive personal and professional data — target companies, interviewer names, compensation research, interview outcomes, personal coaching notes, and emotional reflections. Treat this file as confidential. Do not share it, sync it to cloud storage unencrypted, or send it to anyone.
 
-**Compensation data specifically**: The `salary` and `negotiate` sections contain your current salary, target range, and negotiation strategy. This is among the most sensitive data in the file. Protect it accordingly.
+**Compensation data specifically**: The `salary` and `negotiate` sections contain your current salary, target range, and negotiation strategy. This is among the most sensitive data in the file. Protect it accordingly. Recommended mitigations: (1) enable OS-level disk encryption (FileVault on Mac, BitLocker on Windows), (2) consider storing Comp Strategy in a separate file that can be deleted independently after a search concludes.
 
 **Third-party data**: Interview transcripts contain an interviewer's exact words. Recruiter/interviewer feedback is stored verbatim. These are third-party communications — handle them with the same care as private correspondence.
 
+**Transcript retention**: Full interview transcripts (captured via `analyze` or `debrief`) should not be retained indefinitely. After the relevant Interview Loop closes (rejected, offer accepted, or withdrawn), archive or delete full transcripts within 30 days. Keep only the extracted data in Interview Intelligence (questions, scores, patterns) — these are de-identified by design and have ongoing coaching value. The `reflect` command will prompt for this cleanup, but candidates can do it manually at any time.
+
 **Data retention**: coaching_state.md accumulates data indefinitely. When you run `reflect` at the end of a search, the coach will ask what you want to keep vs. archive. You can:
 - **Keep**: Storybank (reusable in future searches), score trends, coaching insights
-- **Archive/delete**: Interview Loops (company-specific, stale after search ends), verbatim recruiter feedback, transcript-derived data, compensation notes
+- **Archive/delete**: Interview Loops (company-specific, stale after search ends), verbatim recruiter feedback, transcript-derived data, compensation notes, full transcripts
 
 To manually clean up at any time: run `reflect` to close the coaching loop and get a structured cleanup prompt.
 
@@ -437,6 +485,8 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `help` | Show this command list |
 
 ### File Routing
+
+> **Note**: This table is a reference map for documentation — each command file already contains its own dependencies inline. You don't need to consult this table during execution.
 
 When executing a command, read the required reference files first:
 
