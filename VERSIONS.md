@@ -231,6 +231,19 @@ The system handled live interviews well but had no structured guidance for async
 
 **Key files**: `COACH.md`, `references/cross-cutting.md`, `tests/v3.2-evals.md`, `tests/fixtures/mock-coaching-state-migration.md`, `tests/fixtures/mock-coaching-state-async.md`
 
+### v3.2.3: Research Rigor for Business Cases
+
+New cross-cutting module ensuring quantitative estimates in business case prep survive interviewer scrutiny.
+
+**Key additions:**
+1. **Research Rigor Module** in `references/cross-cutting.md` — confidence tagging (`[sourced]`/`[estimated]`/`[inferred]`), defensibility checks, competitive data freshness tracking, "how to present" coaching notes
+2. **`prep` Step 3** — explicit call to Research Rigor Module during Take-Home/Async Case protocol
+3. **`research` flag** — detects business case roles and flags Research Rigor for downstream `prep`
+
+**Origin:** Real business case prep where market sizing had inflated percentages that wouldn't survive interviewer challenge (equipment rental at 40% card-addressable when 15-20% was honest).
+
+**Key files**: `references/cross-cutting.md`, `references/commands/prep.md`, `references/commands/research.md`
+
 ---
 
 ## v4: Interaction Model (planned)

@@ -273,26 +273,33 @@ When the interview round is a take-home assignment, business case presentation, 
    - Flag the trap: most candidates over-invest in building and under-invest in framing. A well-framed average execution beats a poorly-framed excellent execution.
    - **If no explicit time limit** (e.g., "take as long as you need" or "we suggest ~4-6 hours"): Set a self-imposed cap. Recommend 4-6 hours for a PM business case, 6-8 hours for a strategy presentation with slides. Diminishing returns hit hard after hour 6 — most value is created in the first 70% of time spent. For multi-day deadlines (e.g., "due in 48 hours"), the 20/30/35/15 split still applies but coach the candidate to work in focused blocks, not marathon sessions. Sleep on the draft — fresh eyes catch what exhausted eyes miss.
 
-3. **Evaluation criteria inference** — What is the hiring team likely scoring? Map to the role:
+3. **Research rigor** — When the case involves industry analysis, market sizing, or competitive landscape:
+   - Apply the **Research Rigor Module** from `references/cross-cutting.md`
+   - Every quantitative estimate must be tagged `[sourced]`, `[estimated]`, or `[inferred]`
+   - Include assumption basis for all market sizing tables
+   - Add "how to present" coaching notes on numbers the interviewer will challenge
+   - Run the defensibility check before the candidate finalizes their submission
+
+4. **Evaluation criteria inference** — What is the hiring team likely scoring? Map to the role:
    - PM business cases: structured thinking, business acumen, communication clarity, prioritization rationale, awareness of tradeoffs
    - Technical take-homes: code quality, architecture decisions, testing, documentation, problem decomposition
    - Strategy presentations: market understanding, data-driven reasoning, creativity, feasibility awareness
    - Flag what's NOT being scored: they're not looking for perfection or completeness — they're looking for how you think.
 
-4. **Outline review** — Before the candidate builds, review their outline for:
+5. **Outline review** — Before the candidate builds, review their outline for:
    - Structural issues (missing sections, wrong order, unclear narrative)
    - Scope creep (trying to cover everything instead of going deep on what matters)
    - Missing the actual question (common — the candidate answers an adjacent question, not the one asked)
    - Presentation flow (if they'll present live: does the arc build? Is there a clear "so what"?)
 
-5. **Draft review** — Review the near-final submission for:
+6. **Draft review** — Review the near-final submission for:
    - Clarity — can someone unfamiliar with the context follow the argument?
    - Narrative arc — does it build toward a recommendation or insight?
    - Missed dimensions — what would a skeptical reviewer push back on?
    - Over-qualification — is the candidate showing off breadth at the expense of depth?
    - Length calibration — is it appropriate for the time limit and audience?
 
-6. **Q&A prep** — If the candidate presents the case live after submission:
+7. **Q&A prep** — If the candidate presents the case live after submission:
    - Predict 5-7 challenge questions based on the weakest points of the submission
    - Prepare "I considered that" answers (shows depth behind the deliverable)
    - Coach the "I don't know" response for genuine gaps — honest > defensive
