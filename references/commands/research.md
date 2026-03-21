@@ -80,6 +80,13 @@ Use the Role-Fit Assessment Module from `references/cross-cutting.md`. Without a
 
 **If Weak Fit or Long-Shot Stretch**: Follow the Alternative Suggestions Protocol — name the gaps, suggest what a better-fit version looks like, and respect the candidate's decision if they want to proceed.
 
+### Research Rigor Flag
+
+If this role involves market sizing, competitive analysis, or business case interviews (e.g., strategy PM roles, platform PM roles, operations roles at early-stage companies):
+- **Flag for later**: When `prep` runs for this company, the **Research Rigor Module** from `references/cross-cutting.md` will apply to all quantitative estimates
+- **Start early**: If market estimates surface during research, tag each figure as `[sourced]`, `[estimated]`, or `[inferred]` — this saves time when `prep` builds the full brief
+- **Cross-reference**: If two sources disagree on a number, note both — the candidate will need to reconcile before presenting
+
 ### Networking Angle Protocol
 
 If the candidate's LinkedIn connections are referenced in `coaching_state.md` (under `## LinkedIn Connections`):
