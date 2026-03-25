@@ -112,7 +112,7 @@ mkdir -p ~/.claude/skills/coach
 ```yaml
 ---
 name: coach
-description: Interview coaching system. Activates for any coaching command: kickoff, map, prep, mock, analyze, stories, practice, progress, debrief, feedback, reflect, research, decode, salary, negotiate, hype, pitch, resume, linkedin, outreach, present, concerns, questions, thankyou, sync, strategy, help.
+description: Interview coaching system. Activates for any coaching command: kickoff, map, prep, mock, round, analyze, stories, practice, progress, debrief, feedback, reflect, research, decode, salary, negotiate, hype, pitch, resume, linkedin, outreach, present, concerns, questions, thankyou, sync, strategy, help.
 ---
 
 The interview coaching system is now active.
@@ -222,8 +222,9 @@ Re-export every 2-4 weeks to keep the data fresh. The coach will flag stale expo
 
 | Command | Purpose | Typical Output |
 |---|---|---|
-| `analyze` | Analyze transcript with format-aware parsing, triage-based coaching, and interviewer's inner monologue. At Level 5: includes structured challenge | Auto-detected format, per-unit scoring (Q&A/phases/exchanges), format-specific dimensions, decision tree + interview delta |
-| `debrief` | Post-interview rapid capture (same day) | Questions recalled, interviewer signals, stories used, coaching state updates |
+| `round` | Post-interview compound workflow — captures impressions, scores transcript (if available), and updates all state in one shot. Happy path after any real interview. | Interviewer signals, per-unit scoring (if transcript), all state sections updated, triage-based next step |
+| `analyze` | Transcript scoring — standalone, for when transcript arrives after a prior `debrief` or for isolated analysis | Auto-detected format, per-unit scoring (Q&A/phases/exchanges), format-specific dimensions, decision tree + interview delta |
+| `debrief` | Post-interview rapid capture — impressions only, no scoring. Edge case: use when capturing before a transcript arrives. | Questions recalled, interviewer signals, stories used, coaching state updates |
 | `progress` | Trends, self-calibration, outcome tracking, scoring calibration. At Level 5: includes a Hard Truth section | Self-assessment delta + outcome correlation + scoring drift detection + root cause tracking + coaching meta-check |
 | `feedback` | Capture recruiter feedback, outcomes, corrections, context, or coaching meta-feedback. At Level 5: rejections include structured leverage extraction | State updates + next step suggestion |
 | `thankyou` | Post-interview follow-up drafts | Thank-you note + variants |
@@ -293,23 +294,25 @@ Expected output:
 ### 4) Right after an interview
 
 ```text
-debrief
+round
 ```
 
-Rapid capture while details are fresh — works with or without a transcript. Get:
+One command for everything after a real interview — works with or without a transcript. Get:
 
-- Questions recalled and reconstructed answers
-- Interviewer signals observed (engagement, skepticism, interest)
-- Stories used (auto-updates storybank `Last Used` dates)
-- Coaching state updated for the next session
+- Impressions captured while fresh (questions recalled, interviewer signals, stories used)
+- Transcript scored if you paste one — same analysis depth as `analyze`, with your impressions pre-loaded as context
+- All coaching state updated in one shot: Outcome Log, Interview Loop, Storybank, Active Coaching Strategy, Interview Intelligence
+- Triage-based next step based on what the data shows
 
-### 5) Analyzing a transcript
+> `debrief` still exists if you want to capture impressions without scoring. `analyze` still exists if a transcript arrives days after you already ran `debrief`.
+
+### 5) Analyzing a standalone transcript
 
 ```text
 analyze
 ```
 
-Then paste raw transcript text from any tool (Otter, Zoom, Grain, Teams, etc.). The system auto-detects the format and normalizes it.
+Then paste raw transcript text from any tool (Otter, Zoom, Grain, Teams, etc.). The system auto-detects the format and normalizes it. Use this when a transcript arrives after you've already run `debrief` separately — otherwise, `round` handles both in sequence.
 
 Expected output:
 
@@ -472,6 +475,7 @@ interview-coach-skill/
 │   │   ├── kickoff.md
 │   │   ├── research.md
 │   │   ├── prep.md
+│   │   ├── round.md                    # Post-interview compound workflow (debrief + analyze + state sync)
 │   │   ├── analyze.md
 │   │   ├── debrief.md
 │   │   ├── practice.md

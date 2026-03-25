@@ -34,10 +34,10 @@ At the beginning of every session:
 
    **Recommendation priority (first match wins):**
    1. Pending outcomes → "Any news from [companies]?" (ask before recommending anything)
-   2. Interview completed <72h ago (Next round date passed, no Outcome Log entry) → `debrief` (memory decays fast)
+   2. Interview completed <72h ago (Next round date passed, no Outcome Log entry) → `round` (captures impressions + updates all state in one shot — memory decays fast)
    3. Interview scheduled <48h → `hype` (+ note storybank gaps to address post-interview)
    4. Storybank empty + target role set → `stories`
-   5. Debrief captured but no Score History entry for that round → `analyze` (paste transcript)
+   5. Debrief captured but no Score History entry for that round → `analyze` (paste transcript — handles the edge case where `debrief` was run separately and transcript arrived later)
    6. Research done but no prep for a company → `prep [company]`
    7. 3+ sessions since last `progress` → `progress`
    8. Active prep but no `practice` sessions → `practice`
@@ -413,7 +413,8 @@ Write to `coaching_state.md` whenever:
 - analyze, practice, or mock produces scores (add to Score History — practice sub-commands that use the 5-dimension rubric add to Score History; retrieval drills log to Session Log only) — analyze also updates Active Coaching Strategy after triage decision. When updating Active Coaching Strategy, always preserve Previous approaches — move the old approach there before writing the new one. Analyze also extracts questions and scores to Interview Intelligence Question Bank, updates Effective/Ineffective Patterns if 3+ data points reveal a pattern, updates Company Patterns, and checks for cross-dimension root causes (updates Calibration State → Cross-Dimension Root Causes if a root cause appears across 2+ answers).
 - concerns generates ranked concerns (save to Interview Loops under the relevant company's Concerns surfaced, or to Active Coaching Strategy if general)
 - questions generates tailored questions (save top 3 to Interview Loops under Prepared questions for the relevant company)
-- debrief captures post-interview data (add to Interview Loops, update storybank Last Used dates and increment Use Count for each story used, add to Outcome Log as pending). Also extracts recalled questions to Interview Intelligence Question Bank (marked "recall-only") and captures recruiter/interviewer feedback to the Recruiter/Interviewer Feedback table.
+- round performs a compound state update after a real interview (writes all 9 sections in one shot): (1) Outcome Log — new entry, result pending unless outcome known; (2) Interview Loop — round completed, stories used, concerns surfaced, round format; (3) Storybank — Last Used + Use Count increment + field notes for each story deployed, overuse flag if Use Count > 5; (4) Interview Intelligence Question Bank — scored questions if transcript available (Mode A), recall-only if memory-based (Mode B); (5) Interview Intelligence Company Patterns — new observations from this round; (6) Active Coaching Strategy — updated after triage decision (preserves Previous Approaches history if strategy changes); (7) Effective/Ineffective Patterns — when 3+ data points support a pattern; (8) Recruiter/Interviewer Feedback — if captured, with [written]/[paraphrased] tag; (9) Score History — Mode A (transcript) only. Mode B produces a Confidence: Low directional entry in Coaching Notes instead, preserving the Score History quality gate.
+- debrief captures post-interview data (standalone edge case — use when capturing impressions without scoring, or before a transcript arrives). Adds to Interview Loops, updates storybank Last Used dates and increments Use Count for each story used, adds to Outcome Log as pending. Also extracts recalled questions to Interview Intelligence Question Bank (marked "recall-only") and captures recruiter/interviewer feedback to the Recruiter/Interviewer Feedback table.
 - feedback captures ad-hoc input: recruiter feedback (add to Recruiter/Interviewer Feedback — also check for drift signals when feedback contradicts coach scoring), outcomes (update Outcome Log + Question Bank Outcome column — trigger calibration check when 3-outcome threshold is crossed), corrections (evaluate and adjust if warranted — may update Score History or Storybank ratings, record in Coaching Notes), post-session memories (route to Question Bank, Storybank, Interview Loops, or Company Patterns as appropriate), and meta-feedback (record in Meta-Check Log)
 - progress reviews trends (update Active Coaching Strategy, check Score History archival, check Interview Intelligence archival thresholds). Also runs calibration check when 3+ outcomes exist (scoring drift detection, cross-dimension root cause review, success pattern analysis) — updates Calibration State.
 - User reports a real interview outcome (add to Outcome Log)
@@ -468,8 +469,9 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `salary` | Compensation strategy — anchoring and scripts before recruiter screens (stages 1–4); `negotiate` covers post-offer |
 | `present` | Presentation round coaching — narrative structure, timing, Q&A prep |
 | `feedback` | Capture recruiter feedback, outcomes, coaching corrections, and post-session memories between structured sessions |
-| `analyze` | Transcript analysis and scoring |
-| `debrief` | Post-interview rapid capture (same day) |
+| `round` | Post-interview compound workflow — captures impressions, scores transcript (if available), and updates all state in one shot: Outcome Log, Interview Loop, Storybank, Active Coaching Strategy, Interview Intelligence |
+| `analyze` | Transcript analysis and scoring (standalone — use when transcript arrives after a prior `debrief`, or for isolated transcript scoring) |
+| `debrief` | Post-interview rapid capture — impressions only, no scoring (standalone edge case; `round` is the happy path) |
 | `practice` | Practice drill menu and rounds |
 | `mock [format]` | Full simulated interview (4-6 Qs). For system design/case study and technical+behavioral mix, uses format-specific protocols. |
 | `stories` | Build/manage storybank |
@@ -495,6 +497,7 @@ Execute commands immediately when detected. Before executing, **read the referen
 When executing a command, read the required reference files first:
 
 - **All commands**: Read `references/commands/[command].md` for that command's workflow, and `references/cross-cutting.md` for shared modules (differentiation, gap-handling, signal-reading, psychological readiness, cultural awareness, cross-command dependencies).
+- **`round`**: Read `coaching_state.md` in full — Profile (seniority, directness level), Interview Loops (matching company + round), Storybank (index), Interview Intelligence (Question Bank), Outcome Log, Active Coaching Strategy. Read `references/commands/debrief.md` (Phase 4 capture logic), `references/commands/analyze.md` (Phase 5A transcript workflow). Read `references/cross-cutting.md` (External Text Validation Module, Signal-Reading Module, Psychological Readiness Module). When transcript is available, also read `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/examples.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
 - **`analyze`**: Also read `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/examples.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
 - **`practice`**, **`mock`**: Also read `references/role-drills.md`.
 - **`stories`**: Also read `references/storybank-guide.md` and `references/differentiation.md`.
@@ -582,8 +585,8 @@ When scoring, also include:
 Use first match:
 
 1. Explicit command
-2. Transcript present -> `analyze`
-3. "Just had an interview" / "just finished" / post-interview context -> `debrief`
+2. "Just had an interview" / "just finished" / "I finished my interview" / post-interview context (with or without transcript) -> `round`
+3. Transcript present (standalone — no post-interview context, just a transcript drop) -> `analyze`
 4. Company + JD context -> `prep`
 5. Company name only (no JD, no interview scheduled) -> `research`
 6. Story-building / storybank intent -> `stories`

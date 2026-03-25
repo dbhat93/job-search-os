@@ -246,6 +246,28 @@ New cross-cutting module ensuring quantitative estimates in business case prep s
 
 ---
 
+## v3.3: Round Command — Post-Interview Compound Workflow (shipped)
+
+**Thesis**: v3.2 hardened the system. v3.3 closes the biggest repeated UX friction point: the three-command sequence after every real interview.
+
+### Feature: `round` Command
+
+After a real interview, candidates currently run `debrief` → `analyze` → `sync` to capture impressions, score the transcript, and verify state consistency — three commands doing related work on the same event. `round` wraps this into one command while preserving both components' logic fully.
+
+**Two modes**:
+- **Mode A (transcript available)**: Captures debrief impressions in Phase 4, then runs the full `analyze` transcript workflow with debrief data pre-loaded as context. The Phase 4 emotional read, signal observations, and self-assessment all feed into the analysis — exactly the pattern `analyze` describes for when a debrief exists for the same interview.
+- **Mode B (memory-only)**: Runs full debrief capture, produces directional scoring from memory (confidence-flagged, no Score History row), and tells the candidate to run `analyze` when the transcript arrives.
+
+**State coverage** — all written in one shot: Outcome Log, Interview Loop (round completion + stories used), Storybank (Last Used + Use Count + field notes, overuse flag at > 5), Interview Intelligence (Question Bank + Company Patterns + Effective/Ineffective Patterns), Active Coaching Strategy, Score History (Mode A only — preserves quality gate).
+
+**Standalone commands preserved**: `debrief` and `analyze` remain unchanged for edge cases — late transcript arrivals, deliberate impression-capture before analysis, standalone transcript scoring from a prior session's debrief.
+
+**Mode Detection updated**: "Just had an interview" context now routes to `round`. Standalone transcript drops without post-interview context continue to route to `analyze`.
+
+**Key files**: `references/commands/round.md` (new), `COACH.md` (Mode Detection, Session Start Protocol, Command Registry, File Routing, State Update Triggers), `README.md` (commands table, fast workflow examples, repo structure)
+
+---
+
 ## v4: Interaction Model (planned)
 
 **Thesis**: Now that the coaching brain is strong and comprehensive, change *how* candidates interact with it.
