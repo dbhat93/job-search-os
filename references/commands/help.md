@@ -131,7 +131,7 @@ When the user types `help`, generate a context-aware command guide — not just 
 
 ## Tips
 - Share a real resume during `kickoff` — it powers everything downstream (concerns, positioning, story seeds)
-- Use `debrief` the same day as a real interview — capture signals while they're fresh
+- Use `round` the same day as a real interview — captures impressions, scores any transcript, and updates all state in one shot
 - When you hear back from a recruiter — good or bad — run `feedback` to capture it. The system learns from your real interview experiences over time.
 - Run `progress` weekly — it tracks your self-assessment accuracy, not just scores
 - After real interviews, log outcomes — the system correlates practice scores with real results

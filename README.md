@@ -525,7 +525,7 @@ interview-coach-skill/
 6. After real interviews, log outcomes. The system correlates practice scores with real results.
 7. When you hear back from a recruiter — good or bad — run `feedback` to capture it. The system learns from your real experiences over time.
 8. Run `mock` before important interviews. Individual drills build skills; mocks test the full arc.
-9. Use `debrief` the same day as a real interview — capture signals while they're fresh.
+9. Use `round` the same day as a real interview — captures impressions, scores any transcript, and updates all state in one shot.
 10. Run `decode` before applying — analyze the JD's language, assess your fit, and decide if the role is worth your time. Use batch triage to compare multiple JDs at once.
 11. Run `salary` before your first recruiter call — the recruiter screen is the highest-leverage comp moment, not the offer negotiation.
 12. Run `present` before a presentation round — structure your content and prepare for Q&A before you ever open PowerPoint.

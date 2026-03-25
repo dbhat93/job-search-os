@@ -92,7 +92,7 @@ You know these risks. Now set them aside and go execute.
 - If you bombed the last one: "That conversation is over. This interviewer doesn't know about it and doesn't care."
 - Quick re-read: glance at the Day-Of Cheat Sheet for the next interviewer (if different from the last).
 
-**Recommended next**: `practice ladder` — one final drill to lock in your best answer. **Alternatives**: `questions`, `mock [format]`, `debrief`
+**Recommended next**: `practice ladder` — one final drill to lock in your best answer. **Alternatives**: `questions`, `mock [format]`, `round` (after the interview)
 ```
 
 #### Questions Sourcing

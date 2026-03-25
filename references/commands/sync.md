@@ -52,7 +52,7 @@ Cross-reference every Interview Loop entry against the Outcome Log:
 
 For each active Interview Loop:
 
-- **Next round date passed >7 days, no Outcome Log update**: "Your [Company] [Round] was scheduled for [date] — [N] days ago. Did this happen? Log it via `debrief` or `feedback`."
+- **Next round date passed >7 days, no Outcome Log update**: "Your [Company] [Round] was scheduled for [date] — [N] days ago. Did this happen? Log it via `round` (captures impressions + scores transcript) or `feedback` (outcome only)."
 - **No activity for 4+ weeks** (no rounds added, no outcome, no prep or debrief sessions referencing this loop): Flag as stale. "This loop hasn't moved in [N] weeks. Is it still active, or quietly closed? If closed, marking it frees up your pipeline read."
 - **Search Strategy priority stack references a loop that's now closed**: "Your search strategy has [Company] as #1 priority, but it's been marked closed in your Outcome Log. The priority stack needs to be refreshed."
 
