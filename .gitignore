@@ -11,6 +11,3 @@ CLAUDE.md
 
 # Personal pipeline tracking — contains company names, stages, and interview outcomes
 state/
-
-# Local Claude Code config — causes npx skills to misidentify repo as a project
-.claude/
