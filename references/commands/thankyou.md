@@ -1,5 +1,7 @@
 # thankyou — Follow-Up Workflow
 
+> Before returning any draft, run the **External Communication Style Module** from `references/cross-cutting.md`. No em dashes. No filler openers. Under 150 words. One specific callback.
+
 ### Coaching State Integration
 
 Before drafting, check `coaching_state.md` for data that strengthens the thank-you:

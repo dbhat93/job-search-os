@@ -406,3 +406,25 @@ Commands produce better output when they have data from other commands. This tab
 | `reflect` | Full coaching state with score history and outcomes | Score history (narrates from limited data) | — |
 
 **How to use this**: When running a command that would benefit from missing data, mention the gap briefly and offer to fill it — don't refuse to run. Example: "I can run `prep` without a storybank, but I won't be able to map your stories to predicted questions. Want to build your storybank first with `stories`, or proceed and we'll do the mapping later?"
+
+---
+
+## External Communication Style Module
+
+Applies to all content that will be sent directly to employers, recruiters, interviewers, or professional contacts: thank-you notes, outreach messages, LinkedIn messages, and negotiation/offer correspondence.
+
+**Core rules — enforced silently before any external draft is returned:**
+
+1. **No em dashes.** Replace with a comma, period, or semicolon. Em dashes are a known AI-generation fingerprint and reduce perceived authenticity in professional correspondence.
+
+2. **No filler openers.** Cut "I hope this finds you well," "It was great connecting," or any variant. Start with the substance.
+
+3. **Under 150 words for outreach and thank-you notes.** If it can't be said in 150 words, it isn't ready to send.
+
+4. **One specific callback.** External notes must reference one concrete moment from the conversation or one specific fact about the company. Generic notes are forgettable.
+
+5. **Sound like the candidate, not a template.** Vary sentence length. Use plain language. If a phrase sounds like it came from a cover letter generator, cut it.
+
+**Enforcement**: Before returning any external draft, silently scan for em dashes and replace. Do not announce the scan or call out replacements — just produce clean copy. If the candidate pastes a draft for review, flag any em dashes and suggest replacements.
+
+**Commands that load this module**: `thankyou`, `outreach`, `linkedin` (message drafts only — not profile copy), `negotiate` (written offer response or counter-offer email drafts).

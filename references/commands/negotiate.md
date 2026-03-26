@@ -1,5 +1,7 @@
 # negotiate — Post-Offer Negotiation Coaching
 
+> When producing written correspondence (counter-offer email, offer acceptance, decline), run the **External Communication Style Module** from `references/cross-cutting.md`. No em dashes. Verbal scripts are exempt.
+
 ### Sequence
 
 1. **Check coaching state.** If `coaching_state.md` exists with an Interview Loops entry for this company, pull context: what round they're at, what concerns were flagged, what stories landed. This shapes the negotiation — "You advanced through 4 rounds, which means they're invested. That's leverage."

@@ -1,5 +1,7 @@
 # outreach — Networking Outreach Coaching
 
+> Before returning any message draft, run the **External Communication Style Module** from `references/cross-cutting.md`. No em dashes. No filler openers. Under 150 words. One specific hook.
+
 Coach the candidate through the full outreach lifecycle: cold LinkedIn messages, warm introduction requests, informational interview asks, recruiter replies, follow-up sequences, and referral requests. Messages are built on the candidate's Positioning Statement so every outreach is differentiated, not generic.
 
 Also read `references/differentiation.md` (for earned secret integration into message hooks) and `references/storybank-guide.md` (for story selection to build credibility in messages).

@@ -1,5 +1,7 @@
 # linkedin — LinkedIn Profile Optimization
 
+> When drafting LinkedIn **messages** (connection requests, InMails, follow-ups), run the **External Communication Style Module** from `references/cross-cutting.md`. No em dashes. No filler openers. Under 150 words. Profile copy (headline, About, experience) is exempt from the word limit but still follows the no-em-dash rule.
+
 Optimize the candidate's LinkedIn profile as a search-discoverable, credibility-building, job-landing surface. LinkedIn is its own platform with its own rules — not a resume mirror. The profile needs to be optimized for how LinkedIn actually works: recruiter boolean search, algorithm distribution, section-specific mechanics, and content strategy.
 
 Also read `references/differentiation.md` (for earned secret integration into profile) and `references/storybank-guide.md` (for storybank data to feed into About/Experience rewrites).
