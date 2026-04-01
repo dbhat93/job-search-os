@@ -123,7 +123,7 @@ Three new commands for the artifacts candidates build before they ever interview
 
 ---
 
-## v3.1: Navigation, Gap Pipeline, and Security Hardening (shipped)
+## v3.1: Navigation, Gap Pipeline, and Security Hardening (shipped 2026-03-10)
 
 **Thesis**: v3 made the system comprehensive. v3.1 makes it safer to use at scale (security), easier to navigate (map command), smarter about competency gaps before interviews (gap pipeline), and more accurate in measuring coaching progress (velocity metrics).
 
@@ -158,7 +158,7 @@ Prompt injection guards, data privacy documentation, and data retention guidance
 
 ---
 
-## v3.2: Network Intelligence + Async Prep (shipped)
+## v3.2: Network Intelligence + Async Prep (shipped 2026-03-18)
 
 **Thesis**: v3.1 hardened the system. v3.2 makes it smarter about the candidate's actual network and closes the prep gap for async interview formats — the two highest-leverage gaps surfaced by real usage.
 
@@ -246,7 +246,7 @@ New cross-cutting module ensuring quantitative estimates in business case prep s
 
 ---
 
-## v3.3: Round Command — Post-Interview Compound Workflow (shipped)
+## v3.3: Round Command — Post-Interview Compound Workflow (shipped 2026-03-25)
 
 **Thesis**: v3.2 hardened the system. v3.3 closes the biggest repeated UX friction point: the three-command sequence after every real interview.
 
@@ -268,7 +268,7 @@ After a real interview, candidates currently run `debrief` → `analyze` → `sy
 
 ---
 
-## v3.4: Relationship Intelligence + Minutes Integration (shipped)
+## v3.4: Relationship Intelligence + Minutes Integration (shipped 2026-04-01)
 
 **Thesis**: v3.3 closed the post-interview UX gap. v3.4 makes the system aware of *people*, not just companies — and removes the last manual step in the interview recording workflow. Patterns borrowed from [silverstein/minutes](https://github.com/silverstein/minutes) relationship intelligence architecture.
 
