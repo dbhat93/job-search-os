@@ -134,6 +134,134 @@ Timeline: [N weeks/days → routing applied]
 
 ---
 
+## Contact Network Module
+
+Tracks every person in the search and surfaces stale relationships and forgotten promises. Borrowed from relationship intelligence patterns in meeting tools (silverstein/minutes).
+
+**Data model (new section in coaching_state.md: `## Contact Network`):**
+
+```markdown
+## Contact Network
+| Name | Company | Role Type | Last Contact | Open Promises | Relationship Strength | Losing Touch |
+|------|---------|-----------|-------------|---------------|----------------------|-------------|
+| Rachael | DoorDash | Recruiter | 2026-03-31 | Send NDA | Strong | No |
+| Sritulasi Edpuganti | Interface AI | HM | 2026-03-27 | -- | Medium | Watch (5 days) |
+| Bruno Almeida | Plaid | Referral | 2026-03-20 | Follow up on referral status | Weak | Yes (11 days) |
+```
+
+**Role types:** Recruiter, HM, Interviewer, Referral, Networking, Mentor
+
+**Relationship Strength calculation:**
+- **Strong**: Contact within 7 days AND at least 2 prior interactions
+- **Medium**: Contact within 14 days OR 1 prior interaction within 7 days
+- **Weak**: Contact 14+ days ago OR only 1 interaction total
+- **Losing Touch**: 3+ prior interactions AND last contact >14 days ago (for job search, the decay is faster than Minutes' 21-day threshold because search timelines are compressed)
+
+**Promise Tracker (embedded in Contact Network):**
+Open Promises column tracks commitments the candidate made TO contacts or contacts made TO the candidate. Examples:
+- "Send thank-you note" (candidate to contact)
+- "Provide feedback by Monday" (contact to candidate)
+- "Follow up on referral status" (candidate to contact)
+- "Schedule next round" (contact to candidate)
+
+**Staleness rules (adapted from Minutes' 4-condition cascade):**
+A promise is stale when ANY of these are true:
+- Age > 7 days (compressed from Minutes' 21 days for job search urgency)
+- 2+ new sessions since the promise was made and no update
+- A stated deadline has passed
+- No owner is assigned
+
+**When to update:**
+- `round` Phase 7: Add/update interviewer and recruiter entries
+- `feedback`: Update contact entry with new interaction date + any promises
+- `prep`: Add interviewer entries (from LinkedIn research)
+- `sync`: Surface stale promises and losing-touch alerts
+- `map`: Include top 3 stale promises in "This Week" if actionable
+- `outreach`: Add networking contacts
+
+**Integration with `map` priority check:**
+Add to the priority check table:
+| Stale promise exists (>7 days, actionable) | Surface in "This Week" as action item | Medium |
+
+**Integration with `sync` drift check:**
+Add to Step 3 (Temporal Drift Check):
+- **Contact with open promise >7 days**: Surface: "You promised [Name] at [Company] you'd [action]. That was [N] days ago."
+- **Losing-touch referral with active loop**: Surface: "You haven't been in touch with [Name] in [N] days. They referred you to [Company] which is still active."
+
+---
+
+## Narrative Consistency Checker
+
+Detects when the candidate tells different versions of key narratives across companies. Borrowed from Minutes' consistency report pattern (topic normalization + conflict detection).
+
+**Tracked narratives (check these across Interview Loop notes and Score History deployment notes):**
+
+| Narrative | Why it matters |
+|-----------|---------------|
+| "Why leaving" | Different framings are fine. Contradictory framings are not. "Looking for growth" at Company A and "my company is failing" at Company B creates risk if the two interviewers ever talk. |
+| "Timeline / urgency" | "I'm flexible" at one company and "I have a hard deadline" at another is a problem if both reach offer stage simultaneously. |
+| "Comp expectations" | Different anchoring strategies per company are fine. Contradicting your current comp is not. |
+| "Why this company" | Should be genuinely different per company. Flag if the same generic answer appears verbatim. |
+| "Career narrative" | The thread connecting your past roles should be consistent even if emphasis shifts per audience. |
+
+**Detection logic (adapted from Minutes):**
+1. After each `round` or `feedback` that captures interview content, extract the candidate's answers to the tracked narrative questions.
+2. Normalize: lowercase, remove filler, extract core claim.
+3. Compare against prior entries for the same narrative across other companies.
+4. If the core claim contradicts a prior version (not just differs in emphasis), flag it.
+
+**Output (surfaced in `progress` and `sync`):**
+```
+Narrative consistency check:
+- "Why leaving": Consistent across Crux, Interface AI, DoorDash (growth framing)
+- "Timeline": INCONSISTENT -- told DoorDash "next several weeks" (Mar 26) but told Interface AI "no specific deadline" (Mar 27). If both reach offer stage, reconcile this.
+- "Comp expectations": Not yet captured at enough companies to check.
+```
+
+**When NOT to flag:**
+- Different emphasis for different audiences is fine ("I'm excited about AI" at one company, "I'm excited about fraud" at another)
+- Evolving narratives over time are fine (your "why leaving" may genuinely change as the search progresses)
+- Only flag when the same narrative contains contradictory factual claims
+
+**Integration:**
+- `round` Phase 7: After all state writes, run a silent consistency check against the tracked narratives. Only surface if a contradiction is found.
+- `progress`: Include a "Narrative Consistency" section when 3+ companies have interview data.
+- `sync`: Include contradictions in drift check output.
+
+---
+
+## Story Deployment Analytics
+
+Correlates story deployments with interview outcomes to identify which stories predict advances and which stories are underutilized.
+
+**Data source:** Storybank (Use Count, Last Used, field notes) + Outcome Log (Result per round) + Score History (per-story scores when available)
+
+**Metrics to compute (surfaced in `progress`):**
+
+| Metric | Calculation | Why it matters |
+|--------|-------------|---------------|
+| **Deployment rate** | Use Count / total scored interviews | Stories with 0 deployments after 5+ interviews are either not relevant or actively avoided |
+| **Advance rate per story** | Interviews where story was deployed AND candidate advanced / total deployments | S004 deployed 4x, advanced 3x = 75% advance rate. That's signal. |
+| **Deployment diversity** | Unique stories deployed / total story deployments across all interviews | Low diversity = over-reliance on 1-2 stories. High diversity = healthy rotation. |
+| **Unused high-strength stories** | Stories with Strength 4+ and Use Count 0 | These are ready weapons that aren't being fired. |
+
+**Output (in `progress` Storybank Health section):**
+```
+Story Deployment Analytics:
+- S004 (Consortium Hash): Deployed 4x, advanced 3x (75%). Your strongest signal story.
+- S003 (AI Agents): Deployed 3x, advanced 2x (67%). Consistent performer.
+- S002 (Regulator's Question): Strength 4, never deployed live. Unused weapon.
+- S010 (IDV Kill): Strength 4, never deployed live. Unused weapon.
+- Deployment diversity: 5 unique stories / 12 total deployments = 42%. Could be higher.
+```
+
+**Integration:**
+- `progress`: Add "Story Deployment Analytics" subsection to Storybank Health.
+- `prep`: When mapping stories to predicted questions, note advance rate: "S004 has a 75% advance rate when deployed. Consider leading with it."
+- `stories`: Surface unused high-strength stories as deployment candidates.
+
+---
+
 ## Signal-Reading Module
 
 Real interviews are two-way. Interviewers give signals that candidates should learn to read and adapt to in real-time.

@@ -268,6 +268,37 @@ After a real interview, candidates currently run `debrief` → `analyze` → `sy
 
 ---
 
+## v3.4: Relationship Intelligence + Minutes Integration (shipped)
+
+**Thesis**: v3.3 closed the post-interview UX gap. v3.4 makes the system aware of *people*, not just companies — and removes the last manual step in the interview recording workflow. Patterns borrowed from [silverstein/minutes](https://github.com/silverstein/minutes) relationship intelligence architecture.
+
+### Feature 1: Minutes Integration (Transcript Auto-Detection)
+`round` and `analyze` now check `~/meetings/` for transcripts before asking the candidate to paste. If [Minutes](https://github.com/silverstein/minutes) is installed, transcripts from recorded interviews auto-appear as markdown files. The coach detects them by date + company name, confirms with the candidate, and proceeds. No paste, no format detection, no copy errors. Falls back to manual paste if no match found.
+
+**Key files**: `references/commands/round.md` (Phase 3 auto-detection), `references/commands/analyze.md` (Step 0 auto-detection), `COACH.md` (File Routing, Session Start Protocol), `README.md` (Optional Integration section)
+
+### Feature 2: Contact Network + Promise Tracker
+New `## Contact Network` section in coaching_state.md tracks every person in the search: recruiters, HMs, interviewers, referrals, networking contacts. Each entry has: last contact date, open promises, relationship strength (Strong/Medium/Weak based on recency + interaction frequency), and a losing-touch flag (3+ interactions AND >14 days silent). Promises go stale at 7 days (compressed from Minutes' 21-day threshold because job search timelines are shorter). Surfaced in `map` (priority check), `sync` (drift check), and session start (proactive intelligence).
+
+**Key files**: `references/cross-cutting.md` (Contact Network Module), `COACH.md` (coaching_state schema, Session Start Protocol), `references/commands/map.md` (priority check), `references/commands/progress.md` (Contact Network not directly in progress, but stale contacts surfaced via sync)
+
+### Feature 3: Narrative Consistency Checker
+Detects when the candidate tells contradictory versions of key narratives across companies. Tracks: "why leaving," "timeline/urgency," "comp expectations," "why this company," and "career narrative." After each `round` or `feedback`, extracts the candidate's answers, normalizes them, and compares against prior entries. Only flags genuine contradictions (different emphasis per audience is fine). Surfaced in `progress` and `sync`.
+
+**Key files**: `references/cross-cutting.md` (Narrative Consistency Checker module), `references/commands/progress.md` (Narrative Consistency section)
+
+### Feature 4: Story Deployment Analytics
+Correlates story deployments with interview outcomes. Per-story advance rate (deployed AND advanced / total deployments), deployment diversity (unique stories / total deployments), unused high-strength stories (Strength 4+ with 0 live deployments). Surfaced in `progress` Storybank Health section. Also informs `prep` story mapping ("S004 has a 75% advance rate when deployed").
+
+**Key files**: `references/cross-cutting.md` (Story Deployment Analytics module), `references/commands/progress.md` (Story Deployment Analytics subsection)
+
+### Feature 5: Smart Session Start
+Session Start Protocol enhanced with proactive intelligence surfacing (borrowed from Minutes' SessionStart hook pattern). New priority items: auto-detected transcripts in ~/meetings/, stale promises from Contact Network, losing-touch referral alerts. Proactive intelligence is surfaced alongside the recommendation as a brief 1-2 line note, not as a blocker.
+
+**Key files**: `COACH.md` (Session Start Protocol)
+
+---
+
 ## v4: Interaction Model (planned)
 
 **Thesis**: Now that the coaching brain is strong and comprehensive, change *how* candidates interact with it.

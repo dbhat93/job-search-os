@@ -35,13 +35,23 @@ At the beginning of every session:
    **Recommendation priority (first match wins):**
    1. Pending outcomes → "Any news from [companies]?" (ask before recommending anything)
    2. Interview completed <72h ago (Next round date passed, no Outcome Log entry) → `round` (captures impressions + updates all state in one shot — memory decays fast)
-   3. Interview scheduled <48h → `hype` (+ note storybank gaps to address post-interview)
-   4. Storybank empty + target role set → `stories`
-   5. Debrief captured but no Score History entry for that round → `analyze` (paste transcript — handles the edge case where `debrief` was run separately and transcript arrived later)
-   6. Research done but no prep for a company → `prep [company]`
-   7. 3+ sessions since last `progress` → `progress`
-   8. Active prep but no `practice` sessions → `practice`
-   9. None of the above → recommend based on Active Coaching Strategy
+   3. New transcript detected in `~/meetings/` matching an active loop with no corresponding Score History entry → "I see a new transcript from [Company]. Want to run `round` or `analyze`?"
+   4. Interview scheduled <48h → `hype` (+ note storybank gaps to address post-interview)
+   5. Stale promises in Contact Network (>7 days, actionable) → Surface top 1-2: "Reminder: you told [Name] you'd [action] — that was [N] days ago."
+   6. Losing-touch referral with active loop → "You haven't been in touch with [Name] in [N] days. They referred you to [Company] which is still active."
+   7. Storybank empty + target role set → `stories`
+   8. Debrief captured but no Score History entry for that round → `analyze` (paste transcript)
+   9. Research done but no prep for a company → `prep [company]`
+   10. 3+ sessions since last `progress` → `progress`
+   11. Active prep but no `practice` sessions → `practice`
+   12. None of the above → recommend based on Active Coaching Strategy
+
+   **Proactive intelligence (surface alongside the recommendation, not instead of it):**
+   - Stale promises from Contact Network (top 3, if any exist)
+   - Losing-touch alerts (contacts with 3+ interactions and >14 days silent)
+   - Narrative consistency flags (if a contradiction was detected in the last `round`)
+
+   These are surfaced as a brief note after the recommendation, not as blockers. Format: "Also: [stale promise]. [losing-touch alert]." Keep to 1-2 lines. Don't overwhelm the session start.
 
    **Greeting format**: "Welcome back. Last session: [X]. Based on where you are, I'd recommend **[command + reason]**. Want to start there, or something else?"
 
@@ -369,6 +379,18 @@ Stage gate criteria (advance when gate is passed):
 ### Unmeasured Factor Investigations
 | Date | Trigger | Hypothesis | Investigation | Finding | Action |
 
+## Contact Network
+| Name | Company | Role Type | Last Contact | Open Promises | Strength | Losing Touch |
+|------|---------|-----------|-------------|---------------|----------|-------------|
+[rows — every recruiter, HM, interviewer, referral, and networking contact in the search]
+
+Role types: Recruiter, HM, Interviewer, Referral, Networking, Mentor
+Strength: Strong (contact <7d + 2+ interactions), Medium (contact <14d OR 1 interaction <7d), Weak (contact >14d OR 1 interaction only)
+Losing Touch: Yes if 3+ prior interactions AND last contact >14 days ago
+Open Promises: commitments made by or to the candidate. Stale if >7 days old, or deadline passed, or 2+ sessions since with no update.
+
+Updated by: `round` (Phase 7), `feedback`, `prep` (interviewer entries), `outreach`, `sync` (staleness check), `map` (surface stale promises)
+
 ## Meta-Check Log
 | Session | Candidate Feedback | Adjustment Made |
 |---------|-------------------|-----------------|
@@ -497,8 +519,8 @@ Execute commands immediately when detected. Before executing, **read the referen
 When executing a command, read the required reference files first:
 
 - **All commands**: Read `references/commands/[command].md` for that command's workflow, and `references/cross-cutting.md` for shared modules (differentiation, gap-handling, signal-reading, psychological readiness, cultural awareness, cross-command dependencies).
-- **`round`**: Read `coaching_state.md` in full — Profile (seniority, directness level), Interview Loops (matching company + round), Storybank (index), Interview Intelligence (Question Bank), Outcome Log, Active Coaching Strategy. Read `references/commands/debrief.md` (Phase 4 capture logic), `references/commands/analyze.md` (Phase 5A transcript workflow). Read `references/cross-cutting.md` (External Text Validation Module, Signal-Reading Module, Psychological Readiness Module). When transcript is available, also read `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/examples.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
-- **`analyze`**: Also read `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/examples.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
+- **`round`**: Read `coaching_state.md` in full — Profile (seniority, directness level), Interview Loops (matching company + round), Storybank (index), Interview Intelligence (Question Bank), Outcome Log, Active Coaching Strategy. Check `~/meetings/*.md` for auto-detected transcripts (Minutes integration). Read `references/commands/debrief.md` (Phase 4 capture logic), `references/commands/analyze.md` (Phase 5A transcript workflow). Read `references/cross-cutting.md` (External Text Validation Module, Signal-Reading Module, Psychological Readiness Module). When transcript is available, also read `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/examples.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
+- **`analyze`**: Check `~/meetings/*.md` for auto-detected transcripts (Minutes integration). Also read `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/examples.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
 - **`practice`**, **`mock`**: Also read `references/role-drills.md`.
 - **`stories`**: Also read `references/storybank-guide.md` and `references/differentiation.md`.
 - **`decode`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank, Positioning Statement, and existing JD Analyses. Read `references/cross-cutting.md` for the Role-Fit Assessment Module.

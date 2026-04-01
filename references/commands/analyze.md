@@ -11,6 +11,18 @@ If a candidate drops a transcript without having run `kickoff` first, don't refu
 3. **Proceed with analysis.** Use inferred or stated seniority band for calibration. Skip story-mapping sections (no storybank exists). Skip cross-referencing with prep data.
 4. **After the analysis, suggest kickoff**: "I've scored this transcript, but I'm working without your full context — no storybank, no coaching history, no target company profile. If you want to get the most from this system, run `kickoff` to set up your coaching profile. Your analysis scores will carry forward."
 
+### Transcript Auto-Detection (Minutes Integration)
+
+Before asking for a pasted transcript, check `~/meetings/` for markdown files from the last 7 days. Use glob: `~/meetings/*.md`
+
+If matches are found:
+- List the 3 most recent matches with date, title, and duration (from YAML frontmatter).
+- Ask: "I found these transcripts in ~/meetings/. Which one should I analyze? Or paste a different one."
+- If the candidate selects one, read its `## Transcript` section and proceed to Step 1.
+- If the candidate says "none of these" or pastes text directly, proceed with the pasted transcript.
+
+If no files are found in `~/meetings/`, proceed normally: wait for the candidate to paste a transcript.
+
 ### Step Sequence
 
 1. **Check for existing debrief data.** If `coaching_state.md` has a `debrief` entry for this interview (same company/round), pull it in as context — the candidate's emotional read, interviewer signals they noticed, stories they used, and their same-day self-assessment. This is valuable because debrief captures impressions while fresh, before memory reconstruction smooths things over. Note any discrepancies between debrief impressions and what the transcript actually shows — these deltas are coaching gold.

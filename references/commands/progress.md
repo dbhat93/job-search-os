@@ -336,6 +336,18 @@ Draws from: Score History trends, storybank gaps, avoidance patterns (from Coach
 - Retrieval readiness: [has candidate run retrieval drill? last retrieval score?]
 - Assessment: [Healthy / Needs work / Critical gaps]
 
+### Story Deployment Analytics
+When 3+ scored interviews exist in Score History, compute and display:
+- **Per-story advance rate**: For each story deployed in a live interview, calculate: (interviews where story was deployed AND candidate advanced) / (total deployments). Surface the top 3 performers and any stories with 0% advance rate.
+- **Deployment diversity**: (Unique stories deployed across all interviews) / (Total story deployments). Below 40% = over-reliance on 1-2 stories. Above 60% = healthy rotation.
+- **Unused high-strength stories**: Stories with Strength 4+ and Use Count 0 in live interviews. These are ready weapons that aren't being fired. Name them.
+- **Recommendation**: Based on the data, suggest specific stories to deploy more (high advance rate, underused) and stories to retire or rework (low advance rate despite multiple deployments).
+
+Reference: Story Deployment Analytics module in `references/cross-cutting.md`.
+
+## Narrative Consistency
+When 3+ companies have interview data (from Score History or Interview Loops), run the Narrative Consistency Checker from `references/cross-cutting.md`. Surface any contradictions found. If all tracked narratives are consistent, say so in one line: "Narrative consistency: No contradictions detected across [N] companies."
+
 ## Coaching Meta-Check
 - Is this feedback landing?
 - Are we focused on the right bottleneck?

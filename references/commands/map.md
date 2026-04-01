@@ -21,9 +21,12 @@ Read `coaching_state.md` in full. Then run the priority check below — this det
 
 | Condition | Action | Urgency |
 |-----------|--------|---------|
-| Interview completed < 48 hours ago (Next round date passed + no Outcome Log entry for that round) | `debrief` now — memory decays fast | Urgent |
+| Interview completed < 48 hours ago (Next round date passed + no Outcome Log entry for that round) | `round` now — memory decays fast | Urgent |
 | Upcoming interview within 72 hours | `hype` + confirm `prep` was done | Urgent |
+| New transcript in `~/meetings/` matching active loop, no Score History entry | `round` or `analyze` — transcript auto-detected | Urgent |
 | Pending outcome > 7 days with no Outcome Log update | `feedback` to log result | High |
+| Stale promise in Contact Network (>7 days, actionable) | Surface as action item: "[Name] — [promise]" | High |
+| Losing-touch referral with active loop (3+ interactions, >14 days silent) | "Nudge [Name] — they referred you to [Company]" | High |
 | Transcript available but no corresponding Score History entry | `analyze` | High |
 | Active loop with no `prep` run (Status: Researched or Decoded, no prep brief) | `prep [company]` | High |
 | Interview within 7–14 days, prep done but no mock | `mock` | Medium |

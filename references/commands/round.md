@@ -63,7 +63,17 @@ Apply Emotional Triage (from `debrief.md`):
 - **Terrible** → "That sounds rough. Let's capture what happened while it's fresh — we can go deep on the analysis after some distance." Focus on capture. Reference the Psychological Readiness Module from `references/cross-cutting.md` (Post-Interview Processing section) if the candidate is catastrophizing.
 - **Uncertain** → "Uncertainty is normal. Let's capture the data and see what it tells us."
 
-**Step 2 — Mode fork.** Ask: "Do you have a transcript?"
+**Step 2 — Mode fork.**
+
+**Transcript auto-detection (Minutes integration):** Before asking the candidate to paste a transcript, check `~/meetings/` for markdown files matching today's date (or the interview date from Phase 2) and the identified company name. Use glob: `~/meetings/YYYY-MM-DD*{company}*.md` (case-insensitive on company name, also try partial matches and common abbreviations).
+
+If a matching file is found:
+- Read its `## Transcript` section. Confirm with the candidate: "I found a transcript from today: `[filename]`. Use this?"
+- If confirmed, extract the transcript content and proceed to **Mode A**.
+- If the file has YAML frontmatter with `action_items` or `decisions`, surface them during Phase 4 (debrief capture) as memory aids: "The transcript also captured these action items: [list]. Do any of these ring true?"
+- If the candidate declines ("wrong meeting", "that's a different call"), fall back to the manual prompt below.
+
+If no matching file is found, ask: "Do you have a transcript?"
 
 - **Yes → Mode A**: Capture debrief impressions in Phase 4 first, then score transcript in Phase 5A with those impressions pre-loaded as context.
 - **No → Mode B**: Run full debrief capture in Phase 4, then produce directional scoring from memory in Phase 5B.

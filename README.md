@@ -500,7 +500,7 @@ interview-coach-skill/
 │   │   ├── sync.md
 │   │   ├── help.md
 │   │   └── map.md
-│   ├── cross-cutting.md                # Shared modules: gap-handling, storybank-gap-check, signal-reading, differentiation, cultural awareness, psychological readiness, external text validation
+│   ├── cross-cutting.md                # Shared modules: gap-handling, storybank-gap-check, contact-network, narrative-consistency, story-deployment-analytics, signal-reading, differentiation, cultural awareness, psychological readiness, external text validation
 │   ├── rubrics-detailed.md             # Scoring anchors, root causes, seniority calibration
 │   ├── role-drills.md                  # Role-specific drills + interviewer archetypes
 │   ├── differentiation.md              # Earned secrets, spiky POVs, clarity under pressure
@@ -545,6 +545,28 @@ The skill is intentionally high-candor and evidence-based. It uses strengths-fir
 
 **How does it work across multiple sessions?**
 The skill writes a `coaching_state.md` file that tracks your storybank, scores, patterns, drill progression, interview outcomes, interview loops, and more. At the start of each session, it reads this file and picks up where you left off. Saves happen automatically after every major workflow — not just at session end.
+
+---
+
+## Optional: Minutes Integration
+
+If you use [Minutes](https://github.com/silverstein/minutes) to record interviews, the coach auto-detects transcripts from `~/meetings/` when you run `round` or `analyze`. No paste needed.
+
+**Setup:**
+```bash
+brew install --cask silverstein/tap/minutes
+brew install silverstein/tap/minutes
+minutes setup --model small
+```
+
+**Usage:**
+```bash
+minutes record    # before your call
+# ... have the interview on Zoom ...
+minutes stop      # after the call
+```
+
+The coach will find the transcript automatically next time you run `round` or `analyze`.
 
 ---
 
