@@ -38,9 +38,9 @@ Last updated: 2026-03-16
 - Outreach log:
   | Date | Contact | Channel | Type | Status |
   |------|---------|---------|------|--------|
-  | 2026-03-01 | Dario Amodei | LinkedIn InMail | Cold | No response |
-  | 2026-03-05 | Amanda Askell | LinkedIn Connection | Cold | No response |
-  | 2026-03-08 | Jan Leike | Email | Cold | No response |
+  | 2026-03-01 | David Chen | LinkedIn InMail | Cold | No response |
+  | 2026-03-05 | Alicia Torres | LinkedIn Connection | Cold | No response |
+  | 2026-03-08 | Jordan Liu | Email | Cold | No response |
   | 2026-03-10 | Chris Olah | LinkedIn InMail | Cold | Replied — scheduled call |
 - Outreach assessment: 4 contacts attempted, 1 reply (Chris Olah). Cold outreach conversion low.
 
@@ -51,7 +51,7 @@ Last updated: 2026-03-16
 
 ## LinkedIn Connections
 ### Candidate's Network
-- Source file: /Users/dhirajbhat/Desktop/job-search-ai-coaching/interview-coach-skill/tests/fixtures/mock-connections.csv
+- Source file: ./tests/fixtures/mock-connections.csv
 - Last exported: 2026-03-14
 - Total connections: 10
 

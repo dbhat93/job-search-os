@@ -79,11 +79,11 @@ Then type `/coach` from any Claude Code session, followed by `kickoff`.
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/noamseg/interview-coach-skill.git
-cd interview-coach-skill
+git clone https://github.com/dbhat93/job-search-os.git
+cd job-search-os
 ```
 
-Or [download it as a ZIP](https://github.com/noamseg/interview-coach-skill/archive/refs/heads/main.zip) and unzip.
+Or [download it as a ZIP](https://github.com/dbhat93/job-search-os/archive/refs/heads/main.zip) and unzip.
 
 2. Activate the coach by renaming the skill file:
 
@@ -136,11 +136,11 @@ No need to rename `COACH.md` or open a specific folder. `coaching_state.md` stil
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/noamseg/interview-coach-skill.git
-cd interview-coach-skill
+git clone https://github.com/dbhat93/job-search-os.git
+cd job-search-os
 ```
 
-Or [download it as a ZIP](https://github.com/noamseg/interview-coach-skill/archive/refs/heads/main.zip) and unzip.
+Or [download it as a ZIP](https://github.com/dbhat93/job-search-os/archive/refs/heads/main.zip) and unzip.
 
 2. Activate the coach by renaming the skill file:
 

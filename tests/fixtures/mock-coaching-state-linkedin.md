@@ -39,7 +39,7 @@ Last updated: 2026-03-16
 
 ## LinkedIn Connections
 ### Candidate's Network
-- Source file: /Users/dhirajbhat/Desktop/job-search-ai-coaching/interview-coach-skill/tests/fixtures/mock-connections.csv
+- Source file: ./tests/fixtures/mock-connections.csv
 - Last exported: 2026-03-14
 - Total connections: 10
 
