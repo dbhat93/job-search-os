@@ -176,9 +176,9 @@ Last updated: [date]
 - Story seeds: [resume bullets with likely rich stories behind them]
 
 ## Storybank
-| ID | Title | Primary Skill | Secondary Skill | Impact | Domain | Risk/Stakes | Earned Secret | Strength | Use Count | Last Used |
-|----|-------|---------------|-----------------|--------|--------|-------------|---------------|----------|-----------|-----------|
-[rows — full index. See references/storybank-guide.md for column definitions and health criteria.]
+| ID | Title | Primary Skill | Secondary Skill | Impact | Domain | Risk/Stakes | Earned Secret | Strength | Use Count | Last Used | Archetype Fit |
+|----|-------|---------------|-----------------|--------|--------|-------------|---------------|----------|-----------|-----------|--------------|
+[rows — full index. Archetype Fit = which archetypes this story is strongest for (from Archetype Detection Module). See references/storybank-guide.md for column definitions and health criteria.]
 
 ### Story Details
 #### S001 — [Title]
@@ -187,6 +187,7 @@ Last updated: [date]
 - Action:
 - Result:
 - Earned Secret:
+- Reflection: [What you learned. What you'd do differently. Signals seniority and self-awareness. Populated during `stories` or `round` when candidate naturally surfaces hindsight. This is NOT the earned secret (which is the non-obvious insight). This is the honest retrospective: "If I could do it again, I would have X because Y."]
 - Deploy for: [one-line use case — e.g., "leadership under ambiguity questions"]
 - Field notes: [performance notes from actual interviews — date, context, what landed, what didn't]
 - Version history: [date — what changed]
@@ -379,6 +380,16 @@ Stage gate criteria (advance when gate is passed):
 ### Unmeasured Factor Investigations
 | Date | Trigger | Hypothesis | Investigation | Finding | Action |
 
+## Proof Bank
+| ID | Proof Point | Category | Source | Date |
+|----|------------|----------|--------|------|
+[rows — atomic evidence: one metric, one achievement, one artifact per entry]
+
+Categories: IP, Scale, Impact, Trust, Credibility, Thought Leadership, Network, Builder, Origin Story, Revenue, Growth, Discovery, Partnerships, Methodology
+
+Populated by: `kickoff` (initial from resume), `feedback` (new outcomes), `round` (new metrics mentioned in debrief), manual additions
+Consumed by: `outreach` (top 2-3 by archetype relevance), `prep` (map to predicted concerns), cover letters, `pitch` (evidence layer), `hype` (60-second reel)
+
 ## Contact Network
 | Name | Company | Role Type | Last Contact | Open Promises | Strength | Losing Touch |
 |------|---------|-----------|-------------|---------------|----------|-------------|
@@ -525,7 +536,7 @@ When executing a command, read the required reference files first:
 - **`stories`**: Also read `references/storybank-guide.md` and `references/differentiation.md`.
 - **`decode`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank, Positioning Statement, and existing JD Analyses. Read `references/cross-cutting.md` for the Role-Fit Assessment Module.
 - **`feedback`**: Read `coaching_state.md` (all relevant sections). For Type A feedback with calibration signals, check Calibration State → Scoring Drift Log.
-- **`outreach`**: Read `coaching_state.md` for Profile, Positioning Statement, and Interview Loops (for loop context).
+- **`outreach`**: Read `coaching_state.md` for Profile, Positioning Statement, Proof Bank (select top 2-3 proof points by archetype relevance), and Interview Loops (for loop context).
 - **`salary`**: Read `coaching_state.md` for Profile (seniority, target roles, comp expectations), Interview Loops (offer status, round context, company-specific comp signals), Active Coaching Strategy, and Outcome Log (prior offers for anchoring context).
 - **`present`**: Read `coaching_state.md` for Profile, Interview Loops (company and round context — format, interviewer intel, round type), Active Coaching Strategy, and Storybank (for narrative material and story selection). Also read `references/rubrics-detailed.md` (presentation format scoring dimensions) and `references/calibration-engine.md` Section 1 (calibration context).
 - **`pitch`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, LinkedIn Analysis (for consistency check), Resume Optimization (for summary consistency check). Also read `references/differentiation.md` and `references/storybank-guide.md`.

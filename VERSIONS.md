@@ -299,6 +299,27 @@ Session Start Protocol enhanced with proactive intelligence surfacing (borrowed 
 
 ---
 
+## v3.5: Archetype-Driven Adaptation + Proof Bank (shipped 2026-04-04)
+
+**Thesis**: v3.4 made the system aware of people and transcripts. v3.5 makes it aware of *role types*. Different PM archetypes require different stories, different framing, different questions. The system now detects the archetype once and cascades it everywhere. Patterns borrowed from [santifer/career-ops](https://github.com/santifer/career-ops) archetype-driven adaptation architecture.
+
+### Feature 1: Archetype Detection Module
+Six role archetypes (Platform PM, Founding PM, Domain PM, Regulatory Response PM, Agent/AI PM, GTM/Growth PM) with detection rules based on JD keyword matching. Detected during `prep` Phase 3.5 after JD parsing. The archetype cascades downstream: story prioritization, question prediction, "why this company" framing, mock question selection, hype concerns, outreach proof point selection, and decode fit assessment. Each archetype maps to specific storybank entries and earned secrets.
+
+**Key files**: `references/cross-cutting.md` (Archetype Detection Module), `references/commands/prep.md` (Step 3.5), `references/commands/stories.md` (Archetype Fit field), `COACH.md` (storybank schema)
+
+### Feature 2: STAR+Reflection on Stories
+Every story now has a `Reflection` field: what you learned, what you'd do differently. Distinct from the Earned Secret (which is the non-obvious insight). The Reflection pre-loads the "what would you do differently?" answer that interviewers consistently ask (asked at Crux on both projects, at Interface AI). Populated during `stories` or `round` when the candidate naturally surfaces hindsight. Storybank table also gains an `Archetype Fit` column mapping each story to its strongest archetypes.
+
+**Key files**: `COACH.md` (storybank schema: Reflection field + Archetype Fit column), `references/commands/stories.md` (Story Added template)
+
+### Feature 3: Proof Bank
+A running inventory of atomic, citable proof points (one metric, one achievement, one artifact per entry). Unlike the storybank (full STAR narratives), the Proof Bank stores evidence: patent numbers, customer counts, handle time reductions, conference appearances, publications. Pre-populated with 15 proof points during kickoff. Consumed by `outreach` (top 2-3 by archetype relevance), `prep` (map to predicted concerns), cover letter drafting, `pitch` (evidence layer under positioning statement), and `hype` (60-second reel). Categories: IP, Scale, Impact, Trust, Credibility, Thought Leadership, Network, Builder, Origin Story, Revenue, Growth, Discovery, Partnerships, Methodology.
+
+**Key files**: `references/cross-cutting.md` (Proof Bank module), `COACH.md` (Proof Bank schema in coaching_state format), `references/commands/outreach.md` (Step 1 context assembly)
+
+---
+
 ## v4: Interaction Model (planned)
 
 **Thesis**: Now that the coaching brain is strong and comprehensive, change *how* candidates interact with it.

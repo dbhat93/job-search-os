@@ -146,7 +146,9 @@ Requires 5+ stories in the storybank. If fewer exist, redirect: "Narrative ident
 - ID: S###
 - Primary Skill:
 - Earned Secret:
+- Reflection: [What you learned. What you'd do differently. Ask: "If you could go back and do this project again, what's the one thing you'd change?" This signals seniority in interviews and pre-loads the "what would you do differently" answer that interviewers love to ask.]
 - Strength: [1-5]
+- Archetype Fit: [Which archetypes from the Archetype Detection Module this story maps to strongest. E.g., "Platform PM, Agent/AI PM"]
 - Deploy for: [one-line use case]
 
 ## Story Red Team (Levels 3–5 — see references/challenge-protocol.md)

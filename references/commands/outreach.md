@@ -75,6 +75,7 @@ Pull from coaching_state.md:
 - Profile (target role, seniority band)
 - Resume Analysis (fallback positioning if no Positioning Statement)
 - Storybank (earned secrets for hooks)
+- Proof Bank (select top 2-3 proof points by archetype relevance to the target role: if the role is Platform PM archetype, lead with patent + scale metrics; if Founding PM, lead with first-hire origin + builder signal; if Domain PM, lead with FI customer count + regulatory credibility)
 - Interview Loops (company context for targeted outreach)
 - LinkedIn Analysis (profile quality gate)
 - Differentiation data (from Active Coaching Strategy)

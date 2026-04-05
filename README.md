@@ -500,7 +500,7 @@ interview-coach-skill/
 │   │   ├── sync.md
 │   │   ├── help.md
 │   │   └── map.md
-│   ├── cross-cutting.md                # Shared modules: gap-handling, storybank-gap-check, contact-network, narrative-consistency, story-deployment-analytics, signal-reading, differentiation, cultural awareness, psychological readiness, external text validation
+│   ├── cross-cutting.md                # Shared modules: archetype-detection, proof-bank, gap-handling, storybank-gap-check, contact-network, narrative-consistency, story-deployment-analytics, signal-reading, differentiation, cultural awareness, psychological readiness, external text validation
 │   ├── rubrics-detailed.md             # Scoring anchors, root causes, seniority calibration
 │   ├── role-drills.md                  # Role-specific drills + interviewer archetypes
 │   ├── differentiation.md              # Earned secrets, spiky POVs, clarity under pressure
