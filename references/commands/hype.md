@@ -3,9 +3,10 @@
 ### Data-Driven Hype
 
 The hype reel should be built from real coaching data, not generic encouragement:
-- **Pull from practice high points**: Reference the candidate's best practice moments — "In your last practice session, you nailed the prioritization question with a 4 on Structure. That's the level you're bringing today."
+- **Pull from practice high points**: Reference the candidate's best practice moments. "In your last practice session, you nailed the prioritization question with a 4 on Structure. That's the level you're bringing today."
 - **Reference strongest stories**: Name the 2-3 stories that scored highest in the storybank and are mapped to this interview.
-- **Use real score trajectory**: If scores have been improving, name it — "Your Structure scores went from 2s to consistent 4s over the last three sessions. That's not luck."
+- **Use real score trajectory**: If scores have been improving, name it. "Your Structure scores went from 2s to consistent 4s over the last three sessions. That's not luck."
+- **Ground in Proof Bank**: Pull the 2-3 strongest proof points from the Proof Bank in coaching_state.md and weave them into the reel. These are concrete, citable facts (patent number, customer count, handle time reduction) that remind the candidate what they've actually accomplished. Match to the detected archetype for this interview if available.
 - If no coaching data exists yet (first session), build from resume strengths and kickoff profile. Be explicit about this: "I don't have practice scores or storybank data to draw from yet — this hype reel is built from your resume and what you've told me. It'll be more powerful once we've done some practice rounds together."
 
 ### Anxiety-Profile Personalization

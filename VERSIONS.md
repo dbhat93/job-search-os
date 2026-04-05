@@ -1,6 +1,6 @@
 # Version Roadmap
 
-Each version has a clear thesis — not a feature grab bag.
+Each version has a clear thesis -- not a feature grab bag.
 
 ---
 
@@ -57,38 +57,38 @@ Company research was unstructured. Now includes 3 depth levels (Quick Scan, Stan
 
 ## v3: Full Lifecycle (shipped)
 
-**Thesis**: v2 made the coaching brain deep. v3 makes the system comprehensive — covering every surface where candidates interact with the job market, and tightening cross-command integration across all 23 commands.
+**Thesis**: v2 made the coaching brain deep. v3 makes the system comprehensive -- covering every surface where candidates interact with the job market, and tightening cross-command integration across all 23 commands.
 
 v1 and v2 focused on the interview itself: prep, practice, scoring, and post-interview analysis. But candidates spend more time on resumes, LinkedIn profiles, outreach messages, JD analysis, presentations, and salary conversations than they do in actual interviews. v3 extends the coaching engine to every surface that affects job search outcomes.
 
 ### Feature 1: Application Materials Commands
 Three new commands for the artifacts candidates build before they ever interview.
 
-**`resume`** — Holistic resume optimization across 8 dimensions (ATS parsing, recruiter scan behavior, bullet quality, seniority calibration, keyword coverage, structure, concern management, cross-surface consistency). Three depth levels. When a storybank exists, the storybank-to-bullet pipeline mines earned secrets and quantified outcomes for resume bullets. When a JD is available, produces a targeted version optimized for that specific application.
+**`resume`** -- Holistic resume optimization across 8 dimensions (ATS parsing, recruiter scan behavior, bullet quality, seniority calibration, keyword coverage, structure, concern management, cross-surface consistency). Three depth levels. When a storybank exists, the storybank-to-bullet pipeline mines earned secrets and quantified outcomes for resume bullets. When a JD is available, produces a targeted version optimized for that specific application.
 
-**`linkedin`** — Platform-native LinkedIn optimization. Treats LinkedIn as its own game — recruiter boolean search mechanics, algorithm distribution, section-specific impact — not a resume copy. Three depth levels from quick audit to deep optimization with content strategy.
+**`linkedin`** -- Platform-native LinkedIn optimization. Treats LinkedIn as its own game -- recruiter boolean search mechanics, algorithm distribution, section-specific impact -- not a resume copy. Three depth levels from quick audit to deep optimization with content strategy.
 
-**`pitch`** — Core positioning statement: the atomic unit of self-presentation. Uses curiosity-gap hooks, earned-secret anchoring, and a Present-Past-Future formula to produce variants at every duration (10s elevator through 90s interview TMAY). Saved to coaching state and consumed by `resume`, `linkedin`, and `outreach` for cross-surface consistency.
+**`pitch`** -- Core positioning statement: the atomic unit of self-presentation. Uses curiosity-gap hooks, earned-secret anchoring, and a Present-Past-Future formula to produce variants at every duration (10s elevator through 90s interview TMAY). Saved to coaching state and consumed by `resume`, `linkedin`, and `outreach` for cross-surface consistency.
 
 **Key files**: `references/commands/resume.md` (new), `references/commands/linkedin.md` (new), `references/commands/pitch.md` (new)
 
 ### Feature 2: Networking and Outreach
-**`outreach`** — Coaches the full networking lifecycle: cold LinkedIn messages, warm introductions, informational interview asks, recruiter replies, follow-up sequences, and referral requests. Three depth levels from quick templates to full multi-channel campaign strategy. Messages are built on the candidate's Positioning Statement so every outreach is differentiated. Includes platform mechanics (LinkedIn's 300-char connection request limit, optimal cold email length, InMail response rates).
+**`outreach`** -- Coaches the full networking lifecycle: cold LinkedIn messages, warm introductions, informational interview asks, recruiter replies, follow-up sequences, and referral requests. Three depth levels from quick templates to full multi-channel campaign strategy. Messages are built on the candidate's Positioning Statement so every outreach is differentiated. Includes platform mechanics (LinkedIn's 300-char connection request limit, optimal cold email length, InMail response rates).
 
 **Key files**: `references/commands/outreach.md` (new)
 
 ### Feature 3: JD Analysis and Targeting
-**`decode`** — Analyzes job descriptions using 6 decoding lenses (repetition frequency, order and emphasis, required vs. nice-to-have, verb choices, between-the-lines signals, what's missing) with confidence labels on every interpretation. Maps extracted competencies against the candidate's profile for a fit verdict. Batch triage mode compares 2-5 JDs to find the candidate's sweet spot. Includes a teaching layer so candidates learn to decode JDs themselves.
+**`decode`** -- Analyzes job descriptions using 6 decoding lenses (repetition frequency, order and emphasis, required vs. nice-to-have, verb choices, between-the-lines signals, what's missing) with confidence labels on every interpretation. Maps extracted competencies against the candidate's profile for a fit verdict. Batch triage mode compares 2-5 JDs to find the candidate's sweet spot. Includes a teaching layer so candidates learn to decode JDs themselves.
 
 **Key files**: `references/commands/decode.md` (new)
 
 ### Feature 4: Presentation Round Coaching
-**`present`** — Fills the prep gap for presentation-format interviews (system design presentations, business cases, portfolio reviews, strategy presentations, technical deep dives). Coaches narrative structure using 4 arc frameworks, calibrates content density against time limits, and prepares for Q&A with predicted questions and answer strategies. Three depth levels. Added corresponding presentation transcript parsing path and format-specific scoring dimensions (Content Density Management, Narrative Arc, Q&A Adaptability, Audience Calibration).
+**`present`** -- Fills the prep gap for presentation-format interviews (system design presentations, business cases, portfolio reviews, strategy presentations, technical deep dives). Coaches narrative structure using 4 arc frameworks, calibrates content density against time limits, and prepares for Q&A with predicted questions and answer strategies. Three depth levels. Added corresponding presentation transcript parsing path and format-specific scoring dimensions (Content Density Management, Narrative Arc, Q&A Adaptability, Audience Calibration).
 
 **Key files**: `references/commands/present.md` (new), `references/transcript-processing.md` (Path F), `references/rubrics-detailed.md` (presentation dimensions)
 
 ### Feature 5: Early-Process Comp Coaching
-**`salary`** — Coaches the highest-leverage compensation moments that happen before an offer exists: the recruiter screen "what are your salary expectations?" question, salary history handling, and application form strategy. Guides candidates through comp research, range construction, and stage-specific scripts. Hands off to `negotiate` when a formal offer arrives.
+**`salary`** -- Coaches the highest-leverage compensation moments that happen before an offer exists: the recruiter screen "what are your salary expectations?" question, salary history handling, and application form strategy. Guides candidates through comp research, range construction, and stage-specific scripts. Hands off to `negotiate` when a formal offer arrives.
 
 **Key files**: `references/commands/salary.md` (new)
 
@@ -105,11 +105,11 @@ Three new commands for the artifacts candidates build before they ever interview
 - **Guided extraction prompts** for recruiter feedback in `feedback`
 - **12 new cross-command integration points** wiring commands together (prep consumes decode output, concerns uses Outcome Log, questions uses intelligence data, stories consumes narrative identity, etc.)
 - **3 new schema fields** (Anxiety profile, Career transition, Transition narrative status) with backward-compatible migration rules
-- **Gap-Handling Module integration** into `practice`, `mock`, and `stories` — gap response patterns prescribed by storybank score
-- **Differentiation in non-interview contexts** — earned secrets applied to resume bullets, LinkedIn sections, pitch hooks, and outreach messages
-- **Presentation round scoring and parsing** — 4 format-specific scoring dimensions, transcript parsing path, and anti-pattern detection for presentation interviews
+- **Gap-Handling Module integration** into `practice`, `mock`, and `stories` -- gap response patterns prescribed by storybank score
+- **Differentiation in non-interview contexts** -- earned secrets applied to resume bullets, LinkedIn sections, pitch hooks, and outreach messages
+- **Presentation round scoring and parsing** -- 4 format-specific scoring dimensions, transcript parsing path, and anti-pattern detection for presentation interviews
 - **Level 5 Challenge Protocol** extended to all new commands + `mock`
-- **Format Discovery deduplication** — discovered once in `prep`, saved to Interview Loops, reused by `mock`, `hype`, and `practice`
+- **Format Discovery deduplication** -- discovered once in `prep`, saved to Interview Loops, reused by `mock`, `hype`, and `practice`
 - **7 new worked examples** in `examples.md` calibrating output quality for decode, resume, pitch, linkedin, outreach, present, and salary
 
 ### Feature 7: Schema and Migration Hardening
@@ -127,8 +127,8 @@ Three new commands for the artifacts candidates build before they ever interview
 
 **Thesis**: v3 made the system comprehensive. v3.1 makes it safer to use at scale (security), easier to navigate (map command), smarter about competency gaps before interviews (gap pipeline), and more accurate in measuring coaching progress (velocity metrics).
 
-### Feature 1: Map Command — Situational GPS
-Candidates running multi-week searches with many commands and a growing coaching state frequently lose track of what to do next. `map` answers one question: "Given where I am right now, what should I run?" It reads the full coaching state, runs a 10-condition priority check (urgent through low), and outputs 1–3 time-sensitive actions with a filtered command reference for the candidate's current search phase. Read-only — never writes to state.
+### Feature 1: Map Command -- Situational GPS
+Candidates running multi-week searches with many commands and a growing coaching state frequently lose track of what to do next. `map` answers one question: "Given where I am right now, what should I run?" It reads the full coaching state, runs a 10-condition priority check (urgent through low), and outputs 1–3 time-sensitive actions with a filtered command reference for the candidate's current search phase. Read-only -- never writes to state.
 
 **Key files**: `references/commands/map.md` (new), `COACH.md` (registry, file routing, mode detection 9c)
 
@@ -139,20 +139,20 @@ Before this, competency gaps were detected in `prep` but there was no structured
 
 ### Feature 3: Velocity Metric Fixes
 Three QA-flagged issues in `progress` velocity metrics:
-- **Calculation method**: Simplified from an ⌊N/3⌋ formula to first-2 vs last-2 session windows — easier to verify and less sensitive to session count
-- **Stagnant threshold**: Tightened from `< +0.01/session` to `< +0.02/session for 4+ sessions` — the old threshold let slow-but-real progress go unflagged
+- **Calculation method**: Simplified from an ⌊N/3⌋ formula to first-2 vs last-2 session windows -- easier to verify and less sensitive to session count
+- **Stagnant threshold**: Tightened from `< +0.01/session` to `< +0.02/session for 4+ sessions` -- the old threshold let slow-but-real progress go unflagged
 - **Coaching ROI**: Replaced opaque formula with plain English + worked example ("8 sessions, +1.0 total → 4 sessions per half-point")
 
 **Key files**: `references/commands/progress.md` (velocity metrics section)
 
 ### Feature 4: Security Hardening
 Prompt injection guards, data privacy documentation, and data retention guidance:
-- **Prompt injection**: Content isolation checks added to `analyze` (transcripts) and `prep` (JD parsing) — flags embedded directives before processing
+- **Prompt injection**: Content isolation checks added to `analyze` (transcripts) and `prep` (JD parsing) -- flags embedded directives before processing
 - **Data privacy**: New Data Privacy and Retention section in `COACH.md` covering what `coaching_state.md` contains, compensation data sensitivity, third-party data, and retention guidance
-- **Data retention**: Cleanup prompt added to `reflect` — surfaces what to archive vs. delete at end of search
-- **Compensation privacy**: Warning added to `salary` — Comp Strategy section is among the most sensitive fields
-- **Recruiter feedback provenance**: `feedback` now tracks written vs. paraphrased source — affects calibration confidence; stored as `[written]`/`[paraphrased]` tag in state entries
-- **README privacy section**: New `## Data and Privacy` section documents what `coaching_state.md` contains and how to protect it — visible to forkers before first use
+- **Data retention**: Cleanup prompt added to `reflect` -- surfaces what to archive vs. delete at end of search
+- **Compensation privacy**: Warning added to `salary` -- Comp Strategy section is among the most sensitive fields
+- **Recruiter feedback provenance**: `feedback` now tracks written vs. paraphrased source -- affects calibration confidence; stored as `[written]`/`[paraphrased]` tag in state entries
+- **README privacy section**: New `## Data and Privacy` section documents what `coaching_state.md` contains and how to protect it -- visible to forkers before first use
 
 **Key files**: `references/commands/analyze.md`, `references/commands/prep.md`, `COACH.md`, `references/commands/reflect.md`, `references/commands/salary.md`, `references/commands/feedback.md`, `README.md`, `.gitignore`
 
@@ -160,10 +160,10 @@ Prompt injection guards, data privacy documentation, and data retention guidance
 
 ## v3.2: Network Intelligence + Async Prep (shipped 2026-03-18)
 
-**Thesis**: v3.1 hardened the system. v3.2 makes it smarter about the candidate's actual network and closes the prep gap for async interview formats — the two highest-leverage gaps surfaced by real usage.
+**Thesis**: v3.1 hardened the system. v3.2 makes it smarter about the candidate's actual network and closes the prep gap for async interview formats -- the two highest-leverage gaps surfaced by real usage.
 
 ### Feature 1: LinkedIn Connections Integration
-The `research` command's "networking angle" was generic — "who to talk to, what to ask" with no structured data source. Now, candidates can export their LinkedIn connections as a CSV, and `research` cross-references the target company against their real network. Output includes a connections table, role-appropriate outreach recommendations per contact, and fallback suggestions when no direct connections exist. Staleness detection flags exports older than 30 days.
+The `research` command's "networking angle" was generic -- "who to talk to, what to ask" with no structured data source. Now, candidates can export their LinkedIn connections as a CSV, and `research` cross-references the target company against their real network. Output includes a connections table, role-appropriate outreach recommendations per contact, and fallback suggestions when no direct connections exist. Staleness detection flags exports older than 30 days.
 
 **Key files**: `references/commands/research.md` (Networking Angle Protocol, updated Output Schema), `references/commands/help.md` (LinkedIn note in research description), `README.md` (Setup section with export instructions)
 
@@ -178,7 +178,7 @@ The system handled live interviews well but had no structured guidance for async
 **Key files**: `references/commands/prep.md` (Take-Home / Async Case Prep Protocol)
 
 ### Feature 4: Command Registry Completion
-`strategy` and `sync` existed as full commands but were not registered in README or `help` — users couldn't discover them. Now listed in both command tables.
+`strategy` and `sync` existed as full commands but were not registered in README or `help` -- users couldn't discover them. Now listed in both command tables.
 
 **Key files**: `README.md` (command table), `references/commands/help.md` (Search Strategy section)
 
@@ -186,48 +186,48 @@ The system handled live interviews well but had no structured guidance for async
 
 **12 issues identified, all fixed:**
 
-1. **Multi-CSV network support** — Networking Angle Protocol now reads ALL CSV sources under `## LinkedIn Connections` (candidate's network, referrer networks, curated intro targets). Results separated by source with appropriate trust/approval warnings.
-2. **Canonical outreach log format** — Defined table schema (Date | Contact | Channel | Attempts | Status) with silent migration for prose/bullet formats. Added to COACH.md Schema Migration Check.
-3. **Seniority-aware outreach recommendations** — Position titles now parsed for seniority signals (IC vs Director+ vs VP/C-suite). Different recommendation tiers per seniority level.
-4. **Per-contact vs per-company cadence** — Cadence tracking now distinguishes between following up with one person 3x (per-contact limit) and contacting 3 different people (company-level pattern). Different thresholds and recommendations for each.
-5. **Calendar days over business days** — Cadence timing simplified from "business days" (unreliable to compute) to "calendar days" as a pragmatic proxy.
-6. **Open-ended deadline handling** — Async prep now handles "take as long as you need" cases: recommends self-imposed cap (4-6hr PM, 6-8hr strategy), explains diminishing returns, advises sleeping on multi-day drafts.
-7. **Research → Outreach state handoff** — `research` now writes discovered connections to the Interview Loop entry, ensuring `outreach` can read them in a later session without re-running `research`.
-8. **Graceful CSV failure** — If a CSV path doesn't resolve, logs a warning and continues with other sources instead of crashing the entire networking section.
-9. **Per-source staleness checks** — Each CSV source gets its own staleness warning with source-appropriate advice (re-export for own; verify before intros for referrer's).
-10. **Outreach log migration in COACH.md** — Schema Migration Check now includes outreach log format normalization.
+1. **Multi-CSV network support** -- Networking Angle Protocol now reads ALL CSV sources under `## LinkedIn Connections` (candidate's network, referrer networks, curated intro targets). Results separated by source with appropriate trust/approval warnings.
+2. **Canonical outreach log format** -- Defined table schema (Date | Contact | Channel | Attempts | Status) with silent migration for prose/bullet formats. Added to COACH.md Schema Migration Check.
+3. **Seniority-aware outreach recommendations** -- Position titles now parsed for seniority signals (IC vs Director+ vs VP/C-suite). Different recommendation tiers per seniority level.
+4. **Per-contact vs per-company cadence** -- Cadence tracking now distinguishes between following up with one person 3x (per-contact limit) and contacting 3 different people (company-level pattern). Different thresholds and recommendations for each.
+5. **Calendar days over business days** -- Cadence timing simplified from "business days" (unreliable to compute) to "calendar days" as a pragmatic proxy.
+6. **Open-ended deadline handling** -- Async prep now handles "take as long as you need" cases: recommends self-imposed cap (4-6hr PM, 6-8hr strategy), explains diminishing returns, advises sleeping on multi-day drafts.
+7. **Research → Outreach state handoff** -- `research` now writes discovered connections to the Interview Loop entry, ensuring `outreach` can read them in a later session without re-running `research`.
+8. **Graceful CSV failure** -- If a CSV path doesn't resolve, logs a warning and continues with other sources instead of crashing the entire networking section.
+9. **Per-source staleness checks** -- Each CSV source gets its own staleness warning with source-appropriate advice (re-export for own; verify before intros for referrer's).
+10. **Outreach log migration in COACH.md** -- Schema Migration Check now includes outreach log format normalization.
 
 **Test suite**: 29 eval test cases in `tests/v3.2-evals.md` (9 LinkedIn + 7 Outreach + 7 Async Prep + 3 Integration + 6 Regression). Mock fixtures in `tests/fixtures/`.
 
 **Key files**: `references/commands/research.md`, `references/commands/outreach.md`, `references/commands/prep.md`, `COACH.md`, `tests/v3.2-evals.md`
 
-### v3.2.2: Full Codebase Audit — Hardening Pass (no new features)
+### v3.2.2: Full Codebase Audit -- Hardening Pass (no new features)
 
-**16 fixes across product, security, usability, and functionality** (S3 excluded by design — names retained for outreach context):
+**16 fixes across product, security, usability, and functionality** (S3 excluded by design -- names retained for outreach context):
 
 **Product:**
-1. **Challenge Protocol activation contradiction** — COACH.md said "Level 5 only" but challenge-protocol.md said "begins at Level 3." Aligned cross-cutting.md to "Levels 3-5 with graduated intensity."
-2. **Story over-use detection** — Storybank now flags stories with Use Count > 5 for refresh during `stories improve`.
-3. **Positioning drift detection** — Sync Drift Check now flags when 2+ of pitch/resume/linkedin haven't been refreshed in 5+ sessions.
-4. **Rejection → Feedback loop** — Sync Drift Check now offers `feedback` after any Outcome Log rejection entry.
+1. **Challenge Protocol activation contradiction** -- COACH.md said "Level 5 only" but challenge-protocol.md said "begins at Level 3." Aligned cross-cutting.md to "Levels 3-5 with graduated intensity."
+2. **Story over-use detection** -- Storybank now flags stories with Use Count > 5 for refresh during `stories improve`.
+3. **Positioning drift detection** -- Sync Drift Check now flags when 2+ of pitch/resume/linkedin haven't been refreshed in 5+ sessions.
+4. **Rejection → Feedback loop** -- Sync Drift Check now offers `feedback` after any Outcome Log rejection entry.
 
 **Security:**
-5. **External Text Validation Module** — Injection guard centralized in cross-cutting.md. All commands processing external text (debrief, feedback, outreach, stories) now reference the shared module instead of ad-hoc checks.
-6. **Transcript retention guidance** — Archive/delete full transcripts 30 days after the relevant loop closes. Keep only extracted questions and scores.
-7. **Comp data mitigation** — Data Privacy section now recommends OS-level disk encryption and notes Comp Strategy can be stored in a separate deletable file.
+5. **External Text Validation Module** -- Injection guard centralized in cross-cutting.md. All commands processing external text (debrief, feedback, outreach, stories) now reference the shared module instead of ad-hoc checks.
+6. **Transcript retention guidance** -- Archive/delete full transcripts 30 days after the relevant loop closes. Keep only extracted questions and scores.
+7. **Comp data mitigation** -- Data Privacy section now recommends OS-level disk encryption and notes Comp Strategy can be stored in a separate deletable file.
 
 **Usability:**
-8. **Session Start Protocol simplified** — Replaced 22-line nested conditional with flat 9-item priority list (first match wins). Deterministic execution across sessions.
-9. **Soft Gate Protocol defined** — "Soft gate" now has a canonical definition: collect minimum context (target role, seniority, domain) via 2-3 questions, note that `kickoff` would provide richer context, then proceed.
-10. **Coaching Notes categories** — Replaced vague "things a great coach would remember" with 4 explicit categories: format preferences, emotional/psychological patterns, communication quirks, scheduling/logistics.
-11. **Fit confidence criteria** — Limited/Medium/High now have defined thresholds based on available data (no JD vs. JD vs. JD + outcomes + feedback).
-12. **File Routing table marked as reference** — Clarified it's documentation, not runtime instructions. Each command file contains its own dependencies.
+8. **Session Start Protocol simplified** -- Replaced 22-line nested conditional with flat 9-item priority list (first match wins). Deterministic execution across sessions.
+9. **Soft Gate Protocol defined** -- "Soft gate" now has a canonical definition: collect minimum context (target role, seniority, domain) via 2-3 questions, note that `kickoff` would provide richer context, then proceed.
+10. **Coaching Notes categories** -- Replaced vague "things a great coach would remember" with 4 explicit categories: format preferences, emotional/psychological patterns, communication quirks, scheduling/logistics.
+11. **Fit confidence criteria** -- Limited/Medium/High now have defined thresholds based on available data (no JD vs. JD vs. JD + outcomes + feedback).
+12. **File Routing table marked as reference** -- Clarified it's documentation, not runtime instructions. Each command file contains its own dependencies.
 
 **Functionality:**
-13. **Self-assessment calibration thresholds** — Defined: over-rater = self-scores avg 1.0+ above coach scores across 3+ interviews, under-rater = 1.0+ below, well-calibrated = within 0.5.
-14. **Drill Progression stage gates** — Defined advancement criteria for all 8 stages (e.g., Stage 2 = one practice with all dimensions ≥3, Stage 3 = one mock with Lean Advance+).
-15. **Cross-loop gap prioritization** — Gap Check now preps competencies critical for ANY active loop, prioritizing those critical for 2+ loops.
-16. **Test fixture documentation** — Added schema note explaining that fixtures intentionally omit irrelevant sections; Schema Migration auto-adds them at runtime. Dedicated migration fixture (`mock-coaching-state-migration.md`) created for R.1 test with old "Signal" column format.
+13. **Self-assessment calibration thresholds** -- Defined: over-rater = self-scores avg 1.0+ above coach scores across 3+ interviews, under-rater = 1.0+ below, well-calibrated = within 0.5.
+14. **Drill Progression stage gates** -- Defined advancement criteria for all 8 stages (e.g., Stage 2 = one practice with all dimensions ≥3, Stage 3 = one mock with Lean Advance+).
+15. **Cross-loop gap prioritization** -- Gap Check now preps competencies critical for ANY active loop, prioritizing those critical for 2+ loops.
+16. **Test fixture documentation** -- Added schema note explaining that fixtures intentionally omit irrelevant sections; Schema Migration auto-adds them at runtime. Dedicated migration fixture (`mock-coaching-state-migration.md`) created for R.1 test with old "Signal" column format.
 
 **Key files**: `COACH.md`, `references/cross-cutting.md`, `tests/v3.2-evals.md`, `tests/fixtures/mock-coaching-state-migration.md`, `tests/fixtures/mock-coaching-state-async.md`
 
@@ -236,9 +236,9 @@ The system handled live interviews well but had no structured guidance for async
 New cross-cutting module ensuring quantitative estimates in business case prep survive interviewer scrutiny.
 
 **Key additions:**
-1. **Research Rigor Module** in `references/cross-cutting.md` — confidence tagging (`[sourced]`/`[estimated]`/`[inferred]`), defensibility checks, competitive data freshness tracking, "how to present" coaching notes
-2. **`prep` Step 3** — explicit call to Research Rigor Module during Take-Home/Async Case protocol
-3. **`research` flag** — detects business case roles and flags Research Rigor for downstream `prep`
+1. **Research Rigor Module** in `references/cross-cutting.md` -- confidence tagging (`[sourced]`/`[estimated]`/`[inferred]`), defensibility checks, competitive data freshness tracking, "how to present" coaching notes
+2. **`prep` Step 3** -- explicit call to Research Rigor Module during Take-Home/Async Case protocol
+3. **`research` flag** -- detects business case roles and flags Research Rigor for downstream `prep`
 
 **Origin:** Real business case prep where market sizing had inflated percentages that wouldn't survive interviewer challenge (equipment rental at 40% card-addressable when 15-20% was honest).
 
@@ -246,21 +246,21 @@ New cross-cutting module ensuring quantitative estimates in business case prep s
 
 ---
 
-## v3.3: Round Command — Post-Interview Compound Workflow (shipped 2026-03-25)
+## v3.3: Round Command -- Post-Interview Compound Workflow (shipped 2026-03-25)
 
 **Thesis**: v3.2 hardened the system. v3.3 closes the biggest repeated UX friction point: the three-command sequence after every real interview.
 
 ### Feature: `round` Command
 
-After a real interview, candidates currently run `debrief` → `analyze` → `sync` to capture impressions, score the transcript, and verify state consistency — three commands doing related work on the same event. `round` wraps this into one command while preserving both components' logic fully.
+After a real interview, candidates currently run `debrief` → `analyze` → `sync` to capture impressions, score the transcript, and verify state consistency -- three commands doing related work on the same event. `round` wraps this into one command while preserving both components' logic fully.
 
 **Two modes**:
-- **Mode A (transcript available)**: Captures debrief impressions in Phase 4, then runs the full `analyze` transcript workflow with debrief data pre-loaded as context. The Phase 4 emotional read, signal observations, and self-assessment all feed into the analysis — exactly the pattern `analyze` describes for when a debrief exists for the same interview.
+- **Mode A (transcript available)**: Captures debrief impressions in Phase 4, then runs the full `analyze` transcript workflow with debrief data pre-loaded as context. The Phase 4 emotional read, signal observations, and self-assessment all feed into the analysis -- exactly the pattern `analyze` describes for when a debrief exists for the same interview.
 - **Mode B (memory-only)**: Runs full debrief capture, produces directional scoring from memory (confidence-flagged, no Score History row), and tells the candidate to run `analyze` when the transcript arrives.
 
-**State coverage** — all written in one shot: Outcome Log, Interview Loop (round completion + stories used), Storybank (Last Used + Use Count + field notes, overuse flag at > 5), Interview Intelligence (Question Bank + Company Patterns + Effective/Ineffective Patterns), Active Coaching Strategy, Score History (Mode A only — preserves quality gate).
+**State coverage** -- all written in one shot: Outcome Log, Interview Loop (round completion + stories used), Storybank (Last Used + Use Count + field notes, overuse flag at > 5), Interview Intelligence (Question Bank + Company Patterns + Effective/Ineffective Patterns), Active Coaching Strategy, Score History (Mode A only -- preserves quality gate).
 
-**Standalone commands preserved**: `debrief` and `analyze` remain unchanged for edge cases — late transcript arrivals, deliberate impression-capture before analysis, standalone transcript scoring from a prior session's debrief.
+**Standalone commands preserved**: `debrief` and `analyze` remain unchanged for edge cases -- late transcript arrivals, deliberate impression-capture before analysis, standalone transcript scoring from a prior session's debrief.
 
 **Mode Detection updated**: "Just had an interview" context now routes to `round`. Standalone transcript drops without post-interview context continue to route to `analyze`.
 
@@ -270,7 +270,7 @@ After a real interview, candidates currently run `debrief` → `analyze` → `sy
 
 ## v3.4: Relationship Intelligence + Minutes Integration (shipped 2026-04-01)
 
-**Thesis**: v3.3 closed the post-interview UX gap. v3.4 makes the system aware of *people*, not just companies — and removes the last manual step in the interview recording workflow. Patterns borrowed from [silverstein/minutes](https://github.com/silverstein/minutes) relationship intelligence architecture.
+**Thesis**: v3.3 closed the post-interview UX gap. v3.4 makes the system aware of *people*, not just companies -- and removes the last manual step in the interview recording workflow. Patterns borrowed from [silverstein/minutes](https://github.com/silverstein/minutes) relationship intelligence architecture.
 
 ### Feature 1: Minutes Integration (Transcript Auto-Detection)
 `round` and `analyze` now check `~/meetings/` for transcripts before asking the candidate to paste. If [Minutes](https://github.com/silverstein/minutes) is installed, transcripts from recorded interviews auto-appear as markdown files. The coach detects them by date + company name, confirms with the candidate, and proceeds. No paste, no format detection, no copy errors. Falls back to manual paste if no match found.
@@ -325,7 +325,7 @@ A running inventory of atomic, citable proof points (one metric, one achievement
 **Thesis**: Now that the coaching brain is strong and comprehensive, change *how* candidates interact with it.
 
 ### Voice Mode for Practice/Mock
-Scoped tightly to `practice`, `mock`, and `hype` warmups. The candidate speaks, the system listens, scores delivery alongside content (filler words, pacing, confidence, hedging language). Doesn't replace text for `prep` or `progress` — those need structured output. But practice and mocks become dramatically more realistic with voice.
+Scoped tightly to `practice`, `mock`, and `hype` warmups. The candidate speaks, the system listens, scores delivery alongside content (filler words, pacing, confidence, hedging language). Doesn't replace text for `prep` or `progress` -- those need structured output. But practice and mocks become dramatically more realistic with voice.
 
 ### Session Replay
 After a mock or practice round, let the candidate replay the exchange with inline coaching annotations. "Right here you hedged for 8 seconds before getting to the point. Here's what a tighter version sounds like."
@@ -337,7 +337,7 @@ Not replacing Claude Code, but a read-only dashboard that visualizes `coaching_s
 Connect to Google Calendar / Outlook. When an interview is 24 hours out, auto-trigger `hype`. When it's a week out and no `prep` has been run, nudge. Time-aware coaching exists in v1 but requires the candidate to self-report timelines.
 
 ### Collaborative Storybank Building
-A friend or mentor can review your storybank and leave comments. Still file-based, but with a lightweight review protocol. Most candidates build stories in isolation — a second pair of eyes catches blind spots the coach can't.
+A friend or mentor can review your storybank and leave comments. Still file-based, but with a lightweight review protocol. Most candidates build stories in isolation -- a second pair of eyes catches blind spots the coach can't.
 
 ---
 
@@ -346,21 +346,21 @@ A friend or mentor can review your storybank and leave comments. Still file-base
 **Thesis**: The coaching engine is proven. Now make it accessible to people who'll never touch a CLI.
 
 ### Full Web App
-Backend, auth, database replacing `coaching_state.md`, real UI for all commands. The skill files become the system prompt for an API-based product. The reference architecture is already modular enough to port — each command file maps to an API endpoint.
+Backend, auth, database replacing `coaching_state.md`, real UI for all commands. The skill files become the system prompt for an API-based product. The reference architecture is already modular enough to port -- each command file maps to an API endpoint.
 
 ### Coaching Marketplace
-Let experienced interviewers or career coaches customize the rubrics, add company-specific intelligence, and offer specialized coaching tracks (e.g., "FAANG PM prep" with insider-calibrated scoring). The cross-cutting module architecture already supports this — new modules slot in without rewriting commands.
+Let experienced interviewers or career coaches customize the rubrics, add company-specific intelligence, and offer specialized coaching tracks (e.g., "FAANG PM prep" with insider-calibrated scoring). The cross-cutting module architecture already supports this -- new modules slot in without rewriting commands.
 
 ### Team/Org Mode
-Companies use this to prep internal candidates for promotion panels, or recruiting teams use it to train interviewers (flip the perspective — coach the person *giving* the interview). Same 5 dimensions, different lens.
+Companies use this to prep internal candidates for promotion panels, or recruiting teams use it to train interviewers (flip the perspective -- coach the person *giving* the interview). Same 5 dimensions, different lens.
 
 ### Anonymized Intelligence Network
-With enough users, the system can surface patterns across candidates: "Candidates who get offers at Stripe tend to score 4+ on Differentiation. Candidates rejected at Amazon most often fail on Structure." No individual data shared — just aggregate signals that improve everyone's prep.
+With enough users, the system can surface patterns across candidates: "Candidates who get offers at Stripe tend to score 4+ on Differentiation. Candidates rejected at Amazon most often fail on Structure." No individual data shared -- just aggregate signals that improve everyone's prep.
 
 ---
 
 ## Version Tension
 
-v3 was the natural next step after v2 — it extended the coaching engine to every surface that matters in a job search without requiring any architectural changes. The system is now comprehensive: 23 commands covering resume through retrospective, with cross-command integration wiring that makes the whole greater than the parts.
+v3 was the natural next step after v2 -- it extended the coaching engine to every surface that matters in a job search without requiring any architectural changes. The system is now comprehensive: 23 commands covering resume through retrospective, with cross-command integration wiring that makes the whole greater than the parts.
 
 v4 is exciting but expensive (voice, UI, integrations). v5 is a different company. The risk now is premature platforming before v3 has proven that full-lifecycle coaching moves candidate outcomes better than interview-only coaching.

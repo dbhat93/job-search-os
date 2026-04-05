@@ -8,7 +8,7 @@ npx skills add dbhat93/job-search-os
 
 ---
 
-A Claude Code-based interview coach that covers the full job search lifecycle — from JD analysis and resume optimization through mock interviews to post-offer negotiation. 27 commands across application materials, interview prep, practice, analysis, and comp coaching. It scores your answers across five dimensions, diagnoses root causes behind weak spots, builds a storybank you can retrieve under pressure, and adapts its coaching to your specific patterns. Not a generic question bank. An adaptive system that gets sharper the more you use it.
+A Claude Code-based interview coach that covers the full job search lifecycle -- from JD analysis and resume optimization through mock interviews to post-offer negotiation. 27 commands across application materials, interview prep, practice, analysis, and comp coaching. It scores your answers across five dimensions, diagnoses root causes behind weak spots, builds a storybank you can retrieve under pressure, and adapts its coaching to your specific patterns. Not a generic question bank. An adaptive system that gets sharper the more you use it.
 
 Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 
@@ -16,49 +16,49 @@ Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 
 ## What It Does
 
-**Scoring and diagnosis** — Every answer scored on Substance, Structure, Relevance, Credibility, and Differentiation, calibrated to your seniority. Scores map to root causes (status anxiety, narrative hoarding, conflict avoidance) with targeted fixes, not just "do better."
+**Scoring and diagnosis** -- Every answer scored on Substance, Structure, Relevance, Credibility, and Differentiation, calibrated to your seniority. Scores map to root causes (status anxiety, narrative hoarding, conflict avoidance) with targeted fixes, not just "do better."
 
-**Adaptive coaching** — After scoring, a decision tree triages your bottleneck and branches to the right drill. If Relevance is your gap, you get question-decoding practice. If Substance, you build raw material. The system doesn't cycle through the same sequence for every candidate.
+**Adaptive coaching** -- After scoring, a decision tree triages your bottleneck and branches to the right drill. If Relevance is your gap, you get question-decoding practice. If Substance, you build raw material. The system doesn't cycle through the same sequence for every candidate.
 
-**Multi-format transcript analysis** — Paste raw transcripts from Otter, Zoom, Grain, Google Meet, Teams, Tactiq, Granola, or any other tool. The system auto-detects the format and normalizes it. Analysis adapts to interview type: behavioral interviews get Q&A parsing, system design gets phase-based analysis (scoping, approach, deep-dive, tradeoff, adaptation), panel interviews track cross-interviewer dynamics, and mixed formats handle mode-switching between technical and behavioral segments. Each format gets its own anti-pattern detection and additional scoring dimensions.
+**Multi-format transcript analysis** -- Paste raw transcripts from Otter, Zoom, Grain, Google Meet, Teams, Tactiq, Granola, or any other tool. The system auto-detects the format and normalizes it. Analysis adapts to interview type: behavioral interviews get Q&A parsing, system design gets phase-based analysis (scoping, approach, deep-dive, tradeoff, adaptation), panel interviews track cross-interviewer dynamics, and mixed formats handle mode-switching between technical and behavioral segments. Each format gets its own anti-pattern detection and additional scoring dimensions.
 
-**Storybank with portfolio optimization** — Structured story management with full STAR text, earned secrets, strength ratings, and rapid-retrieval drills. Story-to-question mapping uses a 4-level fit scoring system (Strong Fit, Workable, Stretch, Gap) with portfolio optimization that resolves conflicts when multiple questions compete for the same story, tracks freshness and overuse, and prioritizes stories with strong earned secrets. Narrative identity extraction finds the 2-3 core themes across your stories so every answer reinforces a coherent thesis about who you are.
+**Storybank with portfolio optimization** -- Structured story management with full STAR text, earned secrets, strength ratings, and rapid-retrieval drills. Story-to-question mapping uses a 4-level fit scoring system (Strong Fit, Workable, Stretch, Gap) with portfolio optimization that resolves conflicts when multiple questions compete for the same story, tracks freshness and overuse, and prioritizes stories with strong earned secrets. Narrative identity extraction finds the 2-3 core themes across your stories so every answer reinforces a coherent thesis about who you are.
 
-**Practice and mocks** — 8-stage drill progression (constraint ladders, pushback handling, pivot drills, panel simulations, stress tests) plus full 4-6 question mock interviews in behavioral, system design, case study, panel, and technical+behavioral formats. Every round includes the interviewer's perspective — what they were actually thinking when you spoke. Role-drill scores map to core dimensions so specialized practice feeds into overall trend analysis. At Directness Level 5: expanded interviewer inner monologue, challenge notes on rounds 3+, and optional warmup skip.
+**Practice and mocks** -- 8-stage drill progression (constraint ladders, pushback handling, pivot drills, panel simulations, stress tests) plus full 4-6 question mock interviews in behavioral, system design, case study, panel, and technical+behavioral formats. Every round includes the interviewer's perspective -- what they were actually thinking when you spoke. Role-drill scores map to core dimensions so specialized practice feeds into overall trend analysis. At Directness Level 5: expanded interviewer inner monologue, challenge notes on rounds 3+, and optional warmup skip.
 
-**Outcome calibration** — The system tracks whether its practice scores actually predict real interview outcomes. After 3+ real interviews, it runs scoring drift detection, identifies when external feedback contradicts coach scoring, and recalibrates. Cross-dimension root causes (like "conflict avoidance" affecting both Substance and Differentiation) get unified treatment instead of separate drills. The system also learns from successes — tracking which stories, dimensions, and patterns correlate with advancement.
+**Outcome calibration** -- The system tracks whether its practice scores actually predict real interview outcomes. After 3+ real interviews, it runs scoring drift detection, identifies when external feedback contradicts coach scoring, and recalibrates. Cross-dimension root causes (like "conflict avoidance" affecting both Substance and Differentiation) get unified treatment instead of separate drills. The system also learns from successes -- tracking which stories, dimensions, and patterns correlate with advancement.
 
-**Role-fit assessment** — Structured evaluation of candidate-role fit across five dimensions (requirement coverage, seniority alignment, domain relevance, competency overlap, trajectory coherence). Distinguishes strong fits from investable stretches and long shots, so candidates focus their energy on roles where they're competitive. Over time, rejection patterns reveal targeting insights that no amount of practice can fix.
+**Role-fit assessment** -- Structured evaluation of candidate-role fit across five dimensions (requirement coverage, seniority alignment, domain relevance, competency overlap, trajectory coherence). Distinguishes strong fits from investable stretches and long shots, so candidates focus their energy on roles where they're competitive. Over time, rejection patterns reveal targeting insights that no amount of practice can fix.
 
-**Enhanced company intelligence** — Three research depth levels (Quick Scan, Standard, Deep Dive) with a structured search protocol and claim verification. Every company-specific claim maps to a source tier (verified, general knowledge, or unknown). Prep briefs include targeted web research before applying company knowledge, with source attribution for every finding.
+**Enhanced company intelligence** -- Three research depth levels (Quick Scan, Standard, Deep Dive) with a structured search protocol and claim verification. Every company-specific claim maps to a source tier (verified, general knowledge, or unknown). Prep briefs include targeted web research before applying company knowledge, with source attribution for every finding.
 
-**Interview lifecycle** — Company research, role-specific prep briefs with interviewer intelligence, same-day post-interview debrief, outcome tracking that correlates practice scores with real results, and post-offer negotiation coaching with exact scripts.
+**Interview lifecycle** -- Company research, role-specific prep briefs with interviewer intelligence, same-day post-interview debrief, outcome tracking that correlates practice scores with real results, and post-offer negotiation coaching with exact scripts.
 
-**Interview intelligence** — The system learns from your real interview experiences. Every transcript, debrief, and recruiter feedback adds to a personalized knowledge base: question patterns across companies, what works and what doesn't for you specifically, and feedback-outcome correlations. Intelligence data has temporal decay — stale data is flagged, not silently relied on.
+**Interview intelligence** -- The system learns from your real interview experiences. Every transcript, debrief, and recruiter feedback adds to a personalized knowledge base: question patterns across companies, what works and what doesn't for you specifically, and feedback-outcome correlations. Intelligence data has temporal decay -- stale data is flagged, not silently relied on.
 
-**Session continuity** — A persistent `coaching_state.md` file tracks your storybank, scores, patterns, drill progression, interview loops, interview intelligence, and calibration state across sessions. Pick up where you left off, weeks later. Saves are automatic.
+**Session continuity** -- A persistent `coaching_state.md` file tracks your storybank, scores, patterns, drill progression, interview loops, interview intelligence, and calibration state across sessions. Pick up where you left off, weeks later. Saves are automatic.
 
-**Challenge protocol (Directness Levels 3-5)** — At higher directness settings, the coach actively challenges you through five lenses: Assumption Audit, Blind Spot Scan, Pre-Mortem, Devil's Advocate, and Strengthening Path. Intensity is graduated — Level 3 gets lighter probing, Level 5 gets the full treatment: stories red-teamed after you add or improve them, transcripts challenged, practice rounds 3+ include a rotating challenge note, progress reports include a Hard Truth section, hype includes a pre-mortem, rejections get mined for leverage. The system also detects avoidance patterns — if you keep steering away from a weakness, it names it directly. Every challenge ends with a concrete fix. Levels 1-2 are completely unaffected.
+**Challenge protocol (Directness Levels 3-5)** -- At higher directness settings, the coach actively challenges you through five lenses: Assumption Audit, Blind Spot Scan, Pre-Mortem, Devil's Advocate, and Strengthening Path. Intensity is graduated -- Level 3 gets lighter probing, Level 5 gets the full treatment: stories red-teamed after you add or improve them, transcripts challenged, practice rounds 3+ include a rotating challenge note, progress reports include a Hard Truth section, hype includes a pre-mortem, rejections get mined for leverage. The system also detects avoidance patterns -- if you keep steering away from a weakness, it names it directly. Every challenge ends with a concrete fix. Levels 1-2 are completely unaffected.
 
-**Guided flow** — The coach recommends a specific next step after every command based on your coaching state — not a generic menu. When you say something like "prepare me for my interview at Google," it detects the multi-step intent and walks you through the full sequence (research, prep, concerns, hype) with natural transitions. Session start greetings include a prescriptive recommendation for the highest-leverage move right now.
+**Guided flow** -- The coach recommends a specific next step after every command based on your coaching state -- not a generic menu. When you say something like "prepare me for my interview at Google," it detects the multi-step intent and walks you through the full sequence (research, prep, concerns, hype) with natural transitions. Session start greetings include a prescriptive recommendation for the highest-leverage move right now.
 
-**LinkedIn profile optimization** — Section-by-section audit of your LinkedIn profile against how the platform actually works: recruiter boolean search mechanics, algorithm distribution, and section-specific impact. Three depth levels from quick audit to deep optimization with content strategy. Not a resume-to-LinkedIn copy — a platform-native optimization that treats LinkedIn as its own game.
+**LinkedIn profile optimization** -- Section-by-section audit of your LinkedIn profile against how the platform actually works: recruiter boolean search mechanics, algorithm distribution, and section-specific impact. Three depth levels from quick audit to deep optimization with content strategy. Not a resume-to-LinkedIn copy -- a platform-native optimization that treats LinkedIn as its own game.
 
-**Resume optimization** — Holistic resume audit across every dimension that actually affects outcomes: ATS parsing and ranking, recruiter scan behavior, bullet quality, seniority calibration, keyword coverage, structure, concern management, and cross-surface consistency. Three depth levels from quick audit to deep optimization with full bullet rewrite pipelines. When a storybank exists, the system mines it for quantified outcomes and earned secrets that should appear in resume bullets. When a JD is available, it produces a targeted version optimized for that specific application. Not a grammar check — a strategic overhaul of the resume as a job-search artifact.
+**Resume optimization** -- Holistic resume audit across every dimension that actually affects outcomes: ATS parsing and ranking, recruiter scan behavior, bullet quality, seniority calibration, keyword coverage, structure, concern management, and cross-surface consistency. Three depth levels from quick audit to deep optimization with full bullet rewrite pipelines. When a storybank exists, the system mines it for quantified outcomes and earned secrets that should appear in resume bullets. When a JD is available, it produces a targeted version optimized for that specific application. Not a grammar check -- a strategic overhaul of the resume as a job-search artifact.
 
-**Core positioning** — Builds the atomic unit of self-presentation: a positioning statement that distills who you are into a compelling, memorable core. Uses curiosity gap principles, earned secret anchoring, and the Present-Past-Future formula to produce variants at every duration (10-second elevator, 30-second networking, 60-second recruiter call, 90-second interview TMAY) plus a LinkedIn summary hook. The positioning statement is saved to coaching state and consumed by resume, linkedin, and outreach for cross-surface consistency. Three depth levels from quick draft to deep positioning with a full differentiation audit.
+**Core positioning** -- Builds the atomic unit of self-presentation: a positioning statement that distills who you are into a compelling, memorable core. Uses curiosity gap principles, earned secret anchoring, and the Present-Past-Future formula to produce variants at every duration (10-second elevator, 30-second networking, 60-second recruiter call, 90-second interview TMAY) plus a LinkedIn summary hook. The positioning statement is saved to coaching state and consumed by resume, linkedin, and outreach for cross-surface consistency. Three depth levels from quick draft to deep positioning with a full differentiation audit.
 
-**Networking outreach coaching** — Coaches the full outreach lifecycle: cold LinkedIn messages, warm introduction requests, informational interview asks, recruiter replies, follow-up sequences, and referral requests. Three depth levels from quick templates to full networking campaigns with multi-channel strategy. Messages are built on the candidate's Positioning Statement so every outreach is differentiated, not generic. The system knows platform mechanics (LinkedIn's 300-char connection request limit, optimal cold email length of 75-125 words, InMail response rates) and coaches accordingly. Includes a message quality rubric, follow-up cadence guidance, and the research showing that referrals account for 30-50% of hires from only 7% of applicants.
+**Networking outreach coaching** -- Coaches the full outreach lifecycle: cold LinkedIn messages, warm introduction requests, informational interview asks, recruiter replies, follow-up sequences, and referral requests. Three depth levels from quick templates to full networking campaigns with multi-channel strategy. Messages are built on the candidate's Positioning Statement so every outreach is differentiated, not generic. The system knows platform mechanics (LinkedIn's 300-char connection request limit, optimal cold email length of 75-125 words, InMail response rates) and coaches accordingly. Includes a message quality rubric, follow-up cadence guidance, and the research showing that referrals account for 30-50% of hires from only 7% of applicants.
 
-**JD decoding and batch triage** — Analyzes job descriptions using six decoding lenses (repetition frequency, order and emphasis, required vs. nice-to-have, verb choices, between-the-lines signals, and what's missing) with confidence labels on every interpretation. Maps extracted competencies against the candidate's profile for a fit verdict. Generates specific questions to ask the recruiter for every uncertain interpretation. Batch triage mode compares 2-5 JDs to find the candidate's market-validated sweet spot and recommend where to invest application effort. Includes a teaching layer so candidates learn to decode JDs themselves over time.
+**JD decoding and batch triage** -- Analyzes job descriptions using six decoding lenses (repetition frequency, order and emphasis, required vs. nice-to-have, verb choices, between-the-lines signals, and what's missing) with confidence labels on every interpretation. Maps extracted competencies against the candidate's profile for a fit verdict. Generates specific questions to ask the recruiter for every uncertain interpretation. Batch triage mode compares 2-5 JDs to find the candidate's market-validated sweet spot and recommend where to invest application effort. Includes a teaching layer so candidates learn to decode JDs themselves over time.
 
-**Presentation round coaching** — Fills the prep gap for presentation-format interviews (system design presentations, business cases, portfolio reviews, strategy presentations, technical deep dives). Coaches narrative structure using four arc frameworks, optimizes openings and closings, calibrates content density against time limits (at ~130-150 words per minute), and prepares for Q&A with predicted questions and answer strategies. Three depth levels from quick structural framework to deep preparation with talk track review and constraint versions.
+**Presentation round coaching** -- Fills the prep gap for presentation-format interviews (system design presentations, business cases, portfolio reviews, strategy presentations, technical deep dives). Coaches narrative structure using four arc frameworks, optimizes openings and closings, calibrates content density against time limits (at ~130-150 words per minute), and prepares for Q&A with predicted questions and answer strategies. Three depth levels from quick structural framework to deep preparation with talk track review and constraint versions.
 
-**Early-process comp coaching** — Coaches the highest-leverage compensation moments: the recruiter screen "what are your salary expectations?" question, salary history handling, and application form strategy. Guides candidates through comp research (without fabricating data), helps construct a defensible range, and provides stage-specific scripts with backups for pushback. Covers the full pre-offer comp timeline and hands off to the negotiate command when a formal offer arrives. Three depth levels from a quick 30-second script to full career-transition comp positioning.
+**Early-process comp coaching** -- Coaches the highest-leverage compensation moments: the recruiter screen "what are your salary expectations?" question, salary history handling, and application form strategy. Guides candidates through comp research (without fabricating data), helps construct a defensible range, and provides stage-specific scripts with backups for pushback. Covers the full pre-offer comp timeline and hands off to the negotiate command when a formal offer arrives. Three depth levels from a quick 30-second script to full career-transition comp positioning.
 
-**Differentiation** — Earned secrets and spiky POVs are a first-class dimension, not an afterthought. The system pushes you past "competent" toward "memorable."
+**Differentiation** -- Earned secrets and spiky POVs are a first-class dimension, not an afterthought. The system pushes you past "competent" toward "memorable."
 
-**Self-awareness** — Tracks the gap between your self-assessment and actual coach scores. Knows if you're an over-rater or under-rater, and adjusts coaching accordingly.
+**Self-awareness** -- Tracks the gap between your self-assessment and actual coach scores. Knows if you're an over-rater or under-rater, and adjusts coaching accordingly.
 
 ---
 
@@ -95,7 +95,7 @@ mv COACH.md CLAUDE.md
 
 Requires any paid Claude plan. Also works with Claude Code (terminal), Cursor, or any environment with file system access.
 
-### Option 1b: Claude Code — as a personal skill (advanced)
+### Option 1b: Claude Code -- as a personal skill (advanced)
 
 If you want the coach available from **any** Claude Code session without opening a specific folder, set it up as a personal skill:
 
@@ -129,7 +129,7 @@ When loading any reference file (e.g. `references/commands/map.md`), resolve it 
 
 No need to rename `COACH.md` or open a specific folder. `coaching_state.md` still lives in your clone directory and is gitignored.
 
-> **Note:** This skill file is personal — it contains absolute paths specific to your machine. Do not commit it to the repo.
+> **Note:** This skill file is personal -- it contains absolute paths specific to your machine. Do not commit it to the repo.
 
 ### Option 2: OpenAI Codex
 
@@ -154,7 +154,7 @@ Requires any paid ChatGPT plan.
 
 ---
 
-For both options, the coach will ask for your resume, target role, and timeline — then build your profile, assess your starting point, and give you a prioritized action plan. Everything saves automatically to `coaching_state.md` so you pick up where you left off next session.
+For both options, the coach will ask for your resume, target role, and timeline -- then build your profile, assess your starting point, and give you a prioritized action plan. Everything saves automatically to `coaching_state.md` so you pick up where you left off next session.
 
 ---
 
@@ -162,14 +162,14 @@ For both options, the coach will ask for your resume, target role, and timeline 
 
 ### LinkedIn connections export
 
-Export your LinkedIn connections as a CSV to give the `research` command access to your professional network. When you research a target company, the coach cross-references your connections to surface warm networking paths — specific people you already know at (or connected to) the company, with role-appropriate outreach recommendations.
+Export your LinkedIn connections as a CSV to give the `research` command access to your professional network. When you research a target company, the coach cross-references your connections to surface warm networking paths -- specific people you already know at (or connected to) the company, with role-appropriate outreach recommendations.
 
 **How to export:**
 1. Go to LinkedIn → Settings → Data Privacy → Get a copy of your data
 2. Select "Connections" and request the archive
 3. Download the CSV when ready (usually within minutes)
 4. Save it to `~/Downloads/Connections.csv` (or tell the coach where you put it)
-5. During any coaching session, mention the CSV location — the coach saves the path to `coaching_state.md`
+5. During any coaching session, mention the CSV location -- the coach saves the path to `coaching_state.md`
 
 Re-export every 2-4 weeks to keep the data fresh. The coach will flag stale exports.
 
@@ -215,16 +215,16 @@ Re-export every 2-4 weeks to keep the data fresh. The coach will flag stale expo
 | Command | Purpose | Typical Output |
 |---|---|---|
 | `practice` | Run drill rounds (with progression gating). At Level 5: challenge notes, expanded interviewer read, optional warmup skip | Round debrief + self-assessment delta + targeted adjustment |
-| `mock [format]` | Full simulated interview (4-6 Qs) — behavioral screen, deep behavioral, panel, bar raiser, system design/case study, technical+behavioral mix | Holistic arc feedback, signal-reading notes, energy trajectory |
+| `mock [format]` | Full simulated interview (4-6 Qs) -- behavioral screen, deep behavioral, panel, bar raiser, system design/case study, technical+behavioral mix | Holistic arc feedback, signal-reading notes, energy trajectory |
 | `stories` | Build/manage storybank + rapid-retrieval drill. At Level 5: stories get red-teamed with 5 challenge lenses | Story table + earned secrets + gap analysis + retrieval drill |
 
 ### Analysis, Tracking, and Post-Interview
 
 | Command | Purpose | Typical Output |
 |---|---|---|
-| `round` | Post-interview compound workflow — captures impressions, scores transcript (if available), and updates all state in one shot. Happy path after any real interview. | Interviewer signals, per-unit scoring (if transcript), all state sections updated, triage-based next step |
-| `analyze` | Transcript scoring — standalone, for when transcript arrives after a prior `debrief` or for isolated analysis | Auto-detected format, per-unit scoring (Q&A/phases/exchanges), format-specific dimensions, decision tree + interview delta |
-| `debrief` | Post-interview rapid capture — impressions only, no scoring. Edge case: use when capturing before a transcript arrives. | Questions recalled, interviewer signals, stories used, coaching state updates |
+| `round` | Post-interview compound workflow -- captures impressions, scores transcript (if available), and updates all state in one shot. Happy path after any real interview. | Interviewer signals, per-unit scoring (if transcript), all state sections updated, triage-based next step |
+| `analyze` | Transcript scoring -- standalone, for when transcript arrives after a prior `debrief` or for isolated analysis | Auto-detected format, per-unit scoring (Q&A/phases/exchanges), format-specific dimensions, decision tree + interview delta |
+| `debrief` | Post-interview rapid capture -- impressions only, no scoring. Edge case: use when capturing before a transcript arrives. | Questions recalled, interviewer signals, stories used, coaching state updates |
 | `progress` | Trends, self-calibration, outcome tracking, scoring calibration. At Level 5: includes a Hard Truth section | Self-assessment delta + outcome correlation + scoring drift detection + root cause tracking + coaching meta-check |
 | `feedback` | Capture recruiter feedback, outcomes, corrections, context, or coaching meta-feedback. At Level 5: rejections include structured leverage extraction | State updates + next step suggestion |
 | `thankyou` | Post-interview follow-up drafts | Thank-you note + variants |
@@ -233,7 +233,7 @@ Re-export every 2-4 weeks to keep the data fresh. The coach will flag stale expo
 | `strategy` | Full search-level pipeline audit + 2-week action plan. At Level 5: 4-lens challenge protocol | Timeline risk, funnel health, narrative coherence, priority stack, yield projection, action plan |
 | `sync` | Coaching state consistency check + session continuity | Data integrity verification, stale entry detection, cross-section consistency |
 | `help` | Show command menu (context-aware) | Full command list + recommended next based on coaching state |
-| `map` | Situational GPS — "where am I and what should I do next?" | Priority-ranked next actions + filtered command reference for current search phase |
+| `map` | Situational GPS -- "where am I and what should I do next?" | Priority-ranked next actions + filtered command reference for current search phase |
 
 ---
 
@@ -260,11 +260,11 @@ research Notion
 
 Expected output:
 
-- Company snapshot (stage, size, culture signals — claim-verified with source tiers)
+- Company snapshot (stage, size, culture signals -- claim-verified with source tiers)
 - Fit assessment against your profile
 - "If you decide to apply" next steps
 
-For high-priority targets, mention you want a deep dive: "Do a deep dive on Notion" — gets you employee posts, product reviews, competitor analysis, and leadership profiles on top of the standard research.
+For high-priority targets, mention you want a deep dive: "Do a deep dive on Notion" -- gets you employee posts, product reviews, competitor analysis, and leadership profiles on top of the standard research.
 
 ### 3) Before an interview
 
@@ -282,7 +282,7 @@ Expected output:
 
 - `Interview Format` (with format-specific coaching boundaries)
 - `Company Culture Read`
-- `Interviewer Intelligence` (if profile links provided — per-interviewer lens, focus areas, rapport hooks, story recommendations)
+- `Interviewer Intelligence` (if profile links provided -- per-interviewer lens, focus areas, rapport hooks, story recommendations)
 - `What They Optimize For`
 - `Your Best Positioning`
 - `Likely Concerns + Counters`
@@ -297,10 +297,10 @@ Expected output:
 round
 ```
 
-One command for everything after a real interview — works with or without a transcript. Get:
+One command for everything after a real interview -- works with or without a transcript. Get:
 
 - Impressions captured while fresh (questions recalled, interviewer signals, stories used)
-- Transcript scored if you paste one — same analysis depth as `analyze`, with your impressions pre-loaded as context
+- Transcript scored if you paste one -- same analysis depth as `analyze`, with your impressions pre-loaded as context
 - All coaching state updated in one shot: Outcome Log, Interview Loop, Storybank, Active Coaching Strategy, Interview Intelligence
 - Triage-based next step based on what the data shows
 
@@ -312,7 +312,7 @@ One command for everything after a real interview — works with or without a tr
 analyze
 ```
 
-Then paste raw transcript text from any tool (Otter, Zoom, Grain, Teams, etc.). The system auto-detects the format and normalizes it. Use this when a transcript arrives after you've already run `debrief` separately — otherwise, `round` handles both in sequence.
+Then paste raw transcript text from any tool (Otter, Zoom, Grain, Teams, etc.). The system auto-detects the format and normalizes it. Use this when a transcript arrives after you've already run `debrief` separately -- otherwise, `round` handles both in sequence.
 
 Expected output:
 
@@ -331,20 +331,20 @@ Expected output:
 practice
 ```
 
-Drills (in progression order — advance when you meet gating thresholds):
+Drills (in progression order -- advance when you meet gating thresholds):
 
-- `practice ladder` — Constraint drills (30s, 60s, 90s, 3min)
-- `practice pushback` — Handle skepticism and interruption
-- `practice pivot` — Redirect when questions don't match prep
-- `practice gap` — Handle "I don't have an example" moments
-- `practice role` — Role-specific specialist scrutiny
-- `practice panel` — Multiple interviewer personas
-- `practice stress` — High-pressure simulation
-- `practice technical` — Thinking out loud, clarification-seeking, tradeoff articulation (system design / case study / mixed format only)
+- `practice ladder` -- Constraint drills (30s, 60s, 90s, 3min)
+- `practice pushback` -- Handle skepticism and interruption
+- `practice pivot` -- Redirect when questions don't match prep
+- `practice gap` -- Handle "I don't have an example" moments
+- `practice role` -- Role-specific specialist scrutiny
+- `practice panel` -- Multiple interviewer personas
+- `practice stress` -- High-pressure simulation
+- `practice technical` -- Thinking out loud, clarification-seeking, tradeoff articulation (system design / case study / mixed format only)
 
 Standalone (not gated):
 
-- `practice retrieval` — Rapid-fire story matching under time pressure
+- `practice retrieval` -- Rapid-fire story matching under time pressure
 
 Expected output each round:
 
@@ -448,7 +448,7 @@ Best when running a multi-week search.
 - Drill progression with gating thresholds (8 stages + standalone retrieval)
 - Post-interview debrief and rapid capture
 - Outcome tracking (correlate practice with real results) with scoring calibration (drift detection, recalibration)
-- Interview intelligence — learns question patterns, what works/doesn't, and company-specific insights from your real interviews, with temporal decay on stale data
+- Interview intelligence -- learns question patterns, what works/doesn't, and company-specific insights from your real interviews, with temporal decay on stale data
 - Interview loop awareness across company rounds
 - Post-offer negotiation coaching
 - Post-search retrospective and archiving
@@ -461,7 +461,7 @@ Choose during `kickoff`. You can switch later.
 
 ```text
 interview-coach-skill/
-├── COACH.md                            # Core skill — rename to CLAUDE.md to activate
+├── COACH.md                            # Core skill -- rename to CLAUDE.md to activate
 ├── SKILL.md                            # npx skills add one-liner install metadata
 ├── VERSIONS.md                         # Version history and roadmap
 ├── README.md                           # This file
@@ -518,17 +518,17 @@ interview-coach-skill/
 ## Best Results
 
 1. Share a real resume (not a high-level summary).
-2. Include a full job description for `prep` — and the interview format if you know it.
+2. Include a full job description for `prep` -- and the interview format if you know it.
 3. Use real transcripts for `analyze`. The more you give it, the better the triage.
 4. Keep a living storybank with `stories`. Extract earned secrets for every story.
-5. Run `progress` weekly — it tracks your self-assessment accuracy, not just scores.
+5. Run `progress` weekly -- it tracks your self-assessment accuracy, not just scores.
 6. After real interviews, log outcomes. The system correlates practice scores with real results.
-7. When you hear back from a recruiter — good or bad — run `feedback` to capture it. The system learns from your real experiences over time.
+7. When you hear back from a recruiter -- good or bad -- run `feedback` to capture it. The system learns from your real experiences over time.
 8. Run `mock` before important interviews. Individual drills build skills; mocks test the full arc.
-9. Use `round` the same day as a real interview — captures impressions, scores any transcript, and updates all state in one shot.
-10. Run `decode` before applying — analyze the JD's language, assess your fit, and decide if the role is worth your time. Use batch triage to compare multiple JDs at once.
-11. Run `salary` before your first recruiter call — the recruiter screen is the highest-leverage comp moment, not the offer negotiation.
-12. Run `present` before a presentation round — structure your content and prepare for Q&A before you ever open PowerPoint.
+9. Use `round` the same day as a real interview -- captures impressions, scores any transcript, and updates all state in one shot.
+10. Run `decode` before applying -- analyze the JD's language, assess your fit, and decide if the role is worth your time. Use batch triage to compare multiple JDs at once.
+11. Run `salary` before your first recruiter call -- the recruiter screen is the highest-leverage comp moment, not the offer negotiation.
+12. Run `present` before a presentation round -- structure your content and prepare for Q&A before you ever open PowerPoint.
 
 ---
 
@@ -541,10 +541,10 @@ Generic LLM interview help gives you the same advice regardless of your patterns
 No. Core workflows are role-agnostic; role drills include PM, Engineering, Design, Data Science, Research, Operations, and Marketing.
 
 **Why is the feedback direct?**
-The skill is intentionally high-candor and evidence-based. It uses strengths-first delivery and self-reflection before critique. It also periodically checks whether the coaching is landing and adapts if not. You can set your feedback directness level (1-5) during kickoff. The Challenge Protocol activates at Level 3 with light probing and reaches full intensity at Level 5: stories get red-teamed, progress includes a Hard Truth, rejections get mined for leverage, and avoidance patterns are named directly. Levels 1-2 are gentler — same rigor, softer delivery.
+The skill is intentionally high-candor and evidence-based. It uses strengths-first delivery and self-reflection before critique. It also periodically checks whether the coaching is landing and adapts if not. You can set your feedback directness level (1-5) during kickoff. The Challenge Protocol activates at Level 3 with light probing and reaches full intensity at Level 5: stories get red-teamed, progress includes a Hard Truth, rejections get mined for leverage, and avoidance patterns are named directly. Levels 1-2 are gentler -- same rigor, softer delivery.
 
 **How does it work across multiple sessions?**
-The skill writes a `coaching_state.md` file that tracks your storybank, scores, patterns, drill progression, interview outcomes, interview loops, and more. At the start of each session, it reads this file and picks up where you left off. Saves happen automatically after every major workflow — not just at session end.
+The skill writes a `coaching_state.md` file that tracks your storybank, scores, patterns, drill progression, interview outcomes, interview loops, and more. At the start of each session, it reads this file and picks up where you left off. Saves happen automatically after every major workflow -- not just at session end.
 
 ---
 
@@ -572,28 +572,28 @@ The coach will find the transcript automatically next time you run `round` or `a
 
 ## Data and Privacy
 
-`coaching_state.md` is created on first `kickoff` and updated automatically throughout your search. It contains sensitive personal and professional data — treat it accordingly.
+`coaching_state.md` is created on first `kickoff` and updated automatically throughout your search. It contains sensitive personal and professional data -- treat it accordingly.
 
 **What it stores:**
 - Target companies, interview status, and outcomes
 - Storybank with detailed professional narratives and personal context
 - Score history and coaching patterns across sessions
-- Compensation research — current salary, target range, and negotiation strategy
+- Compensation research -- current salary, target range, and negotiation strategy
 - Recruiter and interviewer names and verbatim feedback
 - Excerpts from interview transcripts (third-party speech)
 - Personal reflections from `reflect` and `debrief`
 
 **Default protections (already in place):**
-- `coaching_state.md` is listed in `.gitignore` — it won't be committed to your fork by default
+- `coaching_state.md` is listed in `.gitignore` -- it won't be committed to your fork by default
 - `CLAUDE.md` (your active skill file) is also gitignored
 
 **What you should do:**
 - Do not sync `coaching_state.md` to any shared or cloud location (Google Drive, Dropbox, iCloud, GitHub) without encrypting it first
 - If you share your repo or coaching setup with anyone, confirm `coaching_state.md` is excluded
-- When your search ends, run `reflect` — it prompts you to archive and delete data you no longer need
+- When your search ends, run `reflect` -- it prompts you to archive and delete data you no longer need
 - Compensation data is among the most sensitive fields. If you ever export or share state data, redact the Comp Strategy section first
 
-**Third-party data note:** Transcripts and recruiter feedback contain other people's words. These are stored in your local `coaching_state.md` only — they are never transmitted anywhere by the skill itself.
+**Third-party data note:** Transcripts and recruiter feedback contain other people's words. These are stored in your local `coaching_state.md` only -- they are never transmitted anywhere by the skill itself.
 
 ---
 

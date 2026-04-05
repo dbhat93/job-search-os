@@ -367,6 +367,8 @@ When the interview round is a take-home assignment, business case presentation, 
 - Structural gaps (name honestly, prepare for probing): [list]
 
 ## Likely Concerns + Counters
+When constructing counter-evidence, check the Proof Bank in coaching_state.md for atomic evidence that directly addresses each concern. Match proof points to the detected archetype: for Platform PM concerns about scale, deploy P002/P003 (consortium + AI agents customer counts). For Domain PM concerns about depth, deploy P006/P013 (regulatory presentations + 150 customer interviews). For Founding PM concerns about builder instinct, deploy P010/P011 (first hire + fraud browser revenue).
+
 1. Concern:
    Counter:
    Evidence:

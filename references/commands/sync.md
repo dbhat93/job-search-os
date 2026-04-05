@@ -76,6 +76,21 @@ Only run if a Search Strategy section exists.
 - **2-Week Action Plan is >14 days old**: "Your action plan from [date] is now [N] days old. Run `strategy` for a fresh plan."
 - **Plan calls for activating specific companies (e.g., "Activate Anthropic + Cohere") but no corresponding loop exists**: Flag as unexecuted action. "Your plan flagged activating [Company] — that loop hasn't been opened yet. Is this still the plan, or did the situation change?"
 
+### Step 7: Contact Network + Narrative Consistency
+
+**Contact Network drift (only run if Contact Network section exists):**
+
+- **Stale promises (>7 days, actionable)**: Surface each: "[Name] at [Company]: you promised to [action] on [date]. That was [N] days ago."
+- **Losing-touch referrals with active loops**: Flag contacts with 3+ prior interactions AND last contact >14 days ago where the company loop is still active: "[Name] referred you to [Company] which is still in your pipeline, but you haven't been in touch for [N] days."
+- **Dead contacts on closed loops**: If a contact's company loop is now closed/rejected, note it so the candidate can decide whether to maintain the relationship for networking or let it go.
+
+**Narrative Consistency (only run when 3+ companies have interview data in Score History or Interview Loops):**
+
+Run the Narrative Consistency Checker from `references/cross-cutting.md`. Check tracked narratives ("why leaving," "timeline/urgency," "comp expectations," "why this company," "career narrative") across all companies with interview data. Surface contradictions only:
+
+- If contradictions found: "Narrative consistency flag: your [narrative type] differs between [Company A] ('[version A]') and [Company B] ('[version B]'). If both reach offer stage, reconcile this."
+- If all consistent: "Narrative consistency: clean across [N] companies."
+
 ---
 
 ## Output Schema
@@ -108,7 +123,15 @@ Only run if a Search Strategy section exists.
 - [Finding — or "Strategy is current"]
 
 ### Search Strategy
-- [Finding — or "Strategy is current" / "No Search Strategy section exists — run `strategy` to create one"]
+- [Finding — or "Strategy is current" / "No Search Strategy section exists -- run `strategy` to create one"]
+
+### Contact Network
+| Contact | Issue | Action |
+|---------|-------|--------|
+[rows -- or "No stale promises or losing-touch alerts"]
+
+### Narrative Consistency
+- [Contradictions found -- or "Clean across [N] companies"]
 
 ## Fix Plan
 

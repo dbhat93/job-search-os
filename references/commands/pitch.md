@@ -42,7 +42,7 @@ Before running the full positioning exercise, check coaching state:
 ## Required Inputs
 
 - Target role context (from coaching_state.md Profile, or ask)
-- Candidate background (from Resume Analysis + Storybank, or ask)
+- Candidate background (from Resume Analysis + Storybank + Proof Bank, or ask). The Proof Bank in coaching_state.md provides atomic evidence (patent numbers, customer counts, metrics) that grounds the positioning statement in specific, citable facts rather than abstract claims.
 
 ## Optional Inputs
 
