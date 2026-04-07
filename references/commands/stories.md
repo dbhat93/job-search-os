@@ -27,6 +27,13 @@ When the candidate selects "Add," don't jump straight to STAR format. Most peopl
 
 Don't skip the reflective prompts and go straight to "tell me a story about leadership." That produces rehearsed, thin stories. The prompts produce real ones.
 
+**Story Discovery Frameworks (sourced from experts via Lenny's Newsletter/Podcast):**
+
+- **Transformation Moments** (Matthew Dicks, "Storyworthy"): The best stories are about a moment of change. Ask: "Was there a specific moment when your understanding of the problem shifted? When you realized something you believed was wrong?" A 5-second moment of transformation is more powerful than a 6-month project summary.
+- **Superpower Identification** (Donna Lichaw): Ask: "What's the thing that people always come to you for, even when it's not your job?" and "What do you do effortlessly that others find hard?" These reveal differentiating strengths the candidate may not recognize as stories.
+- **Kryptonite Framework** (Lichaw): The inverse. "What consistently drains you, or where do you struggle despite effort?" This surfaces honest growth stories and self-awareness signals that interviewers value at senior levels.
+- **Feedback Stories** (Kim Scott, "Radical Candor"): Ask about times they gave hard feedback or received it well. These are rare in storybanks but commonly asked in interviews ("Tell me about a difficult conversation").
+
 **Important**: When adding a story, write the full STAR text to the Story Details section in `coaching_state.md` — not just the index row in the Storybank table. The table is a quick-reference index. The Story Details section is where the actual story lives, including Situation, Task, Action, Result, Earned Secret, deploy use-case, and version history. Without the full text, the coach can't help improve the story in a future session without asking the candidate to retell it from scratch.
 
 ### Improving Stories — Structured Upgrade Protocol

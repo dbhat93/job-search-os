@@ -76,7 +76,12 @@ You know these risks. Now set them aside and go execute.
 1. Read this hype reel out loud once.
 2. [Format-specific drill]: Behavioral → pick your weakest story and deliver the 60-second version out loud. Presentation → deliver your opening 30 seconds out loud. System design → practice scoping a simple problem out loud for 60 seconds. Panel → mentally rehearse switching between interviewer styles.
 3. Review the 3x3 above — don't memorize, just refresh.
-4. Physical reset: [walk, stretch, breathe — whatever routine works for you].
+4. Physical reset using the **Anxiety Toolkit** (sourced from experts via Lenny's Newsletter/Podcast):
+   - **Breathing**: Jonny Miller's "Cyclic Sighing" -- double inhale through nose (fill lungs, then top off), long exhale through mouth. 2-3 cycles. Proven to reduce physiological stress faster than other techniques.
+   - **Reframe**: Matt Abrahams (Stanford): "I'm not nervous, I'm excited." Anxiety and excitement are the same physiological state. Relabeling it changes your relationship to the feeling.
+   - **Low heart rate principle**: Sam Lessin -- "The best decisions and performances come from low heart rate." If your heart rate is elevated, you're not ready. Walk until it drops.
+   - **Inner critic response**: Joe Hudson -- When the inner voice says "you'll mess this up," respond: "Thank you for trying to protect me. I've got this." Acknowledging the voice reduces its power.
+   - **Impostor reframe**: Katherine Hosie -- "If you're feeling like an impostor, it means you're in a room where you're growing." The feeling is a signal of stretch, not fraud.
 5. Reframe: "This is a conversation to see if there's mutual fit. I'm also interviewing them."
 
 ## If You Bomb an Answer Mid-Interview

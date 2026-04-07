@@ -133,6 +133,11 @@ Based on presentation type + audience, recommend one of the 4 narrative arc fram
 - Executive audience → Hook-Build-Deliver-Land (HBDL)
 - General/flexible/mixed audience → Situation-Complication-Resolution (SCR)
 
+**Expert frameworks for additional depth (sourced via Lenny's Newsletter/Podcast):**
+- **"What Is / What Could Be / New Bliss"** (Nancy Duarte): Alternate between the current state ("what is") and the future state ("what could be") to create tension and desire. End with "New Bliss" -- a vivid picture of the transformed world. Best for: strategic vision presentations, product roadmap pitches.
+- **Strategic Narrative** (Andy Raskin): Start with an undeniable shift in the world, name the stakes for winners and losers, show the "promised land" (not your product, the outcome), introduce "magic gifts" (your capabilities) that enable reaching the promised land, show evidence. Best for: category-creation presentations, executive buy-in.
+- **Anti-pattern**: Avoid leading with "About Us" or "Our Product." As Raskin notes, the audience doesn't care about you yet. They care about the shift happening in their world.
+
 Explain WHY this framework fits this specific presentation. If the candidate already has a structure, assess it against the recommended framework — adapt their existing work rather than replacing it wholesale. "Your structure works, and here's how to strengthen it" is better than "throw this out and use mine."
 
 **Step 3: Content Structuring**

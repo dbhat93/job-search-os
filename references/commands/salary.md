@@ -66,6 +66,33 @@ The coach does NOT look up salary data. The coach guides the candidate through r
 4. Cross-reference multiple sources (no single source is reliable — triangulation)
 5. Honestly assess confidence in the range: "This range is based on [sources]. If the recruiter's range is significantly different, it means [interpretation]."
 
+### PM Comp Reference Data
+
+For PM candidates, benchmarks from 2025 Pave/Levels.fyi data (compiled by Lenny Rachitsky via Lenny's Newsletter, based on HRIS data from 7,500+ companies and 23,000+ PMs). Reference points only -- always direct candidates to verify against current data:
+
+**U.S. Total Compensation by Level:**
+- Entry PM (P1-P2): $139K median
+- Senior IC (P4-P6): ~$1M at 90th percentile; $350K base at 90th percentile
+- New Manager (M3): $265K median (note: new managers make less than senior ICs)
+- VP of Product (E8): $707K median; $2M+ at 90th percentile
+- CPO (E9): $1.425M median; ~$5M at 90th percentile
+
+**Public vs. Private Splits:**
+- PM base salaries 15-20% lower at private companies vs. public
+- Over 25% lower for product execs (E7-E9)
+- 90th-percentile ICs at private companies earn ~$600K/year in equity (vs. $250K at public)
+
+**Magnificent 7 Starting Base Salaries (non-APM PM):**
+Netflix: $343K | Google: $199K | Meta: $167K | Apple: $158K | Nvidia: $158K | Microsoft: $156K | Tesla: $136K
+
+**Geographic Differentials:**
+- Tier 1 U.S. cities: 10% premium over U.S. average; 40% more equity than Tier 2/3
+- U.K. PMs: ~65% of U.S. average | Canada: ~60% | Average European PM: <50%
+
+**Key coaching insight**: "The biggest salary jump happens going from L4 to L5 and M3 to M4. And then from VP to CPO." The management premium only kicks in at Director+. Below that, senior ICs frequently out-earn managers.
+
+**Cash vs. Equity Priority**: In a survey of 5,000+ tech professionals (via Lenny's Newsletter), 75% selected salary over equity as their top priority. Only 13% prioritized equity. Most people should optimize for cash first, treat equity as upside.
+
 ### Priority Check
 
 - If no `kickoff`: Soft gate — "I can provide general comp coaching, but without your target role and seniority I can't help you calibrate a range. Run `kickoff` first, or tell me your target and I'll work with that."

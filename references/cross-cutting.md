@@ -73,6 +73,8 @@ Different PM roles require fundamentally different framing, story selection, and
 
 A running inventory of concrete, citable proof points the candidate can deploy across cover letters, outreach, interview answers, and positioning. Unlike the storybank (which stores full STAR narratives), the Proof Bank stores atomic evidence: one metric, one achievement, one artifact per entry. Referenced by `outreach`, `pitch`, `resume`, and any context that needs quick credibility.
 
+**Achievement Doc pattern** (borrowed from sameergdogg/job-search-skills): For richer resume customization, candidates should maintain a detailed achievement document beyond what the Proof Bank captures. The Proof Bank stores atomic evidence (one line per proof point). An achievement doc stores the full narrative context behind each proof point: project details, stakeholders involved, challenges faced, quantified outcomes, and what made the contribution uniquely yours. When `resume` suggests bullet rewrites, it should draw from both the Proof Bank (for metrics) and the Storybank (for full STAR narratives) as source material.
+
 **Schema (new section in coaching_state.md: `## Proof Bank`):**
 
 ```markdown

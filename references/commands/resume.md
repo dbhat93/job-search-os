@@ -69,6 +69,7 @@ Pull from coaching_state.md:
 - **Profile**: Target role(s) and seniority band
 - **Resume Analysis**: Build on kickoff's work — don't re-derive what's already been assessed. Focus on optimization, not re-diagnosis.
 - **Storybank**: For earned secrets and quantified outcomes to feed into bullet rewrites
+- **Proof Bank**: For atomic metrics and achievements to enrich bullet rewrites (patent numbers, customer counts, handle time reductions, revenue figures). The Proof Bank provides the hard numbers; the Storybank provides the narrative context. Use both.
 - **Active Coaching Strategy**: Bottleneck — if Differentiation is the gap, emphasize that in resume too
 - **LinkedIn Analysis**: If exists — for cross-surface consistency at Deep level
 - **Interview Loops**: For JDs — enables targeted optimization

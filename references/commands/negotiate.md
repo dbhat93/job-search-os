@@ -34,17 +34,57 @@ If Comp Strategy exists from a previous `salary` session, pull the researched ra
 - Coach specific language: scripts for the actual conversation, not just strategy.
 - Address common failure modes: accepting too quickly, negotiating only base, being adversarial, failing to negotiate at all out of gratitude/relief.
 
+#### Reading the Initial Offer
+
+Before jumping to strategy, assess where the offer falls in the company's band. Per negotiation coach Niya Dragova (via Lenny's Newsletter):
+- **Low offer**: Team felt candidate has "room for growth." Fix misconceptions about your level first, then negotiate from corrected position.
+- **Mid-band**: Over 80% of candidates at large tech companies receive a formulaic template. This often means no strong internal advocate. Delay negotiation until matched with a team/manager who will champion a stronger package.
+- **Top-of-band**: Push for "out-of-band" offer at the level above while holding the lower title.
+
+At companies with 5,000+ employees, compensation is formulaic. The recruiter delivers a predetermined number and must go back to a compensation committee for every re-evaluation. Provide "new information" (competing offers, retention offers) that gives the recruiter grounds for re-evaluation.
+
+#### Negotiation Strategy Framework (GAINS)
+
+For senior roles or large packages, apply Jacob Warwick's GAINS framework (3,500+ executive coaching engagements, via Lenny's Newsletter):
+
+**G -- Gather Intelligence**: Map organization dynamics, decision-maker psychology, and strategic pain points.
+
+**A -- Align with Advocates**: Build internal champions. Share the "messy middle" of past challenges. "Sell the vacation": paint a vivid 30/90/180-day picture of success. "While most candidates ask, 'What can you offer me?,' top earners demonstrate 'Here's how I'll solve your most pressing challenges.'"
+
+**I -- Influence Key Stakeholders**: Customize stories per stakeholder. Turn blockers into advocates by asking for their input. Deliver value before being hired.
+
+**N -- Navigate Complexity**: Signal excitement while creating space. Questions instead of demands. Strategic patience: "Rushed negotiations almost always leave money on the table."
+
+**S -- Secure Success**: Employment attorney for significant packages. Question vague terms. Get verbal promises in writing.
+
+#### The Psychology of Asking
+
+Kenneth Berger (first PM at Slack, via Lenny's Podcast) identifies two failure modes:
+- **People-pleaser camp**: Hoping people read their mind, prioritizing others' comfort.
+- **Control freak camp**: Demanding rather than asking, entitlement rather than collaboration.
+
+Berger's "Articulate, Ask, Accept" framework:
+1. **Articulate** what you want (specific number, term, title)
+2. **Ask** for it intentionally and out loud
+3. **Accept** the response and learn from it
+4. **Try again**. Negotiation is a discovery process, not a one-shot event.
+
+Apply the "Hell Yes or No" standard: settling for lukewarm acceptance leads to regret.
+
 ### Negotiation Anxiety Coaching
 
-Many candidates accept weak offers not because they lack strategy, but because the conversation feels confrontational. Address the emotional side directly:
-- **Normalize it**: "Almost everyone feels uncomfortable negotiating. That discomfort is not a reason to skip it — it's a sign you care about the outcome."
-- **Reframe the dynamic**: "You're not asking for a favor. The company chose you and wants you to accept. You have leverage right now — more than you'll have once you've signed."
-- **Practice the opening**: Role-play the first 30 seconds of the negotiation call. That's where most candidates freeze. Script it and rehearse it.
-- **Name the fear**: Ask "What's the worst thing you think could happen if you negotiate?" Then reality-check it — offers are almost never rescinded for reasonable negotiation.
+Many candidates accept weak offers not because they lack strategy, but because the conversation feels confrontational. As Dragova puts it: "Compensation is set up to be intentionally misleading." Address the emotional side directly:
+- **Normalize it**: "Almost everyone feels uncomfortable negotiating. That discomfort is not a reason to skip it." The company expects negotiation, especially at larger companies.
+- **Reframe the dynamic**: "You're not asking for a favor. The company chose you and wants you to accept. You have leverage right now -- more than you'll have once you've signed."
+- **Practice the opening**: Role-play the first 30 seconds. That's where most candidates freeze.
+- **Name the fear**: "What's the worst thing you think could happen?" Reality-check it.
+- **Phone, not email**: Dragova: "Negotiating via email = MAJOR CRINGE and definitely a worse outcome." Phone allows rapport and collaborative problem-solving.
+- **Strategic patience**: Warwick: "Haste equals risk." Urgency to close is the company's advantage, not the candidate's.
+- **Win hearts and minds first**: Before counteroffering, upsell your worth. Ask for follow-up meetings with decision makers. Come prepared with ideas from interviews.
 
 ### Equity Evaluation Guide
 
-Most candidates can't evaluate equity offers. Don't just list "Equity: [amount]" — walk through the key questions:
+Most candidates can't evaluate equity offers. Don't just list "Equity: [amount]" -- walk through the key questions:
 - **What type of equity?** Stock options (ISOs/NSOs), RSUs, or actual shares? Each has very different tax and value implications.
 - **Vesting schedule**: Standard is 4-year with 1-year cliff. Anything else is worth noting.
 - **Valuation basis**: For private companies — what's the current valuation? What was the last funding round? What's the strike price?
@@ -52,6 +92,7 @@ Most candidates can't evaluate equity offers. Don't just list "Equity: [amount]"
 - **Liquidity timeline**: When can you actually sell? IPO timeline? Secondary market availability?
 - **Tax implications**: ISOs vs. NSOs have very different tax treatment. AMT risk for ISOs exercised early.
 - If this gets complex, flag: "Equity evaluation can get technical. I can walk through the basics, but for significant equity packages, consider consulting a financial advisor or tax professional."
+- **Startup equity operates on different rules**: As Dragova emphasizes (via Lenny's Newsletter), startup negotiation is fundamentally different from big tech. The formulaic bands don't apply. Everything is potentially negotiable: equity percentage, vesting schedule, acceleration clauses, exercise windows. The candidate should think like an investor: ask about current valuation, runway, and exit scenarios. Key questions: "What is the valuation based on?" and "What are the exit scenarios?" Always get terms in writing.
 
 ### Offer Comparison Normalization
 
