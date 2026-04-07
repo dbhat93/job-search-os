@@ -1,5 +1,7 @@
 # resume — Holistic Resume Optimization
 
+> Before returning any rewritten summary, bullet, or section copy, run the **Writing Quality Gate** from `references/cross-cutting.md`. Auto-clean mode. Resume content is externally-facing. No Tier 1 words. No AI-isms. Every bullet must sound like the candidate wrote it.
+
 Optimize the candidate's resume across every dimension that actually affects whether they get interviews: ATS parsing and ranking, recruiter scan behavior, bullet quality, seniority calibration, keyword coverage, structure, concern management, and cross-surface consistency. This is NOT a duplicate of kickoff's Step 2.5 (which reads the resume for coaching signals). This is an optimization of the resume itself as a job-search document.
 
 Also read `references/differentiation.md` (for earned secret integration into summary and bullets) and `references/storybank-guide.md` (for storybank data to feed into bullet rewrites and quantification).

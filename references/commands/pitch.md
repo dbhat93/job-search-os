@@ -1,5 +1,7 @@
 # pitch — Core Positioning Statement
 
+> Before returning any positioning statement or context variant, run the **Writing Quality Gate** from `references/cross-cutting.md`. Auto-clean mode. The positioning statement will be used across interviews, emails, LinkedIn, and networking. It must sound like the candidate, not a template.
+
 Build the candidate's atomic unit of self-presentation: a positioning statement that distills who they are into a compelling, memorable core. The positioning statement is saved to coaching state and consumed by resume, linkedin, and outreach for cross-surface consistency.
 
 Also read `references/differentiation.md` (for earned secret integration into positioning) and `references/storybank-guide.md` (for narrative identity themes and story data to anchor the statement).

@@ -570,6 +570,18 @@ The coach will find the transcript automatically next time you run `round` or `a
 
 ---
 
+## Personalization: Make It Sound Like You
+
+The coach generates cover letters, outreach messages, LinkedIn posts, and thank-you notes. By default, it strips AI-isms and writes in clean, professional language. But if you want the output to sound like *you*, create a voice profile:
+
+1. During `kickoff`, the coach will ask if you have writing samples. Paste 2-3 pieces (blog posts, LinkedIn articles, anything you've written) and the coach will extract your voice automatically.
+
+2. Or create `voice-and-style.md` manually using the template at `voice-and-style-template.md` in the repo root.
+
+Once your voice profile exists, every externally-facing draft will match your sentence rhythm, humor style, thesis placement, and formatting preferences. The Writing Quality Gate enforces this automatically.
+
+---
+
 ## Data and Privacy
 
 `coaching_state.md` is created on first `kickoff` and updated automatically throughout your search. It contains sensitive personal and professional data -- treat it accordingly.

@@ -320,7 +320,38 @@ A running inventory of atomic, citable proof points (one metric, one achievement
 
 ---
 
-## v4: Interaction Model (planned)
+## v4: Writing Quality + Voice Enforcement (shipped 2026-04-07)
+
+**Thesis**: v3.5 made the coaching brain archetype-aware. v4 makes every piece of externally-facing content the system produces sound like the candidate, not like AI. Borrowed from conorbronsdon/avoid-ai-writing (AI-ism detection, tiered vocabulary, tolerance matrix, second-pass audit).
+
+### Feature 1: Writing Quality Gate
+Replaces the v3.2 External Communication Style Module with a comprehensive writing quality gate that runs on every externally-facing output. Two modes: auto-clean (default, silently strips AI-isms) and flag mode (for content >300 words). Three-tier vocabulary system (Tier 1 always-kill, Tier 2 flag-in-clusters, Tier 3 density-check) with P0/P1/P2 severity classification. Context tolerance matrix (6 contexts with different strictness levels). Second-pass audit catches patterns that survive the first edit.
+
+**Key files**: `references/cross-cutting.md` (Writing Quality Gate module), all 5 external content commands updated with gate reference
+
+### Feature 2: Voice Enforcement
+If the candidate has a `voice-and-style.md` file, the Writing Quality Gate reads it and enforces their personal style as a scoring rubric. Checks sentence rhythm, thesis placement, humor register, formatting preferences, and ending style. When no voice file exists, generic defaults apply (no AI-isms, natural rhythm, active voice).
+
+**Key files**: `references/cross-cutting.md` (Voice Enforcement section within Writing Quality Gate), `voice-and-style-template.md` (new, in repo root)
+
+### Feature 3: Cross-Document Consistency
+When 3+ external documents exist, audits for: fact consistency across documents, recycled verbatim phrases, narrative alignment, and comp anchor consistency. Surfaces issues as specific, actionable flags.
+
+**Key files**: `references/cross-cutting.md` (Cross-Document Consistency section within Writing Quality Gate)
+
+### Feature 4: Voice Profile Extraction in Kickoff
+New Step 2.5 in kickoff: "Do you have writing samples?" If yes, extracts voice profile and generates `voice-and-style.md` automatically. If no, proceeds with generic defaults.
+
+**Key files**: `references/commands/kickoff.md` (Step 2.5), `voice-and-style-template.md`
+
+### Feature 5: Personalization for All Users
+Template file (`voice-and-style-template.md`) in repo root with fill-in-the-blank structure for any user to create their own voice profile. README section explains the personalization workflow.
+
+**Key files**: `voice-and-style-template.md` (new), `README.md` (Personalization section)
+
+---
+
+## v5: Interaction Model (planned)
 
 **Thesis**: Now that the coaching brain is strong and comprehensive, change *how* candidates interact with it.
 
@@ -341,7 +372,7 @@ A friend or mentor can review your storybank and leave comments. Still file-base
 
 ---
 
-## v5: Platform (planned)
+## v6: Platform (planned)
 
 **Thesis**: The coaching engine is proven. Now make it accessible to people who'll never touch a CLI.
 
@@ -361,6 +392,6 @@ With enough users, the system can surface patterns across candidates: "Candidate
 
 ## Version Tension
 
-v3 was the natural next step after v2 -- it extended the coaching engine to every surface that matters in a job search without requiring any architectural changes. The system is now comprehensive: 23 commands covering resume through retrospective, with cross-command integration wiring that makes the whole greater than the parts.
+v3 extended the coaching engine to every surface that matters in a job search. v3.1-v3.5 added navigation, security, relationship intelligence, archetype detection, and expert frameworks. v4 closed the last gap: making the system sound like the candidate, not like AI. The system is now both comprehensive and personal.
 
-v4 is exciting but expensive (voice, UI, integrations). v5 is a different company. The risk now is premature platforming before v3 has proven that full-lifecycle coaching moves candidate outcomes better than interview-only coaching.
+v5 (voice, UI, integrations) is exciting but expensive. v6 is a different company. The question now is whether this system, deployed by real job seekers, produces measurably better outcomes than generic AI interview prep.

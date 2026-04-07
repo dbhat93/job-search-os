@@ -1,6 +1,6 @@
 # thankyou — Follow-Up Workflow
 
-> Before returning any draft, run the **External Communication Style Module** from `references/cross-cutting.md`. No em dashes. No filler openers. Under 150 words. One specific callback.
+> Before returning any draft, run the **Writing Quality Gate** from `references/cross-cutting.md`. Auto-clean mode: strip AI-isms, enforce voice file (if exists), verify context-appropriate tone. No em dashes. No Tier 1 words. Under 120 words. One specific callback.
 
 ### Coaching State Integration
 

@@ -26,7 +26,22 @@ Strongly recommended:
 - 2-3 target companies
 - 3-5 initial stories
 
-### Step 2.5: Resume Analysis
+### Step 2.5: Voice Profile (Optional)
+
+Ask: "Do you have writing samples that represent your voice? Blog posts, LinkedIn articles, or any public writing you've done? If so, paste 2-3 pieces and I'll extract your voice profile."
+
+If the candidate provides samples:
+1. Read all samples and extract: sentence rhythm, thesis placement, humor style, ending patterns, what they avoid, tone by context.
+2. Generate a `voice-and-style.md` file in the project root using the template from `voice-and-style-template.md`.
+3. Confirm: "I've created your voice profile. All externally-facing content (cover letters, outreach, LinkedIn, thank-you notes) will now match your writing style."
+
+If the candidate declines or has no samples:
+- Skip silently. The Writing Quality Gate will use generic defaults (no AI-isms, natural rhythm, active voice).
+- Note in Coaching Notes: "No voice profile created. Using generic Writing Quality Gate defaults."
+
+This step takes 2-3 minutes but compounds across every piece of external content the system produces.
+
+### Step 2.6: Resume Analysis
 
 Don't just file the resume — analyze it for coaching-relevant signals:
 
