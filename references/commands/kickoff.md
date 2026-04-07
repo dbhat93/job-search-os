@@ -41,7 +41,7 @@ If the candidate declines or has no samples:
 
 This step takes 2-3 minutes but compounds across every piece of external content the system produces.
 
-### Step 2.6: Resume Analysis
+### Step 2.6: Resume Analysis (formerly Step 2.5)
 
 Don't just file the resume — analyze it for coaching-relevant signals:
 
@@ -58,7 +58,7 @@ Don't just file the resume — analyze it for coaching-relevant signals:
 
 Feed these findings into the Kickoff Summary output (Profile Snapshot section) and into the initial coaching plan.
 
-### Step 2.55: Career Transition Detection
+### Step 2.7: Career Transition Detection
 
 After resume analysis, check whether the candidate's target role represents a career transition — a meaningful change in function, domain, seniority direction, or role type from their recent trajectory.
 
@@ -84,7 +84,7 @@ Save to coaching_state.md Profile:
 
 If no transition is detected, don't mention it — most candidates have realistic, linear targets.
 
-### Step 2.6: Target Reality Check
+### Step 2.8: Target Reality Check
 
 After resume analysis, cross-reference the candidate's profile against their stated target role(s). This is NOT a full fit assessment — it's a quick sanity check that fires only when clear mismatches are visible from the resume alone.
 

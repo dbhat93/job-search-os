@@ -1,6 +1,6 @@
 # negotiate — Post-Offer Negotiation Coaching
 
-> When producing written correspondence (counter-offer email, offer acceptance, decline), run the **External Communication Style Module** from `references/cross-cutting.md`. No em dashes. Verbal scripts are exempt.
+> When producing written correspondence (counter-offer email, offer acceptance, decline), run the **Writing Quality Gate** from `references/cross-cutting.md`. Auto-clean mode. No em dashes. No Tier 1 words. Verbal scripts are exempt.
 
 ### Sequence
 

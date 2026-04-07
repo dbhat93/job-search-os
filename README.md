@@ -466,6 +466,7 @@ interview-coach-skill/
 ├── VERSIONS.md                         # Version history and roadmap
 ├── README.md                           # This file
 ├── LICENSE                             # MIT License
+├── voice-and-style-template.md         # Template for creating your voice profile (optional personalization)
 ├── coaching_state.md                   # Created on first kickoff (persistent memory, auto-saved)
 ├── tests/
 │   ├── v3.2-evals.md                   # Eval test suite (29 test cases)
