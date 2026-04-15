@@ -143,12 +143,19 @@ When no transcript is available, run the lighter analysis path:
 
 ### Phase 6: Triage + Bottleneck Identification (Both Modes)
 
+**Step 6.0 — RFV Verdict Check.** Before running the Post-Scoring Decision Tree, read the RFV verdict from the analyze workflow (Step 3.7). This verdict gates the triage protocol:
+
+- **Match:** Proceed with standard triage below.
+- **Partial:** Proceed with triage. Every bottleneck identified must be tagged per the "No Gap Without An Opening" rule from `cross-cutting.md` — each gap requires citation to the specific opening the interviewer created.
+- **Mismatch:** Standard triage is **suspended**. Output a format-mismatch banner at the top of the round debrief (already surfaced in analyze output at Step 3.7, restated in round output for continuity). Primary Bottleneck does not update in Phase 7 Write 6. The bottleneck section of the output reports what the **actual** round tested (not what the prep expected), and flags any findings as situational-only. Do not attempt to force-fit the round into the prepped rubric.
+- **Unknown:** Proceed with triage at "Scope Alignment: Unknown" confidence. All findings are tagged "Provisional" in Active Coaching Strategy.
+
 Run the Post-Scoring Decision Tree from `references/commands/analyze.md` Step 12.
 
-- **Mode A**: triage is score-based. Run Cross-Dimension Root Cause Check (Step 12a) — requires scored data.
-- **Mode B**: triage is directional, confidence-flagged. Skip Cross-Dimension Root Cause Check.
+- **Mode A**: triage is score-based. Run Cross-Dimension Root Cause Check (Step 12a) — requires scored data. Apply the "No Gap Without An Opening" rule at the priority stack: untagged items are not permitted, `[SCOPE BOUNDARY]` and `[PREP MISMATCH]` items are excluded from the priority stack.
+- **Mode B**: triage is directional, confidence-flagged. Skip Cross-Dimension Root Cause Check. Still apply the RFV verdict and "No Gap Without An Opening" rule — scope boundaries detected from candidate memory count too.
 
-This step produces a bottleneck diagnosis and coaching path. That diagnosis drives the Active Coaching Strategy write in Phase 7.
+This step produces a bottleneck diagnosis and coaching path. That diagnosis drives the Active Coaching Strategy write in Phase 7 — but only through the scope-alignment gate defined in `analyze.md` Step 15.
 
 ---
 
@@ -185,9 +192,17 @@ Add each recalled question as a new row:
 **Write 5 — Interview Intelligence: Company Patterns**
 Update the company's pattern entry with observations from this round: question types, what seemed to matter, stories that landed or didn't.
 
-**Write 6 — Active Coaching Strategy**
-- Mode A: update based on triage decision (same protocol as `analyze` Step 15). If existing strategy is contradicted by new data, move old approach to Previous Approaches with brief reason before writing the new one.
-- Mode B: if directional analysis reveals a clear bottleneck signal, update with `Confidence: Low (memory-based)` flag.
+**Write 6 — Active Coaching Strategy** (applies scope-alignment gate from `analyze.md` Step 15)
+
+All writes to Primary Bottleneck flow through the RFV verdict gate. Situational, Provisional, and deferred findings are recorded as directional observations in Coaching Notes instead of overwriting Primary Bottleneck.
+
+- **Mode A, RFV = Match, 2+ corroborating rounds with same bottleneck:** Update Primary Bottleneck per standard protocol. If contradicted by new data, move old approach to Previous approaches with brief reason before writing the new one.
+- **Mode A, RFV = Match, single-round evidence:** Record new finding as **"Situational" bottleneck** in Coaching Notes. Do NOT overwrite Primary Bottleneck. Note the pattern so the next round can confirm or reject it.
+- **Mode A, RFV = Partial:** Record as **"Provisional" bottleneck**. Primary Bottleneck unchanged until 2+ Partial-or-Match rounds corroborate. Tag Previous approaches entry with "Partial RFV verdict" so future reconciliation knows this evidence was scope-compromised.
+- **Mode A, RFV = Mismatch or Unknown:** Do NOT update Primary Bottleneck. Write: "Primary bottleneck update deferred — RFV verdict [Mismatch/Unknown] on this round. [Previous diagnosis] remains standing." Record any directional observations from the round in Coaching Notes only, flagged with the RFV verdict so future `sync` can reconcile.
+- **Mode B (memory-only):** Apply existing `Confidence: Low (memory-based)` flag AND additionally apply the scope-alignment rules above. Use candidate memory as the primary signal for RFV verdict in Mode B — the candidate was in the room and can testify to what the interviewer refused to engage with.
+
+**Why this gate exists:** A single round with scope mismatch cannot reliably diagnose a coaching bottleneck. Over-diagnosing from a mismatched round manufactures false post-mortems — the exact failure mode that the RFV module exists to prevent. The gate forces coaching strategy to accumulate scope-verified evidence before promoting a finding to durable Primary Bottleneck status.
 
 **Write 7 — Effective/Ineffective Patterns**
 If the positioning performance check (Phase 4 Step 6) or story observations revealed something with 3+ data points supporting a pattern, add to Effective or Ineffective Patterns. Do not add single-data-point observations.
@@ -228,6 +243,19 @@ Mode B: do NOT add to Score History. Capture in Coaching Notes as directional as
 
 ---
 
+## Format Verification (from RFV Step 3.7)
+- RFV Verdict: [Match / Partial / Mismatch / Unknown]
+- Expected format (from prep / Round formats): [brief description]
+- Actual format (from transcript or candidate memory): [brief description]
+- Scope alignment: [Matched / Partial / Mismatched / Unknown]
+- Prepped axes actually tested: [list]
+- Prepped axes NOT tested: [list — these become [PREP MISMATCH] candidates]
+- Actual axes tested that were not in prep: [list]
+- Explicit refusals / declined topics: [quoted from transcript if present]
+- Verdict source: [LLM inference / AskUserQuestion confirmation / Candidate memory / Combined]
+
+---
+
 ## Scorecard [Mode A only — omit for Mode B]
 - Substance:
 - Structure:
@@ -262,9 +290,15 @@ Confidence: Low (memory-based)
 ---
 
 ## Top Gaps To Close
-1. Gap: / Why it matters: / Root cause: / Drill:
-2. Gap: / Why it matters: / Root cause: / Drill:
-3. Gap: / Why it matters: / Root cause: / Drill:
+Every item MUST be tagged per the "No Gap Without An Opening" rule (`cross-cutting.md`). Only `[CANDIDATE GAP]` items generate drills or feed Active Coaching Strategy.
+
+1. **[CANDIDATE GAP | SCOPE BOUNDARY | PREP MISMATCH]** Gap: / Why it matters: / Opening the interviewer created (required for CANDIDATE GAP — quote or citation): / Root cause: / Drill (only for CANDIDATE GAP): / Loop intel update (only for PREP MISMATCH):
+2. **[TAG]** (same schema)
+3. **[TAG]** (same schema)
+
+- Items tagged `[SCOPE BOUNDARY]` omit the Drill field — the interviewer did not create an opening, so no drill applies.
+- Items tagged `[PREP MISMATCH]` omit the Drill field and include a "Loop intel update" field describing how future prep for this company/interviewer should adjust.
+- Untagged items are not permitted in the output.
 
 ---
 

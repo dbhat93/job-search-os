@@ -40,7 +40,13 @@ Captures what happened in a real interview while it's still fresh. This is the b
 
    See also the Signal-Reading Module in `references/cross-cutting.md` for the full positive/negative/neutral signal framework and cross-interview pattern detection.
 
-6. **Surprise capture.** "Was there anything you didn't expect? A question you weren't prepared for, a format difference, something about the interviewer or environment?" Unexpected moments are often the most informative for coaching.
+6. **Surprise capture + Format alignment check.** Ask three questions, one at a time per coaching Rule 1. The second and third questions feed the Round Format Verification Module (`references/cross-cutting.md`) as candidate-memory signals during `analyze` / `round` Step 3.7.
+
+   1. "Was there anything you didn't expect? A question you weren't prepared for, a format difference, something about the interviewer or environment?" Unexpected moments are often the most informative for coaching.
+   2. "We prepped for [expected format from the matching Interview Loop → Round formats entry, quoted if available]. Did the interview actually run that way, or did it go in a different direction?"
+   3. "What did the interviewer NOT ask about that we were prepared for? Did they decline engagement with any topic you tried to bring up?"
+
+   Capture answers as RFV input signals. If the candidate's memory suggests the round diverged materially from prep (e.g., interviewer declined prepped topics, ran a different format, focused on dimensions the prep did not anticipate), flag for `analyze` Step 3.7 as a pre-seeded Mismatch or Partial candidate. The candidate was in the room and can testify to what the interviewer refused to engage with — weight their memory heavily on scope boundary questions, even if the transcript alone would suggest a different verdict.
 7. **Story usage log.** "Which stories did you use? Did any of them land differently than in practice?" Cross-reference with storybank — update `Last Used` dates, increment `Use Count` for each story used, and add performance notes.
 8. **Immediate tactical notes.** "Is there anything you want to do differently for the next round, based on this one?" Capture their own coaching instinct.
 9. **Positioning performance check.** "How did your introduction / 'tell me about yourself' land? Did the interviewer seem engaged, or did they jump to questions quickly?" Capture this signal — it feeds back to `pitch` for positioning iteration. Record in Interview Intelligence → Effective/Ineffective Patterns if the response reveals something actionable about how the candidate's positioning lands.

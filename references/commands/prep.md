@@ -194,6 +194,8 @@ After running Format Discovery, save the format details to `coaching_state.md` s
   ```
   Include format type, duration, format variant (if applicable), and interviewer type for each round. This level of detail allows `mock`, `practice technical`, and `hype` to tailor their output without re-running discovery.
 
+  **Also capture testable scope assumptions explicitly in the freeform text.** These are the inputs to Round Format Verification (`cross-cutting.md` → RFV Module) during post-round analysis. For each upcoming round, include: (a) what dimensions the round is expected to evaluate, (b) what the interviewer's mandate appears to be (per HM, recruiter, or prior-round guidance), (c) what would count as a scope mismatch — what the round should NOT look like if the prep was correct. Example: *"Round 3: Principal PM, 45-60min, live problem-solving + situational prioritization per Indu. HM mandate per Tulasi: arrive with SPECIFIC OPINION on trust/authentication paradox. Would count as scope mismatch if: interviewer runs pure culture chat, declines product opinion, focuses only on AI-workflow fluency without product testing."* Phase 2 (future) will migrate this to a structured capture schema; for now the freeform text is the input to RFV's LLM interpretation.
+
 This prevents re-running discovery when the candidate later runs `mock`, `practice technical`, or `hype` for the same company.
 
 #### Format Variability Acknowledgment
