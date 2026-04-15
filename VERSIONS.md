@@ -351,6 +351,19 @@ Template file (`voice-and-style-template.md`) in repo root with fill-in-the-blan
 
 ---
 
+## v4.1
+
+- `references/commands/apply.md` -- new command: draft written answers to job application screening questions. 7-step workflow with story selection, domain match flag, gap check, Writing Quality Gate integration, Proof Bank enrichment, character limit enforcement (LinkedIn 300 / Greenhouse 500), prior-answer reuse library (`job-search/`). Adopted from upstream PR #39 by saurabhsudhir15, enhanced with cross-cutting module hooks.
+- `references/coaching-state-schema.md` -- extracted full coaching_state.md template from COACH.md (adopted from upstream PR #48 by itsdevlin)
+- `references/schema-migration.md` -- extracted migration rules from COACH.md
+- `references/archival-rules.md` -- extracted archival thresholds from COACH.md
+- `references/state-update-triggers.md` -- extracted and consolidated all per-command state update triggers from COACH.md, including new `apply` entry
+- `COACH.md` -- replaced 4 inline sections with reference file pointers (schema, migration, archival, triggers). Added `apply` to Command Registry, File Routing, and Mode Detection.
+- `.gitignore` -- added `job-search/` (application answer drafts, personal data)
+- `README.md` -- added `apply` to commands table, updated repo structure tree, updated command count
+
+---
+
 ## v5: Interaction Model (planned)
 
 **Thesis**: Now that the coaching brain is strong and comprehensive, change *how* candidates interact with it.

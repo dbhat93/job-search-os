@@ -8,7 +8,7 @@ npx skills add dbhat93/job-search-os
 
 ---
 
-A Claude Code-based interview coach that covers the full job search lifecycle -- from JD analysis and resume optimization through mock interviews to post-offer negotiation. 27 commands across application materials, interview prep, practice, analysis, and comp coaching. It scores your answers across five dimensions, diagnoses root causes behind weak spots, builds a storybank you can retrieve under pressure, and adapts its coaching to your specific patterns. Not a generic question bank. An adaptive system that gets sharper the more you use it.
+A Claude Code-based interview coach that covers the full job search lifecycle -- from JD analysis and resume optimization through mock interviews to post-offer negotiation. 28 commands across application materials, interview prep, practice, analysis, and comp coaching. It scores your answers across five dimensions, diagnoses root causes behind weak spots, builds a storybank you can retrieve under pressure, and adapts its coaching to your specific patterns. Not a generic question bank. An adaptive system that gets sharper the more you use it.
 
 Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 
@@ -202,6 +202,7 @@ Re-export every 2-4 weeks to keep the data fresh. The coach will flag stale expo
 | `resume` | Resume optimization (3 depth levels, JD-targeted when available) | ATS audit, section-by-section assessment, bullet rewrites, seniority calibration, keyword analysis, storybank-to-bullet pipeline |
 | `pitch` | Core positioning statement + context variants | Core statement, constraint ladder, context-specific pitches, positioning consistency check |
 | `outreach` | Networking outreach coaching (3 depth levels, 9 message types) | Message frameworks, draft critique + rewrite, follow-up sequences, multi-channel campaign strategy |
+| `apply [company]` | Draft written answers to application screening questions with story selection, gap check, and quality gate |
 
 ### Pre-Conversation
 
@@ -500,7 +501,12 @@ interview-coach-skill/
 │   │   ├── strategy.md
 │   │   ├── sync.md
 │   │   ├── help.md
-│   │   └── map.md
+│   │   ├── map.md
+│   │   └── apply.md
+│   ├── coaching-state-schema.md
+│   ├── schema-migration.md
+│   ├── archival-rules.md
+│   ├── state-update-triggers.md
 │   ├── cross-cutting.md                # Shared modules: archetype-detection, proof-bank, gap-handling, storybank-gap-check, contact-network, narrative-consistency, story-deployment-analytics, signal-reading, differentiation, cultural awareness, psychological readiness, external text validation
 │   ├── rubrics-detailed.md             # Scoring anchors, root causes, seniority calibration
 │   ├── role-drills.md                  # Role-specific drills + interviewer archetypes
