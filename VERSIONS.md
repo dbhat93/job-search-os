@@ -404,14 +404,14 @@ Template file (`voice-and-style-template.md`) in repo root with fill-in-the-blan
 - `feedback` Type D story-use memory: double-increment prevention on Use Count, explicit rules for retroactive story-deployment corrections.
 - COACH.md Mode Detection: duplicate recommendations for round vs. analyze consolidated, priority list renumbered.
 
-**Not yet fixed (deferred to future versions)**:
-- Em dashes in markdown fenced code blocks across schema/example files (blocked by user's personal em-dash hook when rendered). Requires mechanical sweep, deferred.
-- Session count field in schema vs. COACH.md Rule 9 Session Log row count, pick one source of truth (deferred).
-- Score History per-Interview_Type archival (currently total-row archival may thin out one type silently).
-- Storybank Reflection field has no concrete write trigger.
-- Loop Outcome Drift silent auto-fix direction check.
-- Positioning Drift Check (Check 4) never activates, needs integration into `apply`, `outreach`, `prep`, `hype` Phase 0.
-- Transcript retention 30-day promise not enforced via automated session-start check.
+**Deferred items (all shipped in follow-up commit)**:
+- Voice-File Character Policy added to Writing Quality Gate. Handles the em-dash hook by specifying detection + substitution rules for file writes when `voice-and-style.md` prohibits specific characters.
+- Session count field removed from Drill Progression schema. Session Log row count is now the authoritative source for meta-check timing per COACH.md Rule 9.
+- Score History archival rewritten to be per-Interview_Type (10 rows per type, not 10 total). Prevents silent thinning of one interview type when a candidate has unbalanced practice distribution.
+- Storybank Reflection write trigger added to `round.md` Phase 4 Step 5a. Captured only when candidate volunteers hindsight, non-blocking.
+- Loop Outcome Drift reconciliation now direction-aware: if Interview Loop has newer updates than the terminal Outcome Log entry, surface the contradiction instead of silent auto-flip. Prevents hiding candidate recovery from a wrongly logged rejection.
+- Positioning Drift Check (Check 4) activation wired into `apply`, `outreach`, `prep`, `hype` Phase 0. Flag now surfaces at action moment instead of sitting dead in Coaching Notes.
+- Transcript Retention Check added to COACH.md Sync Drift Check as Check 5. Automatically prompts transcript cleanup for closed loops >30 days old. Enforces the Data Privacy retention promise.
 
 ---
 

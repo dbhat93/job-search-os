@@ -108,13 +108,22 @@ At session start, after reading `coaching_state.md`, check if the Profile's Inte
 
 At session start, after the Schema Migration and Timeline Staleness checks, run two lightweight consistency checks. Run them silently — only surface findings that require candidate input.
 
-**Check 1 — Loop-Outcome Drift**: For each entry in the Outcome Log with a terminal result (rejected / offer / withdrawn), verify the corresponding Interview Loop's Status field reflects it. If a loop still shows "Interviewing" or "Active" when the outcome is terminal: update the Loop Status silently to match. Note the correction in Coaching Notes.
+**Check 1: Loop-Outcome Drift**: For each entry in the Outcome Log with a terminal result (rejected / offer / withdrawn), verify the corresponding Interview Loop's Status field reflects it.
+
+**Direction-aware reconciliation (do NOT auto-flip blindly)**:
+- If the Outcome Log's terminal entry date is NEWER than the Interview Loop's last round or update: silent fix is safe. Update the Loop Status to match the Outcome Log. Note in Coaching Notes.
+- If the Interview Loop has rounds or updates logged NEWER than the Outcome Log's terminal entry: surface the contradiction, do NOT auto-flip. "Outcome Log shows [Company] was rejected on [date], but your Interview Loop has a [round] logged on [later date]. Which is correct?" A likely scenario: the candidate wrongly logged a rejection during an emotional moment, then got called back. Silent auto-flip would hide the recovery.
+- If timestamps are equal or the Interview Loop has no updates since the Outcome Log entry: silent fix is safe.
 
 **Check 2 — Passed Next-Round Dates**: For each Interview Loop with a "Next round" date that passed more than 7 days ago, check whether a corresponding new Outcome Log entry or a new completed round exists. If not: surface this before the standard greeting — "I noticed your [Company] [Round] was scheduled for [date] — [N] days ago. Did that happen? Run `debrief` to capture it while impressions are still useful, or `feedback` to log the outcome." Do not guess the result. Wait for the candidate to respond before making any other recommendation.
 
 **Check 3 — Rejection → Feedback Loop**: For any Outcome Log entry with "rejected" that has no corresponding `feedback` session logged (check Session Log for a feedback session mentioning that company after the rejection date): surface it — "You were rejected from [Company] on [date] but we haven't extracted learning from it yet. Want to run `feedback` to capture what happened?" This ensures rejections produce coaching data, not just emotional processing.
 
-**Check 4 — Positioning Drift**: If `Positioning Statement`, `Resume Optimization`, and `LinkedIn Analysis` all exist, check the most recent update date for each. If any two are more than 5 sessions apart: note in Coaching Notes — "Positioning surfaces may have drifted (pitch: session N, resume: session M, linkedin: session P). Consider running a consistency review." Do not surface to the candidate unless they're about to apply or interview.
+**Check 4: Positioning Drift**: If `Positioning Statement`, `Resume Optimization`, and `LinkedIn Analysis` all exist, check the most recent update date for each. If any two are more than 5 sessions apart: note in Coaching Notes "Positioning surfaces may have drifted (pitch: session N, resume: session M, linkedin: session P). Consider running a consistency review."
+
+**Activation (when the candidate is about to apply or interview)**: The flag sits silently in Coaching Notes until action is imminent. `apply`, `outreach`, `prep`, and `hype` each run a Phase 0 check: if the Positioning Drift flag exists AND any of the three surfaces has not been updated in >10 sessions, surface it before producing output: "Your [resume / linkedin / pitch] was last updated [N] sessions ago, while your [other surface] is newer. Want to reconcile before I draft this?" Wait for candidate response. If they decline, proceed but note the skipped reconciliation in the session log.
+
+**Check 5: Transcript Retention**: For any Interview Loop with `Status: Closed / Rejected / Withdrawn` where the loop's last update date is >30 days ago, check whether Coaching Notes or the Interview Loop entry contains a full interview transcript body (detected by presence of timestamps, extended dialogue, or content blocks longer than 500 words attributed to "transcript" or "interview"). If present, surface to the candidate: "The [Company] loop closed [N] days ago. Want to archive or delete the full transcript now? Extracted intelligence data (questions, scores, patterns) is already preserved. Keeping the full transcript past retention is not needed for coaching." This enforces the 30-day retention promise in the Data Privacy section below.
 
 For a full consistency audit across all loop fields, story integrity, coaching strategy staleness, and search strategy drift, use the `sync` command.
 

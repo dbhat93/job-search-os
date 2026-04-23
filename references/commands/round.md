@@ -105,7 +105,9 @@ Check for cross-interview signal patterns against Interview Intelligence → Com
 
 **Step 4 — Surprise capture.** "Was there anything unexpected — format, question, environment, interviewer behavior?"
 
-**Step 5 — Story usage log.** "Which stories did you use? Did any land differently than in practice?" This feeds directly into Storybank writes in Phase 7. *In Late Debrief (>48h): ask broadly "which stories came up?" rather than per-story performance.*
+**Step 5: Story usage log.** "Which stories did you use? Did any land differently than in practice?" This feeds directly into Storybank writes in Phase 7. *In Late Debrief (>48h): ask broadly "which stories came up?" rather than per-story performance.*
+
+**Step 5a: Reflection capture (optional, high-value when present).** For each story used, listen for hindsight language: "I'd do X differently now," "I wish I'd led with Y," "the thing I missed last time and corrected this time was Z." If the candidate offers this kind of reflection spontaneously, capture it verbatim or lightly paraphrased into Storybank > Story Details > Reflection for that S###. Do NOT force this (if they don't volunteer, skip the step). The Reflection field signals seniority and self-awareness on future deployments; a story with real reflection scores higher on Credibility and Growth and Learning axes. If hindsight surfaces during the transcript analysis (Phase 5A), capture it there instead of forcing a separate ask.
 
 **Step 6 — Positioning performance check.** "How did your 'tell me about yourself' land? Did the interviewer seem engaged or did they jump to questions quickly?" Feeds Interview Intelligence → Effective/Ineffective Patterns. *Skip in Late Debrief.*
 

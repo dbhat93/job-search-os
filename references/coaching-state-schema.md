@@ -89,9 +89,10 @@ Last updated: [date]
 
 ## Drill Progression
 - Current stage: [1-8]
-- Session count: [integer — increment each session; meta-check triggers when divisible by 3]
 - Gates passed: [list]
 - Revisit queue: [weaknesses to resurface]
+
+(Note: "Session count" was previously a field here, but the authoritative source is the row count of the Session Log below. Rule 9 in COACH.md uses Session Log row count directly for meta-check timing. Do not re-introduce a separate counter.)
 
 Stage gate criteria (advance when gate is passed):
 - Stage 1→2: One `practice` session completed (any score)

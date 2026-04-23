@@ -972,3 +972,26 @@ If issues found in second pass, fix silently in auto-clean mode. In flag mode, n
 **Integration**: Every command that produces external text must include this line in its output logic: "Before returning any externally-facing draft, run the Writing Quality Gate from `references/cross-cutting.md`."
 
 **Commands that load this module**: `outreach`, `thankyou`, `pitch`, `resume`, `linkedin`, `negotiate` (written drafts), and any ad-hoc cover letter or blog draft request.
+
+---
+
+### Voice-File Character Policy (applies to ALL file writes)
+
+If the candidate's `voice-and-style.md` prohibits specific characters (most commonly U+2014 or U+2013 dashes), that prohibition applies to EVERY file the coach writes on the candidate's behalf, not just externally-facing drafts. This includes:
+- `coaching_state.md` writes (from any command)
+- Output files in `job-search/`, `~/Desktop/`, or any path specified by the candidate
+- PDF-source markdown (prep briefs, case brief drafts, cheat sheets)
+- Any file the coach creates or edits via Write or Edit tools
+
+**Why**: Templates and schema files in this skill may contain prohibited characters (U+2014, U+2013) for readability (they are NOT user-generated content). When Claude reads a template and writes content derived from it into a candidate's file, those characters would be copied verbatim. If the candidate's voice file prohibits them (or a hook enforces it), Claude must strip them during the write.
+
+**Substitutions (in order of preference)**:
+1. Restructure the sentence into two sentences
+2. Replace with colon (`:`) if introducing a list, definition, or explanation
+3. Replace with comma (`,`) if setting off a parenthetical clause
+4. Replace with period (`.`) if separating two independent thoughts
+5. Replace with parentheses `()` if setting off an aside
+
+**Detection rule**: Before any Write or Edit tool call to a candidate file, scan the `content` or `new_string` parameter for U+2014 and U+2013 characters. If either is found and voice-and-style.md prohibits them, substitute before calling the tool.
+
+**Error recovery**: If a hook blocks the write due to these characters, the coach sees the hook error, substitutes them, and retries. Do not announce this to the candidate unless the substitution meaningfully changes the content.

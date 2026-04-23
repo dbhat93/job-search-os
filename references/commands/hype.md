@@ -1,4 +1,6 @@
-# hype — Pre-Interview Boost Workflow
+# hype: Pre-Interview Boost Workflow
+
+**Phase 0: Positioning Drift Check**. Before generating the hype reel, check Coaching Notes for a Positioning Drift flag. If present AND an interview is <24h away AND the flag references a surface that will be tested (pitch is always tested; resume is tested if the interviewer reads it pre-call), surface gently: "Your [surface] was last updated [N] sessions ago. If the interviewer has seen your current [other surface], they'll be calibrating to that, not the older version. Want to flag this before we go?" Do not block; hype should still ship. Just surface the risk so the candidate knows.
 
 ### Data-Driven Hype
 
