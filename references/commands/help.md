@@ -11,7 +11,10 @@ When the user types `help`, generate a context-aware command guide — not just 
    - If storybank is empty: highlight `stories`
    - If storybank has 5+ stories but no narrative identity analysis: highlight `stories` (mention option 7)
    - If an interview is scheduled within 48 hours: highlight `hype` and `prep`
-   - If transcripts exist but haven't been analyzed: highlight `analyze`
+   - If an interview just happened (within 72 hours) and Outcome Log has no entry: highlight `round`
+   - If a transcript exists in ~/meetings/ for a recently completed interview: highlight `round` (for full post-interview flow) or `analyze` (transcript-only scoring)
+   - If the candidate mentions an application form or pasted application questions: highlight `apply`
+   - If the candidate asks "what should I be doing right now" or "where should I focus": highlight `map`
    - If 3+ scored sessions exist: highlight `progress`
    - If an offer was received: highlight `negotiate`
    - If drill progression shows the candidate hasn't completed Stage 1: highlight `practice ladder`
@@ -70,7 +73,8 @@ When the user types `help`, generate a context-aware command guide — not just 
 | `linkedin` | LinkedIn profile optimization — section-by-section audit, recruiter search optimization, content strategy. Three depth levels: Quick Audit, Standard, Deep Optimization. At Level 5 Deep: Challenge Protocol applied to your profile. |
 | `resume` | Resume optimization — ATS compatibility, recruiter scan, bullet quality, seniority calibration, keyword coverage, structure, concern management, consistency. Three depth levels: Quick Audit, Standard, Deep Optimization. Storybank-to-bullet pipeline when storybank exists. JD-targeted optimization when JD available. At Level 5 Deep: Challenge Protocol applied to your resume. |
 | `pitch` | Core positioning statement — your "who I am" in 10-90 seconds. Foundational artifact with context variants (interview TMAY, networking, recruiter call, career fair, LinkedIn hook). Three depth levels: Quick Draft, Standard, Deep Positioning. Saved to coaching state and referenced by resume, linkedin, and outreach for consistency. At Level 5 Deep: Challenge Protocol. |
-| `outreach` | Networking outreach coaching — cold LinkedIn, warm intros, informational interview asks, recruiter replies, follow-ups, referral requests. Three depth levels: Quick (templates), Standard (critique + rewrite), Deep (full campaign strategy). Consumes Positioning Statement from `pitch`. At Level 5 Deep: Challenge Protocol. |
+| `outreach` | Networking outreach coaching, cold LinkedIn, warm intros, informational interview asks, recruiter replies, follow-ups, referral requests. Three depth levels: Quick (templates), Standard (critique + rewrite), Deep (full campaign strategy). Consumes Positioning Statement from `pitch`. At Level 5 Deep: Challenge Protocol. |
+| `apply` | Drafts answers for application-form questions ("Why this company?", "Why this role?", "What makes you a strong fit?") pulling from storybank, resume, positioning statement, and JD. Writes the final answers to `job-search/[company]_application.md`. Runs a gap check to flag any question that doesn't have a supporting story. |
 
 ### Pre-Conversation
 | Command | What It Does |
@@ -84,11 +88,11 @@ When the user types `help`, generate a context-aware command guide — not just 
 | `practice` | Drill menu with 8 gated stages + standalone retrieval. Sub-commands: `ladder` (constraint drills), `pushback` (handle skepticism), `pivot` (redirect), `gap` (no-example moments), `role` (specialist scrutiny), `panel` (multiple personas), `stress` (high-pressure), `technical` (system design communication). Standalone: `retrieval` (rapid-fire story matching). Includes interviewer's perspective on every round. At Level 5: expanded inner monologue from the interviewer's perspective, challenge notes on rounds 3+, and optional warmup skip. |
 | `mock [format]` | Full 4-6 question simulated interview with holistic arc feedback and interviewer's inner monologue. Formats: `behavioral screen`, `deep behavioral`, `panel`, `bar raiser`, `system design/case study`, `technical+behavioral mix` |
 
-### Analysis and Scoring
+### Post-Interview (primary command)
 | Command | What It Does |
 |---|---|
-| `analyze` | Paste a transcript for per-answer 5-dimension scoring, triage-based coaching (branches based on YOUR bottleneck), answer rewrites showing what a 4-5 version looks like, intelligence updates (tracks questions and patterns across interviews), and a specific recommended next step |
-| `debrief` | Post-interview rapid capture — works same-day with or without a transcript. Captures questions, interviewer signals, stories used, recruiter feedback, and checks for question patterns from past interviews |
+| `round [company]` | **Unified post-interview command.** Run this right after any real interview. Two modes: (A) Transcript available = full scoring, per-answer 5-dimension analysis, triage-based coaching, and a compound state update across 9 sections. (B) Transcript not available = impression capture, story usage log, recruiter feedback, pattern checks. Same flow, different fidelity. Replaces the legacy `debrief` command (which now routes here). |
+| `analyze` | Transcript-only scoring, use when you want to score a transcript post-hoc (e.g., transcript arrives after a `round` was already run, or you're analyzing a friend's transcript). For fresh real interviews, use `round` instead, it writes all state in one shot. |
 
 ### Storybank
 | Command | What It Does |
@@ -111,8 +115,9 @@ When the user types `help`, generate a context-aware command guide — not just 
 ### Search Strategy
 | Command | What It Does |
 |---|---|
-| `strategy` | Full search-level pipeline audit — timeline risk, funnel health, narrative coherence across loops, priority stack, yield projection, 2-week action plan. At Level 5: 4-lens challenge protocol (Assumption Audit, Blind Spot Scan, Pre-Mortem, Devil's Advocate). |
-| `sync` | Coaching state consistency check — verifies data integrity across sections, flags stale entries, and ensures session continuity. Run when something feels off or after a long gap between sessions. |
+| `strategy` | Full search-level pipeline audit, timeline risk, funnel health, narrative coherence across loops, priority stack, yield projection, 2-week action plan. At Level 5: 4-lens challenge protocol (Assumption Audit, Blind Spot Scan, Pre-Mortem, Devil's Advocate). |
+| `map` | Situational GPS. Read-only. Given your current state (active loops, timelines, outstanding follow-ups, storybank readiness), tells you where you are and the 3 most leverage-positive next moves. Doesn't write state. Run mid-session when you're unsure what to prioritize. |
+| `sync` | Coaching state consistency check, verifies data integrity across sections, flags stale entries, and ensures session continuity. Run when something feels off or after a long gap between sessions. |
 
 ### Meta
 | Command | What It Does |

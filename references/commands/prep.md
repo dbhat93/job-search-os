@@ -28,11 +28,17 @@
    - **Strength distribution**: How many at 4+? Target: at least 60%. Flag if the majority are 3 or below.
    - **Earned secret coverage**: How many stories have real earned secrets vs. placeholders? Flag if < 50% have extracted earned secrets.
    - **Competency gaps for this role**: Run the Storybank Gap Check from `references/cross-cutting.md`. Cross-reference the JD-derived top competencies (from Step 3) against the storybank's primary and secondary skills. Classify each competency into one of three tiers: **Critical Gap** (top-3 competency, zero storybank coverage), **Addressable Gap** (coverage exists but only weak stories at strength 1–2), or **Covered** (at least one story at strength 3+). Apply timeline-aware routing: 3+ weeks → build new story; 1–3 weeks → adapt adjacent story; <1 week → drill gap-handling patterns. See the Storybank Gap Check module for the full triage table and output format.
-   - **Overuse risk**: Flag stories with Use Count 3+ in the current job search.
-   - **Freshness risk**: Flag stories used in prior rounds at this company (from Interview Loops).
+   - **Loop-scoped freshness (the hard check)**: Flag stories already deployed in prior rounds at this company (from Interview Loops > Stories used). A story used in R1 should not anchor R2 unless a different interviewer is confirmed. This is the only overuse signal that affects interviewer perception. See `references/cross-cutting.md` Storybank Gap Check for the full protocol.
+   - **Global delivery staleness (soft signal only, NOT a blocker)**: Flag stories with Use Count 5+ across the full job search. Note this is a delivery-energy concern for the candidate, not an interviewer-facing risk. Different companies do not share memory. Do not block deployment at a new company based on global count alone.
    - Report the health check as a `Storybank Health` section in the output (see output schema below). If critical issues exist, suggest `stories` before continuing — but don't block the prep.
 8. **Generate likely questions and story mapping.** Use `references/story-mapping-engine.md` for the full portfolio optimization protocol. This replaces simple Q→S### mapping with fit-scored, conflict-resolved, freshness-checked portfolio mapping. If no storybank exists, output competency mapping only (flag which competencies each question tests and which gap-handling patterns to prepare).
 9. Generate non-generic interviewer questions.
+9.5. **Numerical Claim Integrity Sweep.** Before finalizing the prep brief, apply the "No Number Without A Source" rule from `references/cross-cutting.md`. Review all coaching notes, scripted answer examples, domain knowledge bullets, business case frameworks, and exec articulation content in the draft. For each specific quantitative claim (percentages, before/after stats, metric improvements, cost reductions):
+   - Verify a named source exists (company marketing, published research, earnings call, named research firm)
+   - If no source: replace with directional framing or remove entirely
+   - If a source exists: cite it at least parenthetically so the candidate can defend it if probed
+   
+   This check prevents the coach from embedding fabricated statistics in prep output that the candidate will then cite in the interview. A specific but unsourceable number causes more credibility damage than no number. Directional framing with a named source is always the safe fallback.
 
 ### High-Signal Question Patterns (for Question Generation)
 
@@ -264,6 +270,8 @@ Companies have interviewing cultures that transcend individual JDs. When a known
 
 #### Structured Research Step
 
+Use **Exa** (`mcp__exa__web_search_exa`) for all research searches below. Exa's neural search surfaces higher-signal results for company culture, leadership writing, and interview process intel than keyword-based search. Use `mcp__exa__web_fetch_exa` for direct URL reads (careers pages, blog posts). See `references/commands/research.md → Search Tooling` for query patterns.
+
 Before applying company knowledge sourcing tiers, run a targeted search to ground the prep brief in current data:
 1. Search for the company's current careers page and extract their stated values/principles.
 2. Search for recent news (last 6 months) — funding, layoffs, product launches change interview culture.
@@ -472,8 +480,8 @@ When constructing counter-evidence, check the Proof Bank in coaching_state.md fo
 - Strong stories (4-5): __ (target: at least 60%)
 - Earned secret coverage: __ of __ stories have extracted earned secrets
 - Competency coverage for this role: [critical gaps flagged]
-- Overuse warnings: [stories with Use Count 3+]
-- Freshness warnings: [stories used in prior rounds at this company]
+- Loop-scoped freshness warnings (hard): [stories used in prior rounds at this company]
+- Global delivery staleness (soft, advisory only): [stories with Use Count 5+ across all companies]
 - Assessment: [Healthy / Needs work / Critical gaps — with specific recommendations]
 
 ## Predicted Questions (7-10)

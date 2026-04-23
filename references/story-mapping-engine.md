@@ -73,10 +73,16 @@ Check `coaching_state.md` → Interview Loops for stories used in prior rounds a
 - Stories used in a previous round: downgrade by one fit level (Strong Fit → Workable) unless the candidate is asked to go deeper on the same topic.
 - Flag: "S003 was used in Round 1. Using it again in Round 2 signals limited range unless they specifically ask you to elaborate."
 
-### Step 6: Apply Overuse Check
-Flag stories used 3+ times in the current job search (check Use Count in storybank).
-- 3 uses: "S007 has been used in 3 interviews. Consider rotating to a fresher story if alternatives exist."
-- 5+ uses: "S007 is heavily used (5 times). Interviewers in your network may have heard it. Prioritize alternatives."
+### Step 6: Apply Overuse Check (Loop-Scoped First, Global as Secondary)
+Per `references/cross-cutting.md` Storybank Gap Check, overuse is two separate checks.
+
+**Primary: Loop-scoped overuse (hard block).** Step 5 (Freshness Constraint) already handles this by consulting Interview Loops > Stories used. Re-confirm: if the mapped story for this round already appears in a prior round at this company, re-deploy only if the interviewer is different AND the story was not the prior round's anchor. Otherwise pick the next-best story.
+
+**Secondary: Global delivery staleness (soft signal, not a block).** Check Use Count across the full job search.
+- 5+ uses globally: "S007 has been deployed 5 times across the search. Different companies do not share memory, so this is not an interviewer-facing risk. It is a delivery staleness check: is the story still landing with energy when you tell it, or starting to sound rehearsed? If the latter, consider `stories improve S007`."
+- 8+ uses globally: "S007 is heavily used in your delivery. Watch for energy decay, even if the story is fresh to this company."
+
+Do NOT downgrade a story's fit level based on global Use Count alone. The only downgrade that affects the mapping comes from Step 5 (loop-scoped freshness).
 
 ### Step 7: Output Final Mapping
 Produce the final mapping with annotations (see Output Schema below).

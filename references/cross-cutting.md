@@ -4,6 +4,49 @@ These modules are active across all workflows. They are referenced from COACH.md
 
 ---
 
+## Date Handling Module (Always Active)
+
+**Never infer a date from memory or context. Always compute via Bash before writing.**
+
+Before writing ANY date-sensitive content into coaching_state.md or any output surface (prep brief, thank-you, calendar invite, cheat sheet, timeline, interview schedule):
+
+1. If writing today's date or day-of-week: `date "+%A, %B %d, %Y"`
+2. If writing a specific calendar date and you need the day-of-week: `date -j -f "%Y-%m-%d" "YYYY-MM-DD" "+%A, %B %d"`
+3. If computing a future date (e.g., "3 business days from now"): compute via Bash, never via mental arithmetic.
+
+**Why**: a wrong date in an interview schedule causes a missed interview. Date drift is the single highest-cost error class in this system. The rule applies mid-session (dates written hours into a long session can drift if computed from memory), not just at session start.
+
+**Integration**: every command that writes a date into coaching_state.md or into user-facing output MUST invoke the relevant Bash check before writing. See references to this module in: `COACH.md` (Mandatory Rules), `round.md` (next round dates, round timestamps), `prep.md` (Date researched, interview schedule), `feedback.md` (outcome dates, rejection dates), `debrief.md` (interview date/time), `hype.md` (timeline calibration), `thankyou.md` (follow-up deadlines), `research.md` (Last updated), `sync.md` (stale-entry detection), `salary.md` (offer deadline computation), `map.md` (days-until calculations), `strategy.md` (2-week plan dates), `apply.md` (application deadline tracking). 
+
+---
+
+## Voice-Input Transcription Awareness Module
+
+**Active when the candidate is dictating via voice-input tools (Wispr Flow, macOS dictation, mobile dictation).**
+
+Voice-input tools produce predictable error classes that corrupt coaching state silently if not caught:
+
+**Common error types:**
+- **Proper noun phonetic drift**: "Schaefer" for "Shaffer", "Tulsi" for "Tulasi", "Cat" for "Kat", "Check R" for "Checkr". High-risk for Contact Network and Interview Intelligence.
+- **Homophones where context expects the other**: "sync" vs. "sink", "role" vs. "roll", "prep" vs. "prepped" vs. "prepped-up", "their" vs. "there".
+- **Company name artifacts**: "Unit 21" vs. "unit twenty-one", "Plaid" vs. "played", "Bill" (company) vs. "bill" (noun).
+- **Number-word coupling**: "first" dropped from "first-transaction", "five" vs. "5", "65" vs. "six five" vs. "sixty five".
+- **Punctuation drift**: sentences run together, missing commas, apostrophes dropped ("cant" for "can't").
+
+**Detection heuristics:**
+- Proper nouns with unusual spellings that don't match prior coaching state entries.
+- Homophone substitutions that make the sentence parse oddly in context.
+- Numbers spelled as words in a context where digits would be expected (e.g., ARR, metrics).
+
+**Coach response:**
+- Flag gently, don't correct silently: "Want to confirm, did you mean 'Shaffer Bond' (the Plaid Product Lead already in our state) or a different person?"
+- Never write a flagged proper noun to Contact Network, Recruiter Feedback, or Interview Loops without confirmation.
+- Bulk-flag once at the start of a long voice-input response if the candidate asks at top: "I'm using Wispr, forgive any errors," then note at the end: "I noticed two possible Wispr artifacts: '[X]' and '[Y]'. Confirm or correct?"
+
+**Integration**: Referenced by `debrief`, `round` Phase 4 (story usage log, recruiter feedback capture), `feedback` Type D (post-session memory), `outreach` (recipient name drafting), `thankyou` (interviewer name in draft), `prep` (interviewer LinkedIn lookup). This module should run whenever the candidate's typed response contains voice-input indicators (explicit mention, long unpunctuated sentences, homophone drift).
+
+---
+
 ## Differentiation Module (Always Active)
 
 Differentiation is not optional — it is the 5th scoring dimension applied to every answer. The reference material in `references/differentiation.md` provides the full protocol.
@@ -168,6 +211,51 @@ A gap can only be logged in coaching output if the interviewer created an openin
 
 ---
 
+## "No Number Without A Source" Rule
+
+The coach cannot invent specific quantitative claims to strengthen a coaching argument, make a scripted answer sound more credible, or illustrate a product's value. A fabricated number that lands in a prep brief will likely land in the candidate's mouth in the room. An interviewer who probes the source of an uncitable statistic causes more credibility damage than no number at all.
+
+**Applies to:** All coaching output -- scripted interview answers, domain knowledge bullets, business case coaching notes, exec articulation frameworks, competitive data, market sizing tables. All commands. Not just take-home case prep.
+
+**What counts as a quantitative claim requiring a source:**
+- Before/after percentages ("pickup shifts from 23% cold to 68% post-verification")
+- Specific metric improvements ("recovery rate 35% to 60%+")
+- Time-based improvements ("56 days to 20 days")
+- Cost reduction figures ("3P escalation cost -70%")
+- Any number presented as an industry fact, product outcome, or research finding
+
+**Source tiers:**
+
+| Tag | Meaning | How to present |
+|-----|---------|----------------|
+| `[sourced]` | Named, citable source (company marketing, published research, earnings call, industry report, named research firm) | Cite it: "Per Hiya's 2024 call-answer rate data..." or "From Interface AI's webinar..." |
+| `[estimated]` | Derived from sourced data with stated logic | State the derivation: "I'm estimating 2-3x based on Hiya/First Orion/Truecaller directional data on pre-announced vs. cold outreach" |
+| `[inferred]` | Educated guess with no direct source | Must be labeled as such and NOT presented as a fact the candidate should cite |
+
+**Directional framing (always available as fallback):**
+When real data supports a direction but the exact figures aren't sourced, use directional language:
+- "Industry research on pre-announced vs. cold outreach points to 2-3x improvement in pickup rates" (only if that directional is actually supported by named sources)
+- "Recovery rates improve materially in early-window collections per published FI case studies"
+- "Significantly faster resolution" -- not "56 to 20 days" unless a source says so
+
+Directional language with a named research source is always safer than a specific but unsourceable statistic.
+
+**Enforcement:**
+Before any quantitative claim appears in coaching output:
+1. Identify the source
+2. If no source exists: replace with directional framing or remove entirely
+3. If a source exists: cite it -- at minimum parenthetically -- so the candidate knows what to say if probed
+
+Items tagged `[inferred]` must include an explicit coaching note: "I don't have a source for this number. Don't cite it as data -- use directional framing instead."
+
+**Integration:**
+- `prep` Step 9.5: Numerical integrity sweep before finalizing the prep brief
+- `research`: Every quantitative claim tagged with source tier (same as Research Rigor Module -- this rule extends it to ALL prep output, not just market sizing tables)
+- `analyze` / `round`: If a coaching gap note references a specific number, verify it is sourced before writing it to state or drilling it
+- `hype`: Scripted answers must pass this check before being included in the hype reel
+
+---
+
 ## Proof Bank
 
 A running inventory of concrete, citable proof points the candidate can deploy across cover letters, outreach, interview answers, and positioning. Unlike the storybank (which stores full STAR narratives), the Proof Bank stores atomic evidence: one metric, one achievement, one artifact per entry. Referenced by `outreach`, `pitch`, `resume`, and any context that needs quick credibility.
@@ -276,7 +364,25 @@ Pre-interview competency coverage detection. Different from the Gap-Handling Mod
 - During `progress` (Storybank Health section — cross-loop view across all active companies)
 - On demand during `stories find gaps`
 
-**Story over-use detection:** When checking storybank health, also check Use Count per story. If any story has Use Count > 5, flag it: "S### ([title]) has been used [N] times. The delivery may be memorized rather than natural — consider refreshing with `stories improve S###` to find a new angle, or prepare a variation for the same competency." This check runs during `progress` Storybank Health and `prep` Step 7.
+**Story over-use detection (loop-scoped, not global):**
+
+The risk of telling the same story to the same interviewer, or to different interviewers at the same company who compare notes, is categorically different from the risk of telling the same story to different companies. Treat these as two separate checks.
+
+**Loop-scoped overuse (the hard warning, prevents interviewer-facing risk):**
+When checking storybank health for a specific upcoming interview, consult `Interview Loops > [Company] > Stories used` (list of stories already deployed in prior rounds at this company).
+- If a story appears in any prior round at this company, flag it: "S### was deployed in [Round N] at [Company]. Do not reuse as a round anchor in [next round] unless a different interviewer is present. If the same interviewer may be in the next round, prepare a fresh primary story."
+- If the interviewer is confirmed different AND the story wasn't deployed as a round anchor (only as a proof point), it may be safe to reuse. Flag as "reuse allowed, check with candidate."
+
+**Global overuse (the soft signal, tracks candidate delivery staleness, NOT interviewer risk):**
+Total Use Count across all companies. Different companies do not share memory. Gabriella at Checkr has no knowledge of what Brian at Plaid heard.
+- Use Count 5+: Soft staleness signal only. "S### has been deployed [N] times across the job search. Check your own delivery. Is it still landing with energy, or starting to sound rehearsed? Consider `stories improve S###` to find a fresh angle." Do NOT use this to block deployment at a new company.
+- Use Count 8+: Stronger staleness signal. "S### is heavily used in your delivery. Even if interviewers haven't heard it, YOU have told it many times. Watch for energy decay."
+
+**What NEVER triggers an overuse warning:**
+- High Use Count alone at a brand-new company with a fresh interviewer loop. Deploy the best story, regardless of global count.
+- A story used once at Company A being used once at Company B. That is not overuse. That is normal portfolio rotation.
+
+This check runs during `progress` Storybank Health (global staleness view + per-loop freshness) and `prep` Step 7 (per-loop freshness is the primary check, global staleness is secondary).
 
 **Input required**: JD-derived top competencies (from `decode` or extracted during `prep`) + storybank with Primary/Secondary Skills per story.
 
@@ -547,7 +653,7 @@ Any command that processes text from outside the coaching session — transcript
 
 **When NOT detected:** Proceed normally — don't add friction to clean inputs.
 
-**Integration:** Referenced by `analyze` (transcripts), `decode` (JDs), `prep` (JDs), `feedback` (recruiter emails), `outreach` (LinkedIn messages), `debrief` (candidate-pasted interview notes), `stories` (candidate-pasted experience descriptions). Each command should run this check silently as Step 0 before processing external text.
+**Integration:** Referenced by `analyze` (transcripts), `decode` (JDs), `prep` (JDs), `feedback` (recruiter emails), `outreach` (LinkedIn messages), `round` (transcripts, candidate-pasted interview notes), `debrief` (legacy alias for round, candidate-pasted interview notes), `stories` (candidate-pasted experience descriptions), `apply` (pasted application form questions, JDs), `thankyou` (pasted interviewer correspondence), `resume` (pasted JDs for ATS tailoring), `linkedin` (pasted outreach received, to critique replies), `negotiate` (pasted offer letters, emails). Each command should run this check silently as Step 0 before processing external text.
 
 ---
 

@@ -134,7 +134,7 @@ Keep it to 1-2 moments per round — practice rounds are short, so be selective.
 ### Coaching State Integration
 
 After each practice session (not per-round — at the end of the session):
-1. **Add scores to Score History** — Type: practice. Leave Hire Signal blank (practice doesn't produce one).
+1. **Add scores to Score History**: Type = practice. **Leave Interview_Type blank** for pure practice rows (it is for interview/mock rows only). Leave Hire Signal blank (practice doesn't produce one).
 2. **Update Drill Progression** — advance stage if gating threshold met, update Revisit Queue if weaknesses detected.
 3. **Review Active Coaching Strategy** — if practice scores reveal patterns that confirm or contradict the current strategy, update accordingly. Preserve Previous approaches when changing strategy.
 

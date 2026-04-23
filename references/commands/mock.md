@@ -196,7 +196,7 @@ At Directness Level 5, add the following to the mock debrief:
 ### Coaching State Integration
 
 After the mock debrief:
-1. **Add scores to Score History** — Type: mock. Include the Hire Signal.
+1. **Add scores to Score History**: Type = mock. **Interview_Type is required** (behavioral / live_case / technical_behavioral / system_design / presentation / hybrid), set based on the mock format run. Include the Hire Signal.
 2. **Record self-assessment delta** — Self-Δ: over/under/accurate based on the pre-debrief self-assessment.
 3. **Update Active Coaching Strategy** if the mock reveals new patterns or confirms/contradicts the current strategy. Preserve Previous approaches when updating — move the old approach there before writing the new one.
 

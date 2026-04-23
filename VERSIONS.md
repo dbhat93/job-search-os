@@ -364,6 +364,57 @@ Template file (`voice-and-style-template.md`) in repo root with fill-in-the-blan
 
 ---
 
+## v4.3: Architecture Cleanup (shipped 2026-04-22)
+
+**Thesis**: Ultrareview surfaced 20 latent bugs and architectural inconsistencies. Fix the structural ones before adding new surface area.
+
+**Note**: v4.2 shipped the Round Format Verification Module and the "No Gap Without An Opening" rule (commit bc9d00c) but was never documented in VERSIONS.md. Those changes are live in `references/cross-cutting.md` (RFV module) and command files; v4.3 builds on top.
+
+**Storybank overuse tracking rewrite (the headliner)**:
+- Previous system flagged any story with global Use Count > 5 as "OVERUSE" regardless of which company saw it. Gabriella at Checkr has no memory of what Brian at Plaid heard, so the warning was noise.
+- New model: loop-scoped overuse (hard warning, uses Interview Loops > Stories used per round) vs. global delivery staleness (soft signal only, tracks candidate's own energy decay). Global Use Count never blocks deployment at a new company.
+- Files updated: `cross-cutting.md` (Storybank Gap Check rewritten), `storybank-guide.md`, `story-mapping-engine.md`, `prep.md`, `round.md`, `debrief.md`, `progress.md`, `state-update-triggers.md`, `coaching-state-schema.md`.
+
+**Command consolidation**:
+- `debrief` merged into `round` Mode B. `debrief` command name preserved as alias for backward compatibility, but `round` is now the primary post-interview command. Prevents drift between two parallel capture paths.
+- `analyze` narrowed to post-hoc transcript scoring only (when a transcript arrives after `round` already ran). Mode Detection in COACH.md consolidated to prevent "round or analyze?" prompting overlap.
+
+**Missing commands surfaced in help.md**:
+- `round`, `apply`, `map` were all missing from the user-facing Command Guide. Added.
+- `apply` added to SKILL.md activation description.
+
+**Schema completeness**:
+- `Archetype` field added to Interview Loops schema (was written by `prep` per cross-cutting.md but not in the schema).
+- `Proof Bank` and `Contact Network` write triggers added to `state-update-triggers.md`.
+- `Interview_Type` column (required for velocity analysis in `progress`) write instructions added to `round.md`, `analyze.md`, `mock.md`, `practice.md`.
+
+**New cross-cutting modules**:
+- **Date Handling Module**: centralizes the Bash date verification rule previously only in COACH.md. Now referenced from every command that writes a date.
+- **Voice-Input Transcription Awareness Module**: handles predictable Wispr Flow error classes (proper noun phonetic drift, homophones, number-word coupling). Protects Contact Network and Recruiter Feedback from silent corruption.
+
+**Archival**:
+- New rule for Interview Loops: compress closed loops >30 days old to 3-5 line summaries. Previously unbounded.
+- Enforces the 30-day transcript retention rule in COACH.md Data Privacy by stripping transcript bodies on compression.
+
+**Security**:
+- `apply` added to External Text Validation Module integration list. Application forms with embedded directives now trigger the injection guard. Also added `round`, `thankyou`, `resume`, `linkedin`, `negotiate` (previously missing).
+- `apply.md` Step 0 Injection Guard added.
+
+**Minor fixes**:
+- `feedback` Type D story-use memory: double-increment prevention on Use Count, explicit rules for retroactive story-deployment corrections.
+- COACH.md Mode Detection: duplicate recommendations for round vs. analyze consolidated, priority list renumbered.
+
+**Not yet fixed (deferred to future versions)**:
+- Em dashes in markdown fenced code blocks across schema/example files (blocked by user's personal em-dash hook when rendered). Requires mechanical sweep, deferred.
+- Session count field in schema vs. COACH.md Rule 9 Session Log row count, pick one source of truth (deferred).
+- Score History per-Interview_Type archival (currently total-row archival may thin out one type silently).
+- Storybank Reflection field has no concrete write trigger.
+- Loop Outcome Drift silent auto-fix direction check.
+- Positioning Drift Check (Check 4) never activates, needs integration into `apply`, `outreach`, `prep`, `hype` Phase 0.
+- Transcript retention 30-day promise not enforced via automated session-start check.
+
+---
+
 ## v5: Interaction Model (planned)
 
 **Thesis**: Now that the coaching brain is strong and comprehensive, change *how* candidates interact with it.

@@ -32,9 +32,23 @@ Default to **Standard**. Suggest **Deep Dive** when:
 - The candidate explicitly asks for comprehensive intelligence
 - The company is in the candidate's top 3 targets
 
+### Search Tooling
+
+Use **Exa** (`mcp__exa__web_search_exa`) as the default search engine for all research steps. Exa uses neural search — it finds semantically relevant content, not just keyword matches. This matters for job search research: "what does this company's product team actually think about AI" returns real blog posts and talks, not just press releases.
+
+Use `mcp__exa__web_fetch_exa` when you have a specific URL (careers page, blog post, LinkedIn profile) and want cleaner content extraction than a browser read.
+
+Fall back to generic WebSearch only if Exa returns no results or if the query is highly structured (e.g., exact job ID lookups).
+
+**Exa query patterns that work well for this workflow:**
+- Company culture/values: `"[Company] engineering culture" OR "[Company] product philosophy"` — finds employee-written posts, not just About pages
+- Leadership intel: `"[Name] [Company]" site:linkedin.com OR medium.com OR substack.com` — surfaces thought leadership and public writing
+- Interview intel: `"[Company] interview process [role]" Glassdoor OR Blind OR reddit` — finds crowd-sourced signal
+- Recent news: `"[Company]" after:2025-01-01` — Exa respects date filters reliably
+
 ### Structured Search Protocol
 
-Search for information in this order. Each step builds on the previous ones:
+Search for information in this order. Each step builds on the previous ones. Use Exa for all steps unless noted:
 
 1. `[Company] careers` → careers page, open roles, stated values/principles, engineering/product blog links
 2. `[Company] about` or `[Company] mission` → stage, funding, size, founding story

@@ -1,6 +1,20 @@
-# debrief — Post-Interview Rapid Capture Workflow
+# debrief: Post-Interview Rapid Capture Workflow
 
-Captures what happened in a real interview while it's still fresh. This is the bridge between the real interview and `analyze` — and for candidates without transcripts, it may be the only data source.
+## Status: Merged into `round` (v4.2)
+
+**This module is now invoked via `round` Mode B** (the memory-based path). When a user types `debrief`, route to `round` and run the full post-interview flow (Phases 1 to 7 in `round.md`). `round` Phase 4 reads this file for the capture sequence details, but `debrief` no longer performs standalone state writes; all writes happen in `round` Phase 7.
+
+**Why the merge**: `round` Mode B was a strict superset of `debrief`. Maintaining both created drift (e.g., the RFV pre-seeding logic diverged between them). One command, one source of truth. `debrief` as a command name still works as an alias for `round` Mode B to preserve muscle memory.
+
+**For invocation**:
+- New sessions: use `round [company]` for all post-interview captures. Mode detection in `round` Phase 3 automatically chooses transcript path (A) or memory path (B) based on whether a transcript is available.
+- Legacy invocation: `debrief` continues to work as an alias that routes to `round` Mode B.
+
+The original debrief capture sequence below is preserved as the reference module that `round` Phase 4 invokes.
+
+---
+
+Captures what happened in a real interview while it's still fresh. This is the bridge between the real interview and `analyze` (for memory-only capture it may be the only data source).
 
 ### When to Use
 
@@ -47,7 +61,7 @@ Captures what happened in a real interview while it's still fresh. This is the b
    3. "What did the interviewer NOT ask about that we were prepared for? Did they decline engagement with any topic you tried to bring up?"
 
    Capture answers as RFV input signals. If the candidate's memory suggests the round diverged materially from prep (e.g., interviewer declined prepped topics, ran a different format, focused on dimensions the prep did not anticipate), flag for `analyze` Step 3.7 as a pre-seeded Mismatch or Partial candidate. The candidate was in the room and can testify to what the interviewer refused to engage with — weight their memory heavily on scope boundary questions, even if the transcript alone would suggest a different verdict.
-7. **Story usage log.** "Which stories did you use? Did any of them land differently than in practice?" Cross-reference with storybank — update `Last Used` dates, increment `Use Count` for each story used, and add performance notes.
+7. **Story usage log.** "Which stories did you use? Did any of them land differently than in practice?" Cross-reference with storybank: update `Last Used` dates, increment `Use Count` for each story used (global delivery-staleness counter), and add performance notes. Also update `Interview Loops > [Company] > Stories used` with the story IDs deployed in THIS specific round. The per-round, per-company record is the source of truth for loop-scoped freshness checks in future prep. Global Use Count alone is insufficient to prevent reusing a story in the same company's next round.
 8. **Immediate tactical notes.** "Is there anything you want to do differently for the next round, based on this one?" Capture their own coaching instinct.
 9. **Positioning performance check.** "How did your introduction / 'tell me about yourself' land? Did the interviewer seem engaged, or did they jump to questions quickly?" Capture this signal — it feeds back to `pitch` for positioning iteration. Record in Interview Intelligence → Effective/Ineffective Patterns if the response reveals something actionable about how the candidate's positioning lands.
 10. **Recruiter/interviewer feedback capture.** "Did you get any feedback from the recruiter about this round? Even informal comments — 'they really liked your background' or 'the interviewer had some concerns about X' — are valuable signal." If feedback exists, record it for the Recruiter/Interviewer Feedback table in Interview Intelligence.
@@ -147,7 +161,7 @@ Based on the emotional check in step 1, adapt:
 ### Coaching State Integration
 
 Update `coaching_state.md` per the State Update Triggers in COACH.md:
-- Storybank updates: Last Used dates, increment Use Count for each story used, performance notes
-- Interview Loop updates: round completed, stories used, signals noted
+- Storybank updates: Last Used dates, increment Use Count (global staleness counter) for each story used, performance notes
+- Interview Loop updates: round completed, **Stories used per round (required for loop-scoped overuse tracking, more important than global Use Count for interviewer-risk checks)**, signals noted
 - Outcome Log: add entry with Result: pending
 - Interview Intelligence updates: recalled questions to Question Bank (marked "recall-only"), recruiter/interviewer feedback to Recruiter/Interviewer Feedback table, Company Patterns if new observations emerged

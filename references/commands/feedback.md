@@ -115,8 +115,12 @@ At Levels 1-4: Standard emotional triage from the Psychological Readiness Module
 
 **State updates**:
 - Route to the appropriate section as identified above
-- If it's a question, add to Interview Intelligence → Question Bank with score "recall-only"
+- If it's a question, add to Interview Intelligence > Question Bank with score "recall-only"
 - If it changes a previous assessment meaningfully, flag it
+- **Story-use memory rules (prevent double-counting)**: If the candidate remembers using a story that wasn't logged during the original `round` or `debrief`:
+  (1) Update `Interview Loops > [Company] > [Round] > Stories used` to include the story ID (loop-scoped record, the primary source of truth for loop-scoped overuse).
+  (2) Do NOT re-increment the global `Use Count` in the Storybank if the round itself was already logged. Use Count should have been captured during `round`. If `round` ran without capturing this specific story, increment Use Count once now and add a Coaching Note: "Correction: S### usage at [Company] [Round] was not captured during original round, added retroactively."
+  (3) Never increment Use Count twice for the same deployment.
 
 **Output**: Brief confirmation of where the information was captured. If it changes something meaningful, say so. If it would benefit from further development, suggest the relevant command: "Captured that question. If you want to prep an answer for it, `practice` can drill you on it."
 

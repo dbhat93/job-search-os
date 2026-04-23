@@ -19,7 +19,7 @@ Create a table with these columns:
 | **Risk/Stakes** | What could have gone wrong? Why did it matter? |
 | **Earned Secret** | The counterintuitive insight only you learned from this experience (see `references/differentiation.md` for extraction protocol) |
 | **Strength** | How compelling/differentiated (1-5) |
-| **Use Count** | Total times used in real interviews (incremented via debrief). Tracks overuse risk. |
+| **Use Count** | Total times used in real interviews (incremented via debrief). Tracks delivery staleness risk for the candidate, NOT interviewer-facing overuse risk. For interviewer-facing overuse, check `Interview Loops > [Company] > Stories used` instead. See Storybank Gap Check in `references/cross-cutting.md` for the loop-scoped vs. global distinction. |
 | **Last Used** | Date of most recent use in interview |
 | **Notes** | Performance notes, feedback received |
 
@@ -211,7 +211,7 @@ Then layer in:
 - Mix of domains (not all one type)
 - At least 2 stories with quantified outcomes
 - At least 1 failure/learning story
-- No story used more than 3x in current job search (check Use Count)
+- No story used more than once at the same company loop (check Interview Loops > Stories used per round). Global Use Count is a delivery-staleness signal, not an overuse signal.
 - At least 80% of stories have extracted earned secrets
 
 **Warning signs:**
@@ -220,13 +220,14 @@ Then layer in:
 - Major competency gaps (even after checking Secondary Skills)
 - All stories from one job/era
 - No failure stories
-- Relying on 2-3 favorites repeatedly
+- Relying on 2-3 favorites repeatedly within the same company loop (across different loops is fine, that is portfolio rotation)
 - No earned secrets extracted (stories are specific but not distinctive)
 
-**Overuse and freshness tracking:**
-- **Overuse** (Use Count 3+): "S### has been used in [N] interviews. Consider rotating to a fresher story if alternatives exist." At 5+: "S### is heavily used. Interviewers in your network may have heard it. Prioritize alternatives."
-- **Freshness risk**: Stories used in prior rounds at a current company loop should not be reused unless the interviewer explicitly asks for elaboration. Check Interview Loops for stories used per round.
-- **Earned secret coverage**: Stories without earned secrets are incomplete — they may score well on Substance and Structure but will plateau on Differentiation. Track coverage as a percentage.
+**Overuse and freshness tracking (two distinct checks, see `references/cross-cutting.md` Storybank Gap Check for full protocol):**
+- **Loop-scoped overuse (the hard warning)**: Check `Interview Loops > [Company] > Stories used per round`. A story already deployed in a prior round at this company should not be reused as the anchor story in the next round unless the interviewer is different AND the story was only a proof point last time. This is the only overuse risk that affects interviewer perception.
+- **Global delivery staleness (the soft signal, NOT interviewer risk)**: Total Use Count across all companies. Different companies do not share memory. A high global count signals the candidate may sound rehearsed to themselves, not that interviewers have heard it. At 5+ uses globally: soft staleness warning only. Do NOT use global count to block deployment at a new company.
+- **Freshness risk**: Synonym for loop-scoped overuse. Stories used in prior rounds at a current company loop should not be reused unless a different interviewer is confirmed AND the story was not the prior round's anchor.
+- **Earned secret coverage**: Stories without earned secrets are incomplete. They may score well on Substance and Structure but will plateau on Differentiation. Track coverage as a percentage.
 
 ---
 

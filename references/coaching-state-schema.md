@@ -103,8 +103,12 @@ Stage gate criteria (advance when gate is passed):
 - Stage 7→8: Sustained performance — 3+ scored sessions at all dimensions ≥ 3.5 avg
 
 ## Interview Loops (active)
+
+Note: `Stories used per round` in this section is the PRIMARY source for loop-scoped overuse checks. The global `Use Count` in the Storybank table is a delivery-staleness signal, not an interviewer-facing overuse signal. See `references/cross-cutting.md` Storybank Gap Check for the full loop-scoped vs. global distinction.
+
 ### [Company Name]
 - Status: [Decoded / Researched / Applied / Interviewing / Offer / Closed]
+- Archetype: [Platform PM / Founding PM / Domain PM / Regulatory Response PM / Agent/AI PM / GTM/Growth PM] (per `cross-cutting.md` Archetype Detection Module, written by `prep` or `decode`)
 - Rounds completed: [list with dates]
 - Round formats:
   - Round 1: [format, duration, interviewer type — e.g., "Behavioral screen, 45min, recruiter"]

@@ -176,13 +176,15 @@ Update the matching loop entry:
 
 If no loop existed for this company, create a new loop entry with the data captured in Phases 2–4.
 
-**Write 3 — Storybank**
+**Write 3: Storybank**
 For each story used (from Phase 4 Step 5):
 - Update Last Used date
-- Increment Use Count
-- Add field notes if performance observations were captured ("landed well — interviewer followed up immediately")
+- Increment Use Count (this is the global counter, a delivery-staleness signal)
+- Add field notes if performance observations were captured ("landed well, interviewer followed up immediately")
 
-Check Use Count against the overuse threshold from `references/cross-cutting.md` Storybank Gap Check. If any story is now at > 5 uses: flag it. "S### has been used [N] times. Consider refreshing with `stories improve S###`."
+**Also update Write 2 (Interview Loops) with `Stories used: [S###]` for THIS round.** That per-round, per-company record is the primary source for loop-scoped freshness checks in future prep sessions. It is more important than the global Use Count for interviewer-risk tracking.
+
+Check global Use Count against the delivery-staleness signal from `references/cross-cutting.md` Storybank Gap Check. If any story is now at 5+ uses: flag it as a soft staleness signal only, not as an overuse warning for the next company. "S### has been used [N] times across the job search. Different companies do not share memory, so this is not an interviewer risk. But check: is the story still landing with your own energy, or starting to sound rehearsed? Consider `stories improve S###` for a fresh angle."
 
 **Write 4 — Interview Intelligence: Question Bank**
 Add each recalled question as a new row:
@@ -210,8 +212,12 @@ If the positioning performance check (Phase 4 Step 6) or story observations reve
 **Write 8 — Recruiter/Interviewer Feedback (if captured)**
 If feedback was captured in Phase 4 Step 7: add to Recruiter/Interviewer Feedback table with `[written]` or `[paraphrased]` tag.
 
-**Write 9 — Score History (Mode A only)**
-Add the scored row.
+**Write 9: Score History (Mode A only)**
+Add the scored row with ALL columns populated:
+- Date, Type (= interview), **Interview_Type** (required: behavioral / live_case / technical_behavioral / system_design / presentation / hybrid, per the round format detected in Phase 4), Context, Sub, Str, Rel, Cred, Diff, Hire Signal, Self-delta.
+
+Interview_Type is required for like-for-like velocity comparisons in `progress`. Infer from the detected round format. If the round was panel, use hybrid. If case-study-only, use live_case. If mixed, pick the dominant format and note the mix in Context.
+
 Mode B: do NOT add to Score History. Capture in Coaching Notes as directional assessment.
 
 ---
@@ -303,8 +309,8 @@ Every item MUST be tagged per the "No Gap Without An Opening" rule (`cross-cutti
 ---
 
 ## Storybank Updates
-- [Story ID] — Use Count now [N]. [Field note if applicable.]
-- [Flag if any story now at > 5 uses]
+- [Story ID]: Use Count now [N] (global, delivery-staleness signal). Added to [Company] Round [N] Stories used (loop-scoped record). [Field note if applicable.]
+- [If any story is at 5+ global uses: soft staleness flag, NOT an overuse warning.]
 - Rework: / Retire: / Add:
 
 ---

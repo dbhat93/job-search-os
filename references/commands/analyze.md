@@ -226,9 +226,21 @@ When rewriting:
 **Recommended next**: `[command]` — [one-line reason based on the triage decision above]. **Alternatives**: `practice`, `stories`, `progress`, `concerns`
 ```
 
-#### Recommended Next Step Logic
+### Coaching State Integration (standalone invocation)
 
-Prescribe ONE specific command based on the triage decision — not a generic menu:
+When `analyze` is invoked standalone (not via `round` Phase 5A), write the following to `coaching_state.md` after producing the analysis:
+
+1. **Score History (required)**: Add the scored row with ALL columns populated:
+   - Date, Type = interview, **Interview_Type** (required: behavioral / live_case / technical_behavioral / system_design / presentation / hybrid, inferred from the transcript or provided by the candidate), Context, Sub, Str, Rel, Cred, Diff, Hire Signal, Self-delta.
+   - Interview_Type is required for like-for-like velocity comparisons in `progress`. If unclear from the transcript, ask the candidate before writing.
+2. **Active Coaching Strategy**: per Step 15 protocol.
+3. **Interview Intelligence**: per Step 16 protocol.
+
+When invoked via `round` Phase 5A, `round` handles all state writes in Phase 7 (including Score History). Do not double-write.
+
+### Recommended Next Step Logic
+
+Prescribe ONE specific command based on the triage decision, not a generic menu:
 - Relevance bottleneck → recommend `practice pivot` to drill question-decoding
 - Substance bottleneck → recommend `stories improve S###` on weakest story, or `stories add` to surface new ones
 - Differentiation bottleneck → recommend `stories` to extract earned secrets from existing stories

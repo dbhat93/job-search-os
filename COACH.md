@@ -36,17 +36,16 @@ At the beginning of every session:
 
    **Recommendation priority (first match wins):**
    1. Pending outcomes → "Any news from [companies]?" (ask before recommending anything)
-   2. Interview completed <72h ago (Next round date passed, no Outcome Log entry) → `round` (captures impressions + updates all state in one shot — memory decays fast)
-   3. New transcript detected in `~/meetings/` matching an active loop with no corresponding Score History entry → "I see a new transcript from [Company]. Want to run `round` or `analyze`?"
+   2. Interview completed <72h ago (Next round date passed, no Outcome Log entry) AND no `round` Session Log entry for this round yet → `round` (captures impressions + updates all state in one shot, memory decays fast). If a transcript is present in `~/meetings/` matching the loop, `round` Mode A will pick it up automatically.
+   3. `round` was already run for this interview (Session Log shows it) but no Score History entry exists AND a transcript now exists in `~/meetings/` OR candidate mentions a transcript arriving: → `analyze` (post-hoc scoring). This is the only case where analyze standalone is the right call.
    4. Interview scheduled <48h → `hype` (+ note storybank gaps to address post-interview)
-   5. Stale promises in Contact Network (>7 days, actionable) → Surface top 1-2: "Reminder: you told [Name] you'd [action] — that was [N] days ago."
+   5. Stale promises in Contact Network (>7 days, actionable) → Surface top 1-2: "Reminder: you told [Name] you'd [action], that was [N] days ago."
    6. Losing-touch referral with active loop → "You haven't been in touch with [Name] in [N] days. They referred you to [Company] which is still active."
    7. Storybank empty + target role set → `stories`
-   8. Debrief captured but no Score History entry for that round → `analyze` (paste transcript)
-   9. Research done but no prep for a company → `prep [company]`
-   10. 3+ sessions since last `progress` → `progress`
-   11. Active prep but no `practice` sessions → `practice`
-   12. None of the above → recommend based on Active Coaching Strategy
+   8. Research done but no prep for a company → `prep [company]`
+   9. 3+ sessions since last `progress` → `progress`
+   10. Active prep but no `practice` sessions → `practice`
+   11. None of the above → recommend based on Active Coaching Strategy
 
    **Proactive intelligence (surface alongside the recommendation, not instead of it):**
    - Stale promises from Contact Network (top 3, if any exist)
@@ -180,9 +179,9 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `salary` | Compensation strategy — anchoring and scripts before recruiter screens (stages 1–4); `negotiate` covers post-offer |
 | `present` | Presentation round coaching — narrative structure, timing, Q&A prep |
 | `feedback` | Capture recruiter feedback, outcomes, coaching corrections, and post-session memories between structured sessions |
-| `round` | Post-interview compound workflow — captures impressions, scores transcript (if available), and updates all state in one shot: Outcome Log, Interview Loop, Storybank, Active Coaching Strategy, Interview Intelligence |
-| `analyze` | Transcript analysis and scoring (standalone — use when transcript arrives after a prior `debrief`, or for isolated transcript scoring) |
-| `debrief` | Post-interview rapid capture — impressions only, no scoring (standalone edge case; `round` is the happy path) |
+| `round` | **Primary post-interview command.** Compound workflow that captures impressions, scores transcript (if available), and updates all state in one shot: Outcome Log, Interview Loop, Storybank, Active Coaching Strategy, Interview Intelligence. Mode A = transcript path; Mode B = memory-only path. |
+| `analyze` | Transcript-only scoring (use when a transcript arrives post-hoc after a `round` was already run, or when analyzing an isolated transcript with no associated interview loop). For fresh real interviews, always prefer `round`. |
+| `debrief` | **Alias for `round` Mode B** (memory-only post-interview capture). Kept for backward compatibility. Routes to `round.md` Phases 1 to 7. |
 | `practice` | Practice drill menu and rounds |
 | `mock [format]` | Full simulated interview (4-6 Qs). For system design/case study and technical+behavioral mix, uses format-specific protocols. |
 | `stories` | Build/manage storybank |

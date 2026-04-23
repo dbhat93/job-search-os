@@ -112,7 +112,7 @@ mkdir -p ~/.claude/skills/coach
 ```yaml
 ---
 name: coach
-description: Interview coaching system. Activates for any coaching command: kickoff, map, prep, mock, round, analyze, stories, practice, progress, debrief, feedback, reflect, research, decode, salary, negotiate, hype, pitch, resume, linkedin, outreach, present, concerns, questions, thankyou, sync, strategy, help.
+description: Interview coaching system. Activates for any coaching command: kickoff, map, prep, mock, round, analyze, stories, practice, progress, apply, feedback, reflect, research, decode, salary, negotiate, hype, pitch, resume, linkedin, outreach, present, concerns, questions, thankyou, sync, strategy, help. (Note: debrief is now merged into round as Mode B, legacy alias preserved for backward compatibility.)
 ---
 
 The interview coaching system is now active.
@@ -223,9 +223,9 @@ Re-export every 2-4 weeks to keep the data fresh. The coach will flag stale expo
 
 | Command | Purpose | Typical Output |
 |---|---|---|
-| `round` | Post-interview compound workflow -- captures impressions, scores transcript (if available), and updates all state in one shot. Happy path after any real interview. | Interviewer signals, per-unit scoring (if transcript), all state sections updated, triage-based next step |
-| `analyze` | Transcript scoring -- standalone, for when transcript arrives after a prior `debrief` or for isolated analysis | Auto-detected format, per-unit scoring (Q&A/phases/exchanges), format-specific dimensions, decision tree + interview delta |
-| `debrief` | Post-interview rapid capture -- impressions only, no scoring. Edge case: use when capturing before a transcript arrives. | Questions recalled, interviewer signals, stories used, coaching state updates |
+| `round` | **Primary post-interview command.** Compound workflow: captures impressions, scores transcript (if available), and updates all state in one shot. Mode A = transcript path. Mode B = memory-only path. Run this after any real interview. | Interviewer signals, per-unit scoring (if transcript), all state sections updated, triage-based next step |
+| `analyze` | Transcript-only scoring. Use when a transcript arrives post-hoc (after `round` was already run), or for analyzing an isolated transcript with no associated interview loop. For fresh real interviews, use `round` instead. | Auto-detected format, per-unit scoring (Q&A/phases/exchanges), format-specific dimensions, decision tree + interview delta |
+| `debrief` | Legacy alias for `round` Mode B (memory-only capture). Kept for backward compatibility; routes to `round` Phases 1 to 7. | Same as `round` Mode B |
 | `progress` | Trends, self-calibration, outcome tracking, scoring calibration. At Level 5: includes a Hard Truth section | Self-assessment delta + outcome correlation + scoring drift detection + root cause tracking + coaching meta-check |
 | `feedback` | Capture recruiter feedback, outcomes, corrections, context, or coaching meta-feedback. At Level 5: rejections include structured leverage extraction | State updates + next step suggestion |
 | `thankyou` | Post-interview follow-up drafts | Thank-you note + variants |
@@ -305,7 +305,7 @@ One command for everything after a real interview -- works with or without a tra
 - All coaching state updated in one shot: Outcome Log, Interview Loop, Storybank, Active Coaching Strategy, Interview Intelligence
 - Triage-based next step based on what the data shows
 
-> `debrief` still exists if you want to capture impressions without scoring. `analyze` still exists if a transcript arrives days after you already ran `debrief`.
+> `debrief` still works as a legacy alias for `round` Mode B (memory-only capture). `analyze` still exists for when a transcript arrives days after you already ran `round`.
 
 ### 5) Analyzing a standalone transcript
 
@@ -313,7 +313,7 @@ One command for everything after a real interview -- works with or without a tra
 analyze
 ```
 
-Then paste raw transcript text from any tool (Otter, Zoom, Grain, Teams, etc.). The system auto-detects the format and normalizes it. Use this when a transcript arrives after you've already run `debrief` separately -- otherwise, `round` handles both in sequence.
+Then paste raw transcript text from any tool (Otter, Zoom, Grain, Teams, etc.). The system auto-detects the format and normalizes it. Use this when a transcript arrives post-hoc (after you already ran `round`). For fresh real interviews, `round` handles both transcript and memory paths in one flow.
 
 Expected output:
 
