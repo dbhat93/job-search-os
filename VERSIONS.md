@@ -415,6 +415,31 @@ Template file (`voice-and-style-template.md`) in repo root with fill-in-the-blan
 
 ---
 
+## v4.4: Context Management (shipped 2026-04-23)
+
+**Thesis**: Long searches turn `coaching_state.md` into a token sink. A 1,400-line state file read 100+ times per session costs context before a single coaching exchange happens. The fix is a two-file pattern: compress closed loops to stubs in the main file, preserve full intel in a sidecar archive.
+
+**Archive file pattern**:
+- `coaching_state_archive.md` introduced as a companion to `coaching_state.md`. Contains full loop details for closed, rejected, withdrawn, and stale interview loops.
+- Main state file retains a 2-5 line stub per archived loop (status, dates, key learnings, pointer to archive).
+- Key learnings for high-effort loops (Socure, Ramp, DoorDash) are preserved directly in the stub so retrospective coaching doesn't require opening the archive.
+- Both files added to `.gitignore`: same sensitivity as the main state file.
+
+**Monthly automation**:
+- Scheduled task runs on the 1st of each month at 9am local time.
+- Scans for newly closed loops longer than 5 lines (not yet compressed), archives full content, replaces with stub.
+- Skips any loop with advancing/pending/evaluating status and a hardcoded list of active loop names.
+
+**Token impact**:
+- Closed loop section reduced from ~360 lines to ~50 lines in the initial pass (177 lines removed from `coaching_state.md`; 10 loops archived).
+- Ongoing: each archived loop saves 15-100 lines per session depending on how deep the loop went.
+
+**README and gitignore**:
+- `.gitignore` updated to exclude `coaching_state_archive.md`.
+- README "Data and Privacy" section updated with context management guidance and the two-file pattern.
+
+---
+
 ## v5: Interaction Model (planned)
 
 **Thesis**: Now that the coaching brain is strong and comprehensive, change *how* candidates interact with it.

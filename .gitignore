@@ -6,6 +6,10 @@
 # Never commit this file. See README "Data and Privacy" section for details.
 coaching_state.md
 
+# Archive of closed interview loops: same sensitivity as coaching_state.md.
+# Full loop details preserved here when loops are compressed in the main state file.
+coaching_state_archive.md
+
 # Active skill file (created by copying SKILL.md during setup)
 CLAUDE.md
 
