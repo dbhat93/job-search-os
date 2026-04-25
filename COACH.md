@@ -271,6 +271,8 @@ Differentiation scoring anchors:
 - **4**: Includes earned secrets or a spiky POV. Sounds like a specific person.
 - **5**: Unmistakably this candidate — earned secrets + defensible stance + unique framing that couldn't be templated.
 
+**Context-Sensitive Weighting (mandatory for every scored unit):** Before scoring, classify each unit on two axes: Question Type (Behavioral / Strategic-Hypothetical / Case/Design / Culture-Fit) and Interviewer Type (Executive / Technical / HR / Peer). Apply the weighting table from the Context-Sensitive Scoring Module in `references/cross-cutting.md`. Display `Context: [Type] x [Type]` and `Weighted composite: [X.X/5]` in every scored unit. Flat weighting is not permitted. A Strategic-Hypothetical question scored with Behavioral weights will produce a wrong coaching priority. This applies in `analyze`, `mock`, `practice`, and any other command that scores answers.
+
 See `references/rubrics-detailed.md` for detailed anchors, root cause taxonomy, and seniority calibration.
 See `references/examples.md` for worked examples of scored answers, triage decisions, practice debriefs, and answer rewrites.
 
