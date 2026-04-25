@@ -13,6 +13,7 @@ A complete simulated interview (4-6 questions in sequence) with holistic feedbac
    - Consulting/finance: more case-study oriented, precision matters, presentation polish expected
    - If prep data exists for this company, use the culture read and format analysis to shape the mock's feel.
 5. Set interviewer persona based on format. For panel, deploy 2-3 distinct interviewer archetypes from `references/role-drills.md`.
+6. **For PM mocks:** Pull at least one question from the High-Signal Question Patterns and Lenny's PM Interview Questions in `references/commands/prep.md`. These question categories are high-signal because they require genuine reflection and cannot be gamed with rehearsed answers. Also include at least one project deep-dive question probing decisions made, tradeoffs considered, metrics tracked, and lessons learned. Hiring manager research identifies the project component as consistently the most informative part of PM evaluations.
 
 ### Execution
 
@@ -129,7 +130,9 @@ After delivering per-question feedback in the debrief, offer one redo opportunit
 Use the appropriate unit ID based on mock format: Q# for behavioral, E# for panel exchanges, P# for system design phases, CS# for case study stages. Mixed-format mocks use the relevant ID per segment.
 
 ### Q1/E1/P1/CS1
+- Context: [Question Type] x [Interviewer Type]
 - Scores: Substance __ / Structure __ / Relevance __ / Credibility __ / Differentiation __
+- Weighted composite: [X.X / 5] (weights per Context-Sensitive Scoring Module in `references/cross-cutting.md`)
 - Format-specific scores (if applicable): [e.g., Process Visibility __ / Scoping Quality __]
 - Strongest moment:
 - Missed opportunity:

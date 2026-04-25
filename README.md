@@ -611,7 +611,7 @@ Once your voice profile exists, every externally-facing draft will match your se
 - Do not sync `coaching_state.md` to any shared or cloud location (Google Drive, Dropbox, iCloud, GitHub) without encrypting it first
 - If you share your repo or coaching setup with anyone, confirm `coaching_state.md` is excluded
 - When your search ends, run `reflect` -- it prompts you to archive and delete data you no longer need
-- **Context management**: long searches generate large `coaching_state.md` files that consume context every session. Periodically compress closed loops: copy their full content to `coaching_state_archive.md`, replace the loop in `coaching_state.md` with a 3-5 line stub. Read the archive only when you need the full intel on a past loop. The v4.3 archival rule (compress loops closed >30 days ago) automates this at the coaching level; the file pattern above keeps tokens manageable at the session level
+- **Context management**: long searches generate large `coaching_state.md` files that consume context every session. Periodically compress closed loops: copy their full content to `coaching_state_archive.md`, replace the loop in `coaching_state.md` with a 3-5 line stub. Read the archive only when you need the full intel on a past loop. The v4.3 rule (compress loops closed >30 days ago) enforces this at the coaching level; the v4.4 two-file pattern keeps tokens manageable at the session level
 - Compensation data is among the most sensitive fields. If you ever export or share state data, redact the Comp Strategy section first
 
 **Third-party data note:** Transcripts and recruiter feedback contain other people's words. These are stored in your local `coaching_state.md` only -- they are never transmitted anywhere by the skill itself.

@@ -431,12 +431,46 @@ Template file (`voice-and-style-template.md`) in repo root with fill-in-the-blan
 - Skips any loop with advancing/pending/evaluating status and a hardcoded list of active loop names.
 
 **Token impact**:
-- Closed loop section reduced from ~360 lines to ~50 lines in the initial pass (177 lines removed from `coaching_state.md`; 10 loops archived).
+- Closed loop section reduced by 177 lines in the initial pass. 10 full-length loop sections compressed to stubs (Socure, Crux Climate, Hamilton AI, Cresta AI, Soff AI, Valon, Retell AI, DoorDash, Ramp, Orb SE Track). 6 additional pre-existing short stubs also moved into archive for completeness (Filevine, Outtake AI, Doppel, Nooks, Mercury, Charta Health).
 - Ongoing: each archived loop saves 15-100 lines per session depending on how deep the loop went.
 
 **README and gitignore**:
 - `.gitignore` updated to exclude `coaching_state_archive.md`.
 - README "Data and Privacy" section updated with context management guidance and the two-file pattern.
+
+---
+
+## v4.5: Context-Sensitive Scoring (shipped 2026-04-25)
+
+**Thesis**: Flat dimension weights across all interview contexts produce misleading coaching priorities. A structural critique of a moat discussion is noise; the same critique of a behavioral answer is signal.
+
+**Research basis**: Schmidt and Hunter meta-analysis (86k subjects) establishes structured interviews at 2x unstructured validity. But what gets weighted within structure varies by question type and interviewer role. I/O psychology distinguishes behavioral questions (validity r=0.51, STAR expected) from strategic-hypothetical discussions (argument quality matters, STAR format actively harmful). CEO Genome research and Kaplan/Sorensen show executives weight conviction and decisiveness over format compliance; technical evaluators weight methodological precision.
+
+### Context-Sensitive Scoring Module (cross-cutting.md)
+
+New module. Two classification axes applied per scored unit before weights are set:
+
+- **Question Type**: Behavioral / Strategic-Hypothetical / Case/Design / Culture-Fit. Detected from question text.
+- **Interviewer Type**: Executive-CEO / Technical / HR-Recruiter / Peer. Detected from Interview Loops data, debrief notes, or transcript intro.
+
+Weighting table: base weights by question type (Substance leads at 40% for Strategic-Hypothetical; Structure leads at 30% for Case/Design; Differentiation leads at 40% for Culture-Fit). Interviewer modifier applied additively, then re-normalized.
+
+Feedback framing shifts: Structure feedback reframed as "argument coherence" for Strategic-Hypothetical. Structure suppressed for Culture-Fit. Credibility probed harder when Interviewer Type = Technical. Differentiation elevated to top priority when Question Type = Culture-Fit.
+
+Output format: each unit displays `Context: [Type] x [Interviewer]` and `Weighted composite: [X.X/5]` alongside raw dimension scores.
+
+### analyze.md (Step 6.5)
+
+New mandatory step between format-aware parsing and scoring: classify question type per unit, detect interviewer type once for the session, apply context weights.
+
+### mock.md (Per-Unit Scorecard + Setup)
+
+Per-Unit Scorecard: added Context tag and Weighted composite line.
+Setup: Step 6 added for PM mocks, referencing High-Signal Question Patterns and project deep-dive requirement from `prep.md`.
+
+### PR contribution
+
+Context-Sensitive Scoring Module contributed upstream to noamseg/interview-coach-skill. Generic and personal-data-free.
 
 ---
 
