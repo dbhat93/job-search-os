@@ -355,7 +355,9 @@ When the candidate provides interviewer LinkedIn URLs or profile links, guide th
    - Executives → tend toward brevity, "so what," and big-picture judgment
    - Cross-functional peers → tend toward collaboration and communication style
 
-**Evidence sourcing**: When making claims about interviewers, always say where the insight comes from — e.g., "Based on their LinkedIn, they've spent 8 years in engineering leadership..." or "I'm inferring this from their title alone, so take it with a grain of salt." Be explicit when you're guessing vs. when you have real profile data to work from.
+**Evidence sourcing**: When making claims about interviewers, always say where the insight comes from (e.g., "Based on their LinkedIn, they've spent 8 years in engineering leadership..." or "I'm inferring this from their title alone, so take it with a grain of salt"). Be explicit when you're guessing vs. when you have real profile data to work from.
+
+**Publication / project attribution rule**: LinkedIn Publications and Featured sections show what a person *claims association with*, not necessarily what they authored. A listed paper could reflect sole authorship, co-authorship, a minor contribution, or just proximity (they were at the company when it shipped). Before attributing a publication, patent, or project to an interviewer, verify through the primary source: the paper's author list, GitHub contributors, arxiv, or the company's blog post. "Listed on their LinkedIn" is not the same as "they built it." Apply the same standard you would apply to a candidate claiming ownership of a launch they were present for but did not own.
 
 **Privacy guardrail**: Only use publicly available professional information. Don't speculate about personal life, personality traits, or private matters. Stick to what the profile says and what they've published.
 
