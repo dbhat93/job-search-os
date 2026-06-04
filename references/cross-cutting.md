@@ -1080,3 +1080,64 @@ If the candidate's `voice-and-style.md` prohibits specific characters (most comm
 **Detection rule**: Before any Write or Edit tool call to a candidate file, scan the `content` or `new_string` parameter for U+2014 and U+2013 characters. If either is found and voice-and-style.md prohibits them, substitute before calling the tool.
 
 **Error recovery**: If a hook blocks the write due to these characters, the coach sees the hook error, substitutes them, and retries. Do not announce this to the candidate unless the substitution meaningfully changes the content.
+
+---
+
+## Minutes Integration Module
+
+**Active when minutes is installed** (`~/meetings/` exists and contains files). Minutes is open-source local conversation memory that records meetings and voice memos to `~/meetings/` as plain markdown with structured YAML frontmatter. This module defines the shared querying patterns used by `round`, `outreach`, `progress`, and `hype`.
+
+### Detecting minutes availability
+
+Before any minutes query, silently check:
+
+```bash
+ls ~/meetings/*.md 2>/dev/null | head -1
+```
+
+If this returns nothing, skip the integration entirely. Do not prompt the candidate to install minutes.
+
+### File naming and frontmatter
+
+Minutes files are named: `YYYY-MM-DD-HHMMSS-[title-slug].md`
+
+Key YAML frontmatter fields:
+- `title`: meeting or voice memo topic
+- `date`: ISO datetime of recording
+- `participants`: detected speakers
+- `decisions`: key decisions extracted by minutes
+- `action_items`: follow-up commitments
+- `type`: `meeting` or `voice_memo`
+
+### Querying by date
+
+```bash
+ls ~/meetings/2026-06-04*.md 2>/dev/null     # All files on a given date
+```
+
+Replace the hardcoded date with the computed date from the Date Handling Module.
+
+### Querying by keyword (company name, person name)
+
+```bash
+grep -irl "company name" ~/meetings/ 2>/dev/null
+```
+
+For recent files only, filter by the date prefix in the filename before grepping.
+
+### Distinguishing meeting transcripts from voice memos
+
+- **Meeting transcripts**: contain a `## Transcript` section with speaker-attributed dialogue
+- **Voice memos**: shorter, narrative content, no `## Transcript` section
+
+To identify voice memos: `grep -rL "## Transcript" ~/meetings/ 2>/dev/null`
+
+### Integration points in this skill
+
+| Command | Integration | What it does |
+|---|---|---|
+| `round` Phase 3 | Transcript auto-detect | Finds today's meeting transcript for the identified company and auto-loads into Mode A |
+| `round` Phase 4 | Voice memo context | Finds voice memos recorded in the last 4 hours mentioning the company and pre-loads as debrief memory aids |
+| `outreach` Step 1 | Networking call intelligence | Finds past meetings with the target person or company and uses them as personalization fuel |
+| `progress` Step 5.6 | Cross-loop pattern mining | Finds meetings aligned with Interview Loop date ranges and surfaces patterns not yet in the Question Bank |
+| `hype` Phase 0 | Calendar awareness | Finds recent notes mentioning upcoming interviews and surfaces missing prep briefs |

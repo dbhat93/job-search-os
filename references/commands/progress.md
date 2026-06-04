@@ -28,8 +28,9 @@ The value of `progress` scales with the data available. Before running the full 
 5a. **Scoring Drift Detection** (requires 3+ outcomes). Run the Scoring Drift Detection Protocol from `references/calibration-engine.md`: build the outcome-score matrix, check for systematic drift per dimension, check for feedback contradictions, generate drift report, present adjustments to candidate. Update `coaching_state.md` → Calibration State. Skip if < 3 outcomes.
 5b. **Cross-Dimension Root Cause Review**. Check Calibration State → Cross-Dimension Root Causes (active). For each active root cause: assess treatment effectiveness (are affected dimensions improving in tandem?), check if resolution criteria are met (1+ point improvement sustained over 3+ sessions), update status. If a root cause isn't responding to treatment, recommend a pivot: "We've been treating [root cause] with [treatment] for [N] sessions. Affected dimensions aren't improving together. Let's try a different approach."
 5c. **Success Pattern Analysis** (requires 1+ advancement or offer). Run the Learning from Successes protocol from `references/calibration-engine.md`: validate fit assessments, track positive dimension-outcome correlation, update storybank with success annotations, extract success patterns from 3+ successes. This ensures the system learns from what it got right, not just what it got wrong.
-5.5. **Outcome-Based Targeting Insights** — When 3+ real interview outcomes exist, analyze rejection patterns for targeting signals. See Step 5.5 below. Also validate fit assessment accuracy: if fit assessments were recorded, check whether they predicted outcomes — learn from correct verdicts as well as incorrect ones. Skip if < 3 outcomes.
-6. Check graduation criteria — are they interview-ready? (see Graduation Criteria below). Skip if < 3 sessions.
+5.5. **Outcome-Based Targeting Insights** (see Step 5.5 below). Skip if < 3 outcomes.
+5.6. **Cross-Loop Pattern Mining via Minutes** (see Step 5.6 below). Skip if minutes not installed.
+6. Check graduation criteria (see Graduation Criteria below). Skip if < 3 sessions.
 7. Identify top priorities based on triage, not just lowest scores.
 8. Recommend drills and story updates.
 9. **Review and update Active Coaching Strategy.** Check whether the current approach is producing results. If scores are flat for 3+ sessions on the target dimension, recommend a pivot: "We've been focused on [X] for [N] sessions and it's not moving. That usually means we need a different approach." Update the strategy in `coaching_state.md` — record the old approach in Previous approaches with the reason it was abandoned, and write the new approach with rationale and pivot conditions.
@@ -168,6 +169,25 @@ When 3+ real interview outcomes exist, analyze rejection patterns for targeting 
 > "You've applied to 6 roles. You advanced at the 3 mid-stage startups and were rejected by all 3 enterprise companies. The enterprise rejections all mentioned 'experience at scale.' This isn't a practice problem — it's a targeting pattern. Your skills are landing where they fit. Consider focusing your pipeline on growth-stage companies while building the enterprise narrative for later."
 
 **When the pattern suggests retargeting**, don't prescribe — inform and offer: "The data suggests a pattern. Want to discuss whether adjusting your target companies would help, or do you want to keep pushing on the current targets?"
+
+### Step 5.6: Cross-Loop Pattern Mining (Minutes, if available)
+
+Check `~/meetings/` for meeting files whose dates fall within the active window of any Interview Loop. For each closed loop with a recorded start date:
+
+```bash
+ls ~/meetings/YYYY-MM-DD*.md 2>/dev/null  # Replace YYYY-MM-DD with dates within that loop's window
+```
+
+Then grep those files for question patterns, recurring topics, and post-interview impressions across loops. See the Minutes Integration Module in `references/cross-cutting.md` for detection and querying patterns. Skip silently if minutes is not installed or fewer than 3 matching files exist across all loops.
+
+If 3+ matching files are found, surface:
+- Questions appearing across 3+ meeting files from different companies: high-priority drill targets that may not be in the Question Bank because the candidate forgot to log them post-round
+- Recurring weakness patterns mentioned in post-interview voice memos (e.g., "lost the thread mid-answer" appearing across three different loop memos)
+- Post-interview action items in `action_items` frontmatter with no corresponding coaching state update
+
+Output as an addendum to the triage step: "Minutes cross-loop patterns: [N] recurring questions detected across [N] loops not yet in Question Bank. Adding to Interview Intelligence."
+
+Add newly discovered questions to Interview Intelligence, Question Bank with source tag `[minutes-inferred]` so future calibration knows these came from meeting notes rather than scored rounds.
 
 ### Graduation Criteria
 

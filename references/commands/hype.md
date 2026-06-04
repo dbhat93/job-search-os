@@ -1,5 +1,17 @@
 # hype: Pre-Interview Boost Workflow
 
+**Phase 0: Minutes calendar scan.** Before building the hype reel, check `~/meetings/` for voice memos or meeting notes from the last 7 days that mention an upcoming interview, company name, or interview-related terms:
+
+```bash
+grep -irl "interview\|screen\|onsite\|round" ~/meetings/ 2>/dev/null
+```
+
+Filter to files from the last 7 days by checking the date prefix in the filename. See the Minutes Integration Module in `references/cross-cutting.md` for detection patterns. If minutes is not installed, skip silently.
+
+If a note is found mentioning a company and time within the next 24 hours and no completed prep brief exists for that company: "I found a note from [N] days ago mentioning a [Company] interview. I don't see a prep brief for this loop yet. There may still be time to run `prep` before the hype. Want to do that first, or go straight to hype?" Wait for response. If the candidate says go straight to hype, proceed.
+
+If found and a prep brief exists: pre-load any interview-specific details (format, interviewer name, timing) into the Interview-Specific Tailoring section below. Do not re-ask the candidate for details already captured in the memo.
+
 **Phase 0: Positioning Drift Check**. Before generating the hype reel, check Coaching Notes for a Positioning Drift flag. If present AND an interview is <24h away AND the flag references a surface that will be tested (pitch is always tested; resume is tested if the interviewer reads it pre-call), surface gently: "Your [surface] was last updated [N] sessions ago. If the interviewer has seen your current [other surface], they'll be calibrating to that, not the older version. Want to flag this before we go?" Do not block; hype should still ship. Just surface the risk so the candidate knows.
 
 ### Data-Driven Hype

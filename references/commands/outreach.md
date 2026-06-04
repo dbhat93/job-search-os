@@ -84,6 +84,22 @@ Pull from coaching_state.md:
 - LinkedIn Analysis (profile quality gate)
 - Differentiation data (from Active Coaching Strategy)
 
+**Minutes context check (Integration 3).** After the candidate identifies the target person and company, silently search `~/meetings/` for past meetings or voice memos mentioning that person or company:
+
+```bash
+grep -irl "[person name]\|[company]" ~/meetings/ 2>/dev/null
+```
+
+See the Minutes Integration Module in `references/cross-cutting.md` for detection patterns. If minutes is not installed or no files match, skip silently.
+
+If meetings are found:
+- Extract `action_items` or `decisions` from the frontmatter, and any quotes or commitments made in the meeting body
+- Surface a single-line context note at the start of Step 2: "I found [N] past meeting(s) with [contact/company] in your minutes. Using them for personalization."
+- Use the meeting content to fuel the hook in the message draft: specific topics discussed, things the contact mentioned, follow-up promises made but not yet acted on
+- Flag unfulfilled commitments: "Your notes show you said you'd send [X] after your last call. Consider fulfilling that before the next outreach."
+
+If no meetings are found, proceed with recipient research in Step 2 as normal.
+
 ### Step 2: Situation Assessment
 
 1. **Message type**: Which of the 9 types? If the candidate is unsure, help them decide:

@@ -84,6 +84,21 @@ If no matching file is found, ask: "Do you have a transcript?"
 
 Run the following sequence, one question at a time per coaching Rule 1. Apply the Late Debrief adaptations if the protocol flag was set in Phase 2.
 
+**Step 0: Voice memo context pre-load (Minutes integration).** Before starting the debrief questions, check `~/meetings/` for voice memos recorded in the last 4 hours mentioning the company name from Phase 2:
+
+```bash
+grep -irl "[company]" ~/meetings/ 2>/dev/null
+```
+
+Filter to files that do NOT contain a `## Transcript` section (those are meeting transcripts, already handled in Phase 3). See the Minutes Integration Module in `references/cross-cutting.md` for detection and query patterns. If minutes is not installed or `~/meetings/` is empty, skip silently.
+
+If a voice memo is found: load its content silently as debrief context. Do not surface it immediately. Use it throughout Phase 4 to:
+- Pre-fill where the memo already covers a question: "Your memo captured [topic] right after the call. Does this match what you recall?"
+- Offer as a memory aid when the candidate seems stuck: "You recorded a note about [detail] a few hours ago. Does that help?"
+- Add any questions mentioned in the memo to Phase 7 Write 4 (Interview Intelligence) if they were not recalled during the debrief sequence
+
+If no memo is found, proceed normally.
+
 **Step 1 — Rapid question capture.** "What questions did they ask? Don't worry about exact wording — just get them down." Prompt with format cues: "Was there a behavioral question? A 'tell me about a time'? Anything unexpected?" Capture as many as recalled.
 
 **Step 2 — Per-question self-assessment.** For each recalled question: "How did you feel about your answer? Strong, okay, or rough?" Capture their raw read. In Mode A, note: "We'll compare this to what the transcript actually shows — that delta is coaching gold." *Skip this step if Late Debrief protocol (>48h).*
@@ -221,6 +236,19 @@ Add the scored row with ALL columns populated:
 Interview_Type is required for like-for-like velocity comparisons in `progress`. Infer from the detected round format. If the round was panel, use hybrid. If case-study-only, use live_case. If mixed, pick the dominant format and note the mix in Context.
 
 Mode B: do NOT add to Score History. Capture in Coaching Notes as directional assessment.
+
+**Write 10: Regenerate Derived Views**
+
+Mandatory after every `round`, because Phase 7 may close or advance a loop (Outcome Log + Interview Loop Status updates), which invalidates the derived status surfaces. Run the regeneration logic from `sync` Step 0:
+
+1. Find each `<!-- DERIVED:* START -->` block in `coaching_state.md`.
+2. Rebuild contents from Interview Loops + Outcome Log (source of truth).
+3. Update the "Last regen" date in the START marker.
+4. Preserve text outside the markers.
+
+Why this is here, not deferred to next `sync`: the derived views are how the candidate sees the state of the search at a glance. After a round, those views must reflect today's writes. Stale-until-next-sync is the exact failure mode this redesign exists to kill.
+
+If any prose surface outside DERIVED markers references the closed/advanced loop in a way that's now stale (e.g., 2-week action plan mentioning "if Plaid R3 case scheduled..."), surface those hits as a final "drift cleanup" callout in the round output. Do not auto-rewrite prose; the candidate decides.
 
 ---
 

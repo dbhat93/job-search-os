@@ -201,6 +201,7 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `pitch` | Core positioning statement — hook, context variants, cross-surface consistency |
 | `resume` | Resume optimization — ATS calibration, bullet rewrites, seniority signaling, concern management, cross-surface consistency |
 | `linkedin` | LinkedIn profile optimization — recruiter discoverability, credibility, differentiation |
+| `pipeline` | Live pipeline view generated from coaching_state.md. Always fresh. Never reads state/pipeline.md. |
 | `progress` | Trend review, self-calibration, coaching outcomes |
 | `strategy` | Search-level strategy — pipeline health, timeline risk, priority stack, funnel management, decision logic |
 | `sync` | Coaching state consistency check — detects loop-outcome drift, stale loops, story integrity gaps, coaching strategy staleness |
@@ -222,7 +223,9 @@ When executing a command, read the required reference files first:
 - **`stories`**: Also read `references/storybank-guide.md` and `references/differentiation.md`.
 - **`decode`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank, Positioning Statement, and existing JD Analyses. Read `references/cross-cutting.md` for the Role-Fit Assessment Module.
 - **`feedback`**: Read `coaching_state.md` (all relevant sections). For Type A feedback with calibration signals, check Calibration State → Scoring Drift Log.
-- **`outreach`**: Read `coaching_state.md` for Profile, Positioning Statement, Proof Bank (select top 2-3 proof points by archetype relevance), and Interview Loops (for loop context).
+- **`outreach`**: Read `coaching_state.md` for Profile, Positioning Statement, Proof Bank (select top 2-3 proof points by archetype relevance), and Interview Loops (for loop context). Check `~/meetings/` for past meetings with the target person/company (Minutes integration: personalization fuel for message hooks).
+- **`hype`**: Read `coaching_state.md` for Profile, Interview Loops (upcoming company, prep brief, format), Storybank (top-rated stories mapped to this company), Score History (most recent sessions), Active Coaching Strategy, and Proof Bank. Check `~/meetings/` for recent notes mentioning upcoming interviews (Minutes integration: calendar awareness and pre-loaded interview context).
+- **`progress`**: Read `coaching_state.md` in full: Score History, Session Log, Storybank (use counts, health), Interview Intelligence (Question Bank, company patterns), Outcome Log, Calibration State, Active Coaching Strategy. Check `~/meetings/` for meeting files aligned with Interview Loop dates (Minutes integration: cross-loop pattern mining).
 - **`salary`**: Read `coaching_state.md` for Profile (seniority, target roles, comp expectations), Interview Loops (offer status, round context, company-specific comp signals), Active Coaching Strategy, and Outcome Log (prior offers for anchoring context).
 - **`present`**: Read `coaching_state.md` for Profile, Interview Loops (company and round context — format, interviewer intel, round type), Active Coaching Strategy, and Storybank (for narrative material and story selection). Also read `references/rubrics-detailed.md` (presentation format scoring dimensions) and `references/calibration-engine.md` Section 1 (calibration context).
 - **`pitch`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, LinkedIn Analysis (for consistency check), Resume Optimization (for summary consistency check). Also read `references/differentiation.md` and `references/storybank-guide.md`.
@@ -230,6 +233,7 @@ When executing a command, read the required reference files first:
 - **`strategy`**: Read `coaching_state.md` in full — Profile (deadline, target roles, transition status), Interview Loops (all active entries), Outcome Log, Active Coaching Strategy, Drill Progression, Coaching Notes, Search Strategy (if exists), Salary section (if exists, for comp context).
 - **`sync`**: Read `coaching_state.md` in full — Profile, Interview Loops (all entries including status, next round, stories used), Outcome Log, Storybank (index + use counts), Active Coaching Strategy, Session Log, Search Strategy (if exists).
 - **`map`**: Read `coaching_state.md` in full — Profile, Interview Loops (all entries, especially Status and Next round dates), Outcome Log, Storybank (count + health), Active Coaching Strategy, Drill Progression, Search Strategy (if exists). Read-only — does not write to coaching state.
+- **`pipeline`**: Read `coaching_state.md` in full: Profile (deadline), Interview Loops (all entries), Outcome Log, Comp Strategy (offers in hand), Active Coaching Strategy. Read-only. Never reads or writes state/pipeline.md.
 - **`apply`**: Read `coaching_state.md` for Profile, Storybank (Quick Reference + Story Details), Proof Bank, Positioning Statement, and Interview Loops (for company context). Read `references/cross-cutting.md` for Writing Quality Gate module. Scan `job-search/` for prior application answers. If `voice-and-style.md` exists, read for voice enforcement.
 - **`linkedin`**: Read `coaching_state.md` for Profile (target role), Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, Positioning Statement (for headline/about alignment), JD Analyses (for keyword targeting). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 
@@ -315,9 +319,11 @@ Use first match:
 7. System design / case study / technical interview practice intent -> `practice technical` (sub-command of `practice`)
 8. Practice intent -> `practice`
 9. Progress/pattern intent -> `progress`
-9a. Pipeline / search health / deadline / offer decision / "where should I focus" / "pipeline update" / "pipeline add" intent -> `strategy` (or direct state update if simple add/update). **DATE CHECK REQUIRED**: Any command containing "pipeline" must run `date "+%A, %B %d, %Y"` before processing. When writing dates to coaching_state.md, compute every day-of-week + date pair via `date -j -f "%Y-%m-%d" "YYYY-MM-DD" "+%A, %B %d"`. No exceptions.
-9b. "Is my state current" / "sync check" / "check for inconsistencies" / "are we out of sync" / "check my loops" intent -> `sync`
-9c. "Where do I start" / "what should I work on" / "give me a map" / "I'm lost in the system" / "what's my next move" / "where am I" intent -> `map`
+9a. Explicit `pipeline` command -> `pipeline`. **DATE CHECK REQUIRED**: run `date "+%A, %B %d, %Y"` before output. Read coaching_state.md. Never read state/pipeline.md. Generate live output per references/commands/pipeline.md.
+9b. Pipeline update / add / "pipeline update" / "pipeline add" intent -> direct state update to coaching_state.md Interview Loops section (not pipeline command). DATE CHECK REQUIRED as above.
+9c. Search health / deadline / offer decision / "where should I focus" / "priority stack" intent (not an explicit pipeline view request) -> `strategy`. DATE CHECK REQUIRED as above.
+9d. "Is my state current" / "sync check" / "check for inconsistencies" / "are we out of sync" / "check my loops" intent -> `sync`
+9e. "Where do I start" / "what should I work on" / "give me a map" / "I'm lost in the system" / "what's my next move" / "where am I" intent -> `map`
 10. "I got an offer" / offer details present -> `negotiate`
 11. "I'm done" / "accepted" / "wrapping up" -> `reflect`
 12. Otherwise -> ask whether to run `kickoff` or `help`
@@ -325,6 +331,12 @@ Use first match:
 **Additional detection rules (check alongside the priority list above):**
 
 20. Application questions pasted (multiple text fields, "why this company", "describe your experience with") -> `apply`
+
+21. **`minutes check` / `minutes list` / "check minutes" / "minutes"** -> auto-route, do not ask. Run `minutes list` (or `minutes:minutes-list` skill) to see recent recordings. Then for each unprocessed recording, infer intent from content type and route automatically:
+    - **Interview transcript** (matches an active loop's company name OR the candidate just finished an interview that's not yet logged) -> run `round` for that recording
+    - **External text** (recruiter email, JD reply, scheduling note, screenshot of message) -> run `decode` on the content
+    - **Voice memo with no clear company match** -> surface a one-line summary and ask which command to run
+    Do not chat about what's there. Do not list and ask. Pick the command and execute. Multiple recordings = multiple commands run sequentially. The candidate can interrupt if a routing call is wrong.
 
 ---
 

@@ -57,6 +57,7 @@ Classify the candidate's input into one of five types. If ambiguous, ask: "Is th
 - Update Interview Loops → relevant company entry (Status, Rounds completed)
 - Update Interview Intelligence → Question Bank Outcome column for all questions from this company/round
 - If advanced with next-round details, update Interview Loops → Next round
+- **Regenerate Derived Views.** Mandatory after any Outcome Log or Interview Loop Status change. Run `sync` Step 0 logic: find each `<!-- DERIVED:* START -->` block and rebuild contents from Interview Loops + Outcome Log. Update "Last regen" date. This prevents the failure mode where a closed loop continues to appear as active in Profile snapshot or Search Strategy priority stack.
 
 **Output**: Brief confirmation of the update. If outcome data now meets the threshold for outcome-score correlation (3+ real interviews), mention it: "You now have enough real interview data for `progress` to show outcome patterns. Worth running when you're ready."
 
