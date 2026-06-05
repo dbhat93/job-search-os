@@ -68,7 +68,8 @@ Apply Emotional Triage (from `debrief.md`):
 **Transcript auto-detection (Minutes integration):** Before asking the candidate to paste a transcript, check `~/meetings/` for markdown files matching today's date (or the interview date from Phase 2) and the identified company name. Use glob: `~/meetings/YYYY-MM-DD*{company}*.md` (case-insensitive on company name, also try partial matches and common abbreviations).
 
 If a matching file is found:
-- Read its `## Transcript` section. Confirm with the candidate: "I found a transcript from today: `[filename]`. Use this?"
+- Check the YAML frontmatter `status` field first. If `status: degraded`, warn before proceeding: "I found a transcript for today (`[filename]`) but it has processing warnings: [list `processing_warnings`]. The recording may be incomplete or have quality issues. Use it anyway?"
+- If `status: complete` (or status absent), confirm with the candidate: "I found a transcript from today: `[filename]`. Use this?"
 - If confirmed, extract the transcript content and proceed to **Mode A**.
 - If the file has YAML frontmatter with `action_items` or `decisions`, surface them during Phase 4 (debrief capture) as memory aids: "The transcript also captured these action items: [list]. Do any of these ring true?"
 - If the candidate declines ("wrong meeting", "that's a different call"), fall back to the manual prompt below.

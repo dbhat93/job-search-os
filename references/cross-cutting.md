@@ -1099,15 +1099,22 @@ If this returns nothing, skip the integration entirely. Do not prompt the candid
 
 ### File naming and frontmatter
 
-Minutes files are named: `YYYY-MM-DD-HHMMSS-[title-slug].md`
+Minutes files are named: `YYYY-MM-DD-[title-slug].md`
 
 Key YAML frontmatter fields:
 - `title`: meeting or voice memo topic
-- `date`: ISO datetime of recording
-- `participants`: detected speakers
-- `decisions`: key decisions extracted by minutes
-- `action_items`: follow-up commitments
+- `date`: ISO datetime of recording (ISO 8601 with timezone offset)
+- `duration`: human-readable duration (e.g. `92m 9s`)
+- `status`: `complete`, `degraded`, or `processing`
+- `processing_warnings`: array of failed steps (present when `status: degraded`)
 - `type`: `meeting` or `voice_memo`
+- `entities.projects`: extracted project/entity references
+
+**Speaker identity (Minutes 0.15.0+):** Speaker names confirmed in the desktop, CLI, or MCP now propagate to all surfaces. If speakers have been confirmed, the transcript uses real names instead of `SPEAKER_0` / `SPEAKER_1`. Do not assume speaker labels are generic.
+
+**Degraded transcript check (Minutes 0.18.0+):** Before using any transcript for analysis, read the `status` field. If `status: degraded`, surface to the candidate:
+"This transcript has processing warnings: [list from `processing_warnings`]. Analysis may be incomplete or unreliable. Do you want to proceed anyway?"
+Do not silently analyze a degraded transcript. Common causes: misrouted mic, silent recording, long idle tail. The `status: complete` check replaces the old pattern of inferring quality from transcript content alone.
 
 ### Querying by date
 
@@ -1118,6 +1125,14 @@ ls ~/meetings/2026-06-04*.md 2>/dev/null     # All files on a given date
 Replace the hardcoded date with the computed date from the Date Handling Module.
 
 ### Querying by keyword (company name, person name)
+
+Prefer the CLI search (FTS5-backed, fast on large archives):
+
+```bash
+minutes search "company name" 2>/dev/null
+```
+
+Fallback to grep only if minutes is not on PATH:
 
 ```bash
 grep -irl "company name" ~/meetings/ 2>/dev/null
