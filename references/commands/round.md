@@ -253,6 +253,22 @@ If any prose surface outside DERIVED markers references the closed/advanced loop
 
 ---
 
+### Phase 8: Auto Thank-You Draft (v0)
+
+Always produce a v0 thank-you draft at the end of `round`, without waiting for the candidate to run `thankyou`. A draft in hand beats a blank page, and the interview detail is never fresher than right now. This fires on every `round` (both modes).
+
+**Gate (skip only these):** do not draft if the round's outcome is a terminal rejection or a candidate-side decline. No thank-you is being sent in those cases, so skip silently and omit the section from the output.
+
+Otherwise, run the full `thankyou` logic from `references/commands/thankyou.md` against the debrief data already captured this session, so no re-asking:
+- Pull the interviewer name(s) from Phase 2 / Phase 4.
+- Use the stories that LANDED (Phase 4 Step 5) and any positive signal as the callback material.
+- Run the Shared-History Check FIRST: never re-tell the interviewer something the candidate already said in the room (a thank-you adds, it does not repeat).
+- Enforce the Writing Quality Gate: no em dashes, no AI-isms, under 120 words, exactly one specific callback, the candidate's own voice.
+
+Label it clearly as a **v0 draft**. The candidate edits and sends; a produced thank-you is treated as going out, so do not track sending as an open action. If multiple interviewers were in the round, draft to the primary one (usually the HM) and note that per-interviewer variants are available on request.
+
+---
+
 ### Output Schema
 
 ```markdown
@@ -364,6 +380,11 @@ Outcome Log ✓ | Interview Loop ✓ | Storybank ([N] stories) ✓ | Question Ba
 
 ---
 
+## Thank-You Draft (v0)
+[The drafted note per thankyou.md: to [interviewer], under 120 words, one specific callback, WQG-clean. Labeled v0, edit and send. Omit this whole section if gated out by a terminal outcome.]
+
+---
+
 ## What To Do Next
 **Recommended next**: `[command]` — [one-line reason from triage decision].
 **Alternatives**: [2–3 commands with one-line reasons each].
@@ -381,7 +402,7 @@ Prescribe ONE specific command based on triage:
 - **Mode A, Differentiation bottleneck** → `stories` — extract earned secrets from existing stories
 - **Mode A, storybank changes flagged** → `stories` — handle reworks and gap coverage
 - **Mode A, strong performance + more rounds coming** → `mock [format]` — simulate the next round while confidence is high
-- **Mode A, strong performance + outcome pending** → `thankyou` — send within 24h while interview is fresh
+- **Mode A, strong performance + outcome pending** → the v0 thank-you is already drafted above (Phase 8); edit and send within 24h while the interview is fresh. Run `thankyou` again only if you want a fresh take or a per-interviewer variant.
 - **Outcome unknown** → `feedback` — log when you hear back
 
 ---

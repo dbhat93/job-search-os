@@ -623,3 +623,10 @@ With enough users, the system can surface patterns across candidates: "Candidate
 v3 extended the coaching engine to every surface that matters in a job search. v3.1-v3.5 added navigation, security, relationship intelligence, archetype detection, and expert frameworks. v4 closed the last gap: making the system sound like the candidate, not like AI. The system is now both comprehensive and personal.
 
 v5 (voice, UI, integrations) is exciting but expensive. v6 is a different company. The question now is whether this system, deployed by real job seekers, produces measurably better outcomes than generic AI interview prep.
+
+## v4.10: Round auto-drafts the thank-you (shipped 2026-09-08)
+
+**Thesis**: A produced draft beats a blank page, and the interview detail is never fresher than the moment the debrief ends. `round` now emits a v0 thank-you automatically (new Phase 8) instead of waiting for the candidate to run `thankyou`.
+
+- `references/commands/round.md` -- Phase 8 (Auto Thank-You Draft v0): runs the full `thankyou` logic against the debrief data already captured this session (interviewer names, stories that landed, positive signal), Shared-History Check first, Writing Quality Gate enforced (no em dashes, no AI-isms, <120 words, one callback). Gated off only on a terminal rejection or candidate-side decline. New output-schema section "Thank-You Draft (v0)". Recommended-next logic updated so the pending-outcome path points at the already-drafted v0.
+- `references/commands/thankyou.md` -- auto-invocation note.

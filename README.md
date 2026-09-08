@@ -8,7 +8,7 @@ npx skills add dbhat93/job-search-os
 
 ---
 
-A Claude Code-based interview coach that covers the full job search lifecycle -- from JD analysis and resume optimization through mock interviews to post-offer negotiation. 28 commands across application materials, interview prep, practice, analysis, and comp coaching. It scores your answers across five dimensions, diagnoses root causes behind weak spots, builds a storybank you can retrieve under pressure, and adapts its coaching to your specific patterns. Not a generic question bank. An adaptive system that gets sharper the more you use it.
+A Claude Code-based interview coach that covers the full job search lifecycle -- from JD analysis and resume optimization through mock interviews to post-offer negotiation. 31 commands across application materials, interview prep, practice, analysis, and comp coaching. It scores your answers across five dimensions, diagnoses root causes behind weak spots, builds a storybank you can retrieve under pressure, and adapts its coaching to your specific patterns. Not a generic question bank. An adaptive system that gets sharper the more you use it.
 
 Say `kickoff`, share your resume, and you're being coached in under 2 minutes.
 

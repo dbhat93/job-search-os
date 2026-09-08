@@ -23,3 +23,6 @@ job-search/
 .agents/
 .claude/skills/
 skills-lock.json
+
+# Personal, per-company prep briefs (candidate data)
+prep-briefs/

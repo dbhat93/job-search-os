@@ -12,6 +12,8 @@ Adapt questions to where the candidate is in the interview loop:
 - **Phone screen / recruiter call**: Focus on logistics, role clarity, and process. "What does success look like in the first 90 days?" Don't ask deep strategic questions — save those.
 - **Hiring manager round**: Focus on team dynamics, priorities, and how they evaluate. "What's the biggest challenge the team is facing right now?"
 - **Final round / exec**: Focus on company direction, strategic bets, and culture. "What's the most important thing this team needs to get right in the next year?"
+
+**Startup / founder rounds**: draw on `references/great-questions-to-ask.md` (a curated high-signal bank). Prefer its questions when talking to a founder or at an early-stage company, and steer away from the generic questions it flags as low-signal (why you started the company, plan for the raise, etc.). Pick 2-4 that match what the candidate needs to learn and that make them memorable.
 - **Peer round**: Focus on collaboration, day-to-day, and honest experience. "What's something you wish you'd known before joining?"
 
 **Stage detection logic** (in priority order):
