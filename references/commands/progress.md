@@ -410,7 +410,7 @@ Draws from: Score History trends, storybank gaps, avoidance patterns (from Coach
 - Stories needing rework (1-3): __ [list with S### IDs]
 - Retirement candidates (below 3 after 2+ improvement attempts): __
 - Earned secret coverage: __ of __ stories have real earned secrets (not placeholders)
-- Competency coverage: Run the Storybank Gap Check from `references/cross-cutting.md` across all active Interview Loops simultaneously. For each gap, classify as Critical / Addressable / Covered. Surface: (a) competencies that are Critical Gaps for 2+ active companies — fix these first, highest leverage; (b) gaps that are company-specific vs. appearing across the market — company-specific gaps may be targeting signals rather than skill gaps to build.
+- Competency coverage: Run the Storybank Gap Check from `references/modules/storybank-gap-check.md` across all active Interview Loops simultaneously. For each gap, classify as Critical / Addressable / Covered. Surface: (a) competencies that are Critical Gaps for 2+ active companies — fix these first, highest leverage; (b) gaps that are company-specific vs. appearing across the market — company-specific gaps may be targeting signals rather than skill gaps to build.
 - Retrieval readiness: [has candidate run retrieval drill? last retrieval score?]
 - Assessment: [Healthy / Needs work / Critical gaps]
 
@@ -424,7 +424,7 @@ When 3+ scored interviews exist in Score History, compute and display:
 Reference: Story Deployment Analytics module in `references/cross-cutting.md`.
 
 ## Narrative Consistency
-When 3+ companies have interview data (from Score History or Interview Loops), run the Narrative Consistency Checker from `references/cross-cutting.md`. Surface any contradictions found. If all tracked narratives are consistent, say so in one line: "Narrative consistency: No contradictions detected across [N] companies."
+When 3+ companies have interview data (from Score History or Interview Loops), run the Narrative Consistency Checker from `references/modules/narrative-consistency-checker.md`. Surface any contradictions found. If all tracked narratives are consistent, say so in one line: "Narrative consistency: No contradictions detected across [N] companies."
 
 ## Coaching Meta-Check
 - Is this feedback landing?

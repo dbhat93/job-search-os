@@ -1,3 +1,5 @@
+<!-- RETIRED 2026-09-12. Reason: Profile exists and COACH.md says never re-run kickoff for a returning candidate. Dead for this user. Restore by moving back to references/commands/ and re-adding the registry row in COACH.md. -->
+
 # kickoff — Setup Workflow
 
 ### Step 1: Coaching Configuration

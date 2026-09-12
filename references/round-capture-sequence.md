@@ -1,3 +1,5 @@
+<!-- PROMOTED TO A REFERENCE 2026-09-12 (was references/round-capture-sequence.md). Not a command any more; `round` Phase 4 loads the capture sequence, Late Debrief protocol, Emotional Triage and Signal Interpretation Guide from here. Original retirement note: Reason: Self-declared alias for `round` Mode B. round.md already routes it. Kept only for backward compatibility and it is a drift source. Restore by moving back to references/commands/ and re-adding the registry row in COACH.md. -->
+
 # debrief: Post-Interview Rapid Capture Workflow
 
 ## Status: Merged into `round` (v4.2)

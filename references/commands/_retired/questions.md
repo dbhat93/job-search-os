@@ -1,3 +1,5 @@
+<!-- RETIRED 2026-09-12. Reason: Questions to ask. Subset of `prep`, backed by references/great-questions-to-ask.md which survives. Restore by moving back to references/commands/ and re-adding the registry row in COACH.md. -->
+
 # questions — Questions To Ask Workflow
 
 Generate 5 questions with clear intent, interviewer fit, and follow-up preparation. **Questions are strategic tools, not afterthoughts.** Each question should serve at least one purpose:

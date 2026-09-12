@@ -120,7 +120,7 @@ The interview coaching system is now active.
 **Base directory**: /path/to/your/interview-coach-skill/
 **Coaching state**: /path/to/your/interview-coach-skill/coaching_state.md
 
-When loading any reference file (e.g. `references/commands/map.md`), resolve it as an absolute path under the base directory above.
+When loading any reference file (e.g. `references/commands/strategy.md`), resolve it as an absolute path under the base directory above.
 
 !`cat /path/to/your/interview-coach-skill/COACH.md`
 ```
@@ -177,11 +177,7 @@ Re-export every 2-4 weeks to keep the data fresh. The coach will flag stale expo
 
 ## Commands
 
-### Getting Started
-
-| Command | Purpose | Typical Output |
-|---|---|---|
-| `kickoff` | Setup profile, track, and preferences | Kickoff summary + time-aware action plan |
+**Architecture note (2026-09-12 refactor).** 24 commands, down from 31. `help`, `kickoff`, `map`, `pipeline`, `concerns` and `questions` were retired to `references/commands/_retired/` after a usage audit found zero invocations and no unique function: the registry below replaces `help`, a new candidate is set up with two or three inline questions instead of `kickoff`, `strategy` covers `map` and `pipeline`, and `prep` covers `concerns` and `questions`. `debrief` became `references/round-capture-sequence.md` because `round` Phase 4 loads its capture sequence. Retired files keep a restore note in their header.
 
 ### Interview Round Prep
 
@@ -189,9 +185,8 @@ Re-export every 2-4 weeks to keep the data fresh. The coach will flag stale expo
 |---|---|---|
 | `research [company]` | Company research + structured fit assessment (3 depth levels) | Company snapshot, culture signals, fit assessment, claim-verified findings |
 | `decode` | JD analysis + batch triage (3 depth levels, 6 lenses) | Confidence-labeled decoding, competency extraction, fit assessment, recruiter verification questions, batch comparison, teaching layer |
+| `fit [JD/URL/company]` | Fast role-fit verdict (Gate Layer first, then 5 dimensions + per-requirement evidence classification) | Go/no-go verdict with gates, dimension scores, and evidence gaps. Reuses `decode`'s JD analysis or `research`'s company assessment when one exists |
 | `prep [company]` | Build role-specific prep brief (format-aware, culture-aware, role-fit assessment) | Format guidance, culture read, role-fit assessment, interviewer intelligence, competencies, predicted Qs, story mapping |
-| `concerns` | Anticipate interviewer concerns | Concern-counter-evidence map |
-| `questions` | Generate interviewer questions | 5 tailored, non-generic questions |
 | `present` | Presentation round coaching (3 depth levels) | Narrative arc selection, content structuring, timing calibration, opening/closing optimization, Q&A preparation, constraint versions |
 
 ### Application Materials
@@ -225,17 +220,13 @@ Re-export every 2-4 weeks to keep the data fresh. The coach will flag stale expo
 |---|---|---|
 | `round` | **Primary post-interview command.** Compound workflow: captures impressions, scores transcript (if available), and updates all state in one shot. Mode A = transcript path. Mode B = memory-only path. Run this after any real interview. | Interviewer signals, per-unit scoring (if transcript), all state sections updated, triage-based next step |
 | `analyze` | Transcript-only scoring. Use when a transcript arrives post-hoc (after `round` was already run), or for analyzing an isolated transcript with no associated interview loop. For fresh real interviews, use `round` instead. | Auto-detected format, per-unit scoring (Q&A/phases/exchanges), format-specific dimensions, decision tree + interview delta |
-| `debrief` | Legacy alias for `round` Mode B (memory-only capture). Kept for backward compatibility; routes to `round` Phases 1 to 7. | Same as `round` Mode B |
 | `progress` | Trends, self-calibration, outcome tracking, scoring calibration. At Level 5: includes a Hard Truth section | Self-assessment delta + outcome correlation + scoring drift detection + root cause tracking + coaching meta-check |
 | `feedback` | Capture recruiter feedback, outcomes, corrections, context, or coaching meta-feedback. At Level 5: rejections include structured leverage extraction | State updates + next step suggestion |
 | `thankyou` | Post-interview follow-up drafts | Thank-you note + variants |
 | `negotiate` | Post-offer negotiation coaching | Offer analysis + strategy + scripts + specific language |
 | `reflect` | Post-search retrospective + archive | Journey arc, breakthroughs, transferable skills, archived state |
 | `strategy` | Full search-level pipeline audit + 2-week action plan. At Level 5: 4-lens challenge protocol | Timeline risk, funnel health, narrative coherence, priority stack, yield projection, action plan |
-| `pipeline` | Live pipeline view generated fresh from coaching state | Active loops, stages, next actions, dates. Always current, never cached |
 | `sync` | Coaching state consistency check + session continuity | Data integrity verification, stale entry detection, cross-section consistency |
-| `help` | Show command menu (context-aware) | Full command list + recommended next based on coaching state |
-| `map` | Situational GPS -- "where am I and what should I do next?" | Priority-ranked next actions + filtered command reference for current search phase |
 
 ---
 
@@ -501,14 +492,15 @@ interview-coach-skill/
 │   │   ├── reflect.md
 │   │   ├── strategy.md
 │   │   ├── sync.md
-│   │   ├── help.md
-│   │   ├── map.md
-│   │   └── apply.md
+│   │   ├── apply.md
+│   │   └── _retired/                # help, kickoff, map, pipeline, concerns, questions (restore notes in-file)
 │   ├── coaching-state-schema.md
 │   ├── schema-migration.md
 │   ├── archival-rules.md
 │   ├── state-update-triggers.md
-│   ├── cross-cutting.md                # Shared modules: archetype-detection, proof-bank, gap-handling, storybank-gap-check, contact-network, narrative-consistency, story-deployment-analytics, signal-reading, differentiation, cultural awareness, psychological readiness, external text validation
+│   ├── modules/                        # 27 on-demand shared modules, split out of cross-cutting.md 2026-09-12
+│   ├── round-capture-sequence.md       # round Phase 4 capture sequence, Late Debrief protocol, Signal Interpretation Guide (was debrief.md)
+│   ├── cross-cutting.md                # INDEX ONLY (2.9KB). Maps module name -> references/modules/*.md. Was 94KB of inline modules: archetype-detection, proof-bank, gap-handling, storybank-gap-check, contact-network, narrative-consistency, story-deployment-analytics, signal-reading, differentiation, cultural awareness, psychological readiness, external text validation
 │   ├── rubrics-detailed.md             # Scoring anchors, root causes, seniority calibration
 │   ├── role-drills.md                  # Role-specific drills + interviewer archetypes
 │   ├── differentiation.md              # Earned secrets, spiky POVs, clarity under pressure
@@ -590,9 +582,19 @@ Once your voice profile exists, every externally-facing draft will match your se
 
 ---
 
+## Integrity QA
+
+`python3 tests/qa-integrity.py` is a static linter over the routing graph. It verifies registry-to-file parity, that every command advertised in `SKILL.md` exists, that every `references/*.md` path mentioned anywhere resolves, that the coaching-state sections commands depend on are present, that `DERIVED:` markers are balanced, and that every story ID referenced has an index row. Exit code 1 on any failure. Run it after editing any skill file or moving anything; it caught six dangling references during the 2026-09-12 refactor.
+
+The eval suites in `tests/v3.2-evals.md` and `tests/v4.9-evals.md` are manual specifications, run one feature group per fresh session against the fixtures in `tests/fixtures/`.
+
+---
+
 ## Data and Privacy
 
 `coaching_state.md` is created on first `kickoff` and updated automatically throughout your search. It contains sensitive personal and professional data -- treat it accordingly.
+
+`storybank.md` is a second gitignored file holding the story index (split out of `coaching_state.md` 2026-09-12). Same sensitivity: treat it as confidential.
 
 **What it stores:**
 - Target companies, interview status, and outcomes
@@ -612,7 +614,7 @@ Once your voice profile exists, every externally-facing draft will match your se
 - Do not sync `coaching_state.md` to any shared or cloud location (Google Drive, Dropbox, iCloud, GitHub) without encrypting it first
 - If you share your repo or coaching setup with anyone, confirm `coaching_state.md` is excluded
 - When your search ends, run `reflect` -- it prompts you to archive and delete data you no longer need
-- **Context management**: long searches generate large `coaching_state.md` files that consume context every session. Periodically compress closed loops: copy their full content to `coaching_state_archive.md`, replace the loop in `coaching_state.md` with a 3-5 line stub. Read the archive only when you need the full intel on a past loop. The v4.3 rule (compress loops closed >30 days ago) enforces this at the coaching level; the v4.4 two-file pattern keeps tokens manageable at the session level
+- **Context management**: long searches generate a large `coaching_state.md` that costs context every session. Three mechanisms, in order of payoff. (1) **Read by section, never whole.** `COACH.md` carries a load-discipline rule; use `grep -n` to find a section and `sed -n` to read it. (2) **Split by read frequency.** The storybank index lives in `storybank.md` and shared logic lives in `references/modules/`, loaded on demand, so a typical session reads 4-9KB of modules instead of 94KB. (3) **Archive aggressively.** Copy a closed loop's full content to `coaching_state_archive.md` and leave a 3-5 line stub; compress Outcome Log entries to one line each; move story arcs out of the index. Measured effect on a real 375KB state file: a `round` session went from ~152K tokens to ~55K when state is read by section. Never read the archive unless you need historical detail.
 - Compensation data is among the most sensitive fields. If you ever export or share state data, redact the Comp Strategy section first
 
 **Third-party data note:** Transcripts and recruiter feedback contain other people's words. These are stored in your local `coaching_state.md` only -- they are never transmitted anywhere by the skill itself.

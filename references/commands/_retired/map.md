@@ -1,3 +1,5 @@
+<!-- RETIRED 2026-09-12. Reason: Read-only situational GPS. `strategy` produces the same picture with a recommendation attached; `sync` regenerates the derived views. Restore by moving back to references/commands/ and re-adding the registry row in COACH.md. -->
+
 # map — Situational GPS
 
 Answers one question: **"Given where I am right now, what should I do?"**

@@ -34,7 +34,7 @@ Don't skip the reflective prompts and go straight to "tell me a story about lead
 - **Kryptonite Framework** (Lichaw): The inverse. "What consistently drains you, or where do you struggle despite effort?" This surfaces honest growth stories and self-awareness signals that interviewers value at senior levels.
 - **Feedback Stories** (Kim Scott, "Radical Candor"): Ask about times they gave hard feedback or received it well. These are rare in storybanks but commonly asked in interviews ("Tell me about a difficult conversation").
 
-**Important**: When adding a story, write the full STAR text to the Story Details section in `coaching_state.md` — not just the index row in the Storybank table. The table is a quick-reference index. The Story Details section is where the actual story lives, including Situation, Task, Action, Result, Earned Secret, deploy use-case, and version history. Without the full text, the coach can't help improve the story in a future session without asking the candidate to retell it from scratch.
+**Important**: When adding a story, add the index row to `storybank.md` and write the full STAR text to the "Storybank Story Details" section of `coaching_state_archive.md` — not just the index row in the Storybank table. The table is a quick-reference index. The Story Details section is where the actual story lives, including Situation, Task, Action, Result, Earned Secret, deploy use-case, and version history. Without the full text, the coach can't help improve the story in a future session without asking the candidate to retell it from scratch.
 
 ### Improving Stories — Structured Upgrade Protocol
 

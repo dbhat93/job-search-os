@@ -5,6 +5,8 @@
 # compensation strategy, recruiter feedback, transcript excerpts, and personal reflections.
 # Never commit this file. See README "Data and Privacy" section for details.
 coaching_state.md
+# Personal story data, same sensitivity as coaching_state.md.
+storybank.md
 
 # Archive of closed interview loops: same sensitivity as coaching_state.md.
 # Full loop details preserved here when loops are compressed in the main state file.

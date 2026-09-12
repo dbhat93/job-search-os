@@ -14,7 +14,7 @@ The scoring logic is shared, not duplicated here. `fit` runs the **Role-Fit Asse
 
 Read before executing:
 - `references/cross-cutting.md` for the Role-Fit Assessment Module (Gate Layer, Per-Requirement Evidence Classification, Five Fit Dimensions, Three-Tier Verdict, Confidence by Data Availability, Alternative Suggestions Protocol)
-- `coaching_state.md` for Profile (target roles, seniority band, deadline, hard constraints), Storybank and Proof Bank (for evidence-based Competency Overlap), and Interview Loops (for any existing context on this company)
+- `coaching_state.md` for Profile (target roles, seniority band, deadline, hard constraints), Storybank (`storybank.md`) and Proof Bank (for evidence-based Competency Overlap), and Interview Loops (for any existing context on this company)
 
 ### Sequence
 

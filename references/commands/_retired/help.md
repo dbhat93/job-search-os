@@ -1,3 +1,5 @@
+<!-- RETIRED 2026-09-12. Reason: The command registry lives in COACH.md, which is cat-ed into every activation. A 15KB duplicate help file is pure overhead. Restore by moving back to references/commands/ and re-adding the registry row in COACH.md. -->
+
 # help — Command Reference Workflow
 
 ### Logic

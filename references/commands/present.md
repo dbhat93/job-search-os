@@ -103,7 +103,7 @@ State this boundary explicitly at the start: "I'll coach the structure, narrativ
 ### Logic / Sequence (7 steps)
 
 **Step 1: Context Assembly**
-Pull from coaching_state.md: Profile (target role, seniority), Interview Loops (company/role/format details), Prep Brief (if prep was run — evaluation criteria, culture, interviewer intel), Storybank (supporting stories to incorporate).
+Pull from coaching_state.md: Profile (target role, seniority), Interview Loops (company/role/format details), Prep Brief (if prep was run — evaluation criteria, culture, interviewer intel), Storybank (`storybank.md`) (supporting stories to incorporate).
 
 Gather from candidate (one question at a time):
 1. What's the presentation topic/prompt? (exact wording if they have it)

@@ -60,7 +60,7 @@ Then: "When was the interview — today, or earlier this week?" Calculate the ti
 
 Apply Emotional Triage (from `debrief.md`):
 - **Good** → proceed normally
-- **Terrible** → "That sounds rough. Let's capture what happened while it's fresh — we can go deep on the analysis after some distance." Focus on capture. Reference the Psychological Readiness Module from `references/cross-cutting.md` (Post-Interview Processing section) if the candidate is catastrophizing.
+- **Terrible** → "That sounds rough. Let's capture what happened while it's fresh — we can go deep on the analysis after some distance." Focus on capture. Reference the Psychological Readiness Module from `references/modules/psychological-readiness-module.md` (Post-Interview Processing section) if the candidate is catastrophizing.
 - **Uncertain** → "Uncertainty is normal. Let's capture the data and see what it tells us."
 
 **Step 2 — Mode fork.**
@@ -104,7 +104,7 @@ If no memo is found, proceed normally.
 
 **Step 2 — Per-question self-assessment.** For each recalled question: "How did you feel about your answer? Strong, okay, or rough?" Capture their raw read. In Mode A, note: "We'll compare this to what the transcript actually shows — that delta is coaching gold." *Skip this step if Late Debrief protocol (>48h).*
 
-**Step 3 — Signal reading.** "Did you notice any signals from the interviewer?" Display the Signal Interpretation Guide and apply the Signal-Reading Module from `references/cross-cutting.md`:
+**Step 3 — Signal reading.** "Did you notice any signals from the interviewer?" Display the Signal Interpretation Guide and apply the Signal-Reading Module from `references/modules/signal-reading-module.md`:
 
 | Signal | Likely Meaning | Confidence |
 |--------|---------------|------------|
@@ -411,7 +411,7 @@ Prescribe ONE specific command based on triage:
 
 `round` performs a compound state update after a real interview. All writes are documented in Phase 7 above. Reference dependencies:
 
-- **Phase 4 capture logic** → `references/commands/debrief.md` (sequence, Late Debrief protocol, Emotional Triage, Signal Interpretation Guide)
+- **Phase 4 capture logic** → `references/round-capture-sequence.md` (sequence, Late Debrief protocol, Emotional Triage, Signal Interpretation Guide)
 - **Phase 5A transcript processing** → `references/commands/analyze.md` (Steps 3.5–16, Post-Scoring Decision Tree, output schema)
 - **Cross-cutting modules used** → `references/cross-cutting.md`: External Text Validation Module (Phase 0), Signal-Reading Module (Phase 4 Step 3), Psychological Readiness Module (Phase 3 emotional triage)
 - **When transcript available** → also load `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/differentiation.md` (when Differentiation is the bottleneck)

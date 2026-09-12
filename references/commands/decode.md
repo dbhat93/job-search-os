@@ -79,7 +79,7 @@ Every interpretation gets a confidence label. This is non-negotiable — it's wh
 Accept JD in any format — full posting, bullet-point paste, screenshot description, even "here's roughly what the JD says." Parse into sections (responsibilities, requirements, nice-to-haves, etc.). If sections aren't clearly labeled, infer from content. Flag if the JD is unusually short (may be incomplete) or unusually long (may be a kitchen-sink posting).
 
 **Step 2: Context Assembly**
-Pull from coaching_state.md: Profile (target role, seniority band), Resume Analysis (skills, experience, positioning strengths), Storybank (skills coverage), Positioning Statement (key differentiator), active Interview Loops (is this company already in progress?), JD Analyses (previous decodes for pattern comparison).
+Pull from coaching_state.md: Profile (target role, seniority band), Resume Analysis (skills, experience, positioning strengths), Storybank (`storybank.md`) (skills coverage), Positioning Statement (key differentiator), active Interview Loops (is this company already in progress?), JD Analyses (previous decodes for pattern comparison).
 
 **Step 3: 6-Lens Decode**
 Apply all 6 decoding lenses. For each finding:

@@ -82,7 +82,7 @@ Pull from publicly available sources only:
 
 ### Fit Assessment
 
-Use the Role-Fit Assessment Module from `references/cross-cutting.md`. Without a JD, you can assess 3 of 5 dimensions:
+Use the Role-Fit Assessment Module from `references/modules/role-fit-assessment-module.md`. Without a JD, you can assess 3 of 5 dimensions:
 
 1. **Seniority Alignment** — Does the candidate's experience level match what this company typically hires for this type of role? Use public signals (job postings, team composition on LinkedIn, company stage).
 2. **Domain Relevance** — How transferable is the candidate's industry/domain experience? A fintech PM applying to a healthtech startup has a domain gap. Name it, assess how bridgeable it is.

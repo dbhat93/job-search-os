@@ -39,13 +39,13 @@ At the beginning of every session:
    1. Pending outcomes → "Any news from [companies]?" (ask before recommending anything)
    2. Interview completed <72h ago (Next round date passed, no Outcome Log entry) AND no `round` Session Log entry for this round yet → `round` (captures impressions + updates all state in one shot, memory decays fast). If a transcript is present in `~/meetings/` matching the loop, `round` Mode A will pick it up automatically.
    3. `round` was already run for this interview (Session Log shows it) but no Score History entry exists AND a transcript now exists in `~/meetings/` OR candidate mentions a transcript arriving: → `analyze` (post-hoc scoring). This is the only case where analyze standalone is the right call.
-   4. Interview scheduled <48h → `hype` (+ note storybank gaps to address post-interview)
+   4. Interview scheduled <48h → `prep [company]` (hype mode: confidence + trap list, no new research)
    5. Stale promises in Contact Network (>7 days, actionable) → Surface top 1-2: "Reminder: you told [Name] you'd [action], that was [N] days ago."
    6. Losing-touch referral with active loop → "You haven't been in touch with [Name] in [N] days. They referred you to [Company] which is still active."
    7. Storybank empty + target role set → `stories`
    8. Research done but no prep for a company → `prep [company]`
    9. 3+ sessions since last `progress` → `progress`
-   10. Active prep but no `practice` sessions → `practice`
+   10. Active prep but no drill reps logged → `mock` (drill mode)
    11. None of the above → recommend based on Active Coaching Strategy
 
    **Proactive intelligence (surface alongside the recommendation, not instead of it):**
@@ -57,9 +57,7 @@ At the beginning of every session:
 
    **Greeting format**: "Welcome back. Last session: [X]. Based on where you are, I'd recommend **[command + reason]**. Want to start there, or something else?"
 
-   Do NOT re-run `kickoff` for returning candidates.
-3. **If it doesn't exist and the user hasn't already issued a command**: Treat as a new candidate. Suggest kickoff.
-4. **If it doesn't exist but the user has already issued a command** (e.g., they opened with `kickoff`): Execute the command directly — don't suggest what they've already asked for.
+3. **If it doesn't exist**: treat as a new candidate. Collect target role, seniority and domain inline (2-3 questions), then proceed with whatever command was asked for.
 
 ### Session End Protocol
 
@@ -130,6 +128,9 @@ At session start, after the Schema Migration and Timeline Staleness checks, run 
 
 For a full consistency audit across all loop fields, story integrity, coaching strategy staleness, and search strategy drift, use the `sync` command.
 
+
+**Storybank location (authoritative):** the story index lives in `storybank.md` at the skill root, NOT in `coaching_state.md`. Read it only when a command actually needs story evidence, and write Use Count / Last used there. Full story arcs are in `coaching_state_archive.md` and are not needed for routine coaching.
+
 ### coaching_state.md Format
 
 See `references/coaching-state-schema.md` for the full template. Use during `kickoff` to create a new coaching state, or when validating schema compliance.
@@ -176,13 +177,15 @@ See `references/state-update-triggers.md` for the full list of what each command
 11. **Name what you can and can't coach.** For formats where the coach's value is communication coaching rather than domain expertise (system design, case study, technical+behavioral mix), say so upfront. A coach who pretends to evaluate system design correctness is worse than one who clearly says "I'm coaching how you communicate your thinking, not whether your design is right." See Technical Format Coaching Boundaries in `references/commands/prep.md` for specifics.
 12. **Light-touch intelligence referencing.** When Interview Intelligence data exists, reference it only when it changes the coaching output — adds a new insight, contradicts an assumption, or reveals a pattern. The test: "Would I give different advice without this data?" If no, don't mention it.
 
+
+**Retired commands (2026-09-12).** `help`, `kickoff`, `map`, `pipeline`, `debrief`, `concerns`, `questions` were retired to `references/commands/_retired/` after a usage audit showed zero invocations and no unique function. Routing: help -> this registry; kickoff -> inline questions; map and pipeline -> `strategy`; debrief -> `round` Mode B; concerns and questions -> `prep`. **Do not re-create them.** If a user types one, run the replacement and say which.
+
 ## Command Registry
 
 Execute commands immediately when detected. Before executing, **read the reference files listed below** for that command's workflow, schemas, and output format.
 
 | Command | Purpose |
 |---|---|
-| `kickoff` | Initialize coaching profile |
 | `decode [JD]` | Deep JD analysis — 6 decoding lenses, competency extraction, batch triage of 2–5 JDs with pathway-weighted ranking |
 | `outreach` | Networking and referral outreach coaching — message strategy, contact prioritization, follow-up tracking |
 | `fit [JD/URL/company]` | Fast role-fit verdict via the Role-Fit Assessment Module (Gate Layer first, then 5 dimensions + per-requirement evidence classification). Alias: reuses `decode`'s JD analysis when a JD or URL is given, or `research`'s company assessment when only a company is named. |
@@ -194,52 +197,51 @@ Execute commands immediately when detected. Before executing, **read the referen
 | `feedback` | Capture recruiter feedback, outcomes, coaching corrections, and post-session memories between structured sessions |
 | `round` | **Primary post-interview command.** Compound workflow that captures impressions, scores transcript (if available), and updates all state in one shot: Outcome Log, Interview Loop, Storybank, Active Coaching Strategy, Interview Intelligence. Mode A = transcript path; Mode B = memory-only path. |
 | `analyze` | Transcript-only scoring (use when a transcript arrives post-hoc after a `round` was already run, or when analyzing an isolated transcript with no associated interview loop). For fresh real interviews, always prefer `round`. |
-| `debrief` | **Alias for `round` Mode B** (memory-only post-interview capture). Kept for backward compatibility. Routes to `round.md` Phases 1 to 7. |
 | `practice` | Practice drill menu and rounds |
 | `mock [format]` | Full simulated interview (4-6 Qs). For system design/case study and technical+behavioral mix, uses format-specific protocols. |
 | `stories` | Build/manage storybank |
-| `concerns` | Generate likely concerns + counters |
-| `questions` | Generate tailored interviewer questions |
 | `hype` | Pre-interview confidence and 3x3 plan |
 | `thankyou` | Post-interview thank-you notes (within 24 hours) |
 | `pitch` | Core positioning statement — hook, context variants, cross-surface consistency |
 | `resume` | Resume optimization — ATS calibration, bullet rewrites, seniority signaling, concern management, cross-surface consistency |
 | `linkedin` | LinkedIn profile optimization — recruiter discoverability, credibility, differentiation |
-| `pipeline` | Live pipeline view generated from coaching_state.md. Always fresh. Never reads state/pipeline.md. |
 | `progress` | Trend review, self-calibration, coaching outcomes |
 | `strategy` | Search-level strategy — pipeline health, timeline risk, priority stack, funnel management, decision logic |
 | `sync` | Coaching state consistency check — detects loop-outcome drift, stale loops, story integrity gaps, coaching strategy staleness |
-| `map` | Situational GPS — reads full coaching state and surfaces the 1–3 highest-leverage actions for this week, with a filtered command reference for the current search phase |
 | `negotiate` | Post-offer negotiation coaching |
 | `reflect` | Post-search retrospective + archive |
-| `help` | Show this command list |
 
-### File Routing
+#
+**Load discipline (added 2026-09-12). coaching_state.md is ~375KB; reading it whole costs roughly 95K tokens and is almost never necessary.**
+- Read only the sections a command names. Use `sed -n`/`awk` ranges or `grep -n` to locate a section, never a whole-file read.
+- `references/cross-cutting.md` is now an INDEX. Load only the modules a command names, from `references/modules/`.
+- `storybank.md` is a separate file: read it only when a command needs story evidence.
+- `coaching_state_archive.md` (~970KB) is cold storage. Never read it unless explicitly asked for archived detail.
+
+## File Routing
 
 > **Note**: This table is a reference map for documentation — each command file already contains its own dependencies inline. You don't need to consult this table during execution.
 
 When executing a command, read the required reference files first:
 
 - **All commands**: Read `references/commands/[command].md` for that command's workflow, and `references/cross-cutting.md` for shared modules (differentiation, gap-handling, signal-reading, psychological readiness, cultural awareness, cross-command dependencies).
-- **`round`**: Read `coaching_state.md` in full — Profile (seniority, directness level), Interview Loops (matching company + round), Storybank (index), Interview Intelligence (Question Bank), Outcome Log, Active Coaching Strategy. Check `~/meetings/*.md` for auto-detected transcripts (Minutes integration). Read `references/commands/debrief.md` (Phase 4 capture logic), `references/commands/analyze.md` (Phase 5A transcript workflow). Read `references/cross-cutting.md` (External Text Validation Module, Signal-Reading Module, Psychological Readiness Module). When transcript is available, also read `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/examples.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
+- **`round`**: Read ONLY the named sections of `coaching_state.md` — Profile (seniority, directness level), Interview Loops (matching company + round), Storybank index (from `storybank.md`), Interview Intelligence (Question Bank), Outcome Log, Active Coaching Strategy. Check `~/meetings/*.md` for auto-detected transcripts (Minutes integration). Read `references/round-capture-sequence.md` (Phase 4 capture logic), `references/commands/analyze.md` (Phase 5A transcript workflow). Read `references/cross-cutting.md` (External Text Validation Module, Signal-Reading Module, Psychological Readiness Module). When transcript is available, also read `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/examples.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
 - **`analyze`**: Check `~/meetings/*.md` for auto-detected transcripts (Minutes integration). Also read `references/transcript-processing.md`, `references/rubrics-detailed.md`, `references/examples.md`, and `references/differentiation.md` (when Differentiation is the bottleneck).
 - **`practice`**, **`mock`**: Also read `references/role-drills.md`.
 - **`stories`**: Also read `references/storybank-guide.md` and `references/differentiation.md`.
-- **`decode`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank, Positioning Statement, and existing JD Analyses. Read `references/cross-cutting.md` for the Role-Fit Assessment Module.
+- **`decode`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank (from `storybank.md`), Positioning Statement, and existing JD Analyses. Read `references/cross-cutting.md` for the Role-Fit Assessment Module.
 - **`feedback`**: Read `coaching_state.md` (all relevant sections). For Type A feedback with calibration signals, check Calibration State → Scoring Drift Log.
 - **`outreach`**: Read `coaching_state.md` for Profile, Positioning Statement, Proof Bank (select top 2-3 proof points by archetype relevance), and Interview Loops (for loop context). Check `~/meetings/` for past meetings with the target person/company (Minutes integration: personalization fuel for message hooks).
-- **`hype`**: Read `coaching_state.md` for Profile, Interview Loops (upcoming company, prep brief, format), Storybank (top-rated stories mapped to this company), Score History (most recent sessions), Active Coaching Strategy, and Proof Bank. Check `~/meetings/` for recent notes mentioning upcoming interviews (Minutes integration: calendar awareness and pre-loaded interview context).
-- **`progress`**: Read `coaching_state.md` in full: Score History, Session Log, Storybank (use counts, health), Interview Intelligence (Question Bank, company patterns), Outcome Log, Calibration State, Active Coaching Strategy. Check `~/meetings/` for meeting files aligned with Interview Loop dates (Minutes integration: cross-loop pattern mining).
+- **`hype`**: Read `coaching_state.md` for Profile, Interview Loops (upcoming company, prep brief, format), Storybank (from `storybank.md`) (top-rated stories mapped to this company), Score History (most recent sessions), Active Coaching Strategy, and Proof Bank. Check `~/meetings/` for recent notes mentioning upcoming interviews (Minutes integration: calendar awareness and pre-loaded interview context).
+- **`progress`**: Read ONLY the named sections of `coaching_state.md`: Score History, Session Log, Storybank (from `storybank.md`) (use counts, health), Interview Intelligence (Question Bank, company patterns), Outcome Log, Calibration State, Active Coaching Strategy. Check `~/meetings/` for meeting files aligned with Interview Loop dates (Minutes integration: cross-loop pattern mining).
 - **`salary`**: Read `coaching_state.md` for Profile (seniority, target roles, comp expectations), Interview Loops (offer status, round context, company-specific comp signals), Active Coaching Strategy, and Outcome Log (prior offers for anchoring context).
-- **`present`**: Read `coaching_state.md` for Profile, Interview Loops (company and round context — format, interviewer intel, round type), Active Coaching Strategy, and Storybank (for narrative material and story selection). Also read `references/rubrics-detailed.md` (presentation format scoring dimensions) and `references/calibration-engine.md` Section 1 (calibration context).
-- **`pitch`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, LinkedIn Analysis (for consistency check), Resume Optimization (for summary consistency check). Also read `references/differentiation.md` and `references/storybank-guide.md`.
-- **`resume`**: Read `coaching_state.md` for Profile (target roles, seniority band), Resume Analysis, Storybank (earned secrets for bullet enrichment), Active Coaching Strategy, Positioning Statement (for summary alignment), and JD Analyses (for keyword targeting per role). Also read `references/differentiation.md` and `references/storybank-guide.md`.
-- **`strategy`**: Read `coaching_state.md` in full — Profile (deadline, target roles, transition status), Interview Loops (all active entries), Outcome Log, Active Coaching Strategy, Drill Progression, Coaching Notes, Search Strategy (if exists), Salary section (if exists, for comp context).
-- **`sync`**: Read `coaching_state.md` in full — Profile, Interview Loops (all entries including status, next round, stories used), Outcome Log, Storybank (index + use counts), Active Coaching Strategy, Session Log, Search Strategy (if exists).
-- **`map`**: Read `coaching_state.md` in full — Profile, Interview Loops (all entries, especially Status and Next round dates), Outcome Log, Storybank (count + health), Active Coaching Strategy, Drill Progression, Search Strategy (if exists). Read-only — does not write to coaching state.
-- **`pipeline`**: Read `coaching_state.md` in full: Profile (deadline), Interview Loops (all entries), Outcome Log, Comp Strategy (offers in hand), Active Coaching Strategy. Read-only. Never reads or writes state/pipeline.md.
-- **`apply`**: Read `coaching_state.md` for Profile, Storybank (Quick Reference + Story Details), Proof Bank, Positioning Statement, and Interview Loops (for company context). Read `references/cross-cutting.md` for Writing Quality Gate module. Scan `job-search/` for prior application answers. If `voice-and-style.md` exists, read for voice enforcement.
-- **`linkedin`**: Read `coaching_state.md` for Profile (target role), Resume Analysis, Storybank (earned secrets), Active Coaching Strategy, Positioning Statement (for headline/about alignment), JD Analyses (for keyword targeting). Also read `references/differentiation.md` and `references/storybank-guide.md`.
+- **`present`**: Read `coaching_state.md` for Profile, Interview Loops (company and round context — format, interviewer intel, round type), Active Coaching Strategy, and Storybank (from `storybank.md`) (for narrative material and story selection). Also read `references/rubrics-detailed.md` (presentation format scoring dimensions) and `references/calibration-engine.md` Section 1 (calibration context).
+- **`pitch`**: Read `coaching_state.md` for Profile, Resume Analysis, Storybank (from `storybank.md`) (earned secrets), Active Coaching Strategy, LinkedIn Analysis (for consistency check), Resume Optimization (for summary consistency check). Also read `references/differentiation.md` and `references/storybank-guide.md`.
+- **`resume`**: Read `coaching_state.md` for Profile (target roles, seniority band), Resume Analysis, Storybank (from `storybank.md`) (earned secrets for bullet enrichment), Active Coaching Strategy, Positioning Statement (for summary alignment), and JD Analyses (for keyword targeting per role). Also read `references/differentiation.md` and `references/storybank-guide.md`.
+- **`strategy`**: Read ONLY the named sections of `coaching_state.md` — Profile (deadline, target roles, transition status), Interview Loops (all active entries), Outcome Log, Active Coaching Strategy, Drill Progression, Coaching Notes, Search Strategy (if exists), Salary section (if exists, for comp context).
+- **`sync`**: Read ONLY the named sections of `coaching_state.md` — Profile, Interview Loops (all entries including status, next round, stories used), Outcome Log, Storybank (from `storybank.md`) (index + use counts), Active Coaching Strategy, Session Log, Search Strategy (if exists).
+- **`apply`**: Read `coaching_state.md` for Profile, Storybank (from `storybank.md`) (Quick Reference + Story Details), Proof Bank, Positioning Statement, and Interview Loops (for company context). Read `references/cross-cutting.md` for Writing Quality Gate module. Scan `job-search/` for prior application answers. If `voice-and-style.md` exists, read for voice enforcement.
+- **`linkedin`**: Read `coaching_state.md` for Profile (target role), Resume Analysis, Storybank (from `storybank.md`) (earned secrets), Active Coaching Strategy, Positioning Statement (for headline/about alignment), JD Analyses (for keyword targeting). Also read `references/differentiation.md` and `references/storybank-guide.md`.
 
 ## Evidence Sourcing Standard
 
@@ -324,7 +326,7 @@ Use first match:
 7. System design / case study / technical interview practice intent -> `practice technical` (sub-command of `practice`)
 8. Practice intent -> `practice`
 9. Progress/pattern intent -> `progress`
-9a. Explicit `pipeline` command -> `pipeline`. **DATE CHECK REQUIRED**: run `date "+%A, %B %d, %Y"` before output. Read coaching_state.md. Never read state/pipeline.md. Generate live output per references/commands/pipeline.md.
+9a. Explicit `pipeline` command -> `pipeline`. **DATE CHECK REQUIRED**: run `date "+%A, %B %d, %Y"` before output. Read coaching_state.md. Never read state/pipeline.md. Generate live output per references/commands/strategy.md.
 9b. Pipeline update / add / "pipeline update" / "pipeline add" intent -> direct state update to coaching_state.md Interview Loops section (not pipeline command). DATE CHECK REQUIRED as above.
 9c. Search health / deadline / offer decision / "where should I focus" / "priority stack" intent (not an explicit pipeline view request) -> `strategy`. DATE CHECK REQUIRED as above.
 9d. "Is my state current" / "sync check" / "check for inconsistencies" / "are we out of sync" / "check my loops" intent -> `sync`

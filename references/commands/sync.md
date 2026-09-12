@@ -134,7 +134,7 @@ Only run if a Search Strategy section exists.
 
 **Narrative Consistency (only run when 3+ companies have interview data in Score History or Interview Loops):**
 
-Run the Narrative Consistency Checker from `references/cross-cutting.md`. Check tracked narratives ("why leaving," "timeline/urgency," "comp expectations," "why this company," "career narrative") across all companies with interview data. Surface contradictions only:
+Run the Narrative Consistency Checker from `references/modules/narrative-consistency-checker.md`. Check tracked narratives ("why leaving," "timeline/urgency," "comp expectations," "why this company," "career narrative") across all companies with interview data. Surface contradictions only:
 
 - If contradictions found: "Narrative consistency flag: your [narrative type] differs between [Company A] ('[version A]') and [Company B] ('[version B]'). If both reach offer stage, reconcile this."
 - If all consistent: "Narrative consistency: clean across [N] companies."

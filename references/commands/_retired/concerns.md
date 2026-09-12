@@ -1,3 +1,5 @@
+<!-- RETIRED 2026-09-12. Reason: Objection handling. Subset of `prep`, which already builds the trap list per round. Restore by moving back to references/commands/ and re-adding the registry row in COACH.md. -->
+
 # concerns — Concern Anticipation Workflow
 
 ### Sequence
