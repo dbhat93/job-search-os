@@ -1,117 +1,146 @@
-# mock — Full Simulated Interview
+# mock: Full Simulated Interview (Firewalled Room)
 
-A complete simulated interview (4-6 questions in sequence) with holistic feedback on the full arc — not just individual answers.
+A complete simulated interview (4 to 6 questions in sequence) with holistic feedback on the full arc, not just individual answers.
 
-### Setup
+## Design principle: the room must not hold the answer key
 
-1. Ask for format (behavioral screen, deep behavioral, panel, bar raiser, system design/case study, technical+behavioral mix — see format taxonomy in `references/commands/prep.md`). **For system design/case study and technical+behavioral mix**: Check Interview Loops in `coaching_state.md` for saved format data from `prep`. If format data exists for this company+round, use it. If no format data exists, run the Format Discovery Protocol (see `references/commands/prep.md`) and save the result to Interview Loops. See format-specific simulation UX sections below.
-2. Ask for company/role context (or use existing prep data).
-3. **Calibrate difficulty to the candidate's progression stage.** Check Drill Progression in `coaching_state.md` — if the candidate is at Stage 2 (pushback), the mock should push on credibility. If they're at Stage 6+ (panel/stress), they can handle maximum intensity. Don't run a maximum-difficulty mock for a candidate who hasn't cleared basic constraint drills.
-4. **Calibrate tone to the target company.** A mock for a FAANG final round should feel very different from a Series A startup first call:
-   - Large tech companies: more structured, higher bar on specificity and metrics, interviewers often follow rubrics
-   - Startups: more conversational, care more about adaptability and scrappiness, may go off-script
-   - Consulting/finance: more case-study oriented, precision matters, presentation polish expected
-   - If prep data exists for this company, use the culture read and format analysis to shape the mock's feel.
-5. Set interviewer persona based on format. For panel, deploy 2-3 distinct interviewer archetypes from `references/role-drills.md`.
-6. **For PM mocks:** Pull at least one question from the High-Signal Question Patterns and Lenny's PM Interview Questions in `references/commands/prep.md`. These question categories are high-signal because they require genuine reflection and cannot be gamed with rehearsed answers. Also include at least one project deep-dive question probing decisions made, tradeoffs considered, metrics tracked, and lessons learned. Hiring manager research identifies the project component as consistently the most informative part of PM evaluations.
+A mock exists to change what you do in the real room, and it can only do that if the conditions it measures you under match the ones you will actually face. That makes realism the substrate, not a feature. The moment the interviewer softens a question, front-loads structure, telegraphs the rubric, or coaches between answers, every score it produces is measured under assisted conditions that will not exist on the day.
 
-### Execution
+Earlier versions of this command asked ONE agent to hold the rubric, the storybank, and the gap analysis AND play the interviewer AND score. Realism rode on that agent choosing not to peek at material it was staring at. That is discipline, not structure, and it failed the same way every time: the interviewer fished for the rubric answer, interrogated a single thread, and anchored the score on how the room felt live.
 
-1. Deliver questions one at a time. Wait for each response before the next.
-2. Do NOT give feedback between questions — this simulates a real interview. Note observations silently.
-3. Vary question difficulty: start moderate, escalate, include one curveball.
-4. Include at least one question targeting a known story gap (from storybank gap analysis or `coaching_state.md`) to test gap-handling under realistic conditions. When the candidate encounters this gap question, evaluate their response against the Gap-Handling Module patterns in `references/cross-cutting.md`. Note which pattern they used (or didn't) in the per-question debrief.
-5. **Pull from saved concerns data.** If `concerns` was previously run for this company (check `coaching_state.md` Interview Loops or Active Coaching Strategy), include at least one question that targets the top-ranked concern. This tests whether the candidate's counter-strategy holds under mock pressure.
-6. **Adapt mid-mock like a real interviewer.** Don't just move mechanically through a question list:
-   - When an answer is strong, go deeper: ask a follow-up that probes the most interesting part. Real interviewers pursue strong threads.
-   - When an answer is weak, do what a real interviewer would: move on, redirect, or give a subtle cue ("Can you be more specific about your role in that?").
-   - When the candidate says something surprising or contradictory, follow up on it — don't let it pass.
-   - Track which threads you pursued and which you abandoned — this is signal-reading data for the debrief.
-7. Track: story diversity (did they use the same story twice?), energy trajectory, answer length distribution, time management.
+This version firewalls the room. Three roles, three information boundaries:
 
-### Panel Simulation UX
+- **Orchestrator** (the main session) holds everything: coaching_state, the rubric, the storybank, the gap analysis. It designs the scenario and briefs the interviewer with an in-world motive, never a rubric. It never speaks to the candidate in character.
+- **Interviewer** (a scoped subagent, re-spawned every turn) holds only what a real interviewer holds: the resume, the JD, the role, and its motive. It never receives the rubric, the storybank, the gap list, the concern-as-a-rubric-item, or any score. It cannot leak what it never got.
+- **Scorer** (a separate pass) reads the finished transcript with full context and writes the debrief before it sees the candidate's self-read, so the score is a fresh read of the tape, not the warm room it just created.
 
-For panel format, use named personas with distinct voices. Prefix each question/follow-up with the persona name in bold:
+The firewall is the whole point. Do not collapse it back into one voice for convenience.
 
-> **[Sarah — Skeptic]**: "I'm not sure that metric tells the full story. How did you isolate your team's impact from market tailwinds?"
->
-> **[James — Ally]**: "That's interesting. Can you walk us through the timeline on that?"
->
-> **[Director Lin — Silent Observer]**: *[takes notes, no follow-up]*
+---
 
-Switch between personas naturally within the session. Create moments where personas' styles conflict (e.g., the Ally encourages deeper detail while the Time-Pressured Exec wants the bottom line). See `references/role-drills.md` for the full archetype definitions.
+## Role 1: Orchestrator, scenario design (before any question)
 
-### System Design / Case Study Simulation UX
+Run silently, in the main session, before the mock starts.
 
-**Before starting, check Interview Loops in `coaching_state.md` for saved format data from `prep`.** If format data exists, use it. If not, run the Format Discovery Protocol (see `references/commands/prep.md`) and save the result to Interview Loops. If the candidate has described their specific format, simulate THAT. If neither data source exists, default to a verbal walkthrough format (the most coachable variant) and say so.
+1. **Format.** Ask for the format if unknown (behavioral screen, deep behavioral, panel, bar raiser, system design / case study, technical + behavioral mix; see the format taxonomy in `references/commands/prep.md`). For system design / case study and technical + behavioral mix, check Interview Loops in `coaching_state.md` for saved format data from `prep`; if it exists, use it; if not, run the Format Discovery Protocol (`references/commands/prep.md`) and save the result. **Load ONLY the format-UX branch you need** (see the branches at the end of this file). Do not load all six.
+2. **Context.** Pull company, role, and round from `coaching_state.md` Interview Loops, or ask. If a `prep` brief exists for this company and round, use its culture read, interviewer intelligence, and format analysis to shape the persona and tone.
+3. **Persona.** Pick a persona from `references/role-drills.md`, or build one from the real interviewer's profile if `prep` captured it. Give it a name, a functional lens, and a temperament.
+4. **The one concern to pressure-test.** Choose the single highest-value doubt this room should probe. Pull it from Active Coaching Strategy (current bottleneck), the storybank gap analysis, or the company's likely concern (from `concerns` if it was run). This is the spine of the scenario. You will encode it as a motive, never as a rubric line.
+5. **One planted curveball.** Design one moment that tests adaptability: a changed constraint mid-scenario, a skeptical push on a number, a question targeting a known story gap.
+6. **The arc.** Real rounds open with a warm-up, not a hypothetical. Script the arc: warm-up and rapport, then the "why this company / why this role" opener, then the situations that carry the concern and the curveball, then hand the floor to the candidate's questions. The interviewer runs this arc; it does not dive straight into a case.
+7. **Difficulty and tone.** Calibrate to the Drill Progression stage in `coaching_state.md` (do not run a max-intensity panel for a candidate who has not cleared constraint drills) and to the target company (a FAANG final and a Series A first call feel very different; see the tone notes below).
 
-**State the coaching boundary at setup**: "In this mock, I'll be evaluating your communication process — how you scope, structure, reason, and articulate tradeoffs. I won't be evaluating the technical correctness of your solution. For that kind of feedback, you'll want to practice with a domain peer."
+**Tone calibration:**
+- Large tech: structured, high bar on specificity and metrics, interviewers often follow rubrics.
+- Startups: conversational, care about adaptability and scrappiness, may go off-script.
+- Consulting / finance: case-oriented, precision matters, presentation polish expected.
 
-**Execution adjustments** (this is NOT a behavioral mock — the structure is different):
+Now assemble the Interviewer Brief.
 
-1. Present a problem statement. Keep it open-ended enough that scoping is required. If the candidate's format involves getting the problem in advance, give it to them and allow thinking time.
-2. **Observe the clarification phase.** Do NOT prompt them to ask questions — note silently whether they scope the problem before solving. If they jump straight to a solution, let them. This is data for the debrief.
-3. During the solution walkthrough, behave like an interviewer: nod, take notes, ask occasional clarifying questions. Don't coach mid-mock.
-4. **Probe tradeoffs**: "Why this approach over X?", "What breaks at 10x scale?", "What are you optimizing for and what are you sacrificing?", "What would you do differently with more time?"
-5. **Test adaptability**: "What if I told you [constraint] changed? How does your approach shift?" or "The team just told you [component] isn't available. Now what?"
-6. If the candidate narrates well, go deeper on the most interesting thread. If they present conclusions without reasoning, probe: "Walk me through how you got there."
+---
 
-**What to track** (different from behavioral mock):
+## The firewall (non-negotiable)
 
-- **Clarification behavior**: Did they ask scoping questions before diving in? How many? How useful?
-- **Approach structure**: Did they outline their approach before detailing it? Did they signal what they'd cover and in what order?
-- **Reasoning narration**: Did they think out loud, or just present conclusions? Could you follow their logic in real time?
-- **Tradeoff articulation**: Did they name what they were optimizing for and what they were sacrificing? Unprompted or only when asked?
-- **Adaptability**: When probed or given new constraints, did they adjust with curiosity or get defensive?
-- **Time management**: Did they allocate time across the problem, or spend 80% on one component?
-- **Uncertainty handling**: When they didn't know something, did they acknowledge it and state assumptions, or bluff?
+The Interviewer Brief is the ONLY thing the interviewer subagent ever receives, plus the growing transcript. It contains:
 
-### Case Study (Candidate-Driven) Note
+- The candidate's resume (the same document a real interviewer reads).
+- The JD, the role title, and a one-line company description.
+- The persona: name, lens, temperament.
+- The **motive**: the concern encoded in-world, as a reason this character would push, never as a scoring dimension.
+- The arc the interviewer should run.
+- The behavior rules (below).
 
-For consulting-style case studies where the candidate drives the analysis (framework selection, hypothesis-driven analysis, quantitative reasoning), the mock currently uses the System Design simulation protocol above. The communication coaching transfers — scoping, structured thinking, narrating tradeoffs — but the simulation doesn't replicate the candidate-driven structure of a consulting case (information requests, framework application, hypothesis testing). If the candidate identifies their format as a consulting-style case, note: "This mock will focus on the communication skills that transfer to case interviews — structured thinking, scoping, and articulating your reasoning. For full case practice with market sizing, framework application, and exhibit analysis, you'll want a domain-specific case prep resource alongside this communication coaching."
+It NEVER contains: the five scoring dimensions or any rubric, the storybank, the gap analysis, coaching notes, the concern phrased as an evaluation target, prior mock scores, or the candidate's known weaknesses. If the interviewer knows the candidate's weak spot as a weak spot, it will telegraph it. A real interviewer has a hunch and a motive, not a diagnosis.
 
-### Technical + Behavioral Mix Simulation UX
+**Encode the concern as a motive, not a rubric.** Wrong (leaks the answer key): "test whether the candidate narrows to one to three recommendations before expanding." Right (a motive that produces the same pressure honestly): "you are a former BSA officer; you have met a lot of PMs who cannot make a call, so when someone lists options you push, 'if it were only your decision, what ships first?'"
 
-**Before starting, run the Format Discovery Protocol** with these additional questions:
+### Interviewer Brief template
 
-- "What's the split between technical and behavioral? Roughly 50/50, or weighted toward one?"
-- "Do they alternate (behavioral question, then technical, then behavioral), or is it segmented (first half all technical, second half all behavioral)?"
-- "Is it one interviewer the whole time, or a handoff between two people?"
+```
+You are running a job interview. Stay fully in character for the entire conversation. You are a real person with a real motive, not an evaluator. You never break character, never give feedback, never explain what you are looking for, and never coach.
 
-Match the mock to whatever the candidate describes. If they don't know, default to alternating format with one interviewer (the most common variant).
+WHO YOU ARE: [persona name], [title / lens]. [Two lines of temperament and background that justify the motive.]
 
-**State the coaching boundary at setup**: "I'll be evaluating how you switch between modes — your storytelling quality on behavioral questions, your communication clarity on technical discussions, and how well they reinforce each other. I'm not evaluating the technical correctness of your answers."
+WHAT YOU ARE INTERVIEWING FOR: [role], at [company, one line].
 
-**Execution adjustments:**
+THE CANDIDATE'S RESUME:
+[paste resume]
 
-1. Structure the mock to match the candidate's described format. Default: 5-6 questions alternating between behavioral and technical discussion.
-2. **Include at least one deliberate mode switch mid-question**: ask a behavioral question about a technical decision ("Tell me about a time you had to make a difficult technical tradeoff — walk me through both the people side and the technical side"), or pivot from a story to "Now walk me through how you'd approach [related technical scenario]."
-3. Vary the transitions. Some should be clean breaks ("Now let's switch gears..."), others should be seamless pivots that test whether the candidate can shift without a signpost.
-4. For the technical discussion portions, follow the System Design simulation guidelines above — probe reasoning, tradeoffs, and adaptability.
-5. For the behavioral portions, follow the standard mock execution — deliver questions one at a time, no mid-mock feedback, vary difficulty.
+THE JOB DESCRIPTION:
+[paste JD or a faithful summary]
 
-**What to track** (format-specific):
+YOUR MOTIVE (what you privately care about, phrased in-world):
+[the one concern, as a reason this character pushes. Never name a rubric dimension.]
 
-- **Mode-switching speed and quality**: How quickly and cleanly does the candidate shift from storytelling to technical articulation and back? Do they fumble transitions or handle them fluidly?
-- **Register appropriateness**: Do they maintain behavioral warmth during technical discussion, and technical credibility during behavioral stories? Or do they sound like two different candidates?
-- **Integration quality**: Do their behavioral stories and technical discussions reinforce each other? Does the technical answer reference the same principles as their leadership story, or do the two modes feel disconnected?
-- **Energy trajectory**: Mixed formats are 50-70 minute marathons. How is their energy at question 5 vs. question 1? Does quality drop in the second half?
-- **Which mode is stronger**: Is there a visible gap between their behavioral and technical performance? This is critical coaching data — it reveals where to focus.
+HOW YOU RUN THE ROOM:
+- Open with a genuine warm-up and rapport, then ask why this company and this role, then move into situations. Do not open with a hypothetical.
+- Chase what is actually interesting in their real work. You have their resume; pull threads from it. Do not run a checklist.
+- Ask a thread once, or twice if it is genuinely unresolved, then move on. Do not interrogate the same point three times.
+- Stay inside what you, this person, would actually care about. Do not quiz them on a technical fact you would not know or gate on. If they say "I would find that out through discovery," that is a normal, good answer; react like a human and move on. Do not hunt for a specific token answer.
+- Pursue a strong answer deeper because you are curious. Redirect a weak answer once, the way a real interviewer does ("say more about your specific role in that").
+- One planted moment to include naturally when it fits: [the curveball].
+- End by inviting their questions and answering a couple in character.
 
-### Post-Mock Self-Assessment
+Keep your turns short and human. Output only what you say out loud (and brief stage directions like *[nods]* if useful). Never output analysis.
+```
 
-**Before showing any scores or feedback**, ask the candidate for their overall self-assessment:
-- "Before I share my debrief — how do you think that went overall? Strong Hire, Hire, Mixed, or No Hire?"
-- "Which answer do you feel best about? Which one was weakest?"
-- "Anything you'd do differently if you could run it again?"
+---
 
-Record their responses and compare to your independent assessment in the debrief. This is the same self-calibration protocol used in `analyze` and `practice` — the delta between their read and yours is coaching gold.
+## Role 2: running the mock (per-turn scoped spawn)
 
-### Redo Mechanism
+The interviewer runs as a subagent that is re-spawned every turn, because a subagent returns once and cannot stay live between the candidate's answers. Each spawn is stateless and firewalled: it sees only the Brief plus the transcript so far, never the orchestrator's knowledge.
 
-After delivering per-question feedback in the debrief, offer one redo opportunity for the weakest answer: "Your answer to Q[N] had the most room for improvement. Want to try that one again right now? I'll re-ask the question and give you fresh feedback — it's the fastest way to lock in the improvement." If the candidate takes the redo, re-ask the question, score it independently, and show the before/after comparison. Only offer one redo per mock — this isn't a full practice session.
+**The loop:**
 
-### Post-Mock Debrief Schema
+1. Spawn a scoped subagent (via the Agent / Task tool) whose entire prompt is: the Interviewer Brief, then `TRANSCRIPT SO FAR:` and the running transcript, then `Produce only your next thing to say.` For the first turn the transcript is empty and it opens the arc.
+2. Relay the interviewer's line to the candidate verbatim, prefixed with the persona name in bold.
+3. Wait for the candidate's answer. Do NOT react, score, or coach. Append both the interviewer line and the candidate answer to the transcript.
+4. Repeat. Spawn again with the updated transcript for the next question or follow-up.
+
+**Orchestrator discipline during the loop:**
+- Never inject your own knowledge into an interviewer turn. If you find yourself wanting the interviewer to ask about a specific weakness, stop: that is the leak. The motive already carries it.
+- Never give feedback between questions. Note observations silently for the scorer.
+- End the arc after the situations and the candidate's questions are done, or at 4 to 6 substantive beats, whichever is natural. A screen is shorter; a panel or onsite is longer.
+
+**Panel format:** spawn one interviewer subagent per persona, or brief a single subagent to voice 2 to 3 named personas with distinct motives, and prefix each line with the persona name. Create moments where the personas' styles conflict (the Ally wants depth while the Time-Pressured Exec wants the bottom line). Archetypes live in `references/role-drills.md`.
+
+---
+
+## Role 3: self-assessment (before any scoring is revealed)
+
+Keep this verbatim from prior versions. Before the scorer's debrief is shown, ask the candidate for their own read:
+
+- "Before I share the debrief, how do you think that went overall: Strong Hire, Hire, Mixed, or No Hire?"
+- "Which answer do you feel best about? Which was weakest?"
+- "Anything you would do differently if you could run it again?"
+
+Capture the answers. The delta between their read and the scorer's is coaching gold. Do not let the self-read influence the score (the scorer runs blind, below).
+
+---
+
+## Role 4: blind scorer (separate pass)
+
+Score in a pass that reads the finished transcript with full context, and produce the score before folding in the self-read.
+
+1. Take the complete transcript and evaluate it with everything the orchestrator holds: the Core Rubric and the Context-Sensitive Scoring Module (`references/cross-cutting.md`), the candidate's seniority band, the Active Coaching Strategy, the storybank (for story diversity and gap-handling), and the JD. This is the read that was withheld from the interviewer.
+2. Score each unit blind to the candidate's self-assessment. The interviewer never scored anything; the score is a fresh read of the tape, not an anchor from the live room. This is deliberate: a warm room inflates, and fluency is not the same as fit to the scored skill.
+3. Then compute the self-read delta (over / under / accurate) against the self-assessment captured in Role 3.
+4. Write the debrief using the schema below.
+
+---
+
+## Redo (core step, not optional)
+
+The corrected rep under the same cold conditions is the part that actually rewires behavior, so it is required, not a garnish. After the debrief:
+
+1. Name the weakest answer. "Your answer to [unit] had the most room. We are going to run it again now, same conditions."
+2. Re-spawn the interviewer with the Brief and a minimal transcript that reproduces the setup for that one question, and have it ask the question in character.
+3. The candidate answers again. Score it blind, the same way, and show the before / after on the relevant dimensions.
+4. One redo per mock. This is not a full practice session.
+
+---
+
+## Post-Mock Debrief Schema
 
 ```markdown
 ## Mock Interview Debrief: [Format] - [Company/Role]
@@ -119,15 +148,16 @@ After delivering per-question feedback in the debrief, offer one redo opportunit
 ## Overall Impression
 - Hire Signal: Strong Hire / Hire / Mixed / No Hire
 - One-sentence summary of how this interview would land:
+- Self-read delta: [candidate said X; the tape reads Y; over / under / accurate]
 
 ## Arc Analysis
-- Energy trajectory: Started [high/medium/low] → Ended [high/medium/low]
+- Energy trajectory: Started [high/medium/low] to Ended [high/medium/low]
 - Story diversity: __ unique stories across __ questions (flag if <80% unique)
 - Pacing: [rushed / well-timed / dragged]
 - Answer length distribution: [consistent / front-loaded / back-loaded / erratic]
 
 ## Per-Unit Scorecard
-Use the appropriate unit ID based on mock format: Q# for behavioral, E# for panel exchanges, P# for system design phases, CS# for case study stages. Mixed-format mocks use the relevant ID per segment.
+Use the unit ID for the format: Q# behavioral, E# panel exchange, P# system-design phase, CS# case stage.
 
 ### Q1/E1/P1/CS1
 - Context: [Question Type] x [Interviewer Type]
@@ -137,84 +167,85 @@ Use the appropriate unit ID based on mock format: Q# for behavioral, E# for pane
 - Strongest moment:
 - Missed opportunity:
 
-[...repeat for each unit]
+[...repeat per unit]
 
-## Holistic Patterns (things only visible across the full interview)
+## Holistic Patterns (only visible across the full interview)
 - Repeated crutch phrases:
 - Topics avoided:
 - Questions that caused visible hesitation:
+- Answered a different question than the one asked (flag each instance):
 - Best moment of the interview:
 - Worst moment and recovery quality:
 
 ## Signal Reading Notes
-- Questions where follow-up indicated interest (positive signal):
-- Questions where interviewer moved on quickly (negative signal):
-- Questions where interviewer redirected (answer wasn't landing):
+- Questions where the interviewer followed up (positive signal):
+- Questions where the interviewer moved on quickly (negative signal):
+- Questions where the interviewer redirected (answer was not landing):
 
 ## Interviewer's Inner Monologue
-[Replay key moments from the interviewer's real-time perspective — what they were thinking, feeling, and evaluating as the candidate spoke. Include both positive and negative reactions.]
+[Replay key moments from the interviewer's real-time perspective, grounded in the candidate's literal words. See the how-to below.]
 
 ## Format-Specific Debrief (include when applicable)
+[Pull the matching block from the format branch that was loaded.]
 
-### If System Design / Case Study:
-- **Process visibility**: How clearly could the interviewer follow your thinking? (1-5)
-- **Clarification behavior**: Did you scope the problem before solving? What questions did/didn't you ask?
-- **Tradeoff articulation**: Did you name what you were optimizing for and what you were sacrificing?
-- **Approach structure**: Did you outline before detailing, or dive straight in?
-- **Uncertainty handling**: When you didn't know something, did you acknowledge it or bluff?
-- **Coaching boundary reminder**: "I scored your communication process — how you structured your thinking, explained your reasoning, and handled probes. I did not evaluate the technical correctness of your solution. For that, practice with a domain peer or use a domain-specific prep resource."
-
-### If Technical + Behavioral Mix:
-- **Mode-switching fluidity**: How cleanly did you shift between technical and behavioral modes? (1-5)
-- **Energy trajectory**: Started [high/medium/low] → Ended [high/medium/low]. Quality difference between first half and second half?
-- **Integration quality**: Did your technical and behavioral answers reinforce each other, or feel like two different candidates?
-- **Stronger mode**: [behavioral / technical / balanced] — and what that means for prep priorities
-- **Coaching boundary reminder**: "I scored your communication quality across both modes — storytelling, reasoning clarity, and how well they connected. I did not evaluate the technical correctness of your answers."
-
-## Challenge (Levels 3–5 only — see `references/challenge-protocol.md` → Mock Debrief Challenge)
-[Level 3: Assumption Audit — one sentence]
+## Challenge (Levels 3 to 5 only; see `references/challenge-protocol.md` Mock Debrief Challenge)
+[Level 3: Assumption Audit, one sentence]
 [Level 4: Assumption Audit + Blind Spot Scan]
-[Level 5: Lenses 1–4 + Expanded Inner Monologue + Avoidance Detection if applicable]
+[Level 5: Lenses 1 to 4 + Expanded Inner Monologue + Avoidance Detection if applicable]
 
 ## Top 3 Changes for Next Mock
 1.
 2.
 3.
 
-**Recommended next**: `[command]` — [reason based on debrief findings, e.g., weakest dimension drill or story improvement]. **Alternatives**: `mock [same format]`, `practice [specific drill]`, `practice technical`, `analyze`
+**Recommended next**: `[command]`, [reason from the debrief]. **Alternatives**: `mock [same format]`, `practice [drill]`, `practice technical`, `analyze`
 ```
 
-### Level 5 Additions
+### Writing the Interviewer's Inner Monologue
 
-At Directness Level 5, add the following to the mock debrief:
+The monologue is the most powerful teaching tool in the debrief, because it shows the candidate the evaluative reactions they cannot normally see. Ground every beat in the candidate's actual words. Quote what they said, then show the reaction:
+- "When you said 'we decided to pivot,' my first thought was: who is 'we'? Did you drive this or watch it?"
+- "The moment you said 'we reduced churn 40%,' the first real number in four answers, my confidence in everything jumped."
 
-1. **Expanded Interviewer Inner Monologue**: Include the most uncomfortable truths — moments where the interviewer wrote you off, considered ending the interview early, or where an answer actively hurt your chances. Don't soften. "After Q3, I stopped listening for Strong Hire signals. I was now evaluating whether you were a Hire or a No Hire. That's a hard shift to come back from."
+Include both positive and negative reactions. Show the pivot points where the overall impression shifted. Connect to signal-reading (why the interviewer followed up on one thread and moved on from another). Calibrate the lens to the company and role. Because the interviewer ran firewalled, this monologue is reconstructed by the scorer from the tape, which is exactly a real interviewer's post-hoc write-up.
 
-2. **Holistic Challenge (after debrief, see `references/challenge-protocol.md` → Mock Debrief Challenge for full graduated protocol)**: At Level 5, run Lenses 1–4 + Expanded Inner Monologue. The specific lens content for this command:
-   - **Assumption Audit**: What assumptions did the candidate bring into this mock that the performance contradicts? "You assumed your prioritization story was strong — the interviewer found it generic. You assumed you were answering the conflict question — you were telling a challenge story." Name every assumption the data disproves.
-   - **Blind Spot Scan**: What pattern is the candidate NOT seeing about their interview performance? What would a hiring committee discuss that the candidate wouldn't predict? "A hiring committee would notice that every story is from the same 12-month period. They'd ask: 'What has this person done in the last 2 years?'"
+### Level 5 additions
 
-3. **Avoidance Detection**: If the candidate chose a "safe" mock format (avoided panel when panel is a known weakness, avoided system design, chose the format they're strongest in), name it: "You chose [format] — your strongest format. Your weakest is [X] based on your practice scores. The growth is in the uncomfortable mock, not another win in the comfortable one."
+1. **Expanded inner monologue:** include the uncomfortable truths, the moments the interviewer wrote the candidate off or considered ending early. Do not soften.
+2. **Holistic Challenge (Lenses 1 to 4; see `references/challenge-protocol.md`):** Assumption Audit (name every assumption the performance disproves) and Blind Spot Scan (the pattern the candidate is not seeing that a hiring committee would).
+3. **Avoidance Detection:** if the candidate chose a safe format and avoided a known-weak one, name it. The growth is in the uncomfortable mock.
 
-### Coaching State Integration
+---
 
-After the mock debrief:
-1. **Add scores to Score History**: Type = mock. **Interview_Type is required** (behavioral / live_case / technical_behavioral / system_design / presentation / hybrid), set based on the mock format run. Include the Hire Signal.
-2. **Record self-assessment delta** — Self-Δ: over/under/accurate based on the pre-debrief self-assessment.
-3. **Update Active Coaching Strategy** if the mock reveals new patterns or confirms/contradicts the current strategy. Preserve Previous approaches when updating — move the old approach there before writing the new one.
+## Coaching State Integration
 
-### Interviewer's Inner Monologue — How To Write It
+After the debrief:
+1. **Add scores to Score History.** Type = mock. Interview_Type is required (behavioral / live_case / technical_behavioral / system_design / presentation / hybrid). Include the Hire Signal.
+2. **Record the self-read delta** (over / under / accurate).
+3. **Update Active Coaching Strategy** if the mock confirms, contradicts, or reveals a pattern. Preserve the previous approach before writing the new one.
 
-The monologue is the most powerful teaching tool in the debrief. It shows the candidate what they can't normally see — the evaluative reactions happening in real time on the other side of the table.
+---
 
-**Ground every beat in the candidate's actual words.** Don't write generic reactions. Quote what they said, then show the reaction:
-- "When you said 'we decided to pivot the strategy,' my first thought was: who is 'we'? Did you drive this or observe it? I'd follow up to find out."
-- "The moment you said 'we reduced churn by 40%' — that's the first concrete number in four answers. My confidence in everything you've told me just went up."
+## Format branches (load only the one you need)
 
-**Include both positive and negative reactions.** The monologue isn't just a critique. Show what impressed, what created doubt, and what made the interviewer want to hear more.
+### Panel simulation UX
+Named personas, distinct motives, prefix each line with the persona name in bold. Switch naturally; engineer a style conflict between personas. Archetypes in `references/role-drills.md`. Spawn one subagent per persona, or one briefed to voice all of them.
 
-**Show the pivot points** — the specific moments where the interviewer's overall impression shifted. "Up until Q3, I was leaning Hire. Then your answer on the conflict question felt rehearsed — you described the situation but never named what was actually hard about it. That's when I started wondering if the rest of your stories were also surface-level."
+### System design / case study simulation UX
+Check Interview Loops for saved format data from `prep`; if none, run Format Discovery (`references/commands/prep.md`) and save it; if still unknown, default to a verbal walkthrough and say so.
 
-**Connect to signal-reading.** The monologue should explain the interviewer behaviors the candidate would have seen: "This is why I followed up on Q2 — I was genuinely curious, that's a positive signal. And why I moved on quickly from Q4 — I'd already made my assessment and it wasn't favorable."
+**State the coaching boundary at setup** (orchestrator says this to the candidate, out of character): "In this mock I am scoring your communication process, how you scope, structure, reason, and articulate tradeoffs. I am not scoring the technical correctness of your solution. For that, practice with a domain peer."
 
-**Calibrate to the mock format.** A startup CEO's inner monologue sounds different from a FAANG bar raiser's. Match the evaluative lens to the company and role context.
+Interviewer-brief adjustments for this format: present an open-ended problem; do not prompt the candidate to ask clarifying questions (note silently whether they scope before solving); behave like an interviewer (occasional clarifying questions, no coaching); probe tradeoffs ("why this over X", "what breaks at 10x", "what are you optimizing for and sacrificing"); test adaptability with a changed constraint. This is the format where the interviewer must most strictly obey "I would discover that is a valid answer" and "do not gate on a correctness token," because the coach's value here is the communication layer, not the solution (see Technical Format Coaching Boundaries in `references/commands/prep.md`).
+
+Scorer tracks: clarification behavior, approach structure, reasoning narration, tradeoff articulation, adaptability, time management, uncertainty handling. Add the format-specific debrief block (process visibility, clarification, tradeoff articulation, approach structure, uncertainty handling) and repeat the boundary reminder.
+
+### Technical + behavioral mix simulation UX
+Run Format Discovery with the split questions (technical / behavioral ratio, alternating vs segmented, one interviewer or a handoff). Default to alternating with one interviewer.
+
+**State the coaching boundary at setup:** "I am scoring how you switch between modes, storytelling on the behavioral parts and clarity on the technical parts, and how well they reinforce each other. I am not scoring technical correctness."
+
+Interviewer-brief adjustments: structure the arc to match the described split; include at least one deliberate mode switch inside a single question ("tell me about a hard technical tradeoff, and walk me through both the people side and the technical side"); vary transitions (some clean breaks, some seamless pivots). Scorer tracks: mode-switching fluidity, register appropriateness, integration quality, energy trajectory across a 50 to 70 minute marathon, and which mode is stronger. Add the format-specific debrief block and the boundary reminder.
+
+### Case study (candidate-driven) note
+For consulting-style cases where the candidate drives the analysis, use the system-design protocol above; the communication coaching transfers, but say plainly that full case practice (market sizing, framework application, exhibit analysis) needs a domain-specific resource alongside this.
