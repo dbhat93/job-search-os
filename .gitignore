@@ -11,6 +11,10 @@ storybank.md
 # Archive of closed interview loops: same sensitivity as coaching_state.md.
 # Full loop details preserved here when loops are compressed in the main state file.
 coaching_state_archive.md
+# Transferable lessons harvested from closed loops (personal search data).
+lessons.md
+# Backups of personal state files (e.g. coaching_state.md.bak).
+*.bak
 
 # Active skill file (created by copying SKILL.md during setup)
 CLAUDE.md
