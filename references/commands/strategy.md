@@ -252,13 +252,13 @@ At Levels 1-4: framed as "Here's what the data says — [assessment]. The call i
 
 After a Full Strategy or Decision Point session, write to `coaching_state.md`:
 
-**Search Strategy section** (create if missing, update if exists):
+**Search Strategy section. OVERWRITE, do not append.** Keep only the LATEST Full Strategy block in `coaching_state.md`. Before writing the new block, move the previous Full Strategy block to `coaching_state_archive.md` (append it there under a dated heading), then replace it in `coaching_state.md` with the new one. Never stack dated strategy snapshots; a pile of them is expired context that bloats the file and gets misread. The block contains:
 - Date of strategy session
 - Timeline status at time of session
-- Priority stack (ranked)
+- Priority stack (ranked). The `DERIVED:priority_stack` block is the single live ranking, so do not also restate each loop's status in prose here.
 - Funnel status
 - Key risks identified
-- 2-week action plan (carry forward until next strategy session updates it)
+- 2-week action plan (carry forward until the next strategy session overwrites it)
 
 **Active Coaching Strategy** (update if strategy session reveals a skill-level insight):
 - If the strategy session surfaces that the primary obstacle is now search-level (pipeline, funnel, narrative) rather than skill-level, note it in Active Coaching Strategy: "Search-level constraint flagged [date]: [issue]. Coaching focus shifted to [outreach / research / strategy] until pipeline is healthy."
